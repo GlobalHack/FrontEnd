@@ -1,0 +1,244 @@
+@import 'colors';
+
+$inputFontSize: 1.65rem;
+
+input, textarea {
+    color: $inputColor !important;
+}
+
+
+input {
+    &[type="text"],
+    &[type="tel"],
+    &[type="email"],
+    &[type="password"] {
+        font-weight:400;
+        font-size:$inputFontSize;
+        line-height:1.6em;
+        font-family: $baseFontFamily;
+        border: none;
+        border-bottom: 1px solid $borderColor;
+        transition:border-color 300ms ease;
+        margin:.45em 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius:0;
+        &.error {
+            border-color: #db583b;
+        }
+        &:focus {
+            outline:none;
+            border-color: $inputFocusBorderColor;
+        }
+        &::-webkit-input-placeholder {
+            -webkit-font-smoothing:antialiased;
+        }
+    }
+    &[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-webkit-slider-runnable-track {
+            margin-top:1.25rem;
+            height:1rem;
+            background: transparent;
+            border-top:1px solid $borderColor;
+        }
+
+        &::-webkit-slider-thumb {
+            height:1.25rem; width:1.25rem;
+            background-color: $primaryButtonBackgroundColor;
+            border-radius:10rem;
+            cursor: pointer;
+            -webkit-appearance: none;
+            transform:translate(0,-50%);
+        }
+
+    }
+}
+
+.flex-wrapper {
+    > input, > .input-with-labels {
+        min-width:48.5%;
+        min-width:calc(50% - 1rem);
+        &.fourths {
+            min-width:23%;
+            width:calc(25% - 1.5rem);
+
+        }
+    }
+}
+
+.button, button {
+    background-color:$primaryButtonBackgroundColor;
+    color:white;
+    padding:0 1rem;
+    min-width:10rem;
+    line-height:3.15rem;
+    border:none;
+    border-radius:.5rem;
+    text-align:center;
+    text-transform:uppercase;
+    font-size:.875rem;
+    transition:background-color 300ms ease, color 300ms ease;
+    cursor:pointer;
+    display:inline-block;
+    &:hover, &:focus {
+        background-color:$primaryButtonHoverBackgroundColor;
+        outline:none;
+    }
+    &.secondary {
+        border: 1px solid $secondaryButtonBorderColor;
+        background:transparent;
+        color: rgba(32,48,55,.75);
+        font-size: 1rem;
+        letter-spacing: .25px;
+        line-height: .875rem;
+        margin-bottom: .5rem;
+        padding: 1rem 0;
+        text-transform: none;
+        &:hover {
+            color:white;
+            background-color:$secondaryButtonHoverBackgroundColor;
+        }
+    }
+}
+
+form {
+    margin-bottom:2rem;
+}
+
+body {
+    .input-with-labels {
+        position:relative;
+        input {
+            &[type="text"],
+            &[type="email"],
+            &[type="tel"],
+            &[type="password"] {
+                width:100%;
+                margin-top:.65rem;
+                margin-bottom:1.75rem;
+            }
+        }
+        label {
+            text-align:left;
+            font-family:$baseFontFamily;
+            text-transform:uppercase;
+            letter-spacing:.5px;
+            font-size:.875rem;
+            font-weight:500;
+            line-height:1em;
+            padding:0;
+            color:$labelColor;
+            position:absolute;
+            text-indent:.15rem;
+        }
+    }
+}
+
+
+/*
+// CUSTOM INPUT COMPONENTS
+*/
+
+// <Checkbox />
+.checkbox-wrapper {
+    label {
+        color:lighten($labelColor, 20%);
+        transition:color 250ms ease;
+        font-size:1.1rem;
+        line-height:2.5em;
+        position:relative;
+        padding-left:0;
+        transition:padding 250ms ease;
+        &:before {
+            content:'';
+            position:absolute;
+            left:.2rem;
+            font-size:1em;
+            transform:scale(1.25);
+            opacity:0;
+            transition:opacity 250ms ease 100ms;
+        }
+    }
+    input {
+        visibility:hidden;
+        position:absolute;
+        &:checked + label {
+            color: $inputColor;
+            padding-left:1.25em;
+            &:before {
+                content:'\2713';
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// <IncrementInput />
+.increment-input {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1.5rem;
+    > * {
+        display:inline-block;
+    }
+    .count {
+        width:1.25em;
+        text-align:center;
+    }
+    .incrementor {
+        font-size:.85em;
+        padding:0 .5em;
+        margin:0 .2em;
+        font-weight:400;
+    }
+    a {
+        color:inherit;
+        text-decoration:none;
+    }
+}
+
+/* --- RANGE INPUT --- */
+
+
+// <SliderInput />
+.slider-current {
+    display:inline-block;
+    width:2.5em;
+    text-align:left;
+}
+.slider-input {
+    width:100%;
+    cursor:pointer;
+    padding-bottom:1.5rem;
+    label {
+        text-align:center;
+        font-family:$headlineFontFamily;
+        font-size:2rem;
+        display:block;
+    }
+}
+.address-input-wrapper {
+    a.get-address {
+        line-height:2.5em;
+        @media(max-width:400px){
+            font-size: 1.2rem;
+            white-space: nowrap;
+            display: block;
+            padding-bottom: .5em;
+        }
+    }
+    svg {
+        height:1em; width:1em;
+        margin-right:.25em;
+        transform:translate(0, .1rem);
+    }
+}

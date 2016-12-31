@@ -1,0 +1,46 @@
+/* --------------------------- */
+// CRAZY SIMPLE FLEXBOX GRID - */
+/* --------------------------- */
+.flex-wrapper {
+    display:flex;
+    flex-flow:row;
+}
+.flex-between {
+    justify-content:space-between;
+}
+.flex-nowrap {
+    flex-wrap:nowrap;
+}
+.full {
+    width:100%;
+}
+.half {
+    width:48%;
+    width:calc(50% - 1rem);
+}
+.thirds {
+    width:31.5%;
+    width:calc(33.333% - 1.333rem);
+}
+
+/* TABLET PORTRAIT --- */
+@media(max-width:800px) {
+    .flex-wrapper > input, .half {
+        width:100%;
+    }
+    .thirds {
+        width:48%;
+        width:calc(50% - 1rem);
+    }
+}
+
+/* SMARTPHONE PORTRAIT --- */
+@media(max-width:400px) {
+    .flex-wrapper > input, .half, .thirds {
+        width:100%;
+    }
+    .fourths {
+        width:48%;
+        width:calc(50% - 1rem);
+    }
+}
