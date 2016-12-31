@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Global Hack</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto:300" rel="stylesheet">
+    <%if (settings.env === 'production') { %>
+    <link rel="stylesheet" href="/styles/app/styles.css">
+    <% } %>
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <%- body %>
+
+    <!-- VENDOR SCRIPTS // WE SHOULD COMBINE THESE LATER :) -->
+    <script src="/js/app/vendor/jquery.min.js"></script>
+    <script src="/js/app/dependencies/sails.io.js"></script>
+    <script src="/js/app/vendor/react-with-addons-15.3.1.min.js"></script>
+    <script src="/js/app/vendor/react-dom-15.3.1.min.js"></script>
+    <script src="/js/app/vendor/redux.min.js"></script>
+    <script src="/js/app/vendor/react-redux.min.js"></script>
+    <script src="/js/app/vendor/ReactRouter-2.6.0.min.js"></script>
+    <script src="/js/app/vendor/History-2.1.2.min.js"></script>
+    
+    <!-- WEBPACK SCRIPT BUNDLE -->
+    <script src="/js/app/bundle.js"></script>
+  </body>
+</html>
