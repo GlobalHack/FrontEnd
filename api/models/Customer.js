@@ -1,56 +1,39 @@
-/**
- * Customer.js
- *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
- */
+var uuid = require('uuid');
 
 module.exports = {
-  connection: 'sqlitedb',
+
+  connection: 'localPostgreSQLServer',
+  tableName: 'customer',
+  meta: {
+     schemaName: 'customer_information'
+  },
   attributes: {
+    id: {
+      type: 'integer',
+      autoincrement: true
+    },
+    uuid: {
+      type: 'string',
+      defaultsTo: function(){
+        return uuid.v4();
+      }
+    },
     firstName: {
-        type: 'string',
-        required: true
+      type: 'string',
+      size: 64,
+      columnName: 'first_name'
     },
     lastName: {
-        type: 'string',
-        required: true
+      type: 'string',
+      size: 64,
+      columnName: 'last_name'
     },
-    email: {
-        type: 'string',
-        required: true
+    ssn: {
+      type: 'string',
+      size: 11
     },
-    phone: {
-        type: 'string'
-    },
-    addressLine1: {
-        type: 'string'
-    },
-    addressLine2: {
-        type: 'string'
-    },
-    city: {
-        type: 'string'
-    },
-    state: {
-        type: 'string'
-    },
-    zipcode: {
-        type: 'string'
-    },
-    performance: {
-        type: 'array'
-    },
-    design: {
-        type: 'array'
-    },
-    outdoor: {
-        type: 'array'
-    },
-    homes: {
-        collection: 'home',
-        via: 'customer'
+    age: {
+      type: 'integer'
     }
   }
 };
-
