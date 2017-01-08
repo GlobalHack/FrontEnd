@@ -14,6 +14,7 @@ import IntakeAdd from 'containers/Intake/Add'
 
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
+import FourOhFour from 'components/FourOhFour'
 
 /* COMBINE REDUCERS --- */
 import * as reducers from './reducers'
@@ -35,6 +36,7 @@ render((
                 <IndexRoute component={ IntakeAdd } />
                 <Route path="/intakes" component={ IntakeAdd } />
                 <Route path="/icons" component={ Icons } />
+                 <Route path="*" component={ FourOhFour }/>
             </Route>
         </Router>
     </Provider>

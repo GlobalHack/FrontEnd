@@ -1,5 +1,6 @@
 @import 'imports/colors';
 @import 'imports/fonts';
+@import 'imports/forms';
 @import 'imports/icons';
 @import 'imports/misc';
 
@@ -36,6 +37,10 @@ a {
     &:hover {
         color:darken($linkFontColor, 15%);
     }
+}
+
+.primary-content {
+    padding:1rem 2rem;
 }
 
 @media(max-width:800px) {

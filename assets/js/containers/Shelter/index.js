@@ -17,7 +17,9 @@ class Shelter extends Component {
         <section className="primary-wrapper shelter">
             <Header />
             <Menu />
-            { this.props.children }
+            <div className="primary-content">
+                { this.props.children }
+            </div>
         </section>
     );
   }
