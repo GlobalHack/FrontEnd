@@ -21,6 +21,16 @@ var plugins = [
         from: 'assets/js/vendor',
         to: 'vendor',
         force: true
+    },
+    {
+        from: 'assets/images',
+        to: 'images',
+        force: true
+    },
+    {
+        from: 'assets/fonts',
+        to: 'fonts',
+        force: true
     }
     ]),
 ]
@@ -52,17 +62,17 @@ module.exports.webpack = {
     plugins: plugins,
 
     resolve: {
-        root: path.resolve(__dirname, '../assets/js'),
+        root: path.resolve(__dirname, '../assets'),
         alias: {
-            containers: 'containers',
-            components: 'components',
-            customer: 'containers/Customer',
-            home: 'containers/Home',
-            actions: 'actions',
-            reducers: 'reducers',
-            icons: 'icons',
-            services: 'services',
-            styles: '../styles'
+            containers: 'js/containers',
+            components: 'js/components',
+            customer: 'js/containers/Customer',
+            home: 'js/containers/Home',
+            actions: 'js/actions',
+            reducers: 'js/reducers',
+            icons: 'js/icons',
+            services: 'js/services',
+            styles: 'styles'
         },
         extensions: ['', '.js', '.jsx', '.scss']
     },

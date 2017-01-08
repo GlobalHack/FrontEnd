@@ -9,16 +9,18 @@ class Menu extends Component {
 
   render() {
     return (
-        <ul className="menu">
-            <li><Link to="/intakes" className="intakes"><span className="bi_user-alt-list"></span> Intakes</Link></li>
-            <li><Link to="/icons">Icons</Link></li>
-            <li><Link to="/about">About</Link></li>
-        </ul>
+        <header>
+            <h5>St. Patrick's Center</h5>
+            <ul className="header-submenu">
+                <li>Taylor Swift</li>
+                <li><Link to="/settings"><span className="bi_setting-gear-b"></span></Link></li>
+            </ul>
+        </header>
     );
   }
 }
 
-require('styles/components/Menu')
+require('styles/components/Header')
 
 Menu.defaultProps = {
     defaultCheckedArray: []    

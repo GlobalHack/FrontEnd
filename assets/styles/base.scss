@@ -1,5 +1,6 @@
 @import 'imports/colors';
 @import 'imports/fonts';
+@import 'imports/icons';
 @import 'imports/misc';
 
 * {
@@ -9,8 +10,11 @@
     }
 }
 ::selection {
-    background:lighten($linkColor, 10%);
+    background:lighten($linkFontColor, 10%);
     color:white;
+}
+html, body {
+    margin:0; padding:0;
 }
 body {
     font-family:$baseFontFamily;
@@ -18,10 +22,20 @@ body {
     -webkit-font-smoothing: antialiased;
     font-weight:300;
     font-size:1.25rem;
+    background:$bodyBackground;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family:$headlineFontFamily;
     font-weight:400;
+}
+
+a {
+    color:$linkFontColor;
+    text-decoration:none;
+    transition:color 350ms ease;
+    &:hover {
+        color:darken($linkFontColor, 15%);
+    }
 }
 
 @media(max-width:800px) {

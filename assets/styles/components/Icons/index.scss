@@ -1,0 +1,27 @@
+.icon-container {
+    display:flex;
+    flex-wrap:wrap;
+    padding:2rem 1rem;
+    max-width:800px;
+    margin:0 auto;
+}
+.the-icons {
+    width:30%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    span {
+        font-size:.95rem;
+    }
+    .i-code {
+        display:none;
+    }
+    &.show-codes {
+        .i-name {
+            display:none;
+        }
+        .i-code {
+            display:inline-block;
+        }
+    }
+}

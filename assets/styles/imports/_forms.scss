@@ -3,7 +3,7 @@
 $inputFontSize: 1.65rem;
 
 input, textarea {
-    color: $inputColor !important;
+    color: $inputFontColor !important;
 }
 
 
@@ -135,7 +135,6 @@ body {
             font-weight:500;
             line-height:1em;
             padding:0;
-            color:$labelColor;
             position:absolute;
             text-indent:.15rem;
         }
@@ -150,7 +149,6 @@ body {
 // <Checkbox />
 .checkbox-wrapper {
     label {
-        color:lighten($labelColor, 20%);
         transition:color 250ms ease;
         font-size:1.1rem;
         line-height:2.5em;
@@ -171,7 +169,7 @@ body {
         visibility:hidden;
         position:absolute;
         &:checked + label {
-            color: $inputColor;
+            color: $inputFontColor;
             padding-left:1.25em;
             &:before {
                 content:'\2713';
