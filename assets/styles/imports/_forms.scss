@@ -2,3 +2,12 @@
 
 // JUMPSTART WITH BOOTSTRAP
 @import 'vendor/bootstrap/forms';
+
+/* OVERWRITES & ADDITIONS */
+label {
+    font-weight:400;
+    font-size:1rem;
+}
+.form-control:focus {
+    border-color: $color3;
+}
