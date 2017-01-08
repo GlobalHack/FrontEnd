@@ -1,0 +1,9 @@
+#!/bin/sh
+git --work-tree=/var/www/globalhack --git-dir=/var/repo/globalhack checkout -f
+
+#install dependencies
+npm i --prefix /var/www/globalhack
+
+#stop all instances of app with pm2
+pm2 stop globalhack
+pm2 start /var/www/globalhack/app.js --name globalhack -- --prod

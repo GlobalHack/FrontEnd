@@ -1,16 +1,28 @@
-BUILD PROCESS PENDING REVIEW
-----------------------------
+GlobalHack VI Implementation Front End Build
+--------------------------------------------
 
-Take a look at the the branch with the build process: [React with Build Process](https://github.com/GHImplementationTeam/FrontEnd/tree/react-with-build-process)
+First, install [Sails.js](http://sailsjs.com/)
+```
+sudo npm -g install sails
+```
 
-Let me know if you want to move to this!
+Next, clone the repo
+```
+git clone https://github.com/GHImplementationTeam/FrontEnd.git
+```
 
-_*Note:* Nothing is styled here. This is focusing on the architecture and build process. Let me know if you have any questions._
+Jump into the project and install the dependencies:
+```
+cd learn-react && npm install
+```
+
+Launch the site!
+```
+sails lift
+```
 
 ----------
 
-# Some Front End Ideas
+Want to learn more about this build process? Checkout out the *learn-react* repo!
 
-Not sure if this is needed, but here's a project with some front end ideas. Feel free to take as much or as little as wanted.
-
-Built from HTML5UP template Dimensions
+[Learn React](https://github.com/ecoker/learn-react)

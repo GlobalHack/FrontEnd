@@ -1,0 +1,38 @@
+/* --------------------------------------------------------- */
+/* PALETTE COLORS ------------------------------------------ */
+/* https://coolors.co/68e07b-fefeff-3cd0e2-ff5964-545f66 --- */
+/* --------------------------------------------------------- */
+$color1: rgba(104, 224, 123, 1);
+$color2: rgba(254, 254, 255, 1);
+$color3: rgba(60, 208, 226, 1);
+$color4: rgba(255, 89, 100, 1);
+$color5: rgba(84, 95, 102, 1);
+
+
+/* --------------- */
+/* FONT COLORS --- */
+/* --------------- */
+$baseFontColor: #333;
+$headlineFontColor: $color3;
+$linkFontColor: $color3;
+
+$inputFontColor: $baseFontColor;
+$inputFocusBorderColor:$color3;
+
+$primaryButtonBackgroundColor:$color3;
+$primaryButtonHoverBackgroundColor: darken($primaryButtonBackgroundColor, 15%);
+
+$secondaryButtonBackgroundColor:white;
+$secondaryButtonBorderColor:$color5;
+$secondaryButtonHoverBackgroundColor:white;
+
+/* --------------- */
+/* BACKGROUNDS --- */
+/* --------------- */
+$bodyBackground: $color2;
+$lightBackground: rgba(245, 246, 247, 1);
+
+/* ------------------------ */
+/* BORDERS & SEPARATORS --- */
+/* ------------------------ */
+$borderColor: #CCC;
