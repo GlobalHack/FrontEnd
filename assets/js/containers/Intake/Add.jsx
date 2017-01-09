@@ -1,37 +1,72 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-// import EditForm from './components/EditForm'
+import Form from "react-jsonschema-form";
+
+const schema = {
+  title: "Todo",
+  type: "object",
+  required: ["title"],
+  properties: {
+    title: {
+        type: "string",
+        title: "Title",
+        default: "A new task"
+    },
+    "integerRange": {
+      "title": "Integer range",
+      "type": "integer",
+      "minimum": 42,
+      "maximum": 100
+    },
+    done: {
+        type: "boolean",
+        title: "Done?",
+        default: false
+    }
+  }
+}
+
+// const widgets = {
+//   myCustomWidget: MyCustomWidget
+// }
+
+const uiSchema = {
+    "integerRange": {
+        "ui:widget": "range"
+    }
+}
+
+const formData = {
+  title: "First task",
+  done: true
+}
+
 
 class IntakeAdd extends Component {
   constructor(props){
       super(props)
+      this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleError(){
+      console.log("there is an error!")
+      console.log(arguments)
+  }
+
+  handleSubmit(formData){
+      console.log("form submitted!")
+      console.log(formData)
   }
 
   render() {
     return (
         <div>
-            <form>
-                <div className="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
-                </div>
-                <div className="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                </div>
-                <div className="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <input type="file" id="exampleInputFile" />
-                    <p className="help-block">Example block-level help text here.</p>
-                </div>
-                <div className="checkbox">
-                    <label>
-                        <input type="checkbox" /> Check me out
-                    </label>
-                </div>
-                <button type="submit" className="btn btn-default">Submit</button>
-            </form>
+            <Form
+                schema={ schema }
+                uiSchema={ uiSchema }
+                onError={ this.handleError }
+                onSubmit={ this.handleSubmit } />
         </div>
     );
   }
