@@ -8,11 +8,11 @@ module.exports = {
      schemaName: 'customer_information'
   },
   attributes: {
-    id: {
-      type: 'integer',
-      autoincrement: true,
-      unique: true
-    },
+    // id: {
+    //   type: 'integer',
+    //   autoincrement: true,
+    //   unique: true
+    // },
     uuid: {
       type: 'string',
       defaultsTo: function(){
