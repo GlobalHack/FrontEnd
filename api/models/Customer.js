@@ -10,7 +10,8 @@ module.exports = {
   attributes: {
     id: {
       type: 'integer',
-      autoincrement: true
+      autoincrement: true,
+      unique: true
     },
     uuid: {
       type: 'string',
