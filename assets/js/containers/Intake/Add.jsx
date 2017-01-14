@@ -22,6 +22,10 @@ const schema = {
         "minLength": 10,
         "pattern": ".*(\\d{3}).*(\\d{3}).*(\\d{4})"
     },
+    example: {
+        type: "string",
+        title:"Example Input"
+    },
     "integerRange": {
       "title": "Integer Range Example",
       "type": "integer",
