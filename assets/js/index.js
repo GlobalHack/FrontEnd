@@ -11,6 +11,7 @@ require('services/$.serializeObject.js') // USED FOR FORMS
 /* CONTAINERS --- */
 import Shelter from 'containers/Shelter'
 import IntakeAdd from 'containers/Intake/Add'
+import Login from 'containers/Login'
 
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
@@ -34,9 +35,10 @@ render((
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
             <Route path="/" component={ Shelter }>
                 <IndexRoute component={ IntakeAdd } />
+                <Route path="/login" component={ Login } />
                 <Route path="/intakes" component={ IntakeAdd } />
                 <Route path="/icons" component={ Icons } />
-                 <Route path="*" component={ FourOhFour }/>
+                <Route path="*" component={ FourOhFour }/>
             </Route>
         </Router>
     </Provider>
