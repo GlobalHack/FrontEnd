@@ -7,7 +7,7 @@ import Form from "react-jsonschema-form";
 import PhoneNumber from 'components/PhoneNumber'
 
 const schema = {
-  title: "Todo",
+  title: "Example Schema Form",
   type: "object",
   required: ["title", "phone"],
   properties: {
