@@ -35,13 +35,13 @@ module.exports.connections = {
      * Database instance type. Specify whether to store the database on disk
      * or in memory.
      */
-    adapter: 'waterline-sqlite3', // or 'memory' 
+    adapter: 'waterline-sqlite3', // or 'memory'
 
     /**
      * Location of file if type='disk'
      */
     filename: './tmp/sqlitedb.sqlite',
- 
+
     /**
     * Set to true to output SQL queries
     */
@@ -101,13 +101,13 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  // somePostgresqlServer: {
-  //   adapter: 'sails-postgresql',
-  //   host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
-  //   user: 'YOUR_POSTGRES_USER', // optional
-  //   password: 'YOUR_POSTGRES_PASSWORD', // optional
-  //   database: 'YOUR_POSTGRES_DB' //optional
-  // }
+  localPostgreSQLServer: {
+    adapter: 'sails-postgresql',
+    host: 'localhost',
+    user: 'postgres', // optional
+    password: '', // optional
+    database: 'gh4implementation' //optional
+  }
 
 
   /***************************************************************************

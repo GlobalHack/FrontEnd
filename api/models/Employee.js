@@ -1,11 +1,9 @@
-var uuid = require('uuid');
-
 module.exports = {
 
   connection: 'localPostgreSQLServer',
-  tableName: 'customer',
+  tableName: 'employee',
   meta: {
-     schemaName: 'customer_information'
+     schemaName: 'organization_information'
   },
   attributes: {
     // id: {
@@ -13,11 +11,9 @@ module.exports = {
     //   autoincrement: true,
     //   unique: true
     // },
-    uuid: {
-      type: 'string',
-      defaultsTo: function(){
-        return uuid.v4();
-      }
+    organization: {
+      model: 'organization',
+      unique: true
     },
     firstName: {
       type: 'string',
@@ -33,8 +29,9 @@ module.exports = {
       type: 'string',
       size: 11
     },
-    age: {
-      type: 'integer'
+    role: {
+      model: 'role',
+      unique: true
     }
   }
 };
