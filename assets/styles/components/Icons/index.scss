@@ -1,9 +1,16 @@
+.icon-wrapper, .icon-container {
+    max-width:800px;
+    margin:0 auto;
+}
+.icon-wrapper {
+    padding:2rem 1rem;
+    h3 {
+        margin:1.5em 0 .5em;
+    }
+}
 .icon-container {
     display:flex;
     flex-wrap:wrap;
-    padding:2rem 1rem;
-    max-width:800px;
-    margin:0 auto;
 }
 .the-icons {
     width:30%;
