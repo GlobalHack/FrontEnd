@@ -72,6 +72,7 @@ module.exports.webpack = {
             reducers: 'js/reducers',
             icons: 'js/icons',
             services: 'js/services',
+            utils: 'js/utils',
             styles: 'styles'
         },
         extensions: ['', '.js', '.jsx', '.scss']

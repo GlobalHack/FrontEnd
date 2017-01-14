@@ -13,7 +13,15 @@ import Shelter from 'containers/Shelter'
 import IntakeAdd from 'containers/Intake/Add'
 import Login from 'containers/Login'
 
+/* UTILITIES --- */
+import AuthService from 'utils/AuthService'
+const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'domain benvenker.auth0.com');
+
+console.log( auth )
+
+
 /* COMPONENTS --- */
+import LoginLogin from 'containers/Login/Login.jsx'
 import Icons from 'components/Icons'
 import FourOhFour from 'components/FourOhFour'
 
@@ -33,11 +41,11 @@ require('./../styles/base.scss')
 render((
     <Provider store={ store }>
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
-            <Route path="/" component={ Shelter }>
+            <Route path="/" component={ Shelter } auth={ auth }>
                 <IndexRoute component={ IntakeAdd } />
-                <Route path="/login" component={ Login } />
                 <Route path="/intakes" component={ IntakeAdd } />
                 <Route path="/icons" component={ Icons } />
+                <Route path="/login" component={ LoginLogin } />
                 <Route path="*" component={ FourOhFour }/>
             </Route>
         </Router>

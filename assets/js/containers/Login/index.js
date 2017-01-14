@@ -1,20 +1,24 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { PropTypes as T } from 'react'
+import { Jumbotron } from 'react-bootstrap'
 
-@connect(state => ({}))
-
-class Login extends Component {
-  constructor(props){
-      super(props)
-  }
-
+export class Container extends React.Component {
   render() {
+    let children = null;
+    if (this.props.children) {
+      children = React.cloneElement(this.props.children, {
+        auth: this.props.route.auth //sends auth instance from route to children
+      })
+    }
+
     return (
-        <div>
-            I am the login
-        </div>
-    );
+      <Jumbotron>
+        <h2>
+          <img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg" />
+        </h2>
+        {children}
+      </Jumbotron>
+    )
   }
 }
 
-export default Login
+export default Container;
