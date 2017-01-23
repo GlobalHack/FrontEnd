@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -11,6 +11,7 @@ require('services/$.serializeObject.js') // USED FOR FORMS
 /* CONTAINERS --- */
 import Shelter from 'containers/Shelter'
 import IntakeAdd from 'containers/Intake/Add'
+import CreateUser from 'containers/CreateUser/components/Create'
 
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
@@ -33,8 +34,10 @@ render((
     <Provider store={ store }>
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
             <Route path="/" component={ Shelter }>
-                <IndexRoute component={ IntakeAdd } />
-                <Route path="/intakes" component={ IntakeAdd } />
+                <IndexRoute component={IntakeAdd} />
+                <IndexRoute component={CreateUser} />
+                <Route path="/intakes" component={IntakeAdd} />
+                <Route path="/createUser" component={CreateUser} />
                 <Route path="/icons" component={ Icons } />
                  <Route path="*" component={ FourOhFour }/>
             </Route>
