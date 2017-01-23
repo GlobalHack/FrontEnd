@@ -44,7 +44,8 @@ class CreateUserForm extends Component {
 
   render() {
     return (
-        <form method="POST" onSubmit={ this.handleSubmit } action={`/users${ this.props.routeParams.userId ? `/${this.props.routeParams.userId}` : '' }`}>
+       
+        <form method="POST" onSubmit={this.handleSubmit} action={`/users${this.props.routeParams.userId ? `/${this.props.routeParams.userId}` : ''}`}>
             <div className="user-input-card full">
                 <Link to="/" className="back-link">&lt; Back to All Users</Link>
                 <span className="subhead-lockup">
@@ -53,15 +54,15 @@ class CreateUserForm extends Component {
                 <div>
                     <div className="input-with-labels">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" placeholder="Walt" className="form-control" name="firstName" defaultValue={ this.props.user.firstName } />
+                        <input type="text" placeholder="Walt" className="form-control" name="firstName" defaultValue={this.props.user.firstName} />
                     </div>
                     <div className="input-with-labels">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" placeholder="Disney" name="lastName" className="form-control" defaultValue={ this.props.user.lastName } />
+                        <input type="text" placeholder="Disney" name="lastName" className="form-control" defaultValue={this.props.user.lastName} />
                     </div>
                     <div className="input-with-labels">
                         <label htmlFor="email">Email</label>
-                        <input type="text" placeholder="walt@disney.com" name="email" className="form-control" defaultValue={ this.props.user.email } />
+                        <input type="text" placeholder="walt@disney.com" name="email" className="form-control" defaultValue={this.props.user.email} />
                     </div>
                     <div className="input-with-labels">
                         <label htmlFor="permissions">Permissions</label>
@@ -75,9 +76,10 @@ class CreateUserForm extends Component {
                         </select>
                     </div>
                 </div>
-                <input type="submit"> { this.props.user.firstName ? 'Update' : 'Submit' }</input>
+                <input type="submit" value={this.props.user.firstName ? 'Update' : 'Submit'}></input>
             </div>
         </form>
+        
     );
   }
 }

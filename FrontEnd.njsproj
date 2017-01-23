@@ -40,6 +40,10 @@
   <ItemGroup>
     <Folder Include="api\" />
     <Folder Include="api\models\" />
+    <Folder Include="assets\" />
+    <Folder Include="assets\js\" />
+    <Folder Include="assets\js\actions\" />
+    <Folder Include="assets\js\services\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
