@@ -6,11 +6,6 @@ module.exports = {
      schemaName: 'customer_information'
   },
   attributes: {
-    // id: {
-    //   type: 'integer',
-    //   autoincrement: true,
-    //   unique: true
-    // },
     customer: {
       model: 'customer',
       unique: true

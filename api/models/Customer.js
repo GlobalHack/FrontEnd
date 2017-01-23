@@ -8,16 +8,12 @@ module.exports = {
      schemaName: 'customer_information'
   },
   attributes: {
-    // id: {
-    //   type: 'integer',
-    //   autoincrement: true,
-    //   unique: true
-    // },
     uuid: {
       type: 'string',
       defaultsTo: function(){
         return uuid.v4();
-      }
+      },
+      unique: true
     },
     firstName: {
       type: 'string',
@@ -31,10 +27,23 @@ module.exports = {
     },
     ssn: {
       type: 'string',
-      size: 11
+      size: 11,
+      is: '^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$'
     },
-    age: {
-      type: 'integer'
-    }
+    domesticViolence: {
+      type: 'boolean',
+      columnName: 'domestic_violence'
+    },
+    youth: {
+      type: 'boolean',
+      columnName: 'youth'
+    },
+    dateOfBirth: {
+      type: date,
+      before: function(){
+        return new Date();
+      },
+      columnName: 'date_of_birth'
+    },
   }
 };
