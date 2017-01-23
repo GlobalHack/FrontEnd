@@ -6,11 +6,6 @@ module.exports = {
      schemaName: 'organization_information'
   },
   attributes: {
-    // id: {
-    //   type: 'integer',
-    //   autoincrement: true,
-    //   unique: true
-    // },
     organization: {
       model: 'organization',
       unique: true

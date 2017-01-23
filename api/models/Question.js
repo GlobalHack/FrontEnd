@@ -6,11 +6,6 @@ module.exports = {
      schemaName: 'coordinated_entry_system'
   },
   attributes: {
-    // id: {
-    //   type: 'integer',
-    //   autoincrement: true,
-    //   unique: true
-    // },
     organization: {
       model: 'organization',
       unique: true
