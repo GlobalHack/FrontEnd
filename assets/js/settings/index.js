@@ -1,0 +1,1 @@
+export const Auth0Password = 'example'
