@@ -44,14 +44,14 @@ const schema = {
     "enumNames": [
         "What is your mother's Name?",
         "What was your first car?"
-      ]  
+      ]
     },
     SecureAnswer: {
-    title: "Securtiy Answer",
-    type: "string"
+      title: "Security Answer",
+      type: "string"
 
     },
-  
+
   }
 }
 
@@ -70,8 +70,8 @@ const uiSchema = {
         "ui:widget": "password"
     },
     "SecureQuestion": {
-       
-  
+
+
     },
     "secureAnswer":{
          "ui:widget": "textarea"
@@ -90,14 +90,14 @@ class ChangePassword extends Component {
       this.validate = this.validate
   }
 
-  
+
 
   handleSubmit(formData){
-      
+
 
       console.log(formData.formData)
   }
-   
+
   render() {
     return (
         <div>
