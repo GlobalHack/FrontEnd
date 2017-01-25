@@ -73,7 +73,7 @@ class Icons extends Component {
                 <div title="Code: 0xe83a" className="the-icons"><i className="bi_com-bubble-dot"></i> <span className="i-name">bi_com-bubble-dot</span><span className="i-code">0xe83a</span></div>
                 <div title="Code: 0xe83b" className="the-icons"><i className="bi_com-bubble-dot-a"></i> <span className="i-name">bi_com-bubble-dot-a</span><span className="i-code">0xe83b</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Documents</h3>
             <div className="icon-container">
                 <div title="Code: 0xe83c" className="the-icons"><i className="bi_doc-analytic-blank"></i> <span className="i-name">bi_doc-analytic-blank</span><span className="i-code">0xe83c</span></div>
                 <div title="Code: 0xe83d" className="the-icons"><i className="bi_doc-analytic-line"></i> <span className="i-name">bi_doc-analytic-line</span><span className="i-code">0xe83d</span></div>
@@ -166,7 +166,7 @@ class Icons extends Component {
                 <div title="Code: 0xe894" className="the-icons"><i className="bi_doc-wboard-line"></i> <span className="i-name">bi_doc-wboard-line</span><span className="i-code">0xe894</span></div>
                 <div title="Code: 0xe895" className="the-icons"><i className="bi_doc-wboard-tick"></i> <span className="i-name">bi_doc-wboard-tick</span><span className="i-code">0xe895</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Media</h3>
             <div className="icon-container">
                 <div title="Code: 0xe896" className="the-icons"><i className="bi_media-glass"></i> <span className="i-name">bi_media-glass</span><span className="i-code">0xe896</span></div>
                 <div title="Code: 0xe897" className="the-icons"><i className="bi_media-glass-a"></i> <span className="i-name">bi_media-glass-a</span><span className="i-code">0xe897</span></div>
@@ -182,7 +182,7 @@ class Icons extends Component {
                 <div title="Code: 0xe8a1" className="the-icons"><i className="bi_media-video-clip"></i> <span className="i-name">bi_media-video-clip</span><span className="i-code">0xe8a1</span></div>
                 <div title="Code: 0xe8a2" className="the-icons"><i className="bi_media-video-r"></i> <span className="i-name">bi_media-video-r</span><span className="i-code">0xe8a2</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Business</h3>
             <div className="icon-container">
                 <div title="Code: 0xe8a3" className="the-icons"><i className="bi_business-tie"></i> <span className="i-name">bi_business-tie</span><span className="i-code">0xe8a3</span></div>
                 <div title="Code: 0xe8a4" className="the-icons"><i className="bi_business-tie-a"></i> <span className="i-name">bi_business-tie-a</span><span className="i-code">0xe8a4</span></div>
@@ -278,7 +278,7 @@ class Icons extends Component {
                 <div title="Code: 0xe8fe" className="the-icons"><i className="bi_editorial-pencil-a"></i> <span className="i-name">bi_editorial-pencil-a</span><span className="i-code">0xe8fe</span></div>
                 <div title="Code: 0xe8ff" className="the-icons"><i className="bi_editorial-pencil-a-s"></i> <span className="i-name">bi_editorial-pencil-a-s</span><span className="i-code">0xe8ff</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Building</h3>
             <div className="icon-container">
                 <div title="Code: 0xe900" className="the-icons"><i className="bi_building-drawer-a"></i> <span className="i-name">bi_building-drawer-a</span><span className="i-code">0xe900</span></div>
                 <div title="Code: 0xe901" className="the-icons"><i className="bi_building-house"></i> <span className="i-name">bi_building-house</span><span className="i-code">0xe901</span></div>
@@ -296,8 +296,18 @@ class Icons extends Component {
                 <div title="Code: 0xe90d" className="the-icons"><i className="bi_building-table-lamp-a"></i> <span className="i-name">bi_building-table-lamp-a</span><span className="i-code">0xe90d</span></div>
                 <div title="Code: 0xe90e" className="the-icons"><i className="bi_building-tower"></i> <span className="i-name">bi_building-tower</span><span className="i-code">0xe90e</span></div>
                 <div title="Code: 0xe90f" className="the-icons"><i className="bi_building-tree"></i> <span className="i-name">bi_building-tree</span><span className="i-code">0xe90f</span></div>
+                <div title="Code: 0xe91c" className="the-icons"><i className="bi_building-apartment"></i> <span className="i-name">bi_building-apartment</span><span className="i-code">0xe91c</span></div>
+                <div title="Code: 0xe91d" className="the-icons"><i className="bi_building-bed"></i> <span className="i-name">bi_building-bed</span><span className="i-code">0xe91d</span></div>
+                <div title="Code: 0xe91e" className="the-icons"><i className="bi_building-bulb"></i> <span className="i-name">bi_building-bulb</span><span className="i-code">0xe91e</span></div>
+                <div title="Code: 0xe91f" className="the-icons"><i className="bi_building-cabinet"></i> <span className="i-name">bi_building-cabinet</span><span className="i-code">0xe91f</span></div>
+                <div title="Code: 0xe920" className="the-icons"><i className="bi_building-desk"></i> <span className="i-name">bi_building-desk</span><span className="i-code">0xe920</span></div>
+                <div title="Code: 0xe921" className="the-icons"><i className="bi_building-desk-a"></i> <span className="i-name">bi_building-desk-a</span><span className="i-code">0xe921</span></div>
+                <div title="Code: 0xe922" className="the-icons"><i className="bi_building-desk-b"></i> <span className="i-name">bi_building-desk-b</span><span className="i-code">0xe922</span></div>
+                <div title="Code: 0xe923" className="the-icons"><i className="bi_building-desk-c"></i> <span className="i-name">bi_building-desk-c</span><span className="i-code">0xe923</span></div>
+                <div title="Code: 0xe924" className="the-icons"><i className="bi_building-door"></i> <span className="i-name">bi_building-door</span><span className="i-code">0xe924</span></div>
+                <div title="Code: 0xe925" className="the-icons"><i className="bi_building-drawer"></i> <span className="i-name">bi_building-drawer</span><span className="i-code">0xe925</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Environment</h3>
             <div className="icon-container">
                 <div title="Code: 0xe910" className="the-icons"><i className="bi_environment-flower"></i> <span className="i-name">bi_environment-flower</span><span className="i-code">0xe910</span></div>
                 <div title="Code: 0xe911" className="the-icons"><i className="bi_environment-flower-a"></i> <span className="i-name">bi_environment-flower-a</span><span className="i-code">0xe911</span></div>
@@ -312,20 +322,7 @@ class Icons extends Component {
                 <div title="Code: 0xe91a" className="the-icons"><i className="bi_environment-smoke"></i> <span className="i-name">bi_environment-smoke</span><span className="i-code">0xe91a</span></div>
                 <div title="Code: 0xe91b" className="the-icons"><i className="bi_environment-tree"></i> <span className="i-name">bi_environment-tree</span><span className="i-code">0xe91b</span></div>
             </div>
-            <h3>Section</h3>
-            <div className="icon-container">
-                <div title="Code: 0xe91c" className="the-icons"><i className="bi_building-apartment"></i> <span className="i-name">bi_building-apartment</span><span className="i-code">0xe91c</span></div>
-                <div title="Code: 0xe91d" className="the-icons"><i className="bi_building-bed"></i> <span className="i-name">bi_building-bed</span><span className="i-code">0xe91d</span></div>
-                <div title="Code: 0xe91e" className="the-icons"><i className="bi_building-bulb"></i> <span className="i-name">bi_building-bulb</span><span className="i-code">0xe91e</span></div>
-                <div title="Code: 0xe91f" className="the-icons"><i className="bi_building-cabinet"></i> <span className="i-name">bi_building-cabinet</span><span className="i-code">0xe91f</span></div>
-                <div title="Code: 0xe920" className="the-icons"><i className="bi_building-desk"></i> <span className="i-name">bi_building-desk</span><span className="i-code">0xe920</span></div>
-                <div title="Code: 0xe921" className="the-icons"><i className="bi_building-desk-a"></i> <span className="i-name">bi_building-desk-a</span><span className="i-code">0xe921</span></div>
-                <div title="Code: 0xe922" className="the-icons"><i className="bi_building-desk-b"></i> <span className="i-name">bi_building-desk-b</span><span className="i-code">0xe922</span></div>
-                <div title="Code: 0xe923" className="the-icons"><i className="bi_building-desk-c"></i> <span className="i-name">bi_building-desk-c</span><span className="i-code">0xe923</span></div>
-                <div title="Code: 0xe924" className="the-icons"><i className="bi_building-door"></i> <span className="i-name">bi_building-door</span><span className="i-code">0xe924</span></div>
-                <div title="Code: 0xe925" className="the-icons"><i className="bi_building-drawer"></i> <span className="i-name">bi_building-drawer</span><span className="i-code">0xe925</span></div>
-            </div>
-            <h3>Section</h3>
+            <h3>Beverages</h3>
             <div className="icon-container">
                 <div title="Code: 0xe926" className="the-icons"><i className="bi_beverage-cocktail-a"></i> <span className="i-name">bi_beverage-cocktail-a</span><span className="i-code">0xe926</span></div>
                 <div title="Code: 0xe927" className="the-icons"><i className="bi_beverage-coffee"></i> <span className="i-name">bi_beverage-coffee</span><span className="i-code">0xe927</span></div>
@@ -356,7 +353,7 @@ class Icons extends Component {
                 <div title="Code: 0xe96b" className="the-icons"><i className="bi_beverage-chinese-tea-a-s"></i> <span className="i-name">bi_beverage-chinese-tea-a-s</span><span className="i-code">0xe96b</span></div>
                 <div title="Code: 0xe96c" className="the-icons"><i className="bi_beverage-chinese-tea-s"></i> <span className="i-name">bi_beverage-chinese-tea-s</span><span className="i-code">0xe96c</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Food</h3>
             <div className="icon-container">
                 <div title="Code: 0xe939" className="the-icons"><i className="bi_food-apple"></i> <span className="i-name">bi_food-apple</span><span className="i-code">0xe939</span></div>
                 <div title="Code: 0xe93a" className="the-icons"><i className="bi_food-bowl"></i> <span className="i-name">bi_food-bowl</span><span className="i-code">0xe93a</span></div>
@@ -381,7 +378,7 @@ class Icons extends Component {
                 <div title="Code: 0xe94d" className="the-icons"><i className="bi_food-onigiri-a"></i> <span className="i-name">bi_food-onigiri-a</span><span className="i-code">0xe94d</span></div>
                 <div title="Code: 0xe94e" className="the-icons"><i className="bi_food-white-bread"></i> <span className="i-name">bi_food-white-bread</span><span className="i-code">0xe94e</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Kitchen</h3>
             <div className="icon-container">
                 <div title="Code: 0xe94f" className="the-icons"><i className="bi_kitchen-fork-knife"></i> <span className="i-name">bi_kitchen-fork-knife</span><span className="i-code">0xe94f</span></div>
                 <div title="Code: 0xe950" className="the-icons"><i className="bi_kitchen-fork-knife-a"></i> <span className="i-name">bi_kitchen-fork-knife-a</span><span className="i-code">0xe950</span></div>
@@ -405,7 +402,7 @@ class Icons extends Component {
                 <div title="Code: 0xe962" className="the-icons"><i className="bi_kitchen-tissue"></i> <span className="i-name">bi_kitchen-tissue</span><span className="i-code">0xe962</span></div>
                 <div title="Code: 0xe963" className="the-icons"><i className="bi_kitchen-water"></i> <span className="i-name">bi_kitchen-water</span><span className="i-code">0xe963</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Settings</h3>
             <div className="icon-container">
                 <div title="Code: 0xe96d" className="the-icons"><i className="bi_setting-switch"></i> <span className="i-name">bi_setting-switch</span><span className="i-code">0xe96d</span></div>
                 <div title="Code: 0xe96e" className="the-icons"><i className="bi_setting-switch-a"></i> <span className="i-name">bi_setting-switch-a</span><span className="i-code">0xe96e</span></div>
@@ -421,7 +418,7 @@ class Icons extends Component {
                 <div title="Code: 0xe978" className="the-icons"><i className="bi_setting-hotspot"></i> <span className="i-name">bi_setting-hotspot</span><span className="i-code">0xe978</span></div>
                 <div title="Code: 0xe979" className="the-icons"><i className="bi_setting-notification"></i> <span className="i-name">bi_setting-notification</span><span className="i-code">0xe979</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Sport</h3>
             <div className="icon-container">
                 <div title="Code: 0xe97a" className="the-icons"><i className="bi_sport-tape"></i> <span className="i-name">bi_sport-tape</span><span className="i-code">0xe97a</span></div>
                 <div title="Code: 0xe97b" className="the-icons"><i className="bi_sport-tennisball"></i> <span className="i-name">bi_sport-tennisball</span><span className="i-code">0xe97b</span></div>
@@ -454,7 +451,7 @@ class Icons extends Component {
                 <div title="Code: 0xe999" className="the-icons"><i className="bi_sport-stadium"></i> <span className="i-name">bi_sport-stadium</span><span className="i-code">0xe999</span></div>
                 <div title="Code: 0xe99a" className="the-icons"><i className="bi_sport-stadium-a"></i> <span className="i-name">bi_sport-stadium-a</span><span className="i-code">0xe99a</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Medicine</h3>
             <div className="icon-container">
                 <div title="Code: 0xe981" className="the-icons"><i className="bi_medicine-heart"></i> <span className="i-name">bi_medicine-heart</span><span className="i-code">0xe981</span></div>
                 <div title="Code: 0xe982" className="the-icons"><i className="bi_medicine-lab"></i> <span className="i-name">bi_medicine-lab</span><span className="i-code">0xe982</span></div>
@@ -479,7 +476,7 @@ class Icons extends Component {
                 <div title="Code: 0xe9ac" className="the-icons"><i className="bi_time-watches-a"></i> <span className="i-name">bi_time-watches-a</span><span className="i-code">0xe9ac</span></div>
                 <div title="Code: 0xe9ad" className="the-icons"><i className="bi_time-watches-b"></i> <span className="i-name">bi_time-watches-b</span><span className="i-code">0xe9ad</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Location</h3>
             <div className="icon-container">
                 <div title="Code: 0xe9ae" className="the-icons"><i className="bi_location-alt-pin"></i> <span className="i-name">bi_location-alt-pin</span><span className="i-code">0xe9ae</span></div>
                 <div title="Code: 0xe9af" className="the-icons"><i className="bi_location-avenue"></i> <span className="i-name">bi_location-avenue</span><span className="i-code">0xe9af</span></div>
@@ -495,7 +492,7 @@ class Icons extends Component {
                 <div title="Code: 0xe9b9" className="the-icons"><i className="bi_location-pin-regular"></i> <span className="i-name">bi_location-pin-regular</span><span className="i-code">0xe9b9</span></div>
                 <div title="Code: 0xe9ba" className="the-icons"><i className="bi_location-sign-street"></i> <span className="i-name">bi_location-sign-street</span><span className="i-code">0xe9ba</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Tool</h3>
             <div className="icon-container">
                 <div title="Code: 0xe9bb" className="the-icons"><i className="bi_tool-console"></i> <span className="i-name">bi_tool-console</span><span className="i-code">0xe9bb</span></div>
                 <div title="Code: 0xe9bc" className="the-icons"><i className="bi_tool-console-a"></i> <span className="i-name">bi_tool-console-a</span><span className="i-code">0xe9bc</span></div>
@@ -546,7 +543,7 @@ class Icons extends Component {
                 <div title="Code: 0xe9e9" className="the-icons"><i className="bi_tool-camera-b"></i> <span className="i-name">bi_tool-camera-b</span><span className="i-code">0xe9e9</span></div>
                 <div title="Code: 0xe9ea" className="the-icons"><i className="bi_tool-compass"></i> <span className="i-name">bi_tool-compass</span><span className="i-code">0xe9ea</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Transport</h3>
             <div className="icon-container">
                 <div title="Code: 0xe9eb" className="the-icons"><i className="bi_transport-car-b"></i> <span className="i-name">bi_transport-car-b</span><span className="i-code">0xe9eb</span></div>
                 <div title="Code: 0xe9ec" className="the-icons"><i className="bi_transport-car-c"></i> <span className="i-name">bi_transport-car-c</span><span className="i-code">0xe9ec</span></div>
@@ -563,7 +560,7 @@ class Icons extends Component {
                 <div title="Code: 0xe9f7" className="the-icons"><i className="bi_transport-car"></i> <span className="i-name">bi_transport-car</span><span className="i-code">0xe9f7</span></div>
                 <div title="Code: 0xe9f8" className="the-icons"><i className="bi_transport-car-a"></i> <span className="i-name">bi_transport-car-a</span><span className="i-code">0xe9f8</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>User</h3>
             <div className="icon-container">
                 <div title="Code: 0xe9f9" className="the-icons"><i className="bi_user-male"></i> <span className="i-name">bi_user-male</span><span className="i-code">0xe9f9</span></div>
                 <div title="Code: 0xe9fa" className="the-icons"><i className="bi_user-male-check"></i> <span className="i-name">bi_user-male-check</span><span className="i-code">0xe9fa</span></div>
@@ -608,7 +605,7 @@ class Icons extends Component {
                 <div title="Code: 0xea21" className="the-icons"><i className="bi_user-lock-u"></i> <span className="i-name">bi_user-lock-u</span><span className="i-code">0xea21</span></div>
                 <div title="Code: 0xea22" className="the-icons"><i className="bi_user-lock-u-a"></i> <span className="i-name">bi_user-lock-u-a</span><span className="i-code">0xea22</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Weather</h3>
             <div className="icon-container">
                 <div title="Code: 0xea23" className="the-icons"><i className="bi_weather-sunset-a"></i> <span className="i-name">bi_weather-sunset-a</span><span className="i-code">0xea23</span></div>
                 <div title="Code: 0xea24" className="the-icons"><i className="bi_weather-wind"></i> <span className="i-name">bi_weather-wind</span><span className="i-code">0xea24</span></div>
@@ -633,7 +630,7 @@ class Icons extends Component {
                 <div title="Code: 0xea37" className="the-icons"><i className="bi_weather-sun-r"></i> <span className="i-name">bi_weather-sun-r</span><span className="i-code">0xea37</span></div>
                 <div title="Code: 0xea38" className="the-icons"><i className="bi_weather-sunrise"></i> <span className="i-name">bi_weather-sunrise</span><span className="i-code">0xea38</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Web</h3>
             <div className="icon-container">
                 <div title="Code: 0xea39" className="the-icons"><i className="bi_web-bug"></i> <span className="i-name">bi_web-bug</span><span className="i-code">0xea39</span></div>
                 <div title="Code: 0xea3a" className="the-icons"><i className="bi_web-code"></i> <span className="i-name">bi_web-code</span><span className="i-code">0xea3a</span></div>
@@ -681,7 +678,7 @@ class Icons extends Component {
                 <div title="Code: 0xea64" className="the-icons"><i className="bi_web-browser-tick"></i> <span className="i-name">bi_web-browser-tick</span><span className="i-code">0xea64</span></div>
                 <div title="Code: 0xea65" className="the-icons"><i className="bi_web-browser-window"></i> <span className="i-name">bi_web-browser-window</span><span className="i-code">0xea65</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Logo</h3>
             <div className="icon-container">
                 <div title="Code: 0xea66" className="the-icons"><i className="bi_logo-vimeo"></i> <span className="i-name">bi_logo-vimeo</span><span className="i-code">0xea66</span></div>
                 <div title="Code: 0xea67" className="the-icons"><i className="bi_logo-windows"></i> <span className="i-name">bi_logo-windows</span><span className="i-code">0xea67</span></div>
@@ -704,7 +701,7 @@ class Icons extends Component {
                 <div title="Code: 0xea78" className="the-icons"><i className="bi_logo-squareup"></i> <span className="i-name">bi_logo-squareup</span><span className="i-code">0xea78</span></div>
                 <div title="Code: 0xea79" className="the-icons"><i className="bi_logo-twitter"></i> <span className="i-name">bi_logo-twitter</span><span className="i-code">0xea79</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Misc</h3>
             <div className="icon-container">
                 <div title="Code: 0xea7a" className="the-icons"><i className="bi_misc-one-click"></i> <span className="i-name">bi_misc-one-click</span><span className="i-code">0xea7a</span></div>
                 <div title="Code: 0xea7b" className="the-icons"><i className="bi_misc-pointer"></i> <span className="i-name">bi_misc-pointer</span><span className="i-code">0xea7b</span></div>
@@ -727,7 +724,7 @@ class Icons extends Component {
                 <div title="Code: 0xea8c" className="the-icons"><i className="bi_misc-mood-happy"></i> <span className="i-name">bi_misc-mood-happy</span><span className="i-code">0xea8c</span></div>
                 <div title="Code: 0xea8d" className="the-icons"><i className="bi_misc-mood-sad"></i> <span className="i-name">bi_misc-mood-sad</span><span className="i-code">0xea8d</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Music</h3>
             <div className="icon-container">
                 <div title="Code: 0xea8e" className="the-icons"><i className="bi_music-mic"></i> <span className="i-name">bi_music-mic</span><span className="i-code">0xea8e</span></div>
                 <div title="Code: 0xea8f" className="the-icons"><i className="bi_music-mic-a"></i> <span className="i-name">bi_music-mic-a</span><span className="i-code">0xea8f</span></div>
@@ -780,7 +777,7 @@ class Icons extends Component {
                 <div title="Code: 0xeabe" className="the-icons"><i className="bi_music-headphone-a"></i> <span className="i-name">bi_music-headphone-a</span><span className="i-code">0xeabe</span></div>
                 <div title="Code: 0xeabf" className="the-icons"><i className="bi_music-list"></i> <span className="i-name">bi_music-list</span><span className="i-code">0xeabf</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Interface</h3>
             <div className="icon-container">
                 <div title="Code: 0xeac0" className="the-icons"><i className="bi_interface-backspace"></i> <span className="i-name">bi_interface-backspace</span><span className="i-code">0xeac0</span></div>
                 <div title="Code: 0xeac1" className="the-icons"><i className="bi_interface-backspace-a"></i> <span className="i-name">bi_interface-backspace-a</span><span className="i-code">0xeac1</span></div>
@@ -915,7 +912,7 @@ class Icons extends Component {
                 <div title="Code: 0xeb54" className="the-icons"><i className="bi_interface-diag"></i> <span className="i-name">bi_interface-diag</span><span className="i-code">0xeb54</span></div>
                 <div title="Code: 0xeb55" className="the-icons"><i className="bi_interface-diag-a"></i> <span className="i-name">bi_interface-diag-a</span><span className="i-code">0xeb55</span></div>
             </div>
-            <h3>Section</h3>
+            <h3>Layout</h3>
             <div className="icon-container">
                 <div title="Code: 0xeb2e" className="the-icons"><i className="bi_layout-footer"></i> <span className="i-name">bi_layout-footer</span><span className="i-code">0xeb2e</span></div>
                 <div title="Code: 0xeb2f" className="the-icons"><i className="bi_layout-grid"></i> <span className="i-name">bi_layout-grid</span><span className="i-code">0xeb2f</span></div>
