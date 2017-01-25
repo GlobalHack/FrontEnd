@@ -13,7 +13,6 @@ function getHousingRecommendation(acuity_score) {
 
 module.exports.calculateAcuityScore = function (surveyResult) {
     console.log("Calculating acuity score");
-    let surveyResult = event;
     let acuity_score = 0;
     let medicalCondition = false;
     let substanceUse = false;
