@@ -20,6 +20,7 @@ const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'domain benvenk
 
 console.log( auth )
 
+import ChangePassword from 'containers/AccountManage/ChangePassword'
 
 /* COMPONENTS --- */
 import LoginLogin from 'containers/Login/Login.jsx'
@@ -47,6 +48,8 @@ render((
                 <Route path="/intakes" component={ IntakeAdd } />
                 <IndexRoute component={CreateUser} />
                 <Route path="/createUser" component={CreateUser} />
+				<IndexRoute component={ChangePassword} />
+                <Route path="/AccountManage" component={ChangePassword} />
                 <Route path="/icons" component={ Icons } />
                 <Route path="/login" component={ LoginLogin } />
                 <Route path="*" component={ FourOhFour }/>
