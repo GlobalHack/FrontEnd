@@ -1,6 +1,5 @@
 module.exports = {
 
-  connection: 'localPostgreSQLServer',
   tableName: 'question',
   meta: {
      schemaName: 'coordinated_entry_system'

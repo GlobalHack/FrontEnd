@@ -1,6 +1,5 @@
 module.exports = {
 
-  connection: 'localPostgreSQLServer',
   tableName: 'legacy_customer_map',
   meta: {
      schemaName: 'organization_information'

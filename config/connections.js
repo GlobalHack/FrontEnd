@@ -102,11 +102,20 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
   localPostgreSQLServer: {
+      adapter: 'sails-postgresql',
+      host: 'localhost',
+      user: 'postgres', // optional
+      password: '', // optional
+      database: 'gh4implementation' //optional
+    },
+
+  //might as well just put this in since we'll switch dbs when we move out of testing
+  devPostgreSQLServer: {
     adapter: 'sails-postgresql',
-    host: 'localhost',
-    user: 'postgres', // optional
-    password: '', // optional
-    database: 'gh4implementation' //optional
+    host: 'gh-implementation-dev.cm8v8ipcnkcx.us-west-2.rds.amazonaws.com',
+    user: 'ghadmin', // optional
+    password: 'ghimplementationteamtestdb', // optional
+    database: 'gh_implementation_dev' //optional
   }
 
 

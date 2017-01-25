@@ -2,7 +2,6 @@ var uuid = require('uuid');
 
 module.exports = {
 
-  connection: 'localPostgreSQLServer',
   tableName: 'customer',
   meta: {
      schemaName: 'customer_information'
@@ -39,7 +38,7 @@ module.exports = {
       columnName: 'youth'
     },
     dateOfBirth: {
-      type: date,
+      type: 'date',
       before: function(){
         return new Date();
       },

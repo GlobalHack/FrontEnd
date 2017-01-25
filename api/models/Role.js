@@ -1,6 +1,5 @@
 module.exports = {
 
-  connection: 'localPostgreSQLServer',
   tableName: 'role',
   meta: {
      schemaName: 'organization_information'
