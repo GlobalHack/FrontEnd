@@ -1,56 +1,49 @@
-/**
- * Customer.js
- *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
- */
+var uuid = require('uuid');
 
 module.exports = {
-  connection: 'sqlitedb',
+
+  connection: 'localPostgreSQLServer',
+  tableName: 'customer',
+  meta: {
+     schemaName: 'customer_information'
+  },
   attributes: {
+    uuid: {
+      type: 'string',
+      defaultsTo: function(){
+        return uuid.v4();
+      },
+      unique: true
+    },
     firstName: {
-        type: 'string',
-        required: true
+      type: 'string',
+      size: 64,
+      columnName: 'first_name'
     },
     lastName: {
-        type: 'string',
-        required: true
+      type: 'string',
+      size: 64,
+      columnName: 'last_name'
     },
-    email: {
-        type: 'string',
-        required: true
+    ssn: {
+      type: 'string',
+      size: 11,
+      is: '^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$'
     },
-    phone: {
-        type: 'string'
+    domesticViolence: {
+      type: 'boolean',
+      columnName: 'domestic_violence'
     },
-    addressLine1: {
-        type: 'string'
+    youth: {
+      type: 'boolean',
+      columnName: 'youth'
     },
-    addressLine2: {
-        type: 'string'
+    dateOfBirth: {
+      type: date,
+      before: function(){
+        return new Date();
+      },
+      columnName: 'date_of_birth'
     },
-    city: {
-        type: 'string'
-    },
-    state: {
-        type: 'string'
-    },
-    zipcode: {
-        type: 'string'
-    },
-    performance: {
-        type: 'array'
-    },
-    design: {
-        type: 'array'
-    },
-    outdoor: {
-        type: 'array'
-    },
-    homes: {
-        collection: 'home',
-        via: 'customer'
-    }
   }
 };
-
