@@ -16,7 +16,7 @@ import CreateUser from 'containers/CreateUser/components/Create'
 
 /* UTILITIES --- */
 import AuthService from 'utils/AuthService'
-const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'domain benvenker.auth0.com');
+const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com');
 
 console.log( auth )
 
