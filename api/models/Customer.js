@@ -1,48 +1,33 @@
 var uuid = require('uuid');
+var faker = require('faker');
+var {ParseSSN, RandomSSN} = require('ssn');
+var schema = require('../schemas/Customer');
+
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+
+var createCustomer = function () {
+  return {
+    uuid: uuid.v4(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    ssn: new RandomSSN().value().toFormattedString(),
+    domesticViolence: faker.random.number(1),
+    youth: faker.random.number(1),
+    dateOfBirth: faker.date.past()
+  }
+}
+
+var seedData = []
+for (var i = 0; i < 20; i++) {
+  seedData.push(createCustomer());
+}
 
 module.exports = {
-
   tableName: 'customer',
   meta: {
-     schemaName: 'customer_information'
+    schemaName: 'customer_information'
   },
-  attributes: {
-    uuid: {
-      type: 'string',
-      defaultsTo: function(){
-        return uuid.v4();
-      },
-      unique: true
-    },
-    firstName: {
-      type: 'string',
-      size: 64,
-      columnName: 'first_name'
-    },
-    lastName: {
-      type: 'string',
-      size: 64,
-      columnName: 'last_name'
-    },
-    ssn: {
-      type: 'string',
-      size: 11,
-      is: '^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$'
-    },
-    domesticViolence: {
-      type: 'boolean',
-      columnName: 'domestic_violence'
-    },
-    youth: {
-      type: 'boolean',
-      columnName: 'youth'
-    },
-    dateOfBirth: {
-      type: 'date',
-      before: function(){
-        return new Date();
-      },
-      columnName: 'date_of_birth'
-    },
-  }
+  attributes: attributes,
+  seedData: seedData
 };

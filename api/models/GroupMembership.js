@@ -1,15 +1,12 @@
-module.exports = {
+var schema = require('../schemas/GroupMembership');
 
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+
+module.exports = {
   tableName: 'group_membership',
   meta: {
     schemaName: 'coordinated_entry_system'
   },
-  attributes: {
-    organization: {
-      model: 'organization'
-    },
-    coordinated_entry_group: {
-      model: 'coordinatedentrygroup'
-    }
-  }
+  attributes: attributes
 };

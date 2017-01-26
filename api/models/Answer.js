@@ -1,20 +1,12 @@
-module.exports = {
+var schema = require('../schemas/Answer');
 
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+
+module.exports = {
   tableName: 'answer',
   meta: {
-     schemaName: 'customer_information'
+    schemaName: 'customer_information'
   },
-  attributes: {
-    intake: {
-      model: 'intake',
-      unique: true
-    },
-    question: {
-      model: 'question',
-      unique: true
-    },
-    answer: {
-      type: 'text'
-    }
-  }
+  attributes: attributes
 };

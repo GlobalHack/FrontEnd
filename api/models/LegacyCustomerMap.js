@@ -1,20 +1,12 @@
-module.exports = {
+var schema = require('../schemas/LegacyCustomerMap');
 
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+
+module.exports = {
   tableName: 'legacy_customer_map',
   meta: {
      schemaName: 'organization_information'
   },
-  attributes: {
-    organization: {
-      model: 'organization',
-      unique: true
-    },
-    customer: {
-      model: 'customer',
-      unique: true
-    },
-    legacy_uuid: {
-      type: 'string'
-    }
-  }
+  attributes: attributes
 };

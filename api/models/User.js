@@ -1,11 +1,12 @@
-﻿module.exports = {
+﻿var schema = require('../schemas/User');
 
-    attributes: {
-        user: {
-            model: 'User'
-        },
-        customer: {
-            model: 'Customer'
-        }
-    }
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+// not sure what this model is for
+module.exports = {
+  tableName: 'user',
+  meta: {
+    schemaName: 'coordinated_entry_system'
+  },
+  attributes: attributes
 };

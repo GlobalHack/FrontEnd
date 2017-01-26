@@ -1,23 +1,12 @@
-module.exports = {
+var schema = require('../schemas/Intake');
 
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+
+module.exports = {
   tableName: 'intake',
   meta: {
      schemaName: 'customer_information'
   },
-  attributes: {
-    customer: {
-      model: 'customer',
-      unique: true
-    },
-    employee: {
-      model: 'employee',
-      unique: true
-    },
-    created: {
-      type: 'datetime',
-      defaultsTo: function(){
-        return new Date();
-      }
-    }
-  }
+  attributes: attributes
 };

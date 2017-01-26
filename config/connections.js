@@ -115,7 +115,7 @@ module.exports.connections = {
     host: 'gh-implementation-dev.cm8v8ipcnkcx.us-west-2.rds.amazonaws.com',
     user: 'ghadmin', // optional
     password: 'ghimplementationteamtestdb', // optional
-    database: 'gh_implementation_dev' //optional
+    database: 'sailstest' //optional
   }
 
 
