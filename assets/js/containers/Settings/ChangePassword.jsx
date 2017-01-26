@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-/* EXAMPLE OF IMPORTING SETTINGS ---------- */
 import * as Settings from 'settings'
-console.info('You now have access to the Settings object!', Settings)
-/* // end EXAMPLE OF IMPORTING SETTINGS --- */
 
 
 import Form from "react-jsonschema-form";
