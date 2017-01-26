@@ -1,5 +1,6 @@
 module.exports = {
     test: function(req, res) {
-        return res.json({ response: emailer.sendInvite('hello@world.com') });
+        emailer.sendInvite('hello@world.com')
+        return res.json({ check: 'your console' });
     }
 };
