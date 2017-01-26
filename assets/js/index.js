@@ -11,10 +11,12 @@ require('services/$.serializeObject.js') // USED FOR FORMS
 /* CONTAINERS --- */
 import Shelter from 'containers/Shelter'
 import IntakeAdd from 'containers/Intake/Add'
-import Settings from 'containers/Settings/Settings'
+import Settings from 'containers/Settings'
+
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
 import FourOhFour from 'components/FourOhFour'
+import ChangePassword from 'containers/Settings/ChangePassword'
 
 /* COMBINE REDUCERS --- */
 import * as reducers from './reducers'
@@ -32,13 +34,13 @@ require('./../styles/base.scss')
 render((
     <Provider store={ store }>
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
+            <Route path="/" component={ Shelter }>
                 <IndexRoute component={ IntakeAdd } />
-                <IndexRoute component={ Settings } />
-
-                <Route path="/" component={ Shelter }>
                 <Route path="/intakes" component={ IntakeAdd } />
                 <Route path="/icons" component={ Icons } />
-                <Route path="/settings" component={ Settings } />
+                <Route path="/settings" component={ Settings }>
+                    <IndexRoute component={ ChangePassword } />
+                </Route>
                 <Route path="*" component={ FourOhFour }/>
             </Route>
         </Router>

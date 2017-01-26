@@ -105,9 +105,8 @@ class ChangePassword extends Component {
     return (
         <div>
             <Form
-
                 schema={ schema }
-               validate={ validate }
+                validate={ validate }
                 uiSchema={ uiSchema }
                 widgets={ widgets }
                 onSubmit={ this.handleSubmit } />
