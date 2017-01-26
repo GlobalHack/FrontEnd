@@ -5,52 +5,22 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-module.exports = {
-  connection: 'sqlitedb',
-  attributes: {
-    firstName: {
-        type: 'string',
-        required: true
-    },
-    lastName: {
-        type: 'string',
-        required: true
-    },
-    email: {
-        type: 'string',
-        required: true
-    },
-    phone: {
-        type: 'string'
-    },
-    addressLine1: {
-        type: 'string'
-    },
-    addressLine2: {
-        type: 'string'
-    },
-    city: {
-        type: 'string'
-    },
-    state: {
-        type: 'string'
-    },
-    zipcode: {
-        type: 'string'
-    },
-    performance: {
-        type: 'array'
-    },
-    design: {
-        type: 'array'
-    },
-    outdoor: {
-        type: 'array'
-    },
+var schema = require('../schemas/Customer');
+
+var attributes = {
     homes: {
         collection: 'home',
         via: 'customer'
     }
-  }
 };
 
+attributes = Object.assign(schema, attributes);
+
+var model = {
+    connection: 'sqlitedb',
+    attributes: attributes
+};
+
+console.log( model );
+
+module.exports = model;
