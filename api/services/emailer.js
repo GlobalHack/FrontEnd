@@ -21,10 +21,12 @@ var mailOptions = {
 module.exports.sendInvite = function(invite_email) {
     // send mail with defined transport object
     mailOptions.to = invite_email;
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            return console.log(error);
+    return transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+            return;
         }
         console.log('Message sent: ' + info.response);
+        return;
     });
 }

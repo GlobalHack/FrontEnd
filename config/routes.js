@@ -36,6 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  'get /email/test': 'EmailController.test',
+
   "r|(intakes|icons|about)|page": "RootController.view"
 
   /***************************************************************************
