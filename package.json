@@ -33,6 +33,7 @@
     "redux": "^3.6.0",
     "sails": "~0.12.11",
     "sails-disk": "~0.10.9",
+    "sails-postgresql": "~0.11.4",
     "sails-webpack": "^1.0.13",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
