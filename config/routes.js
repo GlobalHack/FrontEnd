@@ -36,6 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  '/acquity/test': 'AcquityController.test',
+
   "r|(intakes|icons|about)|page": "RootController.view"
 
   /***************************************************************************
