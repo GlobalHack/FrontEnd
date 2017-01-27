@@ -73,7 +73,8 @@ module.exports.webpack = {
             icons: 'js/icons',
             services: 'js/services',
             settings: 'js/settings',
-            styles: 'styles',
+            utils: 'js/utils',
+            styles: 'styles'
         },
         extensions: ['', '.js', '.jsx', '.scss']
     },

@@ -1,32 +1,29 @@
-var uuid = require('uuid');
 var faker = require('faker');
 var {ParseSSN, RandomSSN} = require('ssn');
-var schema = require('../schemas/Customer');
+var schema = require('../schemas/Employee');
 
 var attributes = {};
 attributes = Object.assign(schema, attributes);
 
-var createCustomer = function () {
+var createEmployee = function () {
   return {
-    uuid: uuid.v4(),
+    organization: faker.random.number({min: 1, max: 2}),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     ssn: new RandomSSN().value().toFormattedString(),
-    domesticViolence: faker.random.number(1),
-    youth: faker.random.number(1),
-    dateOfBirth: faker.date.past()
+    role: faker.random.number({min: 1, max: 2})
   }
 }
 
 var seedData = []
 for (var i = 0; i < 20; i++) {
-  seedData.push(createCustomer());
+  seedData.push(createEmployee());
 }
 
 module.exports = {
-  tableName: 'customer',
+  tableName: 'employee',
   meta: {
-    schemaName: 'customer_information'
+    schemaName: 'organization_information'
   },
   attributes: attributes,
   seedData: seedData

@@ -12,7 +12,7 @@ class Menu extends Component {
         <header>
             <h5>St. Patrick's Center</h5>
             <ul className="header-submenu">
-                <li>Taylor Swift</li>
+                <li><Link to="/login">Taylor Swift</Link></li>
                 <li><Link to="/settings"><span className="bi_setting-gear-b"></span></Link></li>
             </ul>
         </header>

@@ -7,22 +7,28 @@ import Menu from 'components/Menu'
 
 @connect(state => ({}))
 
-class Shelter extends Component {
+class Template extends Component {
   constructor(props){
       super(props)
   }
 
   render() {
+    let children = null;
+    if (this.props.children) {
+      children = React.cloneElement(this.props.children, {
+        auth: this.props.route.auth //sends auth instance from route to children
+      })
+    }
     return (
-        <section className="primary-wrapper shelter">
+        <section className="primary-wrapper template">
             <Header />
             <Menu />
             <div className="primary-content">
-                { this.props.children }
+                { children }
             </div>
         </section>
     );
   }
 }
 
-export default Shelter
+export default Template
