@@ -1,6 +1,6 @@
 var uuid = require('uuid');
 var faker = require('faker');
-var {ParseSSN, RandomSSN} = require('ssn');
+var RandomSSN = require('ssn').RandomSSN;
 var schema = require('../schemas/Customer');
 
 var attributes = {};
