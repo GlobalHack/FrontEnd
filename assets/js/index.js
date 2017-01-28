@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -9,12 +9,23 @@ import { browserHistory, Router, Route, IndexRoute, IndexRedirect } from 'react-
 require('services/$.serializeObject.js') // USED FOR FORMS
 
 /* CONTAINERS --- */
-import Shelter from 'containers/Shelter'
+import Template from 'containers/Template'
 import IntakeAdd from 'containers/Intake/Add'
+import Settings from 'containers/Settings'
+import Login from 'containers/Login'
+import CreateUser from 'containers/CreateUser/components/Create'
+
+/* UTILITIES --- */
+import AuthService from 'utils/AuthService'
+const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com');
+
+console.log( auth )
 
 /* COMPONENTS --- */
+import LoginLogin from 'containers/Login/Login.jsx'
 import Icons from 'components/Icons'
 import FourOhFour from 'components/FourOhFour'
+import ChangePassword from 'containers/Settings/ChangePassword'
 
 /* COMBINE REDUCERS --- */
 import * as reducers from './reducers'
@@ -32,11 +43,16 @@ require('./../styles/base.scss')
 render((
     <Provider store={ store }>
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
-            <Route path="/" component={ Shelter }>
+            <Route path="/" component={ Template } auth={ auth }>
                 <IndexRoute component={ IntakeAdd } />
                 <Route path="/intakes" component={ IntakeAdd } />
                 <Route path="/icons" component={ Icons } />
-                 <Route path="*" component={ FourOhFour }/>
+                <Route path="/createUser" component={ CreateUser } />
+                <Route path="/login" component={ LoginLogin } />
+                <Route path="/settings" component={ Settings }>
+                    <IndexRoute component={ ChangePassword } />
+                </Route>
+                <Route path="*" component={ FourOhFour }/>
             </Route>
         </Router>
     </Provider>

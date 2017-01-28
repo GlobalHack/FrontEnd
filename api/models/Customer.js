@@ -1,56 +1,33 @@
-/**
- * Customer.js
- *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
- */
+var uuid = require('uuid');
+var faker = require('faker');
+var RandomSSN = require('ssn').RandomSSN;
+var schema = require('../schemas/Customer');
+
+var attributes = {};
+attributes = Object.assign(schema, attributes);
+
+var createCustomer = function () {
+  return {
+    uuid: uuid.v4(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    ssn: new RandomSSN().value().toFormattedString(),
+    domesticViolence: faker.random.number(1),
+    youth: faker.random.number(1),
+    dateOfBirth: faker.date.past()
+  }
+}
+
+var seedData = []
+for (var i = 0; i < 20; i++) {
+  seedData.push(createCustomer());
+}
 
 module.exports = {
-  connection: 'sqlitedb',
-  attributes: {
-    firstName: {
-        type: 'string',
-        required: true
-    },
-    lastName: {
-        type: 'string',
-        required: true
-    },
-    email: {
-        type: 'string',
-        required: true
-    },
-    phone: {
-        type: 'string'
-    },
-    addressLine1: {
-        type: 'string'
-    },
-    addressLine2: {
-        type: 'string'
-    },
-    city: {
-        type: 'string'
-    },
-    state: {
-        type: 'string'
-    },
-    zipcode: {
-        type: 'string'
-    },
-    performance: {
-        type: 'array'
-    },
-    design: {
-        type: 'array'
-    },
-    outdoor: {
-        type: 'array'
-    },
-    homes: {
-        collection: 'home',
-        via: 'customer'
-    }
-  }
+  tableName: 'customer',
+  meta: {
+    schemaName: 'customer_information'
+  },
+  attributes: attributes,
+  seedData: seedData
 };
-
