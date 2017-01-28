@@ -7,6 +7,10 @@
 label {
     font-weight:400;
     font-size:1rem;
+    color:$baseFontColor;
+    strong {
+        color: inherit;
+    }
 }
 .form-control:focus {
     border-color: $color3;

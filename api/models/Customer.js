@@ -1,6 +1,8 @@
 var uuid = require('uuid');
 var faker = require('faker');
-var {ParseSSN, RandomSSN} = require('ssn');
+var ssn = require('ssn');
+var RandomSSN = ssn.RandomSSN;
+var ParseSSN = ssn.ParseSSN;
 var schema = require('../schemas/Customer');
 
 var attributes = {};
@@ -18,7 +20,7 @@ var createCustomer = function () {
   }
 }
 
-var seedData = []
+var seedData = [];
 for (var i = 0; i < 20; i++) {
   seedData.push(createCustomer());
 }

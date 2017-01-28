@@ -19,8 +19,6 @@ import CreateUser from 'containers/CreateUser/components/Create'
 import AuthService from 'utils/AuthService'
 const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com');
 
-console.log( auth )
-
 /* COMPONENTS --- */
 import LoginLogin from 'containers/Login/Login.jsx'
 import Icons from 'components/Icons'

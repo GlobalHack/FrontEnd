@@ -3,45 +3,23 @@ import { connect } from 'react-redux'
 
 import Form from "react-jsonschema-form";
 
+import * as Format from 'services/Format';
+let IntakeSchema = require('schemas/Intake');
+IntakeSchema = Format.schema( IntakeSchema );
+
 /* COMPONENTS --- */
 import PhoneNumber from 'components/PhoneNumber'
+import IncrementInput from 'components/IncrementInput'
 
 const schema = {
-  title: "Example Schema Form",
+  title: "Intake Form from Schema",
   type: "object",
-  required: ["title", "phone"],
-  properties: {
-    title: {
-        type: "string",
-        title: "Title"
-    },
-    phone: {
-        type: "string",
-        title: "Phone Number",
-        default: "",
-        "minLength": 10,
-        "pattern": ".*(\\d{3}).*(\\d{3}).*(\\d{4})"
-    },
-    example: {
-        type: "string",
-        title:"Example Input"
-    },
-    "integerRange": {
-      "title": "Integer Range Example",
-      "type": "integer",
-      "minimum": 42,
-      "maximum": 100
-    },
-    done: {
-        type: "boolean",
-        title: "Done?",
-        default: false
-    }
-  }
+  properties: IntakeSchema
 }
 
 const widgets = {
-  phoneNumber: PhoneNumber
+  phoneNumber: PhoneNumber,
+  increment: IncrementInput
 }
 
 const uiSchema = {
@@ -54,6 +32,27 @@ const uiSchema = {
     "phone": {
         "ui:widget": "phoneNumber",
         "ui:placeholder": "(555) 555-5555"
+    },
+    "Housing_1": {
+        "ui:widget": "increment"
+    },
+    "Housing_2": {
+        "ui:widget": "increment"
+    },
+    "Risks_1": {
+        "ui:widget": "increment"
+    },
+    "Risks_2": {
+        "ui:widget": "increment"
+    },
+    "Risks_3": {
+        "ui:widget": "increment"
+    },
+    "Risks_4": {
+        "ui:widget": "increment"
+    },
+    "Risks_5": {
+        "ui:widget": "increment"
     }
 }
 

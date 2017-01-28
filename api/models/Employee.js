@@ -1,5 +1,7 @@
 var faker = require('faker');
-var {ParseSSN, RandomSSN} = require('ssn');
+var ssn = require('ssn');
+var RandomSSN = ssn.RandomSSN;
+var ParseSSN = ssn.ParseSSN;
 var schema = require('../schemas/Employee');
 
 var attributes = {};

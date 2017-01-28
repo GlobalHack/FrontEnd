@@ -12,3 +12,13 @@ export const phone = (number) => {
     }
     return number
 }
+
+export const schema = (schemaObject, client=true) => {
+    if (client) {
+        Object.keys(schemaObject).forEach(function(schemaKey){
+            delete schemaObject[ schemaKey ].required;
+        })
+        delete schemaObject.created;
+    }
+    return schemaObject
+}
