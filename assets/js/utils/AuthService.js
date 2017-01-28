@@ -53,7 +53,7 @@ export default class AuthService {
   logout() {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
-    localStorage.setItem('profile', undefined);
+    localStorage.setItem('profile', '{}');
     browserHistory.replace('/login')
   }
 
@@ -62,13 +62,12 @@ export default class AuthService {
     if (profile) {
       localStorage.setItem('profile', JSON.stringify(profile))
     } else {
-      localStorage.setItem('profile', undefined)
+      localStorage.setItem('profile', '{}')
     }
   }
 
   getProfile(key){
     // Returns profile data from local storage
-    console.log(key)
     var profile = localStorage.getItem('profile')
     if ( key && profile ) {
       return JSON.parse(profile)[key]
