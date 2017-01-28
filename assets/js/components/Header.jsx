@@ -10,7 +10,7 @@ class Menu extends Component {
   render() {
     return (
         <header>
-            <h5>St. Patrick's Center</h5>
+            <h5>St. Patrick Center</h5>
             <ul className="header-submenu">
                 <li><Link to="/login">Taylor Swift</Link></li>
                 <li><Link to="/settings"><span className="bi_setting-gear-b"></span></Link></li>
