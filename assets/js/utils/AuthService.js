@@ -6,7 +6,7 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:1337/login',
+        redirectUrl: window.location.origin + '/login',
         responseType: 'token'
       }
     })
