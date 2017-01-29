@@ -6,7 +6,6 @@ import * as Settings from 'settings'
 class ForgotPassword extends Component {
   constructor(props){
       super(props)
-
   }
 
   triggerMagicLink(e){

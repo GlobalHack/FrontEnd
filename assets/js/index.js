@@ -26,6 +26,8 @@ import LoginLogin from 'containers/Login/Login.jsx'
 import Icons from 'components/Icons'
 import FourOhFour from 'components/FourOhFour'
 import ChangePassword from 'containers/Settings/ChangePassword'
+import Logout from 'containers/Settings/Logout'
+import Account from 'containers/Account/Account'
 
 /* COMBINE REDUCERS --- */
 import * as reducers from './reducers'
@@ -36,6 +38,13 @@ export const store = createStore(
     })
 )
 
+/* Validating authentication for private routes  */
+const requireAuth = (nextState, replace) => {
+  if (!auth.loggedIn()) {
+    replace({ pathname: '/login'})
+  }
+}
+
 /* ADD BASE/GLOBAL STYLES --- */
 require('./../styles/base.scss')
 
@@ -44,13 +53,14 @@ render((
     <Provider store={ store }>
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
             <Route path="/" component={ Template } auth={ auth }>
-                <IndexRoute component={ IntakeAdd } />
+                <IndexRoute component={ Account } onEnter={requireAuth}/>
+                <Route path="/home" component={ Account } onEnter={requireAuth}/>
                 <Route path="/intakes" component={ IntakeAdd } />
                 <Route path="/icons" component={ Icons } />
                 <Route path="/createUser" component={ CreateUser } />
                 <Route path="/login" component={ LoginLogin } />
-                <Route path="/settings" component={ Settings }>
-                    <IndexRoute component={ ChangePassword } />
+                <Route path="/settings">
+                    <IndexRoute component={ Settings }/>
                 </Route>
                 <Route path="*" component={ FourOhFour }/>
             </Route>
