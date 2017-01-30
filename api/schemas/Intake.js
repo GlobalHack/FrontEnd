@@ -1,16 +1,8 @@
 module.exports = {
   customer: {
-    model: 'customer',
-    unique: true
+    model: 'customer'
   },
   employee: {
-    model: 'employee',
-    unique: true
-  },
-  created: {
-    type: 'datetime',
-    defaultsTo: function () {
-      return new Date();
-    }
+    model: 'employee'
   }
 };
