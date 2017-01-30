@@ -6,7 +6,7 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'https://app.cemaritan.com/login',
+        redirectUrl: window.location.origin + '/login',
         responseType: 'token'
       }
     })
@@ -18,9 +18,16 @@ export default class AuthService {
 
   _doAuthentication(authResult) {
     // Saves the user token
-    this.setToken(authResult.idToken)
+    var _this = this
+    this.setToken(authResult.accessToken)
+
     // navigate to the home route
-    browserHistory.replace('/home')
+    this.lock.getUserInfo(authResult.accessToken, (error, info) => {
+      if ( ! error ) {
+        _this.setProfile(info)
+        browserHistory.replace('/home')
+      }
+    })
   }
 
   login() {
@@ -46,5 +53,26 @@ export default class AuthService {
   logout() {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
+    localStorage.setItem('profile', '{}');
+    browserHistory.replace('/login')
+  }
+
+  setProfile(profile){
+    // Saves profile data to local storage, and triggers event to update UI
+    if (profile) {
+      localStorage.setItem('profile', JSON.stringify(profile))
+    } else {
+      localStorage.setItem('profile', '{}')
+    }
+  }
+
+  getProfile(key){
+    // Returns profile data from local storage
+    var profile = localStorage.getItem('profile')
+    if ( key && profile ) {
+      return JSON.parse(profile)[key]
+    } else {
+      return JSON.parse(profile)
+    }
   }
 }
