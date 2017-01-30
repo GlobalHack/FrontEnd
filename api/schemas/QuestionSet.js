@@ -1,7 +1,6 @@
 module.exports = {
   organization: {
-    model: 'organization',
-    unique: true
+    model: 'organization'
   },
   title: {
     type: 'text',

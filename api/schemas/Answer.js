@@ -1,11 +1,9 @@
 module.exports = {
   intake: {
-    model: 'intake',
-    unique: true
+    model: 'intake'
   },
   question: {
-    model: 'question',
-    unique: true
+    model: 'question'
   },
   answer: {
     type: 'text'

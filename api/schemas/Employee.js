@@ -1,7 +1,6 @@
 module.exports = {
   organization: {
-    model: 'organization',
-    unique: true
+    model: 'organization'
   },
   firstName: {
     type: 'string',
@@ -18,7 +17,6 @@ module.exports = {
     size: 11
   },
   role: {
-    model: 'role',
-    unique: true
+    model: 'role'
   }
 };
