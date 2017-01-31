@@ -16,10 +16,10 @@ class Menu extends Component {
   }
 }
 
-require('styles/components/Header')
+//require('styles/components/Header')
 
 Menu.defaultProps = {
-    defaultCheckedArray: []    
+    defaultCheckedArray: []
 }
 
 export default Menu

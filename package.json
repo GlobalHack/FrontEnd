@@ -23,6 +23,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "faker": "^3.1.0",
     "include-all": "^1.0.0",
+    "jquery": "^3.1.1",
     "node-sass": "^3.13.1",
     "nodemailer": "^2.7.2",
     "rc": "1.0.1",
@@ -43,6 +44,7 @@
     "sass-loader": "^4.0.2",
     "ssn": "^1.0.3",
     "style-loader": "^0.13.1",
+    "velocity-animate": "^1.4.2",
     "waterline-sqlite3": "^1.0.3"
   },
   "scripts": {

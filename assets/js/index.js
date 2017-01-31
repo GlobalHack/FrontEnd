@@ -10,6 +10,7 @@ require('services/$.serializeObject.js') // USED FOR FORMS
 
 /* CONTAINERS --- */
 import Template from 'containers/Template'
+import AdminLTE from 'containers/AdminLTE'
 import IntakeAdd from 'containers/Intake/Add'
 import Settings from 'containers/Settings'
 import Login from 'containers/Login'
@@ -46,13 +47,13 @@ const requireAuth = (nextState, replace) => {
 }
 
 /* ADD BASE/GLOBAL STYLES --- */
-require('./../styles/base.scss')
+//require('./../styles/base.scss')
 
 /* RENDER WITH REDUX / REACT ROUTER --- */
 render((
     <Provider store={ store }>
         <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
-            <Route path="/" component={ Template } auth={ auth }>
+            <Route path="/" component={ AdminLTE } auth={ auth }>
                 <IndexRoute component={ Account } onEnter={requireAuth}/>
                 <Route path="/home" component={ Account } onEnter={requireAuth}/>
                 <Route path="/intakes" component={ IntakeAdd } />
@@ -66,4 +67,4 @@ render((
             </Route>
         </Router>
     </Provider>
-), document.getElementById('root'))
+), document.getElementById('ui-container'))

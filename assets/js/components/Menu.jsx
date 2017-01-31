@@ -19,7 +19,7 @@ class Menu extends Component {
   }
 }
 
-require('styles/components/Menu')
+//require('styles/components/Menu')
 
 Menu.defaultProps = {
     defaultCheckedArray: []
