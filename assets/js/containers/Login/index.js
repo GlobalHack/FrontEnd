@@ -23,6 +23,6 @@ export class Login extends React.Component {
   }
 }
 
-require('styles/containers/login');
+require('styles/containers/Login');
 
 export default Login;
