@@ -11,7 +11,7 @@ export class Login extends React.Component {
   render() {
     const { auth } = this.props
     return (
-      <div>
+      <div className="content-wrapper">
         <h2>
           <img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg" />
         </h2>

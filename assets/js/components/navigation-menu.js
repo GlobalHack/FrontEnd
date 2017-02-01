@@ -14,15 +14,6 @@ define(
                     <aside className="main-sidebar">
                         {/* sidebar: style can be found in sidebar.less */}
                         <section className="sidebar" >
-                            {/* Sidebar user panel */}
-                            <div className="user-panel">
-                                <div className="pull-left image">
-                                    <img src="http://lorempixel.com/160/160/" className="img-circle" alt="User Image" />
-                                </div>
-                                <div className="pull-left info">
-                                    <p>UserName</p>
-                                </div>
-                            </div>
                             {/* search form */}
                             <form action="#" method="get" className="sidebar-form">
                                 <div className="input-group">
@@ -96,6 +87,7 @@ define(
                                 <li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a></li>
                                 <li className="header">LABELS</li>
                                 <li><a href="#"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                              <li><a width="150" height="50" href="https://auth0.com/?utm_source=oss&utm_medium=gp&utm_campaign=oss" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-dark.png"/></a></li>
                             </ul>
                         </section>
                         {/* /.sidebar */}

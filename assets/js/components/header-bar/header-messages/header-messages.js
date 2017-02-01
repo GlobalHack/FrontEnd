@@ -13,27 +13,27 @@ define(
             componentDidMount: function(){
                 var messages = [{
                     title: 'Support Team',
-                    displayPicture: 'dist/img/user2-160x160.jpg',
+                    displayPicture: 'http://lorempixel.com/160/160/',
                     content: 'Why not buy a new awesome theme?',
                     time: '5 mins',
                 }, {
                     title: 'AdminLTE Design Team',
-                    displayPicture: 'dist/img/user3-128x128.jpg',
+                    displayPicture: 'http://lorempixel.com/128/128/',
                     content: 'Why not buy a new awesome theme?',
                     time: '2 hours',
                 }, {
                     title: 'Developers',
-                    displayPicture: 'dist/img/user4-128x128.jpg',
+                    displayPicture: 'http://lorempixel.com/128/128/',
                     content: 'Why not buy a new awesome theme?',
                     time: 'Today',
                 }, {
                     title: 'Sales Department',
-                    displayPicture: 'dist/img/user3-128x128.jpg',
+                    displayPicture: 'http://lorempixel.com/128/128/',
                     content: 'Why not buy a new awesome theme?',
                     time: 'Yesterday',
                 }, {
                     title: 'Reviewers',
-                    displayPicture: 'dist/img/user4-128x128.jpg',
+                    displayPicture: 'http://lorempixel.com/128/128/',
                     content: 'Why not buy a new awesome theme?',
                     time: '2 days',
                 }];
@@ -47,7 +47,7 @@ define(
 
                 var messageList = this.state.messages.map(function (messageDetails, iterator) {
                     return (
-                        <MessageItem 
+                        <MessageItem
                             key={iterator}
                             title={messageDetails.title}
                             displayPicture={messageDetails.displayPicture}
@@ -71,7 +71,7 @@ define(
                                     <ul className="menu" >
                                         {messageList}
                                     </ul>
-                                    
+
                                     <div className="slimScrollBar"></div>
                                     <div className="slimScrollRail"></div>
                                 </div>
@@ -79,7 +79,7 @@ define(
                             <li className="footer"><a href="#">See All Messages</a></li>
                         </ul>
                     </li>
-                    
+
                 )
             }
         });

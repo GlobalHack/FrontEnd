@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 /* COMPONENTS --- */
 import Header from 'components/Header'
@@ -15,8 +15,8 @@ import CustomTabs from 'components/custom-tabs/custom-tabs'
 @connect(state => ({}))
 
 class AdminLTE extends Component {
-  constructor(props){
-    super(props)
+  constructor(props, context) {
+    super(props, context)
   }
 
   render() {
@@ -28,46 +28,23 @@ class AdminLTE extends Component {
         auth: this.props.route.auth //sends auth instance from route to children
       })
     }
+
     return (
-                    <div className="wrapper">
-                        <HeaderBar />
+      <div className="wrapper">
+        <HeaderBar auth={auth}/>
 
-                        <NavigationMenu />
+        <NavigationMenu />
 
-                        <div className="content-wrapper">
-                            <section className="content-header">
-                                <h1>
-                                    Data
-                                    <small>Preview of data</small>
-                                </h1>
-                                <ol className="breadcrumb">
-                                    <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
-                                    <li><a href="#">Data</a></li>
-                                    <li className="active">Preview</li>
-                                </ol>
-                            </section>
+        {children}
 
-                            <section className="content">
-                                <Box
-                                    border = {false}
-                                    width = "12"
-                                    theme = "box-default"
-                                    title = "Your Data"
-                                    customClass = "color-palette-box"
-                                    headerMarkup={<i className="fa fa-tag"></i>} >
-                                </Box>
-                            </section>
+        <footer className="main-footer">
+          <div className="pull-right hidden-xs">
+            <b>Version</b> V.1.0
+          </div>
+        </footer>
 
-                        </div>
-
-                        <footer className="main-footer">
-                            <div className="pull-right hidden-xs">
-                                <b>Version</b> V.1.0
-                            </div>
-                        </footer>
-
-                        {/*<ControlsMenu />*/}
-                    </div>
+        {/*<ControlsMenu />*/}
+      </div>
     );
   }
 }

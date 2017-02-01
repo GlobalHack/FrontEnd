@@ -1,38 +1,62 @@
+import { EventEmitter } from 'events'
 import Auth0Lock from 'auth0-lock'
+import Auth0LockPasswordless from 'auth0-lock'
 import { browserHistory } from 'react-router'
 
-export default class AuthService {
+export default class AuthService extends EventEmitter {
   constructor(clientId, domain) {
+    super();
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
         redirectUrl: window.location.origin + '/login',
         responseType: 'token'
+      },
+      languageDictionary: {
+        title: "Cemaritan",
+      },
+      container: 'hiw-login-container',
+      theme: {
+        logo: 'http://lorempixel.com/220/220/'
       }
-    })
+    });
     // Add callback for lock `authenticated` event
-    this.lock.on('authenticated', this._doAuthentication.bind(this))
+    this.lock.on('authenticated', this._doAuthentication.bind(this));
+    // Add callback for lock `authorization_error` event
+    this.lock.on('authorization_error', this._authorizationError.bind(this));
     // binds login functions to keep this context
     this.login = this.login.bind(this)
   }
 
   _doAuthentication(authResult) {
     // Saves the user token
-    var _this = this
-    this.setToken(authResult.accessToken)
-
+    this.setToken(authResult.idToken);
     // navigate to the home route
-    this.lock.getUserInfo(authResult.accessToken, (error, info) => {
-      if ( ! error ) {
-        _this.setProfile(info)
-        browserHistory.replace('/home')
+    browserHistory.replace('/home');
+    // Async loads the user profile data
+    this.lock.getProfile(authResult.idToken, (error, profile) => {
+      if (error) {
+        console.log('Error loading the Profile', error)
+      } else {
+        this.setProfile(profile)
       }
     })
+  }
+
+  _authorizationError(error){
+    // Unexpected authentication error
+    console.log('Authentication Error', error)
   }
 
   login() {
     // Call the show method to display the widget.
     this.lock.show()
+  }
+
+  magiclink() {
+    this.magiclink = new Auth0LockPasswordless();
+    // Call the show method to display the widget.
+    this.magiclink.magiclink()
   }
 
   loggedIn() {
@@ -54,7 +78,8 @@ export default class AuthService {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
     localStorage.setItem('profile', '{}');
-    browserHistory.replace('/login')
+    browserHistory.replace('/login');
+    this.emit('profile_updated', null)
   }
 
   setProfile(profile){
@@ -64,11 +89,12 @@ export default class AuthService {
     } else {
       localStorage.setItem('profile', '{}')
     }
+    this.emit('profile_updated', profile)
   }
 
   getProfile(key){
     // Returns profile data from local storage
-    var profile = localStorage.getItem('profile')
+    var profile = localStorage.getItem('profile');
     if ( key && profile ) {
       return JSON.parse(profile)[key]
     } else {
