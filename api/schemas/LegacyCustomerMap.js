@@ -1,11 +1,9 @@
 module.exports = {
   organization: {
-    model: 'organization',
-    unique: true
+    model: 'organization'
   },
   customer: {
-    model: 'customer',
-    unique: true
+    model: 'customer'
   },
   legacy_uuid: {
     type: 'string'

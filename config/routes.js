@@ -40,7 +40,9 @@ module.exports.routes = {
   '/acuity/test': 'AcuityController.test',
   
   /* PAGE ROUTES --- */
-  "r|(icons|about|login|createUser|AccountManage)|page": "RootController.view",
+  "r|(intakes|icons|about|login|createUser|home)|page": "RootController.view",
+
+  /* SETTINGS PAGES --- */
   "r|settings(\/.*)?|page": "RootController.view"
 
   /***************************************************************************

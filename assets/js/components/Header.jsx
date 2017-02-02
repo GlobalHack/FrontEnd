@@ -8,11 +8,15 @@ class Menu extends Component {
   }
 
   render() {
+    let {auth} = this.props
+    let profile_name = auth.getProfile('email')
+    name = profile_name ? profile_name : 'Guest'
+
     return (
         <header>
-            <h5>St. Patrick's Center</h5>
+            <h5>St. Patrick Center</h5>
             <ul className="header-submenu">
-                <li><Link to="/login">Taylor Swift</Link></li>
+                <li><Link to="/login"> {name} </Link></li>
                 <li><Link to="/settings"><span className="bi_setting-gear-b"></span></Link></li>
             </ul>
         </header>
@@ -20,10 +24,10 @@ class Menu extends Component {
   }
 }
 
-require('styles/components/Header')
+//require('styles/components/Header')
 
 Menu.defaultProps = {
-    defaultCheckedArray: []    
+    defaultCheckedArray: []
 }
 
 export default Menu

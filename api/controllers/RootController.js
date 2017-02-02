@@ -6,9 +6,6 @@
  */
 
 module.exports = {
-	
-
-
   /**
    * `RootController.view()`
    */

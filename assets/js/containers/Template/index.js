@@ -14,6 +14,8 @@ class Template extends Component {
 
   render() {
     let children = null;
+    let {auth} = this.props.route
+
     if (this.props.children) {
       children = React.cloneElement(this.props.children, {
         auth: this.props.route.auth //sends auth instance from route to children
@@ -21,7 +23,7 @@ class Template extends Component {
     }
     return (
         <section className="primary-wrapper template">
-            <Header />
+            <Header auth={auth}/>
             <Menu />
             <div className="primary-content">
                 { children }
