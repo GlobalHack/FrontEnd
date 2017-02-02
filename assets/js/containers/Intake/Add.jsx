@@ -80,13 +80,24 @@ class IntakeAdd extends Component {
 
   render() {
     return (
-        <div>
-            <Form
-                schema={ schema }
-                uiSchema={ uiSchema }
-                widgets={ widgets }
-                onError={ this.handleError }
-                onSubmit={ this.handleSubmit } />
+        <div className="content-wrapper">
+            <section className="content-header">
+            <h1>
+                Intakes
+            </h1>
+            <ol className="breadcrumb">
+                <li><a href="#"><i className="fa fa-dashboard"></i> Intakes</a></li>
+            </ol>
+            </section>
+
+            <section className="content">
+                <Form
+                    schema={ schema }
+                    uiSchema={ uiSchema }
+                    widgets={ widgets }
+                    onError={ this.handleError }
+                    onSubmit={ this.handleSubmit } />
+            </section>
         </div>
     );
   }

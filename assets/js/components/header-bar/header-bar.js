@@ -1,10 +1,10 @@
 import React, {PropTypes as T} from 'react'
+import { browserHistory } from 'react-router';
 import $ from 'jquery'
 import AuthService from '../../utils/AuthService'
 import HeaderMessages from './header-messages/header-messages'
 import HeaderNotifications from './header-notifications/header-notifications'
 import HeaderTasks from './header-tasks/header-tasks'
-
 
 export class HeaderBar extends React.Component {
   static contextTypes = {
@@ -28,7 +28,7 @@ export class HeaderBar extends React.Component {
 
   logout() {
     this.props.auth.logout();
-    this.context.router.push('/login');
+    browserHistory.push('/login');
   }
 
   pushMenu() {
