@@ -36,21 +36,21 @@ export default class AuthService extends EventEmitter {
     // Async loads the user profile data
     this.lock.getProfile(authResult.idToken, (error, profile) => {
       if (error) {
-        console.log('Error loading the Profile', error)
+        console.log('Error loading the Profile', error);
       } else {
-        this.setProfile(profile)
+        this.setProfile(profile);
       }
     })
   }
 
   _authorizationError(error){
     // Unexpected authentication error
-    console.log('Authentication Error', error)
+    console.log('Authentication Error', error);
   }
 
   login() {
     // Call the show method to display the widget.
-    this.lock.show()
+    this.lock.show();
   }
 
   magiclink() {
@@ -78,8 +78,8 @@ export default class AuthService extends EventEmitter {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
     localStorage.setItem('profile', '{}');
+    this.emit('profile_updated', null);
     browserHistory.replace('/login');
-    this.emit('profile_updated', null)
   }
 
   setProfile(profile){

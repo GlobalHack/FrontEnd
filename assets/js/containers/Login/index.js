@@ -18,8 +18,11 @@ export class Login extends React.Component {
       </div>
     )
   }
+  componentWillUnmount() {
+    this.props.route.auth.lock.hide();
+  }
   componentDidMount() {
-    this.props.route.auth.login();
+    this.props.route.auth.lock.show();
   }
 }
 

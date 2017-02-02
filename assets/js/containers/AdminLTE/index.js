@@ -42,7 +42,7 @@ class AdminLTE extends Component {
             <b>Version</b> V.1.0
           </div>
         </footer>
-
+        <div id="hiw-login-container"></div>
         {/*<ControlsMenu />*/}
       </div>
     );
