@@ -42,6 +42,9 @@ module.exports.routes = {
   /* PAGE ROUTES --- */
   "r|(icons|about|login|createUser|home)|page": "RootController.view",
 
+  /* INTAKES PAGES --- */
+  "r|intakes/.+|page": "RootController.view",
+  
   /* SETTINGS PAGES --- */
   "r|settings(\/.*)?|page": "RootController.view"
 

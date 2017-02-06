@@ -18,7 +18,7 @@ export const Schema = (schema) => {
         if (Excluded.has(key)) return;
         if (schema[key].type == 'object') {
             if (schema[key].properties) uiSchema[key] = Schema(schema[key].properties)
-        } else if (schema[key].type == 'number') {
+        } else if (schema[key].type == 'number' || schema[key].type == 'integer') {
             uiSchema[key] = {
                 "ui:widget": "increment"
             }

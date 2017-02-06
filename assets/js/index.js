@@ -57,7 +57,7 @@ render((
       <Route path="/" component={ AdminLTE } auth={ auth }>
         <IndexRedirect to="/home"/>
         <Route path="/home" component={ Home } onEnter={requireAuth}/>
-        {/*<Route path="/intakes" component={ IntakeAdd } onEnter={requireAuth}/>*/}
+        <Route path="/intakes/add" component={ IntakeAdd } onEnter={requireAuth}/>
         <Route path="/icons" component={ Icons } onEnter={requireAuth}/>
         <Route path="/createUser" component={ CreateUser } onEnter={requireAuth}/>
         {/*<Route path="/login" component={ LoginLogin } />*/}

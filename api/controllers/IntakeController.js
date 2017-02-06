@@ -9,14 +9,6 @@ module.exports = {
     
     view: function(req, res) {
         res.view()
-    },
-    
-    add: function(req, res) {
-        res.view()
-    },
-
-    edit: function(req, res) {
-        res.view()
     }
 
 };

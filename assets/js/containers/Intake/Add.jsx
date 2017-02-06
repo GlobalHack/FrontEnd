@@ -17,8 +17,6 @@ IntakeSchema = Format.schema(IntakeSchema)
 /* GROUP FORM ELEMENTS --- */
 IntakeSchema = FormUI.GroupSchema(IntakeSchema)
 
-console.log(IntakeSchema)
-
 /* GENERATE UI SCHEMA --- */
 const uiSchema = FormUI.Schema(IntakeSchema)
 
@@ -29,8 +27,6 @@ const schema = {
     type: "object",
     properties: IntakeSchema
 }
-
-console.log(uiSchema)
 
 class IntakeAdd extends Component {
     constructor(props) {
