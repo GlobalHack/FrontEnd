@@ -1,9 +1,6 @@
 @import 'imports/colors';
 @import 'imports/fonts';
 @import 'imports/forms';
-@import 'imports/buttons';
-@import 'imports/icons';
-@import 'imports/misc';
 
 * {
     box-sizing:border-box;
@@ -11,47 +8,6 @@
         box-sizing:inherit;
     }
 }
-::selection {
-    background:lighten($linkFontColor, 10%);
-    color:white;
-}
 html, body {
     margin:0; padding:0;
-}
-body {
-    font-family:$baseFontFamily;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    font-weight:300;
-    font-size:1.25rem;
-    background:$bodyBackground;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family:$headlineFontFamily;
-    font-weight:400;
-}
-
-a {
-    color:$linkFontColor;
-    text-decoration:none;
-    transition:color 350ms ease;
-    &:hover {
-        color:darken($linkFontColor, 15%);
-    }
-}
-
-.primary-content {
-    padding:1rem 2rem;
-}
-
-@media(max-width:800px) {
-    html {
-        font-size:85%;
-    }
-}
-
-@media(max-width:400px) {
-    html {
-        font-size:75%;
-    }
 }

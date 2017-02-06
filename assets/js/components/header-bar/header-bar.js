@@ -59,7 +59,7 @@ export class HeaderBar extends React.Component {
           {/* mini logo for sidebar mini 50x50 pixels */}
           <span className="logo-mini"><b>A</b>LT</span>
           {/* logo for regular state and mobile devices */}
-          <span className="logo-lg">OrganizationName</span>
+          <span className="logo-lg">Cemaritan</span>
         </a>
         {/* Header Navbar: style can be found in header.less */}
         <nav className="navbar navbar-static-top" role="navigation">

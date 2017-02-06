@@ -6,12 +6,15 @@ require('styles/components/IncrementInput')
 class IncrementInput extends Component {
   constructor(props){
       super(props)
-      console.log(props)
       this.state = {
-          count: Number(this.props.defaultValue) || 0
-      }
+          count: this.props.defaultValue ? Number(this.props.defaultValue) : 0
+      }   
       this.handleDecrement = this.handleDecrement.bind(this)
       this.handleIncrement = this.handleIncrement.bind(this)
+  }
+
+  componentDidMount(){
+      this.props.onChange( this.state.count )
   }
 
   handleDecrement(ev) {

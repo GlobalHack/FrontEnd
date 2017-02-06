@@ -47,7 +47,7 @@ const requireAuth = (nextState, replace) => {
 }
 
 /* ADD BASE/GLOBAL STYLES --- */
-//require('./../styles/base.scss')
+require('./../styles/base.scss')
 
 /* RENDER WITH REDUX / REACT ROUTER --- */
 render((
