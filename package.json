@@ -43,6 +43,7 @@
     "sass-loader": "^4.0.2",
     "ssn": "^1.0.3",
     "style-loader": "^0.13.1",
+    "waterline": "^0.11.8",
     "waterline-sqlite3": "^1.0.3"
   },
   "scripts": {
