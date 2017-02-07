@@ -46,7 +46,7 @@ class IntakeAdd extends Component {
 
     render() {
         return (
-            <div className="content-wrapper">
+            <div>
                 <section className="content-header">
                     <h1> Intakes </h1>
                     <ol className="breadcrumb">

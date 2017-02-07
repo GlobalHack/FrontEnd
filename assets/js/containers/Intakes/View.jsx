@@ -1,0 +1,57 @@
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+/* COMPONENTS --- */
+import IntakeRow from './components/IntakeRow'
+
+@connect(state => ({}))
+
+class IntakesView extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      intakes: [],
+      hasError: false
+    }
+  }
+
+  componentWillMount() {
+    var _this = this;
+    $.get('/intakes')
+      .done(function (response) {
+        _this.setState({
+          intakes: response
+        })
+      })
+      .fail(function () {
+        _this.setState({
+          hasError: true
+        })
+      })
+  }
+
+  render() {
+    if (this.state.hasError) return ( <p>Unable to get intakes.</p> )
+    var intakesRows = this.state.intakes.map((intake, i) => {
+      return <IntakeRow key={`intake-row-${i}`} { ...intake } />
+    })
+    return (
+      <div>
+        <table className="table table-responsive table-sm table-hover table-bordered table-striped ">
+          <thead className="thead-default">
+            <tr>
+              <th>Customer UUID</th>
+              <th>Created</th>
+              <th>Complete</th>
+            </tr>
+          </thead>
+          <tbody>
+            { intakesRows }
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+}
+
+export default IntakesView
