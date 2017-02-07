@@ -36,6 +36,9 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  /* USER PAGES --- */
+  "r|users/.+|page": "RootController.view",
+
   /* SERVICE TESTING ROUTES --- */
   '/acuity/test': 'AcuityController.test',
 
@@ -44,6 +47,7 @@ module.exports.routes = {
 
   /* INTAKES PAGES --- */
   "r|intakes/.+|page": "RootController.view",
+
   
   /* SETTINGS PAGES --- */
   "r|settings(\/.*)?|page": "RootController.view"

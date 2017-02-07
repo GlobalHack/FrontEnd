@@ -16,8 +16,10 @@ import Settings from 'containers/Settings'
 import Login from 'containers/Login'
 import CreateUser from 'containers/CreateUser/components/Create'
 import LoginLogin from 'containers/Login/Login.jsx'
-import Organization from 'containers/Organization/'
-import Home from 'containers/Home/'
+import Organization from 'containers/Organization'
+import Home from 'containers/Home'
+import Users from 'containers/Users'
+import UsersView from 'containers/Users/View'
 
 /* UTILITIES --- */
 import AuthService from 'utils/AuthService'
@@ -63,6 +65,9 @@ render((
         {/*<Route path="/login" component={ LoginLogin } />*/}
         <Route path="/settings" onEnter={requireAuth}>
           <IndexRoute component={ Settings }/>
+        </Route>
+        <Route path="/users" component={ Users } onEnter={requireAuth}>
+            <Route path="/users/view" component={ UsersView } />
         </Route>
         <Route path="*" component={ FourOhFour }/>
       </Route>
