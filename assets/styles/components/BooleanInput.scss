@@ -3,18 +3,21 @@ $borderColor: #eaeaea;
 .boolean-input {
     input[type="checkbox"] { display:none; }
     flex-shrink:0;
+    width:7.25rem;
     .boolean-toggles {
         background:white;
         text-transform:uppercase;
         position:relative;
         border:1px solid $borderColor;
         font-weight:500;
+        display:flex;
         span {
+            font-size:1.05em;
             padding:.1em 0;
-            width:2.5em;
             display:inline-block;
             text-align:center;
             position:relative;
+            width:50%;
         }
         &:after {
             content:'';
@@ -24,13 +27,15 @@ $borderColor: #eaeaea;
             border-left:1px solid $borderColor;
             border-right:1px solid $borderColor;
             position:absolute;
-            left:0; top:0;
-            transition:margin 350ms ease;
+            left:-1px; top:0;
+            margin-left:0;
+            transition:margin 200ms ease, left 200ms ease;
         }
     }
     input:checked ~ .boolean-toggles {
         &:after {
             margin-left:50%;
+            left:1px;
         }
     }
 }

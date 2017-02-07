@@ -2,7 +2,7 @@
 
 .field-input-wrapper {
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:space-between;
 }
 
@@ -17,4 +17,8 @@
 }
 fieldset legend {
     padding:0 1.5rem;
+}
+
+.rjsf fieldset {
+    margin-top:.5em;
 }

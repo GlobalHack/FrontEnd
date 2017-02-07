@@ -3,10 +3,11 @@ $borderColor: #eaeaea;
 .increment-input {
     font-size:1.25em;   
     border:1px solid $borderColor;
+    background:white;
+    width:7.25rem;
 }
 .incrementor {
     padding:0 .5em;
-    background:rgba(255,255,255,.25);
     &.minus {
         border-right:1px solid $borderColor;
         margin-right:.25em;
