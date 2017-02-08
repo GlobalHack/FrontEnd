@@ -2,8 +2,10 @@ define(
   [
     'react',
     'jquery',
+    'react-router'
   ],
-  function (React, $) {
+  function (React, $, Router) {
+    var Link = Router.Link;
     var NavigationMenu = React.createClass({
       render: function () {
         var style = {
@@ -35,7 +37,7 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
-                    <li><a href="/users/view"><i className="fa fa-circle-o"></i> View Users</a></li>
+                    <li><Link to="/users/view"><i className="fa fa-circle-o"></i> View Users</Link></li>
                   </ul>
                 </li>
                 <li>
@@ -45,7 +47,7 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
-                    <li><a href="/coordinatedentrygroups/view"><i className="fa fa-circle-o"></i> View coordinated entry groups</a></li>
+                    <li><Link to="/coordinatedentrygroups/view"><i className="fa fa-circle-o"></i> View coordinated entry groups</Link></li>
                   </ul>
                 </li>
                 <li>
@@ -55,7 +57,7 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
-                    <li><a href="/customers/view"><i className="fa fa-circle-o"></i> View Customers</a></li>
+                    <li><Link to="/customers/view"><i className="fa fa-circle-o"></i> View Customers</Link></li>
                   </ul>
                 </li>
                 <li>
@@ -65,7 +67,7 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
-                    <li><a href="/employees/view"><i className="fa fa-circle-o"></i> View Employees</a></li>
+                    <li><Link to="/employees/view"><i className="fa fa-circle-o"></i> View Employees</Link></li>
                   </ul>
                 </li>
                 <li>
@@ -75,8 +77,8 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
-                    <li><a href="/intakes/add"><i className="fa fa-circle-o"></i> Add Intake</a></li>
-                    <li><a href="/intakes/view"><i className="fa fa-circle-o"></i> View Intakes</a></li>
+                    <li><Link to="/intakes/add"><i className="fa fa-circle-o"></i> Add Intake</Link></li>
+                    <li><Link to="/intakes/view"><i className="fa fa-circle-o"></i> View Intakes</Link></li>
                   </ul>
                 </li>
                 <li>
@@ -86,8 +88,8 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
-                    <li><a href="/organizations/add"><i className="fa fa-circle-o"></i> Add Organization</a></li>
-                    <li><a href="/organizations/view"><i className="fa fa-circle-o"></i> View Organizations</a></li>
+                    <li><Link to="/organizations/add"><i className="fa fa-circle-o"></i> Add Organization</Link></li>
+                    <li><Link to="/organizations/view"><i className="fa fa-circle-o"></i> View Organizations</Link></li>
                   </ul>
                 </li>
                 <li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a>
