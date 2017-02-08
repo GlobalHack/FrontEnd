@@ -46,13 +46,6 @@ class IntakeAdd extends Component {
 
     render() {
         return (
-            <div>
-                <section className="content-header">
-                    <h1> Intakes </h1>
-                    <ol className="breadcrumb">
-                        <li><a href="#"><i className="fa fa-dashboard"></i> Intakes</a></li>
-                    </ol>
-                </section>
                 <section className="content">
                     <Form
                         FieldTemplate={FieldTemplate}
@@ -62,7 +55,6 @@ class IntakeAdd extends Component {
                         onError={this.handleError}
                         onSubmit={this.handleSubmit} />
                 </section>
-            </div>
         );
     }
 }

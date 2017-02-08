@@ -24,7 +24,7 @@ class Customers extends Component {
           </ol>
         </section>
 
-        <section className="content">
+        <section className="content row">
           <Box
             border={false}
             width="12"

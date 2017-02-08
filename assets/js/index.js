@@ -28,6 +28,7 @@ import Intakes from 'containers/Intakes'
 import IntakeAdd from 'containers/Intakes/Add'
 import IntakesView from 'containers/Intakes/View'
 import Organizations from 'containers/Organizations'
+import OrganizationsAdd from 'containers/Organizations/Add'
 import OrganizationsView from 'containers/Organizations/View'
 
 /* UTILITIES --- */
@@ -91,6 +92,7 @@ render((
           <Route path="/intakes/view" component={ IntakesView } />
         </Route>
         <Route path="/organizations" component={ Organizations } onEnter={requireAuth}>
+          <Route path="/organizations/add" component={ OrganizationsAdd } />
           <Route path="/organizations/view" component={ OrganizationsView } />
         </Route>
         <Route path="*" component={ FourOhFour }/>

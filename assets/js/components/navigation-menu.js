@@ -86,6 +86,7 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
+                    <li><a href="/organizations/add"><i className="fa fa-circle-o"></i> Add Organization</a></li>
                     <li><a href="/organizations/view"><i className="fa fa-circle-o"></i> View Organizations</a></li>
                   </ul>
                 </li>
