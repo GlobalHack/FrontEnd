@@ -2,7 +2,20 @@ var faker = require('faker');
 var RandomSSN = require('ssn').RandomSSN;
 var schema = require('../schemas/Employee');
 
-var attributes = {};
+var attributes = {
+  nickname: {
+    type: 'string'
+  },
+  email: {
+    type: 'string'
+  },
+  password: {
+    type: 'string'
+  },
+  email_Verified: {
+    type: 'boolean'
+  },
+};
 attributes = Object.assign(schema, attributes);
 
 var createEmployee = function () {
