@@ -2,7 +2,9 @@ var uuid = require('uuid');
 var faker = require('faker');
 var RandomSSN = require('ssn').RandomSSN;
 var schema = require('../schemas/Customer');
-
+Object.keys(schema).forEach(function(schemaKey){
+    delete schema[ schemaKey ].title;
+});
 var attributes = {};
 attributes = Object.assign(schema, attributes);
 

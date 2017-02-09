@@ -1,0 +1,11 @@
+.alt-date {
+    display:flex;
+    flex-shrink:0;
+    select ~ select {
+        margin-left:.5rem;
+    }
+    .form-control {
+        width:auto;
+        display:inline-block;
+    }
+}

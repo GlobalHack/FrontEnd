@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 /* SERVICES --- */
@@ -8,28 +8,24 @@ import * as Format from 'services/Format'
 /* COMPONENTS --- */
 import Form from "react-jsonschema-form"
 import FieldTemplate from 'components/FieldTemplate'
-import CustomerAdd from './components/CustomerAdd'
 
-let IntakeSchema = require('schemas/Intake')
+let CustomerSchema = require('schemas/Customer')
 
 /* FORMAT TO ACCOMODATE DIFFERENCES BETWEEN SERVER SIDE AND CLIENT SIDE SCHEMA --- */
-IntakeSchema = Format.schema(IntakeSchema)
-
-/* GROUP FORM ELEMENTS --- */
-IntakeSchema = FormUI.GroupSchema(IntakeSchema)
+CustomerSchema = Format.schema(CustomerSchema)
 
 /* GENERATE UI SCHEMA --- */
-const uiSchema = FormUI.Schema(IntakeSchema)
+const uiSchema = FormUI.Schema(CustomerSchema)
 
 const widgets = FormUI.Widgets;
-const formData = { title: "First task", done: true }
+const formData = { };
 
 const schema = {
     type: "object",
-    properties: IntakeSchema
+    properties: CustomerSchema
 }
 
-class IntakeAdd extends Component {
+class CustomerAdd extends Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -46,10 +42,8 @@ class IntakeAdd extends Component {
     }
 
     render() {
-        // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
         return (
-                <section className="content intake-add">
-                    <CustomerAdd />
+                <section className="content customer-add">
                     <Form
                         FieldTemplate={FieldTemplate}
                         schema={schema}
@@ -62,4 +56,6 @@ class IntakeAdd extends Component {
     }
 }
 
-export default IntakeAdd
+require('./CustomerAdd.scss')
+
+export default CustomerAdd;

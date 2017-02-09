@@ -17,6 +17,11 @@ export const schema = (schemaObject, client=true) => {
     if (client) {
         Object.keys(schemaObject).forEach(function(schemaKey){
             delete schemaObject[ schemaKey ].required;
+            if (schemaObject[ schemaKey ].columnName) delete schemaObject[ schemaKey ].columnName;
+            if (schemaObject[ schemaKey ].type == 'date') {
+                schemaObject[ schemaKey ].type = 'string';
+                schemaObject[ schemaKey ].format = 'alt-date';
+            }
         })
         delete schemaObject.created;
     }

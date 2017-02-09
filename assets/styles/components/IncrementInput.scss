@@ -1,10 +1,16 @@
-$borderColor: #eaeaea;
+$borderColor: #d2d6de;
 
 .increment-input {
-    font-size:1.25em;   
+    font-size:1.25em;
+    line-height:32px;
     border:1px solid $borderColor;
     background:white;
-    width:7.25rem;
+    width:9.25rem;
+    display:flex;
+    > * {
+        flex-grow:1;
+        text-align:center;
+    }
 }
 .incrementor {
     padding:0 .5em;

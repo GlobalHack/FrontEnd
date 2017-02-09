@@ -19,6 +19,10 @@ class AdminLTE extends Component {
     super(props, context)
   }
 
+  componentDidMount(){
+      $(window).unbind('resize'); // get rid of weird css binding
+  }
+
   render() {
     let children = null;
     let {auth} = this.props.route

@@ -41,4 +41,6 @@ class Intakes extends Component {
   }
 }
 
+require('./styles.scss');
+
 export default Intakes

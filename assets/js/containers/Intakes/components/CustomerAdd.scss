@@ -1,0 +1,16 @@
+.customer-add {
+    .rjsf fieldset {
+        margin-top:0;
+    }
+    form > div {
+        column-count:2;
+        column-gap:3rem;
+        .form-group {
+            padding: .75rem 0;
+            .field-input-wrapper {
+                display:block;
+            }
+            break-inside:avoid;
+        }
+    }
+}
