@@ -1,5 +1,6 @@
 var faker = require('faker');
 var RandomSSN = require('ssn').RandomSSN;
+var bcrypt = require('bcryptjs');
 var schema = require('../schemas/Employee');
 
 var attributes = {
@@ -32,6 +33,7 @@ var seedData = []
 for (var i = 0; i < 20; i++) {
   seedData.push(createEmployee());
 }
+seedData.push({email:"test@cemaritan.com",password:bcrypt.hashSync("testing123testing", 10)});
 
 module.exports = {
   tableName: 'employee',
