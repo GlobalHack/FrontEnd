@@ -1,7 +1,13 @@
 var faker = require('faker');
 var schema = require('../schemas/Organization');
 
-var attributes = {};
+var attributes = {
+  /* RELATIONSHIPS FOR DB HERE - DB STRUCTURE IS IN SCHEMA --- */
+  employees: {
+    collection: 'employee',
+    via: 'organization'
+  }
+};
 attributes = Object.assign(schema, attributes);
 
 var createOrganization = function () {
