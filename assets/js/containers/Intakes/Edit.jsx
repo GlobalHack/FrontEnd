@@ -21,7 +21,6 @@ class IntakeAdd extends Component {
         var _this = this
         $.get(`/intakes/${ this.props.routeParams.id }`)
             .done(function(response){
-                response = Format.convertStringsToArrays(response, IntakeSchema)
                 _this.setState({
                     hasData:true,
                     data: response,

@@ -62,12 +62,3 @@ export const cleanFormData = function(formData){
     })
     return formData
 }
-
-export const convertStringsToArrays = function(response, schema){
-    Object.keys(schema).forEach(function(key){
-        if (schema[key].type == 'array' && response[key]) {
-            response[key] = response[key].split(',')
-        }
-    })
-    return response
-}
