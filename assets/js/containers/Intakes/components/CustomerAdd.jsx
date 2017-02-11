@@ -43,6 +43,14 @@ class CustomerAdd extends Component {
         this.handleError = this.handleError.bind(this)
     }
 
+    componentDidMount(){
+        if (this.state.formData.id) {
+            _this.props.handleState({
+                hasCustomerId: true
+            })
+        }
+    }
+
     handleError() {
         console.log("there is an error!")
         console.log(arguments)
@@ -50,9 +58,10 @@ class CustomerAdd extends Component {
 
     handleSubmit(formState) {
         var _this = this
-        if (this.props.data.id) {
+        if (this.state.formData.id) {
+            formState.formData = Format.cleanForPut( formState.formData )
             $.ajax({
-                    url: `/customers/${this.props.id}`,
+                    url: `/customers/${this.state.formData.id}`,
                     data: formState.formData,
                     method: 'PUT'
                 }).done(function( response ) {
@@ -100,7 +109,7 @@ class CustomerAdd extends Component {
                 <section className="content customer-add">
                     <Form formData={ this.state.formData } FieldTemplate={FieldTemplate} schema={schema} uiSchema={uiSchema} widgets={widgets} onError={this.handleError} onSubmit={this.handleSubmit} onChange={ this.handleChange }>
                         <div>
-                            <button className="btn btn-info" type="submit">{ this.props.data.id ? 'Update' : 'Submit' }</button>
+                            <button className="btn btn-info" type="submit">{ this.state.formData.id ? 'Update' : 'Submit' }</button>
                         </div>
                     </Form>
                 </section>

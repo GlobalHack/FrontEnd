@@ -52,13 +52,30 @@ export const flatten = function(groupedSchema){
 export const removeKeys = new Set([
     'createdAt',
     'updatedAt',
-    'created'
+    'created',
 ])
 
 export const cleanFormData = function(formData){
     Object.keys(formData).forEach(function(key){
         if (typeof formData[key] == 'undefined') delete formData[key]
         else if (removeKeys.has(key)) delete formData[key]
+    })
+    return formData
+}
+
+
+export const removePutKeys = new Set([
+    'createdAt',
+    'updatedAt',
+    'created',
+    'id',
+    'uuid'
+])
+
+export const cleanForPut = function(formData){
+    Object.keys(formData).forEach(function(key){
+        if (typeof formData[key] == 'undefined') delete formData[key]
+        else if (removePutKeys.has(key)) delete formData[key]
     })
     return formData
 }

@@ -38,7 +38,7 @@ class IntakeForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hasCustomerId: props.data || false,
+            hasCustomerId: props.data.id || false,
             data: props.data || {}
         }
         this.handleSubmit = this.handleSubmit.bind(this)
