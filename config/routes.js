@@ -43,16 +43,19 @@ module.exports.routes = {
   "r|coordinatedentrygroups/.+|page": "RootController.view",
 
   /* CUSTOMER PAGES --- */
-  "r|customers/.+|page": "RootController.view",
+  "/customers/add": "RootController.view",
+  "/customers/view": "RootController.view",
 
   /* Employee PAGES --- */
-  "r|employees/.+|page": "RootController.view",
+  "r|employees/[^\d]+|page": "RootController.view",
 
   /* INTAKES PAGES --- */
-  "r|intakes/.+|page": "RootController.view",
+  "/intakes/add": "RootController.view",
+  "/intakes/view": "RootController.view",
+  "/intakes/:id/edit": "RootController.view",
 
   /* Organization PAGES --- */
-  "r|organizations/.+|page": "RootController.view",
+  "r|organizations/[^\d]+|page": "RootController.view",
 
   /* SERVICE TESTING ROUTES --- */
   '/acuity/test': 'AcuityController.test',

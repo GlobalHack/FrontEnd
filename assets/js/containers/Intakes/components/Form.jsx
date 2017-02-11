@@ -1,87 +1,130 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router';
-import { Link } from 'react-router'
 
-import PhoneNumber from 'components/PhoneNumber'
-import Interests from './Interests'
-import Address from 'components/Address'
-import IncrementInput from 'components/IncrementInput' 
+/* SERVICES --- */
+import * as FormUI from 'services/FormUI'
+import * as Format from 'services/Format'
 
-import * as Defaults from 'services/Defaults'
+/* COMPONENTS --- */
+import Form from "react-jsonschema-form"
+import FieldTemplate from 'components/FieldTemplate'
+import CustomerAdd from './CustomerAdd'
 
-import * as CustomerActions from 'actions/Customer'
+let IntakeSchema = require('schemas/Intake')
 
-@connect(state => ({ }))
+/* FORMAT TO ACCOMODATE DIFFERENCES BETWEEN SERVER SIDE AND CLIENT SIDE SCHEMA --- */
+IntakeSchema = Format.schema(IntakeSchema)
+IntakeSchema = Format.removeRequire(IntakeSchema)
 
-class EditForm extends Component {
-  constructor(props){
-      super(props)
-      this.handleSubmit = this.handleSubmit.bind(this)
-  }
+/* GROUP FORM ELEMENTS ------------------------------------------------------------ */
+/* NOTE: WHEN YOU GROUP FORM ELEMENTS, YOU MUST FLATTEN THEM BEFORE SUBMITTING DATA */
+IntakeSchema = FormUI.GroupSchema(IntakeSchema, new Set(['customer', 'complete', 'employee']))
 
-  handleSubmit(ev){
-    ev.preventDefault()
-    var formData = Defaults.customer( $(ev.target).serializeObject() )
-    var _this = this
-    if (this.props.customer.firstName) {
-        $.ajax({
-            url: ev.target.action,
-            type: 'PUT',
-            data: formData,
-            success: function(response) {
-                if (!response.homes) response.homes = []
-                _this.props.dispatch( CustomerActions.updateCustomer(response) )
-                browserHistory.push(`/customers/${response.id}/edit`)
-            }
-        });
-    } else {
-        $.post(ev.target.action, formData, function(response){
-            _this.props.dispatch( CustomerActions.addCustomer(response) )
-            browserHistory.push(`/customers/${response.id}/edit`)
-        })
+/* GENERATE UI SCHEMA --- */
+let uiSchema = FormUI.Schema(IntakeSchema)
+
+/* HIDE REFERENCE INPUTS */
+uiSchema.customer = { "ui:widget" : "hidden" }
+uiSchema.employee = { "ui:widget" : "hidden" }
+
+const widgets = FormUI.Widgets;
+const schema = {
+    type: "object",
+    properties: IntakeSchema
+}
+
+class IntakeForm extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            hasCustomerId: props.data || false,
+            data: props.data || {}
+        }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleState = this.handleState.bind(this);
     }
 
-  }
+    removeChildData(formData) {
+        delete formData.customer
+        delete formData.employee
+        return formData
+    }
 
-  render() {
-    return (
-        <form method="POST" onSubmit={ this.handleSubmit } action={`/customers${ this.props.routeParams.customerId ? `/${this.props.routeParams.customerId}` : '' }`}>
-            <div className="customer-input-card full">
-                <Link to="/" className="back-link">&lt; Back to All Customers</Link>
-                <span className="subhead-lockup">
-                    <h2>Customer Information</h2>
-                </span>
-                <div className="flex-wrapper flex-between">
-                    <div className="input-with-labels">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" placeholder="Walt" name="firstName" defaultValue={ this.props.customer.firstName } />
-                    </div>
-                    <div className="input-with-labels">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" placeholder="Disney" name="lastName" defaultValue={ this.props.customer.lastName } />
-                    </div>
-                    <div className="input-with-labels">
-                        <label htmlFor="email">Email</label>
-                        <input type="text" placeholder="walt@disney.com" name="email" defaultValue={ this.props.customer.email } />
-                    </div>
-                    <div className="input-with-labels">
-                        <label htmlFor="lastName">Phone Number</label>
-                        <PhoneNumber name="phone" defaultValue={ this.props.customer.phone } />
-                    </div>
-                    <Address customer={ this.props.customer } />
-                    <Interests customer={ this.props.customer } />
-                </div>
-                <button> { this.props.customer.firstName ? 'Update' : 'Submit' }</button>
-            </div>
-        </form>
-    );
-  }
+    handleState(state){
+        if (state.data) {
+            state.data = {
+                ...this.state.data,
+                ...state.data
+            }
+        }
+        this.setState( state )
+    }
+
+    handleError() {
+        console.warn("We have an error in the Form!")
+        console.log(arguments)
+    }
+
+    handleSubmit(formState) {
+        var formData = Format.flatten( formState.formData )
+        formData = Format.cleanFormData( formData )
+        if (this.props.id) {
+            $.ajax({
+                    url: `/intakes/${this.props.id}`,
+                    data: formData,
+                    method: 'PUT'
+                }).done(function( response ) {
+                    browserHistory.push('/intakes/view');
+                })
+                .fail(function( response) {
+                    alert('update failed - see console for details')
+                    console.log('PUT ERROR:', response)
+                })
+        } else {
+            $.post('/intakes', formData)
+                .done(function( response ) {
+                    browserHistory.push('/intakes/view');
+                })
+                .fail(function( response) {
+                    alert('submit failed - see console for details')
+                    console.log('POST ERROR:', response)
+                })
+        }
+    }
+
+    render() {
+        // we have some string fields that should be replaced with this multiple-choice-list
+        // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
+        var customerData = this.state.data.customer
+        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']))
+        return (
+                <section className="content intake-add">
+                    <CustomerAdd handleState={ this.handleState } data={ customerData } />
+                    {
+                        this.state.hasCustomerId ?
+                            <Form
+                                FieldTemplate={FieldTemplate}
+                                schema={schema}
+                                uiSchema={uiSchema}
+                                widgets={widgets}
+                                formData={ intakeData }
+                                onError={this.handleError}
+                                onChange={this.handleChange}
+                                onSubmit={this.handleSubmit} />
+                            : null
+                    }                    
+                    
+                </section>
+        );
+    }
 }
 
-EditForm.defaultProps = {
-    customer: {},
-    routeParams: {}
+IntakeForm.defaultProps = {
+    data: {
+        customer:{},
+        employee:{}
+    }
 }
 
-export default EditForm
+export default IntakeForm

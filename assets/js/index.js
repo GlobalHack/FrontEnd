@@ -26,6 +26,7 @@ import Employees from 'containers/Employees'
 import EmployeesView from 'containers/Employees/View'
 import Intakes from 'containers/Intakes'
 import IntakeAdd from 'containers/Intakes/Add'
+import IntakeEdit from 'containers/Intakes/Edit'
 import IntakesView from 'containers/Intakes/View'
 import Organizations from 'containers/Organizations'
 import OrganizationsAdd from 'containers/Organizations/Add'
@@ -89,6 +90,7 @@ render((
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>
           <Route path="/intakes/add" component={ IntakeAdd } />
+          <Route path="/intakes/:id/edit" component={ IntakeEdit } />
           <Route path="/intakes/view" component={ IntakesView } />
         </Route>
         <Route path="/organizations" component={ Organizations } onEnter={requireAuth}>

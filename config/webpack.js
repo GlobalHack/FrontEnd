@@ -6,9 +6,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractCSS = new ExtractTextPlugin('./../../styles/app/styles.css')
 
 var plugins = [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     extractCSS,
+    new webpack.HotModuleReplacementPlugin(),
 
     /* Copy sails.io.js unmolested: */
     new CopyWebpackPlugin([

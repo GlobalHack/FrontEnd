@@ -12,18 +12,21 @@ module.exports = {
     type: 'string',
     size: 64,
     columnName: 'first_name',
-    title:'First Name'
+    title:'First Name',
+    required: true
   },
   lastName: {
     type: 'string',
     size: 64,
     columnName: 'last_name',
-    title:'Last Name'
+    title:'Last Name',
+    required: true
   },
   ssn: {
     type: 'string',
     size: 11,
-    title:'SSN'
+    title:'SSN',
+    required: true
   },
   domesticViolence: {
     type: 'boolean',
@@ -41,6 +44,7 @@ module.exports = {
       return new Date();
     },
     columnName: 'date_of_birth',
-    title:'Date of Birth'
+    title:'Date of Birth',
+    required:true
   }
 };

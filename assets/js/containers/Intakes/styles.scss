@@ -1,1 +1,12 @@
 /* INCLUDE STYLES HERE THAT ARE EXCLUSIVE TO THE INTAKE CONTAINER --- */
+section[class*="intake"] {
+    .field-array .field-input-wrapper {
+        flex-wrap:wrap;
+    }
+    .field-input-wrapper > label {
+        padding-right:3rem;
+    }
+    select[id*="Risk"] {
+        width:100%;
+    }
+}

@@ -1,8 +1,8 @@
 var faker = require('faker');
 var schema = require('../schemas/Intake');
-Object.keys(schema).forEach(function(schemaKey){
-    delete schema[ schemaKey ].title;
-});
+
+/* CLEAN ANYTHING FROM THE SCHEMA THAT'S FOR THE CLIENT ONLY --- */
+schema = format.schema( schema )
 
 var attributes = {
     /* RELATIONSHIPS FOR DB HERE - DB STRUCTURE IS IN SCHEMA --- */

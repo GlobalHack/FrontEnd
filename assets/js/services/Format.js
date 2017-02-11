@@ -16,7 +16,6 @@ export const phone = (number) => {
 export const schema = (schemaObject, client=true) => {
     if (client) {
         Object.keys(schemaObject).forEach(function(schemaKey){
-            delete schemaObject[ schemaKey ].required;
             if (schemaObject[ schemaKey ].columnName) delete schemaObject[ schemaKey ].columnName;
             if (schemaObject[ schemaKey ].type == 'date') {
                 schemaObject[ schemaKey ].type = 'string';
@@ -26,4 +25,49 @@ export const schema = (schemaObject, client=true) => {
         delete schemaObject.created;
     }
     return schemaObject
+}
+
+export const removeRequire = (schemaObject) => {
+    Object.keys(schemaObject).forEach(function(schemaKey){
+        if (schemaObject[ schemaKey ].required) delete schemaObject[ schemaKey ].required;
+    })
+    return schemaObject
+}
+
+export const flatten = function(groupedSchema){
+    var schema = {}
+    Object.keys(groupedSchema).forEach(function(key){
+        if (typeof groupedSchema[key] == 'object') {
+            schema = {
+                ...schema,
+                ...groupedSchema[key]
+            }
+        } else {
+            schema[key] = groupedSchema[key]
+        }
+    })
+    return schema
+}
+
+export const removeKeys = new Set([
+    'createdAt',
+    'updatedAt',
+    'created'
+])
+
+export const cleanFormData = function(formData){
+    Object.keys(formData).forEach(function(key){
+        if (typeof formData[key] == 'undefined') delete formData[key]
+        else if (removeKeys.has(key)) delete formData[key]
+    })
+    return formData
+}
+
+export const convertStringsToArrays = function(response, schema){
+    Object.keys(schema).forEach(function(key){
+        if (schema[key].type == 'array' && response[key]) {
+            response[key] = response[key].split(',')
+        }
+    })
+    return response
 }

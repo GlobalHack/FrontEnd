@@ -15,7 +15,14 @@ let CustomerSchema = require('schemas/Customer')
 CustomerSchema = Format.schema(CustomerSchema)
 
 /* GENERATE UI SCHEMA --- */
-const uiSchema = FormUI.Schema(CustomerSchema)
+let uiSchema = FormUI.Schema(CustomerSchema)
+uiSchema["ui:order"] = [
+    "firstName",
+    "lastName",
+    "ssn",
+    "dateOfBirth",
+    "*"
+]
 
 const widgets = FormUI.Widgets;
 const formData = { };
@@ -28,7 +35,12 @@ const schema = {
 class CustomerAdd extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            formData: props.data || {}
+        }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
 
     handleError() {
@@ -36,26 +48,70 @@ class CustomerAdd extends Component {
         console.log(arguments)
     }
 
-    handleSubmit(formData) {
-        alert('form data logged in console')
-        console.log(formData.formData)
+    handleSubmit(formState) {
+        var _this = this
+        if (this.props.data.id) {
+            $.ajax({
+                    url: `/customers/${this.props.id}`,
+                    data: formState.formData,
+                    method: 'PUT'
+                }).done(function( response ) {
+                    _this.props.handleState({
+                        hasCustomerId: true,
+                        data: {
+                            customer: response
+                        }
+                    })
+                    _this.setState({
+                        formData: response
+                    })
+                })
+                .fail(function( response) {
+                    alert('update failed - see console for details')
+                    console.log('PUT ERROR:', response)
+                })
+        } else {
+            $.post('/customers', formState.formData)
+                .done(function( response ) {
+                    _this.props.handleState({
+                        hasCustomerId: true,
+                        customerId: response.id,
+                        formData: {
+                            customer: response.id
+                        }
+                    })
+                    _this.setState({
+                        formData: response
+                    })
+                })
+                .fail(function( response) {
+                    alert('submit failed - see console for details')
+                    console.log('POST ERROR:', response)
+                })
+        }
+    }
+
+    handleChange(formState) {
+        // nothing for now
     }
 
     render() {
         return (
                 <section className="content customer-add">
-                    <Form
-                        FieldTemplate={FieldTemplate}
-                        schema={schema}
-                        uiSchema={uiSchema}
-                        widgets={widgets}
-                        onError={this.handleError}
-                        onSubmit={this.handleSubmit} />
+                    <Form formData={ this.state.formData } FieldTemplate={FieldTemplate} schema={schema} uiSchema={uiSchema} widgets={widgets} onError={this.handleError} onSubmit={this.handleSubmit} onChange={ this.handleChange }>
+                        <div>
+                            <button className="btn btn-info" type="submit">{ this.props.data.id ? 'Update' : 'Submit' }</button>
+                        </div>
+                    </Form>
                 </section>
         );
     }
 }
 
 require('./CustomerAdd.scss')
+
+CustomerAdd.defaultProps = {
+    data: {}
+}
 
 export default CustomerAdd;

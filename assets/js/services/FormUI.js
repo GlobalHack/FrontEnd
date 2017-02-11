@@ -11,7 +11,7 @@ export const Widgets = {
 }
 
 export const Excluded = new Set([
-    'General_1'
+    /* EXCLUDE INPUTS HERE --- */
 ])
 
 export const Remove = new Set([
@@ -47,18 +47,49 @@ export const Schema = (schema) => {
 
 
 
-export const GroupSchema = (schema) => {
+export const GroupSchema = (schema, excluded=new Set()) => {
     let groupSchema = {}
     Object.keys(schema).forEach(function(key){
-        let groupKey = key.replace(/_.*/, '')
-        if (!groupSchema[groupKey]) {
-            groupSchema[groupKey] = {
-                type: "object",
-                title: groupKey,
-                properties: {}
+        if (excluded.has(key)) {
+            groupSchema[key] = schema[key]
+        } else {
+            let groupKey = key.replace(/_.*/, '')
+            if (!groupSchema[groupKey]) {
+                groupSchema[groupKey] = {
+                    type: "object",
+                    title: groupKey,
+                    properties: {}
+                }
             }
+            groupSchema[groupKey]['properties'][key] = schema[key];
         }
-        groupSchema[groupKey]['properties'][key] = schema[key];
     })
     return groupSchema
+}
+
+export const GroupData = (schema, excluded=new Set()) => {
+    let groupData = {}
+    Object.keys(schema).forEach(function(key){
+        if (excluded.has(key)) {
+            groupData[key] = schema[key]
+        } else {
+            let groupKey = key.replace(/_.*/, '')
+            if (!groupData[groupKey]) groupData[groupKey] = {}
+            groupData[groupKey][key] = schema[key];
+        }
+    })
+    return groupData
+}
+
+export const defaults = (schema) => {
+    var defaults = {}
+    console.log( schema )
+    Object.keys(schema).forEach(function(key){
+        if (schema[key].required) {
+            if (schema[key].type == 'integer') defaults[key] = 0
+            else if (schema[key].type == 'boolean') defaults[key] = false
+            else if (schema[key].type == 'string') defaults[key] = ''
+        }
+    })
+    return defaults
 }

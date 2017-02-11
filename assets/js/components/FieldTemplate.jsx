@@ -6,13 +6,24 @@ class FieldTemplate extends Component {
   }
 
   render() {
-    const {id, classNames, label, help, required, description, errors, children, schema} = this.props
+    const {id, classNames, label, help, required, description, errors, children, schema, uiSchema} = this.props
     if (schema.type == "object") {
         return (
             <div>
                 {children}
             </div>
         )
+    }
+    if (uiSchema) {
+        if (uiSchema["ui:widget"]) {
+            if (uiSchema["ui:widget"] == 'hidden') {
+                return (
+                    <div>
+                        {children}
+                    </div>
+                )
+            }
+        }
     }
     return (
         <div className={classNames}>
