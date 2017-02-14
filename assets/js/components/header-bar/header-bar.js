@@ -89,7 +89,7 @@ export class HeaderBar extends React.Component {
                       {profile.name} - OrganizationName
                       {/*<small>OrganizationRole</small>*/}
                     </p>
-                    
+
                     <br />
 
                   </li>
