@@ -8,7 +8,7 @@ class IntakeRow extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.customer.uuid}
+                    {this.props.customer?this.props.customer.uuid:"None"}
                 </td>
                 <td>
                     {this.props.created}

@@ -70,11 +70,11 @@ export class HeaderBar extends React.Component {
           <div className="navbar-custom-menu">
             <ul className="nav navbar-nav">
               {/* Messages: style can be found in dropdown.less*/}
-              <HeaderMessages />
+              {/*<HeaderMessages />*/}
               {/* Notifications: style can be found in dropdown.less */}
-              <HeaderNotifications />
+              {/*<HeaderNotifications />*/}
               {/* Tasks: style can be found in dropdown.less */}
-              <HeaderTasks />
+              {/*<HeaderTasks />*/}
               {/* User Account: style can be found in dropdown.less */}
               <li className="dropdown user user-menu">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
@@ -87,21 +87,24 @@ export class HeaderBar extends React.Component {
                     <img src="http://lorempixel.com/160/160/" className="img-circle" alt="User Image"/>
                     <p>
                       {profile.name} - OrganizationName
-                      <small>OrganizationRole</small>
+                      {/*<small>OrganizationRole</small>*/}
                     </p>
+                    
+                    <br />
+
                   </li>
                   {/* Menu Body */}
-                  <li className="user-body">
-                    <div className="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div className="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div className="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
+                  {/*<li className="user-body">*/}
+                    {/*<div className="col-xs-4 text-center">*/}
+                      {/*<a href="#">Followers</a>*/}
+                    {/*</div>*/}
+                    {/*<div className="col-xs-4 text-center">*/}
+                      {/*<a href="#">Sales</a>*/}
+                    {/*</div>*/}
+                    {/*<div className="col-xs-4 text-center">*/}
+                      {/*<a href="#">Friends</a>*/}
+                    {/*</div>*/}
+                  {/*</li>*/}
                   {/* Menu Footer */}
                   <li className="user-footer">
                     <div className="pull-left">

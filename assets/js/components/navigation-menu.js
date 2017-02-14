@@ -17,15 +17,15 @@ define(
             {/* sidebar: style can be found in sidebar.less */}
             <section className="sidebar">
               {/* search form */}
-              <form action="#" method="get" className="sidebar-form">
-                <div className="input-group">
-                  <input type="text" name="q" className="form-control" placeholder="Search..."/>
-                  <span className="input-group-btn">
-                                    <button type="submit" name="search" id="search-btn" className="btn btn-flat"><i
-                                      className="fa fa-search"></i></button>
-                                  </span>
-                </div>
-              </form>
+              {/*<form action="#" method="get" className="sidebar-form">*/}
+                {/*<div className="input-group">*/}
+                  {/*<input type="text" name="q" className="form-control" placeholder="Search..."/>*/}
+                  {/*<span className="input-group-btn">*/}
+                                    {/*<button type="submit" name="search" id="search-btn" className="btn btn-flat"><i*/}
+                                      {/*className="fa fa-search"></i></button>*/}
+                                  {/*</span>*/}
+                {/*</div>*/}
+              {/*</form>*/}
               {/* /.search form */}
               {/* sidebar menu: : style can be found in sidebar.less */}
               <ul className="sidebar-menu">
@@ -92,10 +92,10 @@ define(
                     <li><Link to="/organizations/view"><i className="fa fa-circle-o"></i> View Organizations</Link></li>
                   </ul>
                 </li>
-                <li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a>
-                </li>
-                <li className="header">LABELS</li>
-                <li><a href="#"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                {/*<li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a>*/}
+                {/*</li>*/}
+                {/*<li className="header">LABELS</li>*/}
+                {/*<li><a href="#"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>*/}
                 <li><a width="150" height="50" href="https://auth0.com/?utm_source=oss&utm_medium=gp&utm_campaign=oss"
                        target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150"
                                                                                                       height="50"

@@ -12,7 +12,7 @@ module.exports = {
   "Housing_2": {
     "type": "integer",
     "defaultsTo": 0,
-    "title": "In the past three years, how many times have you been housed and then homeless?"
+    "title": "In the past three years, how many times have you been housed and then homeless again?"
   },
   "Risks_1": {
     "type": "integer",
@@ -70,7 +70,7 @@ module.exports = {
     title: "I am going to read types of places people sleep. Please tell me which one that you sleep at most often. (Select only one.)",
     items: {
         type: "string",
-        enum: ["foo", "bar", "fuzz", "qux"],
+        enum: ["Shelter", "Street, Sidewalk or Doorway", "Car, Van or RV", "Bus or Subway", "Beach, Riverbed or Park"],
     },
     uniqueItems: true
   },
@@ -115,7 +115,7 @@ module.exports = {
     "title": "Where do you usually go for healthcare or when you're not feeling well?",
     items: {
         type: "string",
-        enum: ["foo", "bar", "fuzz", "qux"],
+        enum: ["Hospital", "Clinic", "VA", "Does not go for care"],
     },
     uniqueItems: true
   },
@@ -192,7 +192,7 @@ module.exports = {
   "Wellness_16": {
     "type": "boolean",
     defaultsTo: false,
-    "title": "Have you ever consumed alcohol and/or drugs almost every day or every other day for the past month?"
+    "title": "Have you ever consumed alcohol and/or drugs almost every day or every day for the past month?"
   },
   "Wellness_17": {
     "type": "boolean",

@@ -7,7 +7,7 @@ class EmployeeRow extends Component {
     return (
       <tr>
         <td>
-          { this.props.organization.name }
+          { this.props.organization?this.props.organization.name:"None" }
         </td>
         <td>
           { this.props.firstName }
@@ -19,7 +19,7 @@ class EmployeeRow extends Component {
           { this.props.ssn }
         </td>
         <td>
-          { this.props.role.title }
+          { this.props.role?this.props.role.title:"None" }
         </td>
       </tr>
     );
