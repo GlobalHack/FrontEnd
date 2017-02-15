@@ -59,17 +59,15 @@ class CustomerAdd extends Component {
     handleSubmit(formState) {
         var _this = this;
         if (this.state.formData.id) {
-            formState.formData = Format.cleanForPut( formState.formData )
+            var formData = Format.cleanForPut( formState.formData )
             $.ajax({
                     url: `/customers/${this.state.formData.id}`,
-                    data: formState.formData,
+                    data: formData,
                     method: 'PUT'
                 }).done(function( response ) {
                     _this.props.handleState({
                         hasCustomerId: true,
-                        data: {
-                            customer: response
-                        }
+                        customer:response
                     })
                     _this.setState({
                         formData: response
@@ -80,14 +78,13 @@ class CustomerAdd extends Component {
                     console.log('PUT ERROR:', response)
                 })
         } else {
-            $.post('/customers', formState.formData)
+            var formData = Format.cleanFormData( formState.formData )
+            $.post('/customers', formData)
                 .done(function( response ) {
                     _this.props.handleState({
                         hasCustomerId: true,
                         customerId: response.id,
-                        formData: {
-                            customer: response.id
-                        }
+                        customer: response
                     })
                     _this.setState({
                         formData: response
@@ -107,7 +104,7 @@ class CustomerAdd extends Component {
     render() {
         return (
                 <section className="content customer-add">
-                    <Form formData={ this.state.formData } FieldTemplate={FieldTemplate} schema={schema} uiSchema={uiSchema} widgets={widgets} onError={this.handleError} onSubmit={this.handleSubmit} onChange={ this.handleChange }>
+                    <Form formData={ Format.cleanFormData(this.state.formData) } FieldTemplate={FieldTemplate} schema={schema} uiSchema={uiSchema} widgets={widgets} onError={this.handleError} onSubmit={this.handleSubmit} onChange={ this.handleChange }>
                         <div>
                             <button className="btn btn-info" type="submit">{ this.state.formData.id ? 'Update' : 'Submit' }</button>
                         </div>

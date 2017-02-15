@@ -23,7 +23,7 @@ class IntakeAdd extends Component {
             .done(function(response){
                 _this.setState({
                     hasData:true,
-                    data: response,
+                    data: Format.cleanFormData(response),
                     hasError: false
                 })
             })

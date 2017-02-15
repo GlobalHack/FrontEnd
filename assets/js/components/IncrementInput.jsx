@@ -14,9 +14,9 @@ class IncrementInput extends Component {
       this.handleIncrement = this.handleIncrement.bind(this)
   }
 
-  componentDidMount(){
-      this.props.onChange( this.state.val )
-  }
+//   componentDidMount(){
+//       this.props.onChange( this.state.val )
+//   }
 
   handleChange(ev) {
       ev.preventDefault();

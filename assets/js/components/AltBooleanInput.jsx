@@ -6,9 +6,8 @@ require('styles/components/AltBooleanInput')
 class BooleanInput extends Component {
     constructor(props) {
         super(props)
-        console.log(props)
         this.state = {}
-        if (typeof props.value !== 'undefined') this.state.val = props.value
+        if (typeof props.value !== 'undefined' && props.value !== null) this.state.val = props.value
 
         this.setTrue = this.setTrue.bind(this);
         this.setFalse = this.setFalse.bind(this);

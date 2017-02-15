@@ -57,7 +57,7 @@ export const removeKeys = new Set([
 
 export const cleanFormData = function(formData){
     Object.keys(formData).forEach(function(key){
-        if (typeof formData[key] == 'undefined') delete formData[key]
+        if (typeof formData[key] == 'undefined' || formData[key] === null) delete formData[key]
         else if (removeKeys.has(key)) delete formData[key]
     })
     return formData
@@ -74,7 +74,7 @@ export const removePutKeys = new Set([
 
 export const cleanForPut = function(formData){
     Object.keys(formData).forEach(function(key){
-        if (typeof formData[key] == 'undefined') delete formData[key]
+        if (typeof formData[key] == 'undefined' || formData[key] === null) delete formData[key]
         else if (removePutKeys.has(key)) delete formData[key]
     })
     return formData

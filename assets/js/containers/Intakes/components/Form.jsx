@@ -51,14 +51,8 @@ class IntakeForm extends Component {
         return formData
     }
 
-    handleState(state){
-        if (state.data) {
-            state.data = {
-                ...this.state.data,
-                ...state.data
-            }
-        }
-        this.setState( state )
+    handleState(newState){
+        this.setState( newState )
     }
 
     handleError() {
@@ -68,8 +62,8 @@ class IntakeForm extends Component {
 
     handleSubmit(formState) {
         var formData = Format.flatten( formState.formData )
-        formData = Format.cleanFormData( formData )
         if (this.props.id) {
+            formData = Format.cleanForPut( formData )
             $.ajax({
                     url: `/intakes/${this.props.id}`,
                     data: formData,
@@ -82,6 +76,7 @@ class IntakeForm extends Component {
                     console.log('PUT ERROR:', response)
                 })
         } else {
+            formData = Format.cleanFormData( formData )
             $.post('/intakes', formData)
                 .done(function( response ) {
                     browserHistory.push('/intakes/view');
@@ -98,6 +93,7 @@ class IntakeForm extends Component {
         // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
         var customerData = this.state.data.customer
         var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']))
+        if (this.state.customer) intakeData.customer = this.state.customer.id
         return (
                 <section className="content intake-add">
                     <CustomerAdd handleState={ this.handleState } data={ customerData } />
