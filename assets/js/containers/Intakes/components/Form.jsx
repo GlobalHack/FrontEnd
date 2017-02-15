@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 /* SERVICES --- */
 import * as FormUI from 'services/FormUI'
 import * as Format from 'services/Format'
+import * as AcuityService from 'services/AcuityService'
 
 /* COMPONENTS --- */
 import Form from "react-jsonschema-form"
@@ -61,7 +62,9 @@ class IntakeForm extends Component {
     }
 
     handleSubmit(formState) {
-        var formData = Format.flatten( formState.formData )
+        var formData = Format.flatten( formState.formData );
+        formData.score = AcuityService.score({intake:formData});
+        console.log(formData.score);
         if (this.props.id) {
             formData = Format.cleanForPut( formData )
             $.ajax({
@@ -109,8 +112,8 @@ class IntakeForm extends Component {
                                 onChange={this.handleChange}
                                 onSubmit={this.handleSubmit} />
                             : null
-                    }                    
-                    
+                    }
+
                 </section>
         );
     }

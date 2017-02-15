@@ -14,6 +14,9 @@ class IntakeRow extends Component {
                     {this.props.created}
                 </td>
                 <td>
+                    {this.props.score}
+                </td>
+                <td>
                     {String(this.props.complete)}
                 </td>
                 <td>

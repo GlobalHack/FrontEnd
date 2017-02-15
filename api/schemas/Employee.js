@@ -12,6 +12,9 @@ module.exports = {
     size: 64,
     columnName: 'last_name'
   },
+  email: {
+    type: 'string'
+  },
   ssn: {
     type: 'string',
     size: 11

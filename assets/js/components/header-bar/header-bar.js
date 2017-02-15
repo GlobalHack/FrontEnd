@@ -1,5 +1,5 @@
 import React, {PropTypes as T} from 'react'
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import $ from 'jquery'
 import AuthService from '../../utils/AuthService'
 import HeaderMessages from './header-messages/header-messages'
@@ -55,12 +55,14 @@ export class HeaderBar extends React.Component {
     return (
       <header className="main-header">
         {/* Logo */}
-        <a href="index2.html" className="logo">
+
+        <Link to="/home" className="logo">
           {/* mini logo for sidebar mini 50x50 pixels */}
           <span className="logo-mini"><b>A</b>LT</span>
           {/* logo for regular state and mobile devices */}
           <span className="logo-lg">Cemaritan</span>
-        </a>
+        </Link>
+
         {/* Header Navbar: style can be found in header.less */}
         <nav className="navbar navbar-static-top" role="navigation">
           {/* Sidebar toggle button*/}

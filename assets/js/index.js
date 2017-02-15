@@ -23,6 +23,7 @@ import CoordinatedEntryGroupsView from 'containers/Coordinatedentrygroups/View'
 import Customers from 'containers/Customers'
 import CustomersView from 'containers/Customers/View'
 import Employees from 'containers/Employees'
+import EmployeesAdd from 'containers/Employees/Add'
 import EmployeesView from 'containers/Employees/View'
 import Intakes from 'containers/Intakes'
 import IntakeAdd from 'containers/Intakes/Add'
@@ -88,6 +89,7 @@ render((
           <Route path="/customers/view" component={ CustomersView } />
         </Route>
         <Route path="/employees" component={ Employees } onEnter={requireAuth}>
+          <Route path="/employees/add" component={ EmployeesAdd } />
           <Route path="/employees/view" component={ EmployeesView } />
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>

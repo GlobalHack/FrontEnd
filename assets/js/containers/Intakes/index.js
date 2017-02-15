@@ -16,7 +16,7 @@ class Intakes extends Component {
             <div className="content-wrapper">
                 <section className="content-header">
                     <h1>
-                        Intakes<small>view all Intakes</small>
+                        Intakes<small>view Intakes</small>
                     </h1>
                     <ol className="breadcrumb">
                         <li><a href="#"><i className="fa fa-dashboard"></i> Intakes</a></li>

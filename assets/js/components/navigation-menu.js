@@ -30,16 +30,16 @@ define(
               {/* sidebar menu: : style can be found in sidebar.less */}
               <ul className="sidebar-menu">
                 <li className="header">MAIN NAVIGATION</li>
-                <li>
-                  <a href="#">
-                    <i className="fa fa-th"></i>
-                    <span>Users</span>
-                    <small className="label pull-right bg-green">new</small>
-                  </a>
-                  <ul className="treeview-menu">
-                    <li><Link to="/users/view"><i className="fa fa-circle-o"></i> View Users</Link></li>
-                  </ul>
-                </li>
+                {/*<li>*/}
+                  {/*<a href="#">*/}
+                    {/*<i className="fa fa-th"></i>*/}
+                    {/*<span>Users</span>*/}
+                    {/*<small className="label pull-right bg-green">new</small>*/}
+                  {/*</a>*/}
+                  {/*<ul className="treeview-menu">*/}
+                    {/*<li><Link to="/users/view"><i className="fa fa-circle-o"></i> View Users</Link></li>*/}
+                  {/*</ul>*/}
+                {/*</li>*/}
                 <li>
                   <a href="#">
                     <i className="fa fa-th"></i>
@@ -67,6 +67,7 @@ define(
                     <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
+                    <li><Link to="/employees/add"><i className="fa fa-circle-o"></i> Add Employee</Link></li>
                     <li><Link to="/employees/view"><i className="fa fa-circle-o"></i> View Employees</Link></li>
                   </ul>
                 </li>

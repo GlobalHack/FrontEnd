@@ -34,13 +34,32 @@ export class Home extends Component {
 
         <section className="content row">
           <Box
-            border={false}
+            border={true}
             width="12"
             theme="box-default"
-            title="Your Data"
-            headerMarkup={
-              <i className="fa fa-tag"></i>
-            }>
+            title="Features"
+            >
+            <h2>Accounts</h2>
+            <p>Logging into and out of the system, account creation, account administration, account
+              deletion and data security.</p>
+
+            <h2>Intake Form</h2>
+            <p>The intake form includes the standard questions that are asked and cannot
+              be removed, the possible answers to those questions (and their compliance with HUD regulations,
+              adding/removing additional questions, outputting the answers into the database, and an optimized UI of
+              the form for PC and mobile.</p>
+
+            <h2>Database</h2>
+            <p>The database is compliant with HUD standards, and ensures reasonable uptimes.</p>
+
+            <h2>API</h2>
+            <p>The API includes all features for querying your information.</p>
+
+            <h2>Coordinate Management</h2>
+            <p>The Coordinated Management System web app allows case managers to
+              build a service plan for individuals, refer them to different CoC member organizations, set up meetings
+              within those organizations, confirm the individual visited and utilized the services of the CoC member
+              organization, and track progress for each individual member.</p>
           </Box>
         </section>
       </div>

@@ -48,6 +48,7 @@ module.exports.routes = {
 
   /* Employee PAGES --- */
   "r|employees/[^\d]+|page": "RootController.view",
+  "r|employees/add": "RootController.view",
 
   /* INTAKES PAGES --- */
   "/intakes/add": "RootController.view",

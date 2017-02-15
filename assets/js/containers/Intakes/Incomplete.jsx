@@ -42,6 +42,7 @@ class IntakesView extends Component {
             <tr>
               <th>Customer UUID</th>
               <th>Created</th>
+              <th>Score</th>
               <th>Complete</th>
               <th>&nbsp;</th>
             </tr>

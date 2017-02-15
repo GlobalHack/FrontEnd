@@ -27,7 +27,7 @@ module.exports.models = {
   * See http://sailsjs.org/#!/documentation/concepts/ORM/model-settings.html  *
   *                                                                          *
   ***************************************************************************/
-  migrate: 'drop',
+  migrate: 'alter',
 
   /**
    * This method adds records to the database

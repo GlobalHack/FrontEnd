@@ -17,7 +17,7 @@ export default class AuthService extends EventEmitter {
       },
       container: 'hiw-login-container',
       theme: {
-        logo: 'http://lorempixel.com/220/220/'
+        logo: '/images/cemaritan_logo_v.1.0_sm.png'
       }
     });
     // Add callback for lock `authenticated` event

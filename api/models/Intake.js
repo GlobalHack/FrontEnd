@@ -13,6 +13,10 @@ var attributes = {
     employee: {
         model: 'employee',
         unique: true
+    },
+    score:{
+        "type": "integer",
+        defaultsTo: 0,
     }
 };
 attributes = Object.assign(schema, attributes);
@@ -72,9 +76,10 @@ var createIntake = function (customer, employee) {
     Wellness_30: faker.random.boolean(),
     customer: customer,
     employee: employee,
-    complete: faker.random.boolean()
+    complete: faker.random.boolean(),
+    score: 0
   }
-}
+};
 
 var intakeCount = 6;
 var seedData = []
