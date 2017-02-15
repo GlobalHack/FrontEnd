@@ -37,27 +37,27 @@ class CustomerAdd extends Component {
         super(props)
         this.state = {
             formData: props.data || {}
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleError = this.handleError.bind(this)
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleError = this.handleError.bind(this);
     }
 
     componentDidMount(){
         if (this.state.formData.id) {
-            _this.props.handleState({
+            this.props.handleState({
                 hasCustomerId: true
             })
         }
     }
 
     handleError() {
-        console.log("there is an error!")
-        console.log(arguments)
+        console.log("there is an error!");
+        console.log(arguments);
     }
 
     handleSubmit(formState) {
-        var _this = this
+        var _this = this;
         if (this.state.formData.id) {
             formState.formData = Format.cleanForPut( formState.formData )
             $.ajax({
