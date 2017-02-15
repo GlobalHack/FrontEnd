@@ -28,6 +28,8 @@ import Intakes from 'containers/Intakes'
 import IntakeAdd from 'containers/Intakes/Add'
 import IntakeEdit from 'containers/Intakes/Edit'
 import IntakesView from 'containers/Intakes/View'
+import IntakesComplete from 'containers/Intakes/Complete'
+import IntakesIncomplete from 'containers/Intakes/Incomplete'
 import Organizations from 'containers/Organizations'
 import OrganizationsAdd from 'containers/Organizations/Add'
 import OrganizationsView from 'containers/Organizations/View'
@@ -92,6 +94,8 @@ render((
           <Route path="/intakes/add" component={ IntakeAdd } />
           <Route path="/intakes/:id/edit" component={ IntakeEdit } />
           <Route path="/intakes/view" component={ IntakesView } />
+          <Route path="/intakes/complete" component={ IntakesComplete } />
+          <Route path="/intakes/incomplete" component={ IntakesIncomplete } />
         </Route>
         <Route path="/organizations" component={ Organizations } onEnter={requireAuth}>
           <Route path="/organizations/add" component={ OrganizationsAdd } />

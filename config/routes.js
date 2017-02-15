@@ -52,6 +52,8 @@ module.exports.routes = {
   /* INTAKES PAGES --- */
   "/intakes/add": "RootController.view",
   "/intakes/view": "RootController.view",
+  "/intakes/complete": "RootController.view",
+  "/intakes/incomplete": "RootController.view",
   "/intakes/:id/edit": "RootController.view",
 
   /* Organization PAGES --- */

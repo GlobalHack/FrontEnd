@@ -79,6 +79,8 @@ define(
                   <ul className="treeview-menu">
                     <li><Link to="/intakes/add"><i className="fa fa-circle-o"></i> Add Intake</Link></li>
                     <li><Link to="/intakes/view"><i className="fa fa-circle-o"></i> View Intakes</Link></li>
+                    <li><Link to="/intakes/complete"><i className="fa fa-circle-o"></i> Complete Intakes</Link></li>
+                    <li><Link to="/intakes/incomplete"><i className="fa fa-circle-o"></i> Incomplete Intakes</Link></li>
                     <li><a href="/intakes/csv"><i className="fa fa-circle-o"></i>Download Intakes</a></li>
                   </ul>
                 </li>
