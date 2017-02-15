@@ -1,12 +1,12 @@
 import PhoneNumber from 'components/PhoneNumber'
 import IncrementInput from 'components/IncrementInput'
-import BooleanInput from 'components/BooleanInput'
+import AltBooleanInput from 'components/AltBooleanInput'
 import AltDate from 'components/AltDate'
 
 export const Widgets = {
   phoneNumber: PhoneNumber,
   increment: IncrementInput,
-  boolean: BooleanInput,
+  boolean: AltBooleanInput,
   date: AltDate
 }
 

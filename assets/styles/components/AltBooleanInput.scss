@@ -1,0 +1,28 @@
+$borderColor: #d2d6de;
+
+.alt-boolean-input {
+    flex-shrink:0;
+    width:8.75rem;
+    input[type="checkbox"] {
+        display:none
+    }
+    .alt-boolean-toggles {
+        font-weight:500;
+        display:flex;
+        justify-content:space-between;
+        span {
+            padding:0;
+            display:inline-block;
+            text-align:center;
+            position:relative;
+            width:50%;
+            width:calc(50% - .425rem);
+            line-height:32px;
+            border:1px solid #CCC;
+            opacity:.5;
+            &.active {
+                opacity:1;
+            }
+        }
+    }
+}

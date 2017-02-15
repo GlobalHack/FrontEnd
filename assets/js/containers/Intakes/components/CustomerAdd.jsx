@@ -45,7 +45,7 @@ class CustomerAdd extends Component {
 
     componentDidMount(){
         if (this.state.formData.id) {
-            _this.props.handleState({
+            this.props.handleState({
                 hasCustomerId: true
             })
         }
