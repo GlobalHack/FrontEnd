@@ -7,7 +7,7 @@ class CoordinatedEntryGroupRow extends Component {
     return (
       <tr>
         <td>
-          { this.props.lead_organization.name }
+          { this.props.lead_organization?this.props.lead_organization.name:"None" }
         </td>
         <td>
           { this.props.name }
