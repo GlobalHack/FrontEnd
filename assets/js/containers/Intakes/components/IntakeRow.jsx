@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 
+import * as DateService from 'services/DateService'
+
 class IntakeRow extends Component {
 
     render() {
@@ -8,10 +10,13 @@ class IntakeRow extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.customer?this.props.customer.uuid:"None"}
+                    {this.props.customer?this.props.customer.firstName:"None"}
                 </td>
                 <td>
-                    {this.props.created}
+                    {this.props.customer?this.props.customer.lastName:"None"}
+                </td>
+                <td>
+                    {DateService.format(this.props.created)}
                 </td>
                 <td>
                     {this.props.score}

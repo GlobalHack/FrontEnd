@@ -40,7 +40,8 @@ class IntakesView extends Component {
         <table className="table table-responsive table-sm table-hover table-bordered table-striped ">
           <thead className="thead-default">
             <tr>
-              <th>Customer UUID</th>
+              <th>Customer First Name</th>
+              <th>Customer Last Name</th>
               <th>Created</th>
               <th>Score</th>
               <th>Complete</th>
