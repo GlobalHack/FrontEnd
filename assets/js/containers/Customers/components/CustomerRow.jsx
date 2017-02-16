@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 
+import * as DateService from 'services/DateService'
+
 class CustomerRow extends Component {
 
   render() {
     if (!this.props) return null
     return (
       <tr>
-        <td>
-          { this.props.uuid }
-        </td>
         <td>
           { this.props.firstName }
         </td>
@@ -25,7 +24,7 @@ class CustomerRow extends Component {
           { String(this.props.youth) }
         </td>
         <td>
-          { this.props.dateOfBirth }
+          { DateService.formatNoTZ(this.props.dateOfBirth) }
         </td>
       </tr>
     );
