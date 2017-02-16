@@ -40,7 +40,6 @@ class CustomersView extends Component {
         <table className="table table-responsive table-sm table-hover table-bordered table-striped ">
           <thead className="thead-default">
             <tr>
-              <th>UUID</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>SSN</th>
