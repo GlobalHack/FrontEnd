@@ -18,7 +18,20 @@ export default class AuthService extends EventEmitter {
       container: 'hiw-login-container',
       theme: {
         logo: '/images/cemaritan_logo_v.1.0_sm.png'
-      }
+      },
+      initialScreen: 'signUp',
+      additionalSignUpFields: [
+        {
+          name: "firstName",
+          placeholder: "Enter your first name",
+          icon: "/images/badge-icon.ico",
+        },
+        {
+          name: "lastName",
+          placeholder: "Enter your last name",
+          icon: "/images/badge-icon.ico",
+        }
+      ]
     });
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this));

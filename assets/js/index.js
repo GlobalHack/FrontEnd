@@ -42,9 +42,6 @@ const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
 import FourOhFour from 'components/FourOhFour'
-import ChangePassword from 'containers/Settings/ChangePassword'
-import Logout from 'containers/Settings/Logout'
-import Account from 'containers/Account/Account'
 
 /* COMBINE REDUCERS --- */
 import * as reducers from './reducers'
@@ -80,28 +77,28 @@ render((
           <IndexRoute component={ Settings }/>
         </Route>
         <Route path="/users" component={ Users } onEnter={requireAuth}>
-          <Route path="/users/view" component={ UsersView } />
+          <Route path="/users/view" component={ UsersView }/>
         </Route>
         <Route path="/coordinatedentrygroups" component={ CoordinatedEntryGroups } onEnter={requireAuth}>
-          <Route path="/coordinatedentrygroups/view" component={ CoordinatedEntryGroupsView } />
+          <Route path="/coordinatedentrygroups/view" component={ CoordinatedEntryGroupsView }/>
         </Route>
         <Route path="/customers" component={ Customers } onEnter={requireAuth}>
-          <Route path="/customers/view" component={ CustomersView } />
+          <Route path="/customers/view" component={ CustomersView }/>
         </Route>
         <Route path="/employees" component={ Employees } onEnter={requireAuth}>
-          <Route path="/employees/add" component={ EmployeesAdd } />
-          <Route path="/employees/view" component={ EmployeesView } />
+          <Route path="/employees/add" component={ EmployeesAdd }/>
+          <Route path="/employees/view" component={ EmployeesView }/>
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>
-          <Route path="/intakes/add" component={ IntakeAdd } />
-          <Route path="/intakes/:id/edit" component={ IntakeEdit } />
-          <Route path="/intakes/view" component={ IntakesView } />
-          <Route path="/intakes/complete" component={ IntakesComplete } />
-          <Route path="/intakes/incomplete" component={ IntakesIncomplete } />
+          <Route path="/intakes/add" component={ IntakeAdd }/>
+          <Route path="/intakes/:id/edit" component={ IntakeEdit }/>
+          <Route path="/intakes/view" component={ IntakesView }/>
+          <Route path="/intakes/complete" component={ IntakesComplete }/>
+          <Route path="/intakes/incomplete" component={ IntakesIncomplete }/>
         </Route>
         <Route path="/organizations" component={ Organizations } onEnter={requireAuth}>
-          <Route path="/organizations/add" component={ OrganizationsAdd } />
-          <Route path="/organizations/view" component={ OrganizationsView } />
+          <Route path="/organizations/add" component={ OrganizationsAdd }/>
+          <Route path="/organizations/view" component={ OrganizationsView }/>
         </Route>
         <Route path="*" component={ FourOhFour }/>
       </Route>
