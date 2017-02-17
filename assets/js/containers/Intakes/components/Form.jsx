@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router';
 /* SERVICES --- */
 import * as FormUI from 'services/FormUI'
 import * as Format from 'services/Format'
+import * as DateService from 'services/DateService'
 import * as AcuityService from 'services/AcuityService'
 
 /* COMPONENTS --- */
@@ -113,10 +114,13 @@ class IntakeForm extends Component {
         var customerData = this.state.data.customer;
         var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']));
         //var score = this.state.score || this.state.data.score;
-        if (this.state.customer) intakeData.customer = this.state.customer.id;
+        if (this.state.customer){
+          intakeData.customer = this.state.customer.id;
+          if (!intakeData.General_1) intakeData.General_1 = DateService.calculateAge(this.state.customer.dateOfBirth);
+        }
         return (
                 <section className="content intake-add">
-                  <ScorePreview score={ this.state.score || this.state.data.score }></ScorePreview>
+                  <ScorePreview score={ this.state.score || this.state.data.score } />
                     <CustomerAdd handleState={ this.handleState } data={ customerData } />
                     {
                         this.state.hasCustomerId ?
