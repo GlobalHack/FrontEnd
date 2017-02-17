@@ -18,7 +18,7 @@ class IntakeAdd extends Component {
     }
 
     componentDidMount() {
-        var _this = this
+        var _this = this;
         $.get(`/intakes/${ this.props.routeParams.id }`)
             .done(function(response){
                 _this.setState({
@@ -34,7 +34,7 @@ class IntakeAdd extends Component {
                 })
             })
     }
-    
+
 
     render() {
         // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list

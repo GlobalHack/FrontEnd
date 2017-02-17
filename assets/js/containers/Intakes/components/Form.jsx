@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router';
+//import {debounce} from 'jQuery';
 
 /* SERVICES --- */
 import * as FormUI from 'services/FormUI'
@@ -11,6 +12,7 @@ import * as AcuityService from 'services/AcuityService'
 import Form from "react-jsonschema-form"
 import FieldTemplate from 'components/FieldTemplate'
 import CustomerAdd from './CustomerAdd'
+import ScorePreview from './ScorePreview'
 
 let IntakeSchema = require('schemas/Intake')
 
@@ -42,8 +44,9 @@ class IntakeForm extends Component {
             hasCustomerId: props.data.id || false,
             data: props.data || {}
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
+        this.handleScoreChange = this.handleScoreChange.bind(this);
     }
 
     removeChildData(formData) {
@@ -59,6 +62,19 @@ class IntakeForm extends Component {
     handleError() {
         console.warn("We have an error in the Form!")
         console.log(arguments)
+    }
+    handleScoreChange(formState){
+      var updateTime = Date.now();
+      if(!this.state.lastUpdate || updateTime-this.state.lastUpdate>50 && JSON.stringify(formState)!=this.state.lastForm){
+        var formData = Format.flatten( formState.formData );
+        this.setState({score : AcuityService.score({intake:formData})});
+        console.log(formData);
+        console.log(this.state.score);
+        //console.log(AcuityService.score({intake:formData}));
+        this.setState({lastUpdate:updateTime, lastForm:JSON.stringify(formState)});
+      }else {
+
+      }
     }
 
     handleSubmit(formState) {
@@ -94,11 +110,13 @@ class IntakeForm extends Component {
     render() {
         // we have some string fields that should be replaced with this multiple-choice-list
         // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
-        var customerData = this.state.data.customer
-        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']))
-        if (this.state.customer) intakeData.customer = this.state.customer.id
+        var customerData = this.state.data.customer;
+        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']));
+        //var score = this.state.score || this.state.data.score;
+        if (this.state.customer) intakeData.customer = this.state.customer.id;
         return (
                 <section className="content intake-add">
+                  <ScorePreview score={ this.state.score || this.state.data.score }></ScorePreview>
                     <CustomerAdd handleState={ this.handleState } data={ customerData } />
                     {
                         this.state.hasCustomerId ?
@@ -109,7 +127,7 @@ class IntakeForm extends Component {
                                 widgets={widgets}
                                 formData={ intakeData }
                                 onError={this.handleError}
-                                onChange={this.handleChange}
+                                onChange={this.handleScoreChange}
                                 onSubmit={this.handleSubmit} />
                             : null
                     }
