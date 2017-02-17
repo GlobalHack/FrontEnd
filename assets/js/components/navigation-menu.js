@@ -44,7 +44,6 @@ define(
                   <a href="#">
                     <i className="fa fa-th"></i>
                     <span>coordinated entry groups</span>
-                    <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
                     <li><Link to="/coordinatedentrygroups/view"><i className="fa fa-circle-o"></i> View coordinated entry groups</Link></li>
@@ -54,7 +53,6 @@ define(
                   <a href="#">
                     <i className="fa fa-th"></i>
                     <span>Customers</span>
-                    <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
                     <li><Link to="/customers/view"><i className="fa fa-circle-o"></i> View Customers</Link></li>
@@ -64,7 +62,6 @@ define(
                   <a href="#">
                     <i className="fa fa-th"></i>
                     <span>Employees</span>
-                    <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
                     <li><Link to="/employees/add"><i className="fa fa-circle-o"></i> Add Employee</Link></li>
@@ -75,7 +72,6 @@ define(
                   <a href="#">
                     <i className="fa fa-th"></i>
                     <span>Intakes</span>
-                    <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
                     <li><Link to="/intakes/add"><i className="fa fa-circle-o"></i> New Intake</Link></li>
@@ -89,7 +85,6 @@ define(
                   <a href="#">
                     <i className="fa fa-th"></i>
                     <span>Organizations</span>
-                    <small className="label pull-right bg-green">new</small>
                   </a>
                   <ul className="treeview-menu">
                     <li><Link to="/organizations/add"><i className="fa fa-circle-o"></i> Add Organization</Link></li>
