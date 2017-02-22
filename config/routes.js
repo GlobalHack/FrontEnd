@@ -37,28 +37,22 @@ module.exports.routes = {
   },
 
   /* USER PAGES --- */
-  "r|users/.+|page": "RootController.view",
+  "/users/*": "RootController.view",
 
   /* COORDINATEDENTRYGROUP PAGES --- */
-  "r|coordinatedentrygroups/.+|page": "RootController.view",
+  "/coordinatedentrygroups/*": "RootController.view",
 
   /* CUSTOMER PAGES --- */
-  "/customers/add": "RootController.view",
-  "/customers/view": "RootController.view",
+  "/customers/*": "RootController.view",
 
   /* Employee PAGES --- */
-  "r|employees/[^\d]+|page": "RootController.view",
-  "r|employees/add": "RootController.view",
+  "/employees/*": "RootController.view",
 
   /* INTAKES PAGES --- */
-  "/intakes/add": "RootController.view",
-  "/intakes/view": "RootController.view",
-  "/intakes/complete": "RootController.view",
-  "/intakes/incomplete": "RootController.view",
-  "/intakes/:id/edit": "RootController.view",
+  "/intakes/*": "RootController.view",
 
   /* Organization PAGES --- */
-  "r|organizations/[^\d]+|page": "RootController.view",
+  "/organizations/*": "RootController.view",
 
   /* SERVICE TESTING ROUTES --- */
   '/acuity/test': 'AcuityController.test',

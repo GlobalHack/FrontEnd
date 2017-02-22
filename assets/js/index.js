@@ -77,28 +77,34 @@ render((
           <IndexRoute component={ Settings }/>
         </Route>
         <Route path="/users" component={ Users } onEnter={requireAuth}>
-          <Route path="/users/view" component={ UsersView }/>
+          <IndexRoute component={UsersView}/>
+          <Route path="view" component={ UsersView }/>
         </Route>
         <Route path="/coordinatedentrygroups" component={ CoordinatedEntryGroups } onEnter={requireAuth}>
-          <Route path="/coordinatedentrygroups/view" component={ CoordinatedEntryGroupsView }/>
+          <IndexRoute component={CoordinatedEntryGroupsView}/>
+          <Route path="view" component={ CoordinatedEntryGroupsView }/>
         </Route>
         <Route path="/customers" component={ Customers } onEnter={requireAuth}>
-          <Route path="/customers/view" component={ CustomersView }/>
+          <IndexRoute component={CustomersView}/>
+          <Route path="view" component={ CustomersView }/>
         </Route>
         <Route path="/employees" component={ Employees } onEnter={requireAuth}>
-          <Route path="/employees/add" component={ EmployeesAdd }/>
-          <Route path="/employees/view" component={ EmployeesView }/>
+          <IndexRoute component={EmployeesView}/>
+          <Route path="add" component={ EmployeesAdd }/>
+          <Route path="view" component={ EmployeesView }/>
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>
-          <Route path="/intakes/add" component={ IntakeAdd }/>
-          <Route path="/intakes/:id/edit" component={ IntakeEdit }/>
-          <Route path="/intakes/view" component={ IntakesView }/>
-          <Route path="/intakes/complete" component={ IntakesComplete }/>
-          <Route path="/intakes/incomplete" component={ IntakesIncomplete }/>
+          <IndexRoute component={IntakesView}/>
+          <Route path="add" component={ IntakeAdd }/>
+          <Route path=":id/edit" component={ IntakeEdit }/>
+          <Route path="view" component={ IntakesView }/>
+          <Route path="complete" component={ IntakesComplete }/>
+          <Route path="incomplete" component={ IntakesIncomplete }/>
         </Route>
         <Route path="/organizations" component={ Organizations } onEnter={requireAuth}>
-          <Route path="/organizations/add" component={ OrganizationsAdd }/>
-          <Route path="/organizations/view" component={ OrganizationsView }/>
+          <IndexRoute component={OrganizationsView}/>
+          <Route path="add" component={ OrganizationsAdd }/>
+          <Route path="view" component={ OrganizationsView }/>
         </Route>
         <Route path="*" component={ FourOhFour }/>
       </Route>
