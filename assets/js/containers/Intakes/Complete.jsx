@@ -17,7 +17,7 @@ class IntakesView extends Component {
 
   componentWillMount() {
     var _this = this;
-    $.get('/intakes?complete=true')
+    $.get('/api/intakes?complete=true')
       .done(function (response) {
         _this.setState({
           intakes: response

@@ -85,7 +85,7 @@ class IntakeForm extends Component {
         if (this.props.id) {
             formData = Format.cleanForPut( formData )
             $.ajax({
-                    url: `/intakes/${this.props.id}`,
+                    url: `/api/intakes/${this.props.id}`,
                     data: formData,
                     method: 'PUT'
                 }).done(function( response ) {
@@ -97,7 +97,7 @@ class IntakeForm extends Component {
                 })
         } else {
             formData = Format.cleanFormData( formData )
-            $.post('/intakes', formData)
+            $.post('/api/intakes', formData)
                 .done(function( response ) {
                     browserHistory.push('/intakes/view');
                 })

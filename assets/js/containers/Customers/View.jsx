@@ -17,7 +17,7 @@ class CustomersView extends Component {
 
   componentWillMount() {
     var _this = this;
-    $.get('/customers')
+    $.get('/api/customers')
       .done(function (response) {
         _this.setState({
           customers: response

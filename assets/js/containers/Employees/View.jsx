@@ -17,7 +17,7 @@ class EmployeesView extends Component {
 
   componentWillMount() {
     var _this = this;
-    $.get('/employees')
+    $.get('/api/employees')
       .done(function (response) {
         _this.setState({
           employees: response

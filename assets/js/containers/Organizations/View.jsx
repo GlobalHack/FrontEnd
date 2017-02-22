@@ -17,7 +17,7 @@ class OrganizationsView extends Component {
 
   componentWillMount() {
     var _this = this;
-    $.get('/organizations')
+    $.get('/api/organizations')
       .done(function (response) {
         _this.setState({
           organizations: response

@@ -17,7 +17,7 @@ class UsersView extends Component {
 
   componentWillMount(){
       var _this = this;
-      $.get('/users')
+      $.get('/api/users')
         .done(function(response){
             _this.setState({
                 users: response
