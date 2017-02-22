@@ -40,9 +40,7 @@ module.exports = {
   },
   dateOfBirth: {
     type: 'date',
-    before: function () {
-      return new Date();
-    },
+    before: new Date(),
     columnName: 'date_of_birth',
     title:'Date of Birth',
     required:true
