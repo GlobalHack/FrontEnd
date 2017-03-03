@@ -7,7 +7,8 @@ attributes = Object.assign(schema, attributes);
 var createUser = function (user) {
   return {
     user: user,
-    customer: faker.random.number({min: 1, max: 20})
+    customer: faker.random.number({min: 1, max: 20}),
+    disabled: false
   }
 }
 

@@ -4,5 +4,9 @@
   },
   customer: {
     model: 'Customer'
+  },
+  disabled: {
+    type: 'boolean',
+    defaultsTo: false
   }
 };
