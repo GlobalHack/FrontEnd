@@ -43,7 +43,6 @@ class UsersView extends Component {
               <th>Organization</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>SSN</th>
               <th>Role</th>
             </tr>
           </thead>

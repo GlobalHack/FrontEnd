@@ -14,7 +14,6 @@ var createUser = function (user) {
     organization: faker.random.number({min: 1, max: 2}),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
-    ssn: new RandomSSN().value().toFormattedString(),
     role: faker.random.number({min: 1, max: 2}),
     disabled: false
   }

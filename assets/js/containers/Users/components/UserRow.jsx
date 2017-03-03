@@ -16,9 +16,6 @@ class UserRow extends Component {
           { this.props.lastName }
         </td>
         <td>
-          { this.props.ssn }
-        </td>
-        <td>
           { this.props.role?this.props.role.title:"None" }
         </td>
       </tr>
