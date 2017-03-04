@@ -10,10 +10,13 @@ var attributes = {
 attributes = Object.assign(schema, attributes);
 
 var createUser = function (user) {
+  var lastName = faker.name.lastName()
+  var firstName = faker.name.firstName()
   return {
     organization: faker.random.number({min: 1, max: 2}),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
+    firstName: firstName,
+    lastName: lastName,
+    email:  lastName + "." + firstName + "@gmail.com"
     role: faker.random.number({min: 1, max: 2}),
     disabled: false
   }
