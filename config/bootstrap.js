@@ -14,7 +14,7 @@ module.exports.bootstrap = function(cb) {
   async.series([
     Customer.seed,
     Organization.seed,
-    Employee.seed,
+    User.seed,
     Role.seed,
     Prefix.seed,
     Question.seed,

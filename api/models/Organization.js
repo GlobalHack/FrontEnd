@@ -3,8 +3,8 @@ var schema = require('../schemas/Organization');
 
 var attributes = {
   /* RELATIONSHIPS FOR DB HERE - DB STRUCTURE IS IN SCHEMA --- */
-  employees: {
-    collection: 'employee',
+  users: {
+    collection: 'user',
     via: 'organization'
   }
 };

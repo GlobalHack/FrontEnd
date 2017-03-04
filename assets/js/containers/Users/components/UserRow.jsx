@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class UserRow extends Component {
-    
-    render() {
-        if (!this.props.customer) return null
-        return (
-            <tr>
-                <td>
-                    { this.props.customer.firstName }
-                </td>
-                <td>
-                    { this.props.customer.lastName }
-                </td>
-                <td>
-                    { this.props.customer.dateOfBirth }
-                </td>
-            </tr>
-        );
-    }
+
+  render() {
+    if (!this.props) return null
+    return (
+      <tr>
+        <td>
+          { this.props.organization?this.props.organization.name:"None" }
+        </td>
+        <td>
+          { this.props.firstName }
+        </td>
+        <td>
+          { this.props.lastName }
+        </td>
+        <td>
+          { this.props.role?this.props.role.title:"None" }
+        </td>
+      </tr>
+    );
+  }
 }
 
 export default UserRow;

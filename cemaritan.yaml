@@ -11,17 +11,17 @@ schemes:
   - https
 
 paths:
-  /employees/:
+  /users/:
     get:
       description: |
-        Gets `Employee` objects.
+        Gets `User` objects.
         Optional query param of **limit** determines
-        number of returned employees
+        number of returned users
       parameters:
         -
           name: limit
           in: query
-          description: Number of Employees
+          description: Number of Users
           required: false
           type: number
           format: int
@@ -29,10 +29,10 @@ paths:
         200:
           description: Successful response
           schema:
-            title: ArrayOfEmployees
+            title: ArrayOfUsers
             type: array
             items:
-              title: Employee
+              title: User
               type: object
               properties:
                 name:

@@ -61,11 +61,11 @@ define(
                 <li>
                   <a href="#">
                     <i className="fa fa-th"></i>
-                    <span>Employees</span>
+                    <span>Users</span>
                   </a>
                   <ul className="treeview-menu">
-                    <li><Link to="/employees/add"><i className="fa fa-circle-o"></i> Add Employee</Link></li>
-                    <li><Link to="/employees/"><i className="fa fa-circle-o"></i> View Employees</Link></li>
+                    <li><Link to="/users/add"><i className="fa fa-circle-o"></i> Add User</Link></li>
+                    <li><Link to="/users/"><i className="fa fa-circle-o"></i> View Users</Link></li>
                   </ul>
                 </li>
                 <li>

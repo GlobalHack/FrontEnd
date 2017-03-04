@@ -1,13 +1,23 @@
 ﻿var faker = require('faker');
 var schema = require('../schemas/User');
+var RandomSSN = require('ssn').RandomSSN;
 
-var attributes = {};
+var attributes = {
+  auth0Id: {
+    type: 'integer'
+  }
+}
 attributes = Object.assign(schema, attributes);
 
 var createUser = function (user) {
+  var lastName = faker.name.lastName()
+  var firstName = faker.name.firstName()
   return {
-    user: user,
-    customer: faker.random.number({min: 1, max: 20}),
+    organization: faker.random.number({min: 1, max: 2}),
+    firstName: firstName,
+    lastName: lastName,
+    email:  lastName + "." + firstName + "@gmail.com"
+    role: faker.random.number({min: 1, max: 2}),
     disabled: false
   }
 }

@@ -45,8 +45,8 @@ module.exports.routes = {
   /* CUSTOMER PAGES --- */
   "/customers/*": "RootController.view",
 
-  /* Employee PAGES --- */
-  "/employees/*": "RootController.view",
+  /* User PAGES --- */
+  "/users/*": "RootController.view",
 
   /* INTAKES PAGES --- */
   "/intakes/*": "RootController.view",

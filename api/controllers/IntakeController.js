@@ -34,7 +34,7 @@ var flatten = function(data) {
 
 module.exports = {
   csv: function (req, res) {
-    Intake.find().populate('customer').populate('employee').exec(function (err, list) {
+    Intake.find().populate('customer').populate('User').exec(function (err, list) {
       if (err) console.log(err);
       // Send a CSV response
 
