@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var validation = require('../services/validation');
 
 module.exports = {
 
@@ -20,9 +21,13 @@ module.exports = {
     },
 
     role: function (req, res) {
+      if (!validation.isRequestAuthorized(req))
+        return res.forbidden();
+
       var query = User.findOne({id:req.params.id});
 
       if(req.method == "POST"){
+        var role = parseInt(req.body.role);
 
         query.exec(function(err, user){
           if(err)
@@ -31,7 +36,12 @@ module.exports = {
           if(!user)
             return res.notFound();
 
-          return res.json(200, user.toJSON());
+          user.save(function(err){
+            if (err)
+              return res.serverError(err);
+
+            return res.json(200, user.toJSON());
+          });
         });
 
       }else if(req.method == "GET"){
@@ -50,6 +60,9 @@ module.exports = {
       }
     },
     disabled: function (req, res) {
+      if (!validation.isRequestAuthorized(req))
+        return res.forbidden();
+
       var query = User.findOne({id:req.params.id})
 
       if ( req.method == "POST") {
