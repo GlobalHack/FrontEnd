@@ -16,7 +16,7 @@ var createUser = function (user) {
     organization: faker.random.number({min: 1, max: 2}),
     firstName: firstName,
     lastName: lastName,
-    email:  lastName + "." + firstName + "@gmail.com"
+    email:  lastName + "." + firstName + "@gmail.com",
     role: faker.random.number({min: 1, max: 2}),
     disabled: false
   }
