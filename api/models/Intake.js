@@ -10,8 +10,8 @@ var attributes = {
         model: 'customer',
         unique: true
     },
-    employee: {
-        model: 'employee',
+    user: {
+        model: 'user',
         unique: true
     },
     score:{
@@ -21,7 +21,7 @@ var attributes = {
 };
 attributes = Object.assign(schema, attributes);
 
-var createIntake = function (customer, employee) {
+var createIntake = function (customer, user) {
   return {
     General_1: parseInt(faker.random.number({min: 15, max: 60})),
     Housing_1: parseInt(faker.random.number({min: 15, max: 60})),
@@ -75,7 +75,7 @@ var createIntake = function (customer, employee) {
     Wellness_29: faker.random.boolean(),
     Wellness_30: faker.random.boolean(),
     customer: customer,
-    employee: employee,
+    user: user,
     complete: faker.random.boolean(),
     score: 0
   }
