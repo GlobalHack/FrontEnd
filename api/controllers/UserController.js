@@ -62,7 +62,6 @@ module.exports = {
           if(!user)
             return res.notFound();
 
-
           user.disabled = disabled == "true" ? true : false;
 
           user.save(function(err){
