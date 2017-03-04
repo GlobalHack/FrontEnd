@@ -64,6 +64,7 @@ module.exports.routes = {
   "r|settings(\/.*)?|page": "RootController.view",
 
   /* API ROUTES */
+  '/api/users/:id/roles': "UserController.role",
   '/api/*': {
     cors: {
       origin: '*',
