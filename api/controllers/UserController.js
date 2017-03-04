@@ -28,6 +28,8 @@ module.exports = {
 
       if(req.method == "POST"){
         var role = parseInt(req.body.role);
+        if(!role)
+          return res.badRequest("Invalid value: " + req.body.role)
 
         query.exec(function(err, user){
           if(err)
@@ -35,7 +37,7 @@ module.exports = {
 
           if(!user)
             return res.notFound();
-
+          user.role = role;
           user.save(function(err){
             if (err)
               return res.serverError(err);
