@@ -45,8 +45,8 @@ module.exports.routes = {
   /* CUSTOMER PAGES --- */
   "/customers/*": "RootController.view",
 
-  /* Employee PAGES --- */
-  "/employees/*": "RootController.view",
+  /* User PAGES --- */
+  "/users/*": "RootController.view",
 
   /* INTAKES PAGES --- */
   "/intakes/*": "RootController.view",
@@ -65,6 +65,8 @@ module.exports.routes = {
 
   /* API ROUTES */
   '/api/users/:id/roles': "UserController.role",
+  '/api/users/:id/disable': "UserController.disabled",
+  
   '/api/*': {
     cors: {
       origin: '*',

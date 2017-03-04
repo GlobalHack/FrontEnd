@@ -16,15 +16,13 @@ import Login from 'containers/Login'
 import CreateUser from 'containers/CreateUser/components/Create'
 import LoginLogin from 'containers/Login/Login.jsx'
 import Home from 'containers/Home'
-import Users from 'containers/Users'
-import UsersView from 'containers/Users/View'
 import CoordinatedEntryGroups from 'containers/Coordinatedentrygroups'
 import CoordinatedEntryGroupsView from 'containers/Coordinatedentrygroups/View'
 import Customers from 'containers/Customers'
 import CustomersView from 'containers/Customers/View'
-import Employees from 'containers/Employees'
-import EmployeesAdd from 'containers/Employees/Add'
-import EmployeesView from 'containers/Employees/View'
+import Users from 'containers/Users'
+import UsersAdd from 'containers/Users/Add'
+import UsersView from 'containers/Users/View'
 import Intakes from 'containers/Intakes'
 import IntakeAdd from 'containers/Intakes/Add'
 import IntakeEdit from 'containers/Intakes/Edit'
@@ -71,7 +69,6 @@ render((
         <IndexRedirect to="/home"/>
         <Route path="/home" component={ Home } onEnter={requireAuth}/>
         <Route path="/icons" component={ Icons } onEnter={requireAuth}/>
-        <Route path="/createUser" component={ CreateUser } onEnter={requireAuth}/>
         {/*<Route path="/login" component={ LoginLogin } />*/}
         <Route path="/settings" onEnter={requireAuth}>
           <IndexRoute component={ Settings }/>
@@ -88,10 +85,10 @@ render((
           <IndexRoute component={CustomersView}/>
           <Route path="view" component={ CustomersView }/>
         </Route>
-        <Route path="/employees" component={ Employees } onEnter={requireAuth}>
-          <IndexRoute component={EmployeesView}/>
-          <Route path="add" component={ EmployeesAdd }/>
-          <Route path="view" component={ EmployeesView }/>
+        <Route path="/users" component={ Users } onEnter={requireAuth}>
+          <IndexRoute component={UsersView}/>
+          <Route path="add" component={ UsersAdd }/>
+          <Route path="view" component={ UsersView }/>
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>
           <IndexRoute component={IntakesView}/>

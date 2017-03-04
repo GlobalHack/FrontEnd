@@ -17,7 +17,7 @@ class Users extends Component {
         <section className="content-header">
           <h1>
             Users
-            <small>view all users</small>
+            <small>view all Users</small>
           </h1>
           <ol className="breadcrumb">
             <li><a href="#"><i className="fa fa-dashboard"></i> Users</a></li>
