@@ -33,11 +33,11 @@ define(
                 {/*<li>*/}
                   {/*<a href="#">*/}
                     {/*<i className="fa fa-th"></i>*/}
-                    {/*<span>Users</span>*/}
+                    {/*<span>Employees</span>*/}
                     {/*<small className="label pull-right bg-green">new</small>*/}
                   {/*</a>*/}
                   {/*<ul className="treeview-menu">*/}
-                    {/*<li><Link to="/users/"><i className="fa fa-circle-o"></i> View Users</Link></li>*/}
+                    {/*<li><Link to="/users/"><i className="fa fa-circle-o"></i> View Employees</Link></li>*/}
                   {/*</ul>*/}
                 {/*</li>*/}
                 <li>
@@ -61,11 +61,10 @@ define(
                 <li>
                   <a href="#">
                     <i className="fa fa-th"></i>
-                    <span>Users</span>
+                    <span>Employees</span>
                   </a>
                   <ul className="treeview-menu">
-                    <li><Link to="/users/add"><i className="fa fa-circle-o"></i> Add User</Link></li>
-                    <li><Link to="/users/"><i className="fa fa-circle-o"></i> View Users</Link></li>
+                    <li><Link to="/employees/"><i className="fa fa-circle-o"></i> View Employees</Link></li>
                   </ul>
                 </li>
                 <li>

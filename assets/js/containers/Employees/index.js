@@ -6,7 +6,7 @@ import Box from 'components/custom-box/box'
 
 @connect(state => ({}))
 
-class Users extends Component {
+class Employees extends Component {
   constructor(props) {
     super(props)
   }
@@ -16,11 +16,11 @@ class Users extends Component {
       <div className="content-wrapper">
         <section className="content-header">
           <h1>
-            Users
-            <small>view all Users</small>
+            Employees
+            <small>view all Employees</small>
           </h1>
           <ol className="breadcrumb">
-            <li><a href="#"><i className="fa fa-dashboard"></i> Users</a></li>
+            <li><a href="#"><i className="fa fa-dashboard"></i> Employees</a></li>
           </ol>
         </section>
 
@@ -41,4 +41,4 @@ class Users extends Component {
   }
 }
 
-export default Users
+export default Employees

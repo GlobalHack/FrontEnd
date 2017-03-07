@@ -1,7 +1,7 @@
 ﻿/**
- * CustomerController
+ * EmployeeController
  *
- * @description :: Server-side logic for managing users
+ * @description :: Server-side logic for managing employees
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var validation = require('../services/validation');
@@ -24,38 +24,38 @@ module.exports = {
       if (!validation.isRequestAuthorized(req))
         return res.forbidden();
 
-      var query = User.findOne({id:req.params.id});
+      var query = Employee.findOne({id:req.params.id});
 
       if(req.method == "POST"){
         var role = parseInt(req.body.role);
         if(!role)
           return res.badRequest("Invalid value: " + req.body.role)
 
-        query.exec(function(err, user){
+        query.exec(function(err, employee){
           if(err)
             return res.serverError(err);
 
-          if(!user)
+          if(!employee)
             return res.notFound();
-          user.role = role;
-          user.save(function(err){
+          employee.role = role;
+          employee.save(function(err){
             if (err)
               return res.serverError(err);
 
-            return res.json(200, user.toJSON());
+            return res.json(200, employee.toJSON());
           });
         });
 
       }else if(req.method == "GET"){
 
-        query.exec(function(err, user){
+        query.exec(function(err, employee){
           if(err)
             return res.serverError(err);
 
-          if(!user)
+          if(!employee)
             return res.notFound();
 
-          return res.json(200, {role: user.role});
+          return res.json(200, {role: employee.role});
         });
       }else{
         return res.badRequest("Method: " + req.method + " not supported.");
@@ -65,38 +65,38 @@ module.exports = {
       if (!validation.isRequestAuthorized(req))
         return res.forbidden();
 
-      var query = User.findOne({id:req.params.id})
+      var query = Employee.findOne({id:req.params.id})
 
       if ( req.method == "POST") {
         var { disabled } = req.body;
 
-        query.exec(function(err, user){
+        query.exec(function(err, employee){
           if(err)
             return res.serverError(err);
 
-          if(!user)
+          if(!employee)
             return res.notFound();
 
-          user.disabled = disabled == "true" ? true : false;
+          employee.disabled = disabled == "true" ? true : false;
 
-          user.save(function(err){
+          employee.save(function(err){
             if(err){
               return res.serverError()
             }
 
-            return res.json(200, user.toJSON());
+            return res.json(200, employee.toJSON());
           });
         });
       }
       else if (req.method == "GET") {
-        query.exec(function(err, user){
+        query.exec(function(err, employee){
           if(err)
             return res.serverError(err)
 
-          if(!user)
+          if(!employee)
             return res.notFound()
 
-          return res.json(200, {"disabled":user.disabled})
+          return res.json(200, {"disabled":employee.disabled})
         });
       }
       else {

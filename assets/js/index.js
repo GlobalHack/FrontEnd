@@ -20,9 +20,9 @@ import CoordinatedEntryGroups from 'containers/Coordinatedentrygroups'
 import CoordinatedEntryGroupsView from 'containers/Coordinatedentrygroups/View'
 import Customers from 'containers/Customers'
 import CustomersView from 'containers/Customers/View'
-import Users from 'containers/Users'
-import UsersAdd from 'containers/Users/Add'
-import UsersView from 'containers/Users/View'
+import Employees from 'containers/Employees'
+import EmployeesAdd from 'containers/Employees/Add'
+import EmployeesView from 'containers/Employees/View'
 import Intakes from 'containers/Intakes'
 import IntakeAdd from 'containers/Intakes/Add'
 import IntakeEdit from 'containers/Intakes/Edit'
@@ -73,9 +73,9 @@ render((
         <Route path="/settings" onEnter={requireAuth}>
           <IndexRoute component={ Settings }/>
         </Route>
-        <Route path="/users" component={ Users } onEnter={requireAuth}>
-          <IndexRoute component={UsersView}/>
-          <Route path="view" component={ UsersView }/>
+        <Route path="/employees" component={ Employees } onEnter={requireAuth}>
+          <IndexRoute component={EmployeesView}/>
+          <Route path="view" component={ EmployeesView }/>
         </Route>
         <Route path="/coordinatedentrygroups" component={ CoordinatedEntryGroups } onEnter={requireAuth}>
           <IndexRoute component={CoordinatedEntryGroupsView}/>
@@ -84,11 +84,6 @@ render((
         <Route path="/customers" component={ Customers } onEnter={requireAuth}>
           <IndexRoute component={CustomersView}/>
           <Route path="view" component={ CustomersView }/>
-        </Route>
-        <Route path="/users" component={ Users } onEnter={requireAuth}>
-          <IndexRoute component={UsersView}/>
-          <Route path="add" component={ UsersAdd }/>
-          <Route path="view" component={ UsersView }/>
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>
           <IndexRoute component={IntakesView}/>

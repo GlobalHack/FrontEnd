@@ -9,25 +9,25 @@ import * as Format from 'services/Format'
 import Form from "react-jsonschema-form"
 import FieldTemplate from 'components/FieldTemplate'
 
-let UserSchema = require('schemas/User')
+let EmployeeSchema = require('schemas/Employee')
 
 /* FORMAT TO ACCOMODATE DIFFERENCES BETWEEN SERVER SIDE AND CLIENT SIDE SCHEMA --- */
-delete UserSchema.organization;
-delete UserSchema.role;
-UserSchema = Format.schema(UserSchema)
+delete EmployeeSchema.organization;
+delete EmployeeSchema.role;
+EmployeeSchema = Format.schema(EmployeeSchema)
 
 /* GENERATE UI SCHEMA --- */
-const uiSchema = FormUI.Schema(UserSchema)
+const uiSchema = FormUI.Schema(EmployeeSchema)
 
 const widgets = FormUI.Widgets;
 const formData = {title: "First task", done: true}
 
 const schema = {
   type: "object",
-  properties: UserSchema
+  properties: EmployeeSchema
 }
 
-class UserAdd extends Component {
+class EmployeeAdd extends Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -68,4 +68,4 @@ class UserAdd extends Component {
   }
 }
 
-export default UserAdd
+export default EmployeeAdd

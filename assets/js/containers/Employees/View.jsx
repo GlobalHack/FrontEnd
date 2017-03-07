@@ -2,25 +2,25 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 /* COMPONENTS --- */
-import UserRow from './components/UserRow'
+import EmployeeRow from './components/EmployeeRow'
 
 @connect(state => ({}))
 
-class UsersView extends Component {
+class EmployeesView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [],
+      employees: [],
       hasError: false
     }
   }
 
   componentWillMount() {
     var _this = this;
-    $.get('/api/users')
+    $.get('/api/employees')
       .done(function (response) {
         _this.setState({
-          users: response
+          employees: response
         })
       })
       .fail(function () {
@@ -31,9 +31,9 @@ class UsersView extends Component {
   }
 
   render() {
-    if (this.state.hasError) return ( <p>Unable to get users.</p> )
-    var usersRows = this.state.users.map((user, i) => {
-      return <UserRow key={`user-row-${i}`} { ...user } />
+    if (this.state.hasError) return ( <p>Unable to get employees.</p> )
+    var employeesRows = this.state.employees.map((employee, i) => {
+      return <EmployeeRow key={`user-row-${i}`} { ...employee } />
     })
     return (
       <div>
@@ -44,10 +44,11 @@ class UsersView extends Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Role</th>
+              <th>Disabled</th>
             </tr>
           </thead>
           <tbody>
-            { usersRows }
+            { employeesRows }
           </tbody>
         </table>
       </div>
@@ -55,4 +56,4 @@ class UsersView extends Component {
   }
 }
 
-export default UsersView
+export default EmployeesView

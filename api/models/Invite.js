@@ -3,10 +3,10 @@ var attributes = {
     model: 'organization'
   },
   inviter: {
-    model: 'user'
+    model: 'employee'
   },
   invitee: {
-    model: 'user'
+    model: 'employee'
   },
 };
 

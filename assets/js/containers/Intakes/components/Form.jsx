@@ -23,14 +23,14 @@ IntakeSchema = Format.removeRequire(IntakeSchema)
 
 /* GROUP FORM ELEMENTS ------------------------------------------------------------ */
 /* NOTE: WHEN YOU GROUP FORM ELEMENTS, YOU MUST FLATTEN THEM BEFORE SUBMITTING DATA */
-IntakeSchema = FormUI.GroupSchema(IntakeSchema, new Set(['customer', 'complete', 'user']))
+IntakeSchema = FormUI.GroupSchema(IntakeSchema, new Set(['customer', 'complete', 'employee']))
 
 /* GENERATE UI SCHEMA --- */
 let uiSchema = FormUI.Schema(IntakeSchema)
 
 /* HIDE REFERENCE INPUTS */
 uiSchema.customer = { "ui:widget" : "hidden" }
-uiSchema.user = { "ui:widget" : "hidden" }
+uiSchema.employee = { "ui:widget" : "hidden" }
 
 const widgets = FormUI.Widgets;
 const schema = {
@@ -52,7 +52,7 @@ class IntakeForm extends Component {
 
     removeChildData(formData) {
         delete formData.customer
-        delete formData.user
+        delete formData.employee
         return formData
     }
 
@@ -112,7 +112,7 @@ class IntakeForm extends Component {
         // we have some string fields that should be replaced with this multiple-choice-list
         // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
         var customerData = this.state.data.customer;
-        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'user']));
+        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']));
         //var score = this.state.score || this.state.data.score;
         if (this.state.customer){
           intakeData.customer = this.state.customer.id;
@@ -144,7 +144,7 @@ class IntakeForm extends Component {
 IntakeForm.defaultProps = {
     data: {
         customer:{},
-        user:{}
+        employee:{}
     }
 }
 
