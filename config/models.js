@@ -17,7 +17,7 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  connection: 'localPostgreSQLServer',
+  connection: 'devPostgreSQLServer',
 
   /***************************************************************************
   *                                                                          *
@@ -27,7 +27,7 @@ module.exports.models = {
   * See http://sailsjs.org/#!/documentation/concepts/ORM/model-settings.html  *
   *                                                                          *
   ***************************************************************************/
-  migrate: 'drop',
+  migrate: 'safe',
 
   /**
    * This method adds records to the database
