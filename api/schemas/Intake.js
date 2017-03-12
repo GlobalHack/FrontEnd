@@ -229,7 +229,7 @@ module.exports = {
   customer: {
       type: 'integer'
   },
-  user: {
+  employee: {
       type: 'integer'
   }
 };
