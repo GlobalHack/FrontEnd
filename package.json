@@ -50,6 +50,7 @@
     "ssn": "^1.0.3",
     "style-loader": "^0.13.1",
     "velocity-animate": "^1.4.2",
+    "waterline": "^0.11.8",
     "waterline-sqlite3": "^1.0.3"
   },
   "scripts": {
