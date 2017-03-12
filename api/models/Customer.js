@@ -3,6 +3,9 @@ var faker = require('faker');
 var RandomSSN = require('ssn').RandomSSN;
 var schema = require('../schemas/Customer');
 
+/* CLEAN ANYTHING FROM THE SCHEMA THAT'S FOR THE CLIENT ONLY --- */
+schema = format.schema( schema )
+
 var attributes = {};
 attributes = Object.assign(schema, attributes);
 
@@ -18,7 +21,7 @@ var createCustomer = function () {
   }
 }
 
-var seedData = []
+var seedData = [];
 for (var i = 0; i < 20; i++) {
   seedData.push(createCustomer());
 }

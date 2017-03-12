@@ -6,20 +6,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractCSS = new ExtractTextPlugin('./../../styles/app/styles.css')
 
 var plugins = [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     extractCSS,
+    new webpack.HotModuleReplacementPlugin(),
 
     /* Copy sails.io.js unmolested: */
     new CopyWebpackPlugin([
     {
         from: 'assets/js/dependencies',
         to: 'dependencies',
-        force: true
-    },
-    {
-        from: 'assets/js/vendor',
-        to: 'vendor',
         force: true
     },
     {
@@ -62,19 +57,20 @@ module.exports.webpack = {
     plugins: plugins,
 
     resolve: {
-        root: path.resolve(__dirname, '../assets'),
+        root: path.resolve(__dirname, '..'),
         alias: {
-            containers: 'js/containers',
-            components: 'js/components',
-            customer: 'js/containers/Customer',
-            home: 'js/containers/Home',
-            actions: 'js/actions',
-            reducers: 'js/reducers',
-            icons: 'js/icons',
-            services: 'js/services',
-            settings: 'js/settings',
-            utils: 'js/utils',
-            styles: 'styles'
+            containers: 'assets/js/containers',
+            components: 'assets/js/components',
+            customer: 'assets/js/containers/Customer',
+            home: 'assets/js/containers/Home',
+            actions: 'assets/js/actions',
+            reducers: 'assets/js/reducers',
+            icons: 'assets/js/icons',
+            services: 'assets/js/services',
+            settings: 'assets/js/settings',
+            utils: 'assets/js/utils',
+            styles: 'assets/styles',
+            schemas: 'api/schemas'
         },
         extensions: ['', '.js', '.jsx', '.scss']
     },

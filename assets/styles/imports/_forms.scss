@@ -1,19 +1,33 @@
 @import 'colors';
 
-// JUMPSTART WITH BOOTSTRAP
-@import 'vendor/bootstrap/forms';
+.field-input-wrapper {
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+}
+.field-string {
+    .field-input-wrapper {
+        display:block;
+    }
+}
 
-/* OVERWRITES & ADDITIONS */
-label {
-    font-weight:400;
-    font-size:1rem;
+.form-group {
+    padding:.75rem 1.5rem;
+    &:nth-child(odd){
+        background:rgba(255,255,255,.5);
+    }
+    label {
+        margin:0;
+    }
 }
-.form-control:focus {
-    border-color: $color3;
+fieldset legend {
+    padding:0 1.5rem;
 }
-.help-block {
-    font-size:.9rem;
+
+.rjsf fieldset {
+    margin-top:.5em;
 }
-input[type="range"] {
-    box-shadow:none;
+
+.form-control select {
+    border-radius:0;
 }

@@ -1,8 +1,8 @@
 module.exports = {
   name: {
-    type: 'text'
+    type: 'string'
   },
   address: {
-    type: 'text'
+    type: 'string'
   }
 };

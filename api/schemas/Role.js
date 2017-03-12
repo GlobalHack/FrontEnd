@@ -1,12 +1,21 @@
 module.exports = {
-  organization: {
-    model: 'organization'
+  name: {
+    type: 'string',
+    index: true,
+    notNull: true,
+    unique: true
   },
-  accessLevel: {
-    type: 'int'
+  users: {
+    collection: 'User',
+    via: 'roles'
   },
-  title: {
-    type: 'text',
-    required: true
+  active: {
+    type: 'boolean',
+    defaultsTo: true,
+    index: true
+  },
+  permissions: {
+    collection: 'Permission',
+    via: 'role'
   }
 };

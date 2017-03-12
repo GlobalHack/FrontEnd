@@ -1,0 +1,40 @@
+.alt-date {
+    display:flex;
+    flex-shrink:0;
+    justify-content:space-between;
+    select ~ select {
+        margin-left:.5rem;
+    }
+    .form-control {
+        width:auto;
+        display:inline-block;
+    }
+    select {
+        margin:0;
+        width:23%;
+        width:calc(23% - .66rem);
+        &.year {
+            width:calc(27% - .66rem);
+        }
+        &.month {
+            width:50%;
+            width:calc(50% - .66rem);
+            flex-shrink:0;
+        }
+    }
+    @media(max-width:66rem) {
+        flex-wrap:wrap;
+        align-items:flex-end;
+        select {
+            &.day, &.year {
+                width:49%;
+                width:calc(50% - .5rem);
+                margin:1rem 0 0 0;
+            }
+            &.month {
+                width:100%;
+            }
+        }
+    }
+
+}

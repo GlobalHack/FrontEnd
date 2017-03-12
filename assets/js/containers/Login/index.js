@@ -1,24 +1,31 @@
-import React, { PropTypes as T } from 'react'
-import { Jumbotron } from 'react-bootstrap'
+import React, {PropTypes as T} from 'react'
+import ReactDOM from 'react-dom'
+import {Form, FormGroup, FormControl, ControlLabel, Button, ButtonToolbar} from 'react-bootstrap'
+import AuthService from 'utils/AuthService'
 
-export class Container extends React.Component {
+export class Login extends React.Component {
+  static propTypes = {
+    location: T.object,
+    auth: T.instanceOf(AuthService)
+  };
+
   render() {
-    let children = null;
-    if (this.props.children) {
-      children = React.cloneElement(this.props.children, {
-        auth: this.props.route.auth //sends auth instance from route to children
-      })
-    }
-
+    let {auth} = this.props.route;
     return (
-      <Jumbotron>
-        <h2>
-          <img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg" />
-        </h2>
-        {children}
-      </Jumbotron>
+      <div className="jumbotron vertical-center">
+        <div className="container text-center" id="hiw-login-container">
+        </div>
+      </div>
     )
+  }
+  componentWillUnmount() {
+    this.props.route.auth.lock.hide();
+  }
+  componentDidMount() {
+    this.props.route.auth.lock.show();
   }
 }
 
-export default Container;
+require('styles/containers/Login');
+
+export default Login;

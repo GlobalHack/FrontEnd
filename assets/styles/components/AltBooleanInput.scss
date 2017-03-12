@@ -1,0 +1,36 @@
+$borderColor: #d2d6de;
+
+.alt-boolean-input {
+    flex-shrink:0;
+    width:8.75rem;
+    input[type="checkbox"] {
+        display:none
+    }
+    .alt-boolean-toggles {
+        font-weight:500;
+        display:flex;
+        justify-content:space-between;
+        .boolean-true.active {
+           background-color: #00bf98;
+        }
+        .boolean-false.active {
+           background-color: #ff440c;
+        }
+        span {
+            padding:0;
+            display:inline-block;
+            text-align:center;
+            position:relative;
+            width:50%;
+            width:calc(50% - .425rem);
+            line-height:32px;
+            border:2px solid #555;
+            opacity:.5;
+            border-radius: 4px;
+            transition: 0.2s;
+            &.active {
+                opacity:1;
+            }
+        }
+    }
+}

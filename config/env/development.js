@@ -20,7 +20,7 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
-  hookTimeout: 40000,
+  hookTimeout: 400000,
 
   http: {
     customMiddleware: function (app) {
