@@ -33,11 +33,11 @@ define(
                 {/*<li>*/}
                   {/*<a href="#">*/}
                     {/*<i className="fa fa-th"></i>*/}
-                    {/*<span>Users</span>*/}
+                    {/*<span>Employees</span>*/}
                     {/*<small className="label pull-right bg-green">new</small>*/}
                   {/*</a>*/}
                   {/*<ul className="treeview-menu">*/}
-                    {/*<li><Link to="/users/"><i className="fa fa-circle-o"></i> View Users</Link></li>*/}
+                    {/*<li><Link to="/users/"><i className="fa fa-circle-o"></i> View Employees</Link></li>*/}
                   {/*</ul>*/}
                 {/*</li>*/}
                 <li>
@@ -61,11 +61,10 @@ define(
                 <li>
                   <a href="#">
                     <i className="fa fa-th"></i>
-                    <span>Users</span>
+                    <span>Employees</span>
                   </a>
                   <ul className="treeview-menu">
-                    <li><Link to="/users/add"><i className="fa fa-circle-o"></i> Add User</Link></li>
-                    <li><Link to="/users/"><i className="fa fa-circle-o"></i> View Users</Link></li>
+                    <li><Link to="/employees/"><i className="fa fa-circle-o"></i> View Employees</Link></li>
                   </ul>
                 </li>
                 <li>
@@ -78,7 +77,7 @@ define(
                     <li><Link to="/intakes/"><i className="fa fa-circle-o"></i> View Intakes</Link></li>
                     <li><Link to="/intakes/complete"><i className="fa fa-circle-o"></i> Complete Intakes</Link></li>
                     <li><Link to="/intakes/incomplete"><i className="fa fa-circle-o"></i> Incomplete Intakes</Link></li>
-                    <li><a href="/intakes/csv"><i className="fa fa-circle-o"></i>Download Intakes</a></li>
+                    <li><a href="/api/intakes/csv"><i className="fa fa-circle-o"></i>Download Intakes</a></li>
                   </ul>
                 </li>
                 <li>
@@ -89,6 +88,15 @@ define(
                   <ul className="treeview-menu">
                     <li><Link to="/organizations/add"><i className="fa fa-circle-o"></i> Add Organization</Link></li>
                     <li><Link to="/organizations/"><i className="fa fa-circle-o"></i> View Organizations</Link></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fa fa-th"></i>
+                    <span>Manage</span>
+                  </a>
+                  <ul className="treeview-menu">
+                    <li><Link to="/manage/"><i className="fa fa-circle-o"></i> Manage Account</Link></li>
                   </ul>
                 </li>
                 {/*<li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a>*/}

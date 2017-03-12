@@ -87,7 +87,8 @@ module.exports = {
   },
   "Socialization_7": {
     "type": "boolean",
-    "title": "Surveyor, do you detect signs of poor hygiene or daily living skills?"
+    "title": "Surveyor, do you detect signs of poor hygiene or daily living skills?",
+    "description": "OBSERVATION ONLY - DO NOT ASK"
   },
   "Wellness_1": {
     type: "array",
@@ -101,55 +102,68 @@ module.exports = {
   },
   "Wellness_2": {
     "type": "boolean",
-    "title": "Kidney disease/End stage Renal Disease or Dialysis"
+    "title": "Kidney disease/End stage Renal Disease or Dialysis",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_3": {
     "type": "boolean",
-    "title": "History of frostbite, Hypothermia, or Immersion Foot"
+    "title": "History of frostbite, Hypothermia, or Immersion Foot",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_4": {
     "type": "boolean",
-    "title": "Liver disease, Cirrhosis, or End-Stage Liver Disease"
+    "title": "Liver disease, Cirrhosis, or End-Stage Liver Disease",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_5": {
     "type": "boolean",
-    "title": "HIV+/AIDS"
+    "title": "HIV+/AIDS",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_6": {
     "type": "boolean",
-    "title": "History of Heat Stroke/Heat Exhaustion"
+    "title": "History of Heat Stroke/Heat Exhaustion",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_7": {
     "type": "boolean",
-    "title": "Heart disease, Arrhythmia, or Irregular Heartbeat"
+    "title": "Heart disease, Arrhythmia, or Irregular Heartbeat",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_8": {
     "type": "boolean",
-    "title": "Emphysema"
+    "title": "Emphysema",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_9": {
     "type": "boolean",
-    "title": "Diabetes"
+    "title": "Diabetes",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_10": {
     "type": "boolean",
-    "title": "Asthma"
+    "title": "Asthma",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_11": {
     "type": "boolean",
-    "title": "Cancer"
+    "title": "Cancer",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_12": {
     "type": "boolean",
-    "title": "Hepatitis C"
+    "title": "Hepatitis C",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_13": {
     "type": "boolean",
-    "title": "Tuberculosis"
+    "title": "Tuberculosis",
+      "description": "Do you have now, have you ever had, or has a healthcare provider ever told you that you have"
   },
   "Wellness_14": {
     "type": "boolean",
-    "title": "Surveyor, do you observe signs or symptoms of a serious health condition?"
+    "title": "Surveyor, do you observe signs or symptoms of a serious health condition?",
+      "description": "OBSERVATION ONLY - DO NOT ASK"
   },
   "Wellness_15": {
     "type": "boolean",
@@ -177,7 +191,8 @@ module.exports = {
   },
   "Wellness_21": {
     "type": "boolean",
-    "title": "Surveyor, do you observe signs or symptoms or problematic alcohol or drug abuse?"
+    "title": "Surveyor, do you observe signs or symptoms or problematic alcohol or drug abuse?",
+      "description": "OBSERVATION ONLY - DO NOT ASK"
   },
   "Wellness_22": {
     "type": "boolean",
@@ -205,7 +220,8 @@ module.exports = {
   },
   "Wellness_28": {
     "type": "boolean",
-    "title": "Surveyor, do you detect signs or symptoms or severe, persistent mental illness or severely compromised cognitive functioning?"
+    "title": "Surveyor, do you detect signs or symptoms or severe, persistent mental illness or severely compromised cognitive functioning?",
+      "description" : "OBSERVATION ONLY - DO NOT ASK"
   },
   "Wellness_29": {
     "type": "boolean",
@@ -229,7 +245,7 @@ module.exports = {
   customer: {
       type: 'integer'
   },
-  user: {
+  employee: {
       type: 'integer'
   }
 };

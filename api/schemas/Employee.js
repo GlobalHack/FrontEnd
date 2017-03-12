@@ -21,5 +21,16 @@
   disabled: {
     type: 'boolean',
     defaultsTo: false
+  },
+  nickname: {
+    type: 'string'
+  },
+  password: {
+    type: 'string'
+  },
+  email_verified: {
+    type: 'boolean',
+    defaultsTo: false,
+    columnName: 'email_Verified'
   }
 };

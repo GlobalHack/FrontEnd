@@ -14,12 +14,12 @@ class BooleanInput extends Component {
     }
 
     componentDidMount() {
-        //   this.props.onChange( this.state.val )
+           this.props.onChange( this.state.val )
     }
 
-    componentDidUpdate() {
-        this.props.onChange(this.state.val)
-    }
+    // componentDidUpdate() {
+    //     this.props.onChange(this.state.val)
+    // }
 
     setTrue(ev) {
         ev.preventDefault()

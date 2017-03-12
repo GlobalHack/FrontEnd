@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class UserRow extends Component {
+class EmployeeRow extends Component {
 
   render() {
     if (!this.props) return null
@@ -18,9 +18,12 @@ class UserRow extends Component {
         <td>
           { this.props.role?this.props.role.title:"None" }
         </td>
+        <td>
+          { this.props.disabled? "True" : "False" }
+        </td>
       </tr>
     );
   }
 }
 
-export default UserRow;
+export default EmployeeRow;
