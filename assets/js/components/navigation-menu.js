@@ -90,6 +90,15 @@ define(
                     <li><Link to="/organizations/"><i className="fa fa-circle-o"></i> View Organizations</Link></li>
                   </ul>
                 </li>
+                <li>
+                  <a href="#">
+                    <i className="fa fa-th"></i>
+                    <span>Manage</span>
+                  </a>
+                  <ul className="treeview-menu">
+                    <li><Link to="/manage/"><i className="fa fa-circle-o"></i> Manage Account</Link></li>
+                  </ul>
+                </li>
                 {/*<li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a>*/}
                 {/*</li>*/}
                 {/*<li className="header">LABELS</li>*/}

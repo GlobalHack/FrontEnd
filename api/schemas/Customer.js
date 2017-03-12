@@ -40,7 +40,7 @@ module.exports = {
   },
   dateOfBirth: {
     type: 'date',
-    before: new Date(),
+    before: new Date().toUTCString(),
     columnName: 'date_of_birth',
     title:'Date of Birth',
     required:true

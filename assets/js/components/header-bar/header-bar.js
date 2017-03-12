@@ -80,13 +80,13 @@ export class HeaderBar extends React.Component {
               {/* User Account: style can be found in dropdown.less */}
               <li className="dropdown user user-menu">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                  <img src="http://lorempixel.com/160/160/" className="user-image" alt="User Image"/>
+                  <img src={profile.picture} className="user-image" alt="User Image"/>
                   <span className="hidden-xs">{profile.email}</span>
                 </a>
                 <ul className="dropdown-menu">
                   {/* User image */}
                   <li className="user-header">
-                    <img src="http://lorempixel.com/160/160/" className="img-circle" alt="User Image"/>
+                    <img src={profile.picture} className="img-circle" alt="User Image"/>
                     <p>
                       {profile.name} - OrganizationName
                       {/*<small>OrganizationRole</small>*/}

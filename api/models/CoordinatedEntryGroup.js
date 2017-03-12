@@ -18,7 +18,6 @@ for (var i = 0; i < 8; i++) {
 }
 
 module.exports = {
-  tableName: 'coordinated_entry_group',
   meta: {
      schemaName: 'coordinated_entry_system'
   },
