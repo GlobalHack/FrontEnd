@@ -28,6 +28,10 @@ module.exports.policies = {
 
   '*': 'TokenPolicy',
 
+    IntakeController: {
+      csv : true
+    }
+
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *
