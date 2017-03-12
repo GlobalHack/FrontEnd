@@ -41,7 +41,7 @@ class AltDate extends Component {
         })
     }
     sendChange() {
-        if (this.state.month && this.state.day && this.state.year) {
+        if (this.state.month!=null && this.state.day && this.state.year) {
             this.props.onChange( new Date(this.state.year, this.state.month, this.state.day).toISOString() )
         } else {
             this.props.onChange(null)

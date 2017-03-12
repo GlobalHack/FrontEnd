@@ -49,13 +49,16 @@ module.exports.routes = {
   "/intakes/*": "RootController.view",
 
   /* Organization PAGES --- */
-  "/organizations/*": "RootController.view",
+    "/organizations/*": "RootController.view",
+
+  /* Management PAGES --- */
+    "/manage/*": "RootController.view",
 
   /* SERVICE TESTING ROUTES --- */
   '/acuity/test': 'AcuityController.test',
 
   /* PAGE ROUTES --- */
-  "r|(icons|about|login|createUser|home)|page": "RootController.view",
+  "r|(signup|about|login|createUser|home)|page": "RootController.view",
 
   /* SETTINGS PAGES --- */
   "r|settings(\/.*)?|page": "RootController.view",

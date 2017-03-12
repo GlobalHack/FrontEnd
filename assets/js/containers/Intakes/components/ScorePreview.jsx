@@ -21,7 +21,8 @@ class ScorePreview extends Component {
     var score = this.props.score;
     return (
       <div className="score-preview">
-        { score }
+        Acuity Score:<br />
+        <span className="score-preview-score" >{ score }</span>
       </div>
     );
   }
