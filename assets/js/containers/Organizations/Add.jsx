@@ -39,7 +39,7 @@ class OrganizationAdd extends Component {
   handleSubmit(formData) {
     alert('form data logged in console')
     console.log(formData.formData)
-    $.post('/organizations', formData.formData)
+    $.post('/api/organizations', formData.formData)
       .done(function (response) {
         console.log(response);
       })

@@ -1,16 +1,19 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { browserHistory } from 'react-router';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {browserHistory} from 'react-router';
+//import {debounce} from 'jQuery';
 
 /* SERVICES --- */
 import * as FormUI from 'services/FormUI'
 import * as Format from 'services/Format'
+import * as DateService from 'services/DateService'
 import * as AcuityService from 'services/AcuityService'
 
 /* COMPONENTS --- */
 import Form from "react-jsonschema-form"
 import FieldTemplate from 'components/FieldTemplate'
 import CustomerAdd from './CustomerAdd'
+import ScorePreview from './ScorePreview'
 
 let IntakeSchema = require('schemas/Intake')
 
@@ -26,8 +29,8 @@ IntakeSchema = FormUI.GroupSchema(IntakeSchema, new Set(['customer', 'complete',
 let uiSchema = FormUI.Schema(IntakeSchema)
 
 /* HIDE REFERENCE INPUTS */
-uiSchema.customer = { "ui:widget" : "hidden" }
-uiSchema.employee = { "ui:widget" : "hidden" }
+uiSchema.customer = {"ui:widget": "hidden"}
+uiSchema.employee = {"ui:widget": "hidden"}
 
 const widgets = FormUI.Widgets;
 const schema = {
@@ -42,8 +45,9 @@ class IntakeForm extends Component {
             hasCustomerId: props.data.id || false,
             data: props.data || {}
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
+        this.handleScoreChange = this.handleScoreChange.bind(this);
     }
 
     removeChildData(formData) {
@@ -52,8 +56,8 @@ class IntakeForm extends Component {
         return formData
     }
 
-    handleState(newState){
-        this.setState( newState )
+    handleState(newState) {
+        this.setState(newState)
     }
 
     handleError() {
@@ -61,30 +65,45 @@ class IntakeForm extends Component {
         console.log(arguments)
     }
 
+    handleScoreChange(formState) {
+        // console.log(formState);
+        // var updateTime = Date.now();
+        // if (!this.state.lastUpdate || updateTime - this.state.lastUpdate > 50 && JSON.stringify(formState) != this.state.lastForm) {
+            var formData = Format.flatten(formState.formData);
+            this.setState({score: AcuityService.score({intake: formData})});
+            console.log(formData);
+        //     console.log(this.state.score);
+        //     //console.log(AcuityService.score({intake:formData}));
+        //     this.setState({lastUpdate: updateTime, lastForm: JSON.stringify(formState)});
+        // } else {
+        //
+        // }
+    }
+
     handleSubmit(formState) {
-        var formData = Format.flatten( formState.formData );
-        formData.score = AcuityService.score({intake:formData});
+        var formData = Format.flatten(formState.formData);
+        formData.score = AcuityService.score({intake: formData});
         console.log(formData.score);
         if (this.props.id) {
-            formData = Format.cleanForPut( formData )
+            formData = Format.cleanForPut(formData)
             $.ajax({
-                    url: `/intakes/${this.props.id}`,
-                    data: formData,
-                    method: 'PUT'
-                }).done(function( response ) {
-                    browserHistory.push('/intakes/view');
-                })
-                .fail(function( response) {
+                url: `/api/intakes/${this.props.id}`,
+                data: formData,
+                method: 'PUT'
+            }).done(function (response) {
+                browserHistory.push('/intakes/view');
+            })
+                .fail(function (response) {
                     alert('update failed - see console for details')
                     console.log('PUT ERROR:', response)
                 })
         } else {
-            formData = Format.cleanFormData( formData )
-            $.post('/intakes', formData)
-                .done(function( response ) {
+            formData = Format.cleanFormData(formData)
+            $.post('/api/intakes', formData)
+                .done(function (response) {
                     browserHistory.push('/intakes/view');
                 })
-                .fail(function( response) {
+                .fail(function (response) {
                     alert('submit failed - see console for details')
                     console.log('POST ERROR:', response)
                 })
@@ -94,35 +113,43 @@ class IntakeForm extends Component {
     render() {
         // we have some string fields that should be replaced with this multiple-choice-list
         // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
-        var customerData = this.state.data.customer
-        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']))
-        if (this.state.customer) intakeData.customer = this.state.customer.id
+        var customerData = this.state.data.customer;
+        var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']));
+        //var score = this.state.score || this.state.data.score;
+        if (this.state.customer) {
+            intakeData.customer = this.state.customer.id;
+            if (!intakeData.General||!intakeData.General.General_1) {
+                intakeData.General = intakeData.General || {};
+                intakeData.General.General_1 = DateService.calculateAge(this.state.customer.dateOfBirth);
+            }
+        }
         return (
-                <section className="content intake-add">
-                    <CustomerAdd handleState={ this.handleState } data={ customerData } />
-                    {
-                        this.state.hasCustomerId ?
-                            <Form
-                                FieldTemplate={FieldTemplate}
-                                schema={schema}
-                                uiSchema={uiSchema}
-                                widgets={widgets}
-                                formData={ intakeData }
-                                onError={this.handleError}
-                                onChange={this.handleChange}
-                                onSubmit={this.handleSubmit} />
-                            : null
-                    }
+            <section className="content intake-add">
+                <ScorePreview score={ this.state.score || this.state.data.score }/>
+                <CustomerAdd handleState={ this.handleState } data={ customerData }/>
+                {
+                    this.state.hasCustomerId ?
+                        <Form
+                            FieldTemplate={FieldTemplate}
+                            schema={schema}
+                            uiSchema={uiSchema}
+                            widgets={widgets}
+                            formData={ intakeData }
+                            onError={this.handleError}
+                            onChange={this.handleScoreChange}
+                            onSubmit={this.handleSubmit}/>
+                        : null
+                }
 
-                </section>
+            </section>
         );
     }
 }
 
 IntakeForm.defaultProps = {
     data: {
-        customer:{},
-        employee:{}
+        customer: {},
+        employee: {}
     }
 }
 

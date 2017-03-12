@@ -4,10 +4,10 @@ import AltBooleanInput from 'components/AltBooleanInput'
 import AltDate from 'components/AltDate'
 
 export const Widgets = {
-  phoneNumber: PhoneNumber,
-  increment: IncrementInput,
-  boolean: AltBooleanInput,
-  date: AltDate
+    phoneNumber: PhoneNumber,
+    increment: IncrementInput,
+    boolean: AltBooleanInput,
+    date: AltDate
 }
 
 export const Excluded = new Set([
@@ -20,7 +20,7 @@ export const Remove = new Set([
 
 export const Schema = (schema) => {
     let uiSchema = {}
-    Object.keys(schema).forEach(function(key){
+    Object.keys(schema).forEach(function (key) {
         if (Remove.has(key)) {
             delete schema[key]
             return
@@ -41,15 +41,18 @@ export const Schema = (schema) => {
                 "ui:widget": "date"
             }
         }
+        if (schema[key].help) {
+            (uiSchema[key]||{})["ui:widget"]= "increment"
+
+        }
     })
     return uiSchema;
 }
 
 
-
-export const GroupSchema = (schema, excluded=new Set()) => {
+export const GroupSchema = (schema, excluded = new Set()) => {
     let groupSchema = {}
-    Object.keys(schema).forEach(function(key){
+    Object.keys(schema).forEach(function (key) {
         if (excluded.has(key)) {
             groupSchema[key] = schema[key]
         } else {
@@ -67,9 +70,9 @@ export const GroupSchema = (schema, excluded=new Set()) => {
     return groupSchema
 }
 
-export const GroupData = (schema, excluded=new Set()) => {
+export const GroupData = (schema, excluded = new Set()) => {
     let groupData = {}
-    Object.keys(schema).forEach(function(key){
+    Object.keys(schema).forEach(function (key) {
         if (excluded.has(key)) {
             groupData[key] = schema[key]
         } else {
@@ -83,8 +86,8 @@ export const GroupData = (schema, excluded=new Set()) => {
 
 export const defaults = (schema) => {
     var defaults = {}
-    console.log( schema )
-    Object.keys(schema).forEach(function(key){
+    console.log(schema)
+    Object.keys(schema).forEach(function (key) {
         if (schema[key].required) {
             if (schema[key].type == 'integer') defaults[key] = 0
             else if (schema[key].type == 'boolean') defaults[key] = false

@@ -21,8 +21,10 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
     "ejs": "2.3.4",
+    "express-jwt": "^5.1.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "faker": "^3.1.0",
+    "fnv-plus": "^1.2.12",
     "include-all": "^1.0.0",
     "jquery": "^3.1.1",
     "json2csv": "^3.7.3",
@@ -48,6 +50,7 @@
     "ssn": "^1.0.3",
     "style-loader": "^0.13.1",
     "velocity-animate": "^1.4.2",
+    "waterline": "^0.11.8",
     "waterline-sqlite3": "^1.0.3"
   },
   "scripts": {

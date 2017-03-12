@@ -16,10 +16,10 @@ class EmployeeRow extends Component {
           { this.props.lastName }
         </td>
         <td>
-          { this.props.ssn }
+          { this.props.role?this.props.role.title:"None" }
         </td>
         <td>
-          { this.props.role?this.props.role.title:"None" }
+          { this.props.disabled? "True" : "False" }
         </td>
       </tr>
     );

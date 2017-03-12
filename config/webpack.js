@@ -18,11 +18,6 @@ var plugins = [
         force: true
     },
     {
-        from: 'assets/js/vendor',
-        to: 'vendor',
-        force: true
-    },
-    {
         from: 'assets/images',
         to: 'images',
         force: true

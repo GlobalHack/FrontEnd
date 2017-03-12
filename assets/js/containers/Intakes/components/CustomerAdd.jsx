@@ -61,7 +61,7 @@ class CustomerAdd extends Component {
         if (this.state.formData.id) {
             var formData = Format.cleanForPut( formState.formData )
             $.ajax({
-                    url: `/customers/${this.state.formData.id}`,
+                    url: `/api/customers/${this.state.formData.id}`,
                     data: formData,
                     method: 'PUT'
                 }).done(function( response ) {
@@ -79,7 +79,7 @@ class CustomerAdd extends Component {
                 })
         } else {
             var formData = Format.cleanFormData( formState.formData )
-            $.post('/customers', formData)
+            $.post('/api/customers', formData)
                 .done(function( response ) {
                     _this.props.handleState({
                         hasCustomerId: true,

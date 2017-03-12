@@ -17,7 +17,7 @@ class EmployeesView extends Component {
 
   componentWillMount() {
     var _this = this;
-    $.get('/employees')
+    $.get('/api/employees')
       .done(function (response) {
         _this.setState({
           employees: response
@@ -33,7 +33,7 @@ class EmployeesView extends Component {
   render() {
     if (this.state.hasError) return ( <p>Unable to get employees.</p> )
     var employeesRows = this.state.employees.map((employee, i) => {
-      return <EmployeeRow key={`employee-row-${i}`} { ...employee } />
+      return <EmployeeRow key={`user-row-${i}`} { ...employee } />
     })
     return (
       <div>
@@ -43,8 +43,8 @@ class EmployeesView extends Component {
               <th>Organization</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>SSN</th>
               <th>Role</th>
+              <th>Disabled</th>
             </tr>
           </thead>
           <tbody>

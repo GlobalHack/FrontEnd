@@ -3,7 +3,7 @@ import {render} from 'react-dom'
 import {Provider} from 'react-redux'
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
-import {browserHistory, Router, Route, IndexRoute, IndexRedirect} from 'react-router'
+import {browserHistory, Router, Route, Redirect, IndexRoute, IndexRedirect} from 'react-router'
 
 /* SHARED SERVICES --- */
 require('services/$.serializeObject.js') // USED FOR FORMS
@@ -12,12 +12,12 @@ require('services/$.serializeObject.js') // USED FOR FORMS
 import Template from 'containers/Template'
 import AdminLTE from 'containers/AdminLTE'
 import Settings from 'containers/Settings'
+import Manage from 'containers/Manage'
+import ManageDashboard from 'containers/Manage/Dashboard'
 import Login from 'containers/Login'
 import CreateUser from 'containers/CreateUser/components/Create'
 import LoginLogin from 'containers/Login/Login.jsx'
 import Home from 'containers/Home'
-import Users from 'containers/Users'
-import UsersView from 'containers/Users/View'
 import CoordinatedEntryGroups from 'containers/Coordinatedentrygroups'
 import CoordinatedEntryGroupsView from 'containers/Coordinatedentrygroups/View'
 import Customers from 'containers/Customers'
@@ -37,7 +37,8 @@ import OrganizationsView from 'containers/Organizations/View'
 
 /* UTILITIES --- */
 import AuthService from 'utils/AuthService'
-const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com');
+const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'login');
+const authSignUp = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'signUp');
 
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
@@ -60,47 +61,65 @@ const requireAuth = (nextState, replace) => {
 }
 
 /* ADD BASE/GLOBAL STYLES --- */
-require('./../styles/base.scss')
+require('./../styles/base.scss');
+
+/* Add our authorization header to all jquery requests */
+$.ajaxSetup({
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('authorization', 'Bearer '+localStorage.getItem('id_token'));
+    }
+});
 
 /* RENDER WITH REDUX / REACT ROUTER --- */
 render((
   <Provider store={ store }>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
+      <Route path="/signup" component={ Login } auth={ authSignUp }/>
       <Route path="/login" component={ Login } auth={ auth }/>
       <Route path="/" component={ AdminLTE } auth={ auth }>
         <IndexRedirect to="/home"/>
         <Route path="/home" component={ Home } onEnter={requireAuth}/>
-        <Route path="/icons" component={ Icons } onEnter={requireAuth}/>
-        <Route path="/createUser" component={ CreateUser } onEnter={requireAuth}/>
+        {/*<Route path="/icons" component={ Icons } onEnter={requireAuth}/>*/}
         {/*<Route path="/login" component={ LoginLogin } />*/}
-        <Route path="/settings" onEnter={requireAuth}>
-          <IndexRoute component={ Settings }/>
-        </Route>
-        <Route path="/users" component={ Users } onEnter={requireAuth}>
-          <Route path="/users/view" component={ UsersView }/>
+        {/*<Route path="/settings" onEnter={requireAuth}>*/}
+          {/*<IndexRoute component={ Settings }/>*/}
+          {/*<Redirect from="*" to="/settings/"/>*/}
+        {/*</Route>*/}
+        <Route path="/employees" component={ Employees } onEnter={requireAuth}>
+          <IndexRoute component={EmployeesView}/>
+          <Route path="view" component={ EmployeesView }/>
+          <Redirect from="*" to="/employees/"/>
         </Route>
         <Route path="/coordinatedentrygroups" component={ CoordinatedEntryGroups } onEnter={requireAuth}>
-          <Route path="/coordinatedentrygroups/view" component={ CoordinatedEntryGroupsView }/>
+          <IndexRoute component={CoordinatedEntryGroupsView}/>
+          <Route path="view" component={ CoordinatedEntryGroupsView }/>
+          <Redirect from="*" to="/coordinatedentrygroups/"/>
         </Route>
         <Route path="/customers" component={ Customers } onEnter={requireAuth}>
-          <Route path="/customers/view" component={ CustomersView }/>
-        </Route>
-        <Route path="/employees" component={ Employees } onEnter={requireAuth}>
-          <Route path="/employees/add" component={ EmployeesAdd }/>
-          <Route path="/employees/view" component={ EmployeesView }/>
+          <IndexRoute component={CustomersView}/>
+          <Route path="view" component={ CustomersView }/>
+          <Redirect from="*" to="/customers/"/>
         </Route>
         <Route path="/intakes" component={ Intakes } onEnter={requireAuth}>
-          <Route path="/intakes/add" component={ IntakeAdd }/>
-          <Route path="/intakes/:id/edit" component={ IntakeEdit }/>
-          <Route path="/intakes/view" component={ IntakesView }/>
-          <Route path="/intakes/complete" component={ IntakesComplete }/>
-          <Route path="/intakes/incomplete" component={ IntakesIncomplete }/>
+          <IndexRoute component={IntakesView}/>
+          <Route path="add" component={ IntakeAdd }/>
+          <Route path=":id/edit" component={ IntakeEdit }/>
+          <Route path="view" component={ IntakesView }/>
+          <Route path="complete" component={ IntakesComplete }/>
+          <Route path="incomplete" component={ IntakesIncomplete }/>
+          <Redirect from="*" to="/intakes/"/>
         </Route>
         <Route path="/organizations" component={ Organizations } onEnter={requireAuth}>
-          <Route path="/organizations/add" component={ OrganizationsAdd }/>
-          <Route path="/organizations/view" component={ OrganizationsView }/>
+          <IndexRoute component={OrganizationsView}/>
+          <Route path="add" component={ OrganizationsAdd }/>
+          <Route path="view" component={ OrganizationsView }/>
+          <Redirect from="*" to="/organizations/"/>
         </Route>
-        <Route path="*" component={ FourOhFour }/>
+        <Route path="/manage" component={ Manage } onEnter={requireAuth}>
+          <IndexRoute component={ ManageDashboard }/>
+          <Redirect from="*" to="/manage/"/>
+        </Route>
+        {/*<Route path="*" component={ FourOhFour }/>*/}
       </Route>
     </Router>
   </Provider>

@@ -21,7 +21,7 @@ var attributes = {
 };
 attributes = Object.assign(schema, attributes);
 
-var createIntake = function (customer, employee) {
+var createIntake = function (customer, employee ) {
   return {
     General_1: parseInt(faker.random.number({min: 15, max: 60})),
     Housing_1: parseInt(faker.random.number({min: 15, max: 60})),

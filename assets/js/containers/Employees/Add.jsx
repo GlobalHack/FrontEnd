@@ -41,7 +41,7 @@ class EmployeeAdd extends Component {
   handleSubmit(formData) {
     alert('form data logged in console')
     console.log(formData.formData)
-    $.post('/employees', formData.formData)
+    $.post('/api/users', formData.formData)
       .done(function (response) {
         console.log(response);
       })

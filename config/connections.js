@@ -109,6 +109,15 @@ module.exports.connections = {
       database: 'gh4implementation' //optional
     },
 
+    dockerPostgreSQLServer: {
+        adapter: 'sails-postgresql',
+        host: '192.168.99.100',
+        port: '32770',
+        user: 'postgres', // optional
+        password: '', // optional
+        database: 'sails' //optional
+    },
+
   //might as well just put this in since we'll switch dbs when we move out of testing
   devPostgreSQLServer: {
     adapter: 'sails-postgresql',

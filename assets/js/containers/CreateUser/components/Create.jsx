@@ -33,7 +33,7 @@ class CreateUserForm extends Component {
     let profile = this.props.auth.getProfile()
     return (
 
-        <form method="POST" onSubmit={this.handleSubmit} action={`/users${profile.user_id ? `/${profile.user_id}` : ''}`}>
+        <form method="POST" onSubmit={this.handleSubmit} action={`/api/users${profile.user_id ? `/${profile.user_id}` : ''}`}>
             <div className="user-input-card full">
                 <div>
                     <div className="input-with-labels">

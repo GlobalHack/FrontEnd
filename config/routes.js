@@ -36,38 +36,43 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  /* USER PAGES --- */
-  "r|users/.+|page": "RootController.view",
+  /* Employee PAGES --- */
+  "/employees/*": "RootController.view",
 
   /* COORDINATEDENTRYGROUP PAGES --- */
-  "r|coordinatedentrygroups/.+|page": "RootController.view",
+  "/coordinatedentrygroups/*": "RootController.view",
 
   /* CUSTOMER PAGES --- */
-  "/customers/add": "RootController.view",
-  "/customers/view": "RootController.view",
-
-  /* Employee PAGES --- */
-  "r|employees/[^\d]+|page": "RootController.view",
-  "r|employees/add": "RootController.view",
+  "/customers/*": "RootController.view",
 
   /* INTAKES PAGES --- */
-  "/intakes/add": "RootController.view",
-  "/intakes/view": "RootController.view",
-  "/intakes/complete": "RootController.view",
-  "/intakes/incomplete": "RootController.view",
-  "/intakes/:id/edit": "RootController.view",
+  "/intakes/*": "RootController.view",
 
   /* Organization PAGES --- */
-  "r|organizations/[^\d]+|page": "RootController.view",
+    "/organizations/*": "RootController.view",
+
+  /* Management PAGES --- */
+    "/manage/*": "RootController.view",
 
   /* SERVICE TESTING ROUTES --- */
   '/acuity/test': 'AcuityController.test',
 
   /* PAGE ROUTES --- */
-  "r|(icons|about|login|createUser|home)|page": "RootController.view",
+  "r|(signup|about|login|createUser|home)|page": "RootController.view",
 
   /* SETTINGS PAGES --- */
-  "r|settings(\/.*)?|page": "RootController.view"
+  "r|settings(\/.*)?|page": "RootController.view",
+
+  /* API ROUTES */
+  '/api/users/:id/roles': "UserController.role",
+  '/api/users/:id/disable': "UserController.disabled",
+
+  '/api/*': {
+    cors: {
+      origin: '*',
+      credentials: false
+    }
+  }
 
   /***************************************************************************
   *                                                                          *

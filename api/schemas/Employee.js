@@ -1,4 +1,4 @@
-module.exports = {
+﻿module.exports = {
   organization: {
     model: 'organization'
   },
@@ -15,11 +15,22 @@ module.exports = {
   email: {
     type: 'string'
   },
-  ssn: {
-    type: 'string',
-    size: 11
-  },
   role: {
     model: 'role'
+  },
+  disabled: {
+    type: 'boolean',
+    defaultsTo: false
+  },
+  nickname: {
+    type: 'string'
+  },
+  password: {
+    type: 'string'
+  },
+  email_verified: {
+    type: 'boolean',
+    defaultsTo: false,
+    columnName: 'email_Verified'
   }
 };

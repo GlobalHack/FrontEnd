@@ -17,7 +17,7 @@ class CoordinatedEntryGroupsView extends Component {
 
   componentWillMount() {
     var _this = this;
-    $.get('/coordinatedentrygroups')
+    $.get('/api/coordinatedentrygroups')
       .done(function (response) {
         _this.setState({
           coordinatedentrygroups: response

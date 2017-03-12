@@ -1,41 +1,39 @@
-var faker = require('faker');
+﻿var faker = require('faker');
+var schema = require('../schemas/Employee');
 var RandomSSN = require('ssn').RandomSSN;
 var bcrypt = require('bcryptjs');
-var schema = require('../schemas/Employee');
 
 var attributes = {
-  nickname: {
-    type: 'string'
-  },
-  password: {
-    type: 'string'
-  },
-  email_Verified: {
-    type: 'boolean'
-  },
-};
+}
 attributes = Object.assign(schema, attributes);
 
-var createEmployee = function () {
+var createEmployee = function (employee) {
+  var lastName = faker.name.lastName()
+  var firstName = faker.name.firstName()
   return {
     organization: faker.random.number({min: 1, max: 2}),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    ssn: new RandomSSN().value().toFormattedString(),
-    role: faker.random.number({min: 1, max: 2})
+    firstName: firstName,
+    lastName: lastName,
+    nickname: firstName,
+    email:  lastName + "." + firstName + "@gmail.com",
+    role: faker.random.number({min: 1, max: 2}),
+    disabled: false,
+    email_verified: false
   }
 }
 
 var seedData = []
-for (var i = 0; i < 20; i++) {
+for (var i = 0; i < 5; i++) {
   seedData.push(createEmployee());
 }
-seedData.push({email:"test@cemaritan.com",password:bcrypt.hashSync("testing123testing", 10)});
+seedData.push({email:"test@cemaritan.com",password:bcrypt.hashSync("testing123testing", 10)})
 
+
+// not sure what this model is for
 module.exports = {
   tableName: 'employee',
   meta: {
-    schemaName: 'organization_information'
+    schemaName: 'coordinated_entry_system'
   },
   attributes: attributes,
   seedData: seedData
