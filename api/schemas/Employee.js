@@ -20,7 +20,8 @@
   },
   disabled: {
     type: 'boolean',
-    defaultsTo: false
+    defaultsTo: false,
+    required: true
   },
   nickname: {
     type: 'string'
