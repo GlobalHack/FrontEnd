@@ -33,7 +33,7 @@ seedData.push({email:"test@cemaritan.com",password:bcrypt.hashSync("testing123te
 module.exports = {
   tableName: 'employee',
   meta: {
-    schemaName: 'coordinated_entry_system'
+    schemaName: 'organization_information'
   },
   attributes: attributes,
   seedData: seedData
