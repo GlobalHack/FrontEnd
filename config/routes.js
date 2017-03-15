@@ -58,7 +58,7 @@ module.exports.routes = {
   '/acuity/test': 'AcuityController.test',
 
   /* PAGE ROUTES --- */
-  "r|(signup|about|login|createUser|home)|page": "RootController.view",
+  "r|(signup|password|login|createUser|home)|page": "RootController.view",
 
   /* SETTINGS PAGES --- */
   "r|settings(\/.*)?|page": "RootController.view",
@@ -72,6 +72,12 @@ module.exports.routes = {
       origin: '*',
       credentials: false
     }
+  },
+
+  '/*': {
+    skipRegex: new RegExp('/api/*'),
+    view: "homepage",
+    skipAssets: true
   }
 
   /***************************************************************************

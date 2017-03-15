@@ -3,6 +3,8 @@ import IncrementInput from 'components/IncrementInput'
 import AltBooleanInput from 'components/AltBooleanInput'
 import AltDate from 'components/AltDate'
 
+require('styles/components/AltRadioInput')
+
 export const Widgets = {
     phoneNumber: PhoneNumber,
     increment: IncrementInput,
@@ -33,9 +35,16 @@ export const Schema = (schema) => {
                 "ui:widget": "increment"
             }
         } else if (schema[key].type == 'boolean') {
-            uiSchema[key] = {
-                "ui:widget": "boolean"
+          uiSchema[key] = {
+            "ui:widget": "boolean"
+          }
+        } else if (schema[key].enum) {
+          uiSchema[key] = {
+            "ui:widget": "radio",
+            "ui:options": {
+              "inline": true
             }
+          }
         } else if (schema[key].format == 'alt-date') {
             uiSchema[key] = {
                 "ui:widget": "date"
@@ -91,7 +100,8 @@ export const defaults = (schema) => {
         if (schema[key].required) {
             if (schema[key].type == 'integer') defaults[key] = 0
             else if (schema[key].type == 'boolean') defaults[key] = false
-            else if (schema[key].type == 'string') defaults[key] = ''
+            else if (schema[key].type == 'string'&&!schema[key].enum) defaults[key] = ''
+            else if (schema[key].enum) defaults[key] = null;
         }
     })
     return defaults

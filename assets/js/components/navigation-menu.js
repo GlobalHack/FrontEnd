@@ -96,7 +96,8 @@ define(
                     <span>Manage</span>
                   </a>
                   <ul className="treeview-menu">
-                    <li><Link to="/manage/"><i className="fa fa-circle-o"></i> Manage Account</Link></li>
+                    <li><Link to="/manage/admin"><i className="fa fa-circle-o"></i> Manage Account (Admin)</Link></li>
+                    <li><Link to="/manage/employee"><i className="fa fa-circle-o"></i> Manage Account</Link></li>
                   </ul>
                 </li>
                 {/*<li><a href="documentation/index.html"><i className="fa fa-book"></i> <span>Documentation</span></a>*/}
