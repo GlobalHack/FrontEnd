@@ -70,8 +70,8 @@ class IntakeForm extends Component {
         // var updateTime = Date.now();
         // if (!this.state.lastUpdate || updateTime - this.state.lastUpdate > 50 && JSON.stringify(formState) != this.state.lastForm) {
             var formData = Format.flatten(formState.formData);
-            this.setState({score: AcuityService.score({intake: formData})});
-            console.log(formData);
+            this.setState({data:formData, score: AcuityService.score({intake: formData})});
+            // console.log(formData);
         //     console.log(this.state.score);
         //     //console.log(AcuityService.score({intake:formData}));
         //     this.setState({lastUpdate: updateTime, lastForm: JSON.stringify(formState)});
@@ -115,6 +115,7 @@ class IntakeForm extends Component {
         // https://github.com/mozilla-services/react-jsonschema-form#multiple-choices-list
         var customerData = this.state.data.customer;
         var intakeData = FormUI.GroupData(this.removeChildData(this.state.data), new Set(['customer', 'complete', 'employee']));
+
         //var score = this.state.score || this.state.data.score;
         if (this.state.customer) {
             intakeData.customer = this.state.customer.id;
@@ -123,6 +124,7 @@ class IntakeForm extends Component {
                 intakeData.General.General_1 = DateService.calculateAge(this.state.customer.dateOfBirth);
             }
         }
+        console.log(intakeData);
         return (
             <section className="content intake-add">
                 <ScorePreview score={ this.state.score || this.state.data.score }/>

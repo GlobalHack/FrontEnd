@@ -16,11 +16,17 @@ module.exports = {
 
     score: function(options, done) {
         //console.log("Calculating acuity score");
-        let surveyResult = options.intake;
+        let surveyResult = JSON.parse(JSON.stringify(options.intake));
         let acuity_score = 0;
         let medicalCondition = false;
         let substanceUse = false;
         let mentalHealthCondition = false;
+
+        Object.keys(surveyResult).forEach(function(key,index) {
+          if (surveyResult[key]=="no"||surveyResult[key]=="refuse"){
+            surveyResult[key]=null;
+          }
+        });
 
         if (surveyResult["General_1"] >= 60) {
             acuity_score++;

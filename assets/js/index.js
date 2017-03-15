@@ -14,6 +14,7 @@ import AdminLTE from 'containers/AdminLTE'
 import Settings from 'containers/Settings'
 import Manage from 'containers/Manage'
 import ManageDashboard from 'containers/Manage/Dashboard'
+import ManageAdminDashboard from 'containers/Manage/AdminDashboard'
 import Login from 'containers/Login'
 import CreateUser from 'containers/CreateUser/components/Create'
 import LoginLogin from 'containers/Login/Login.jsx'
@@ -39,6 +40,7 @@ import OrganizationsView from 'containers/Organizations/View'
 import AuthService from 'utils/AuthService'
 const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'login');
 const authSignUp = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'signUp');
+const authPassword = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'forgotPassword');
 
 /* COMPONENTS --- */
 import Icons from 'components/Icons'
@@ -74,6 +76,7 @@ $.ajaxSetup({
 render((
   <Provider store={ store }>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={ browserHistory }>
+      <Route path="/password" component={ Login } auth={ authPassword }/>
       <Route path="/signup" component={ Login } auth={ authSignUp }/>
       <Route path="/login" component={ Login } auth={ auth }/>
       <Route path="/" component={ AdminLTE } auth={ auth }>
@@ -117,9 +120,11 @@ render((
         </Route>
         <Route path="/manage" component={ Manage } onEnter={requireAuth}>
           <IndexRoute component={ ManageDashboard }/>
+          <Route path="admin" component={ ManageAdminDashboard }/>
+          <Route path="employee" component={ ManageDashboard }/>
           <Redirect from="*" to="/manage/"/>
         </Route>
-        {/*<Route path="*" component={ FourOhFour }/>*/}
+        <Redirect from="*" to="/home/"/>
       </Route>
     </Router>
   </Provider>
