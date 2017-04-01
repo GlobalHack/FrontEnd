@@ -2,6 +2,7 @@ module.exports = {
   name: {
     type: 'string',
     index: true,
+    defaultsTo: '',
     notNull: true,
     unique: true
   },

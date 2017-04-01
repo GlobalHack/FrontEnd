@@ -68,6 +68,7 @@ require('./../styles/base.scss');
 /* Add our authorization header to all jquery requests */
 $.ajaxSetup({
     beforeSend: function(xhr) {
+
         xhr.setRequestHeader('authorization', 'Bearer '+localStorage.getItem('id_token'));
     }
 });
