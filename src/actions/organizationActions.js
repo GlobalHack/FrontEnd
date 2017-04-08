@@ -1,0 +1,62 @@
+import organizationApi from '../api/OrganizationApi';
+import * as types from './actionTypes';
+
+export function loadEOrganizationsSuccess(organizations) {
+  return {type: types.LOAD_ORGANIZATIONS_SUCCESS, organizations};
+}
+
+export function updateOrganizationSuccess(organization) {
+  return {type: types.UPDATE_ORGANIZATION_SUCCESS, organization};
+}
+
+export function createOrganizationSuccess(organization) {
+  return {type: types.CREATE_ORGANIZATION_SUCCESS, organization};
+}
+
+export function deleteOrganizationSuccess(organization) {
+  return {type: types.DELETE_ORGANIZATION_SUCCESS, organization};
+}
+
+export function loadOrganizations() {
+  // make async call to api, handle promise, dispatch action when promise is resolved
+  return function (dispatch) {
+    return organizationApi.getAllOrganizations().then(organizations => {
+      dispatch(loadOrganizationsSuccess(organizations));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function updateEmployee(organization) {
+  return function (dispatch) {
+    return organizationApi.updateOrganization(organization).then(responseOrganization => {
+      dispatch(updateOrganizationSuccess(responseOrganization));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function createEmployee(organization) {
+  return function (dispatch) {
+    return organizationApi.createOrganization(organization).then(responseOrganization => {
+      dispatch(createOrganizationSuccess(responseOrganization));
+      return responseOrganization;
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function deleteEmployee(organization) {
+  return function (dispatch) {
+    return organizationApi.deleteOrganization(organization).then(() => {
+      console.log(`Deleted ${organization.id}`);
+      dispatch(deleteOrganizationSuccess(organization));
+      return;
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}

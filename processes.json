@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "name": "cemaritan",
+      "script": "react-scripts start",
+      "out_file": "/dev/null",
+      "error_file": "/dev/null",
+      "cwd": "/home/ubuntu/Frontend-Tmp"
+    }
+  ]
+}

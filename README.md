@@ -1,28 +1,30 @@
-GlobalHack VI Implementation Front End Build
---------------------------------------------
+# Frontend-Tmp
+Holding vessel for the frontend while it's transitioned
 
-First, install [Sails.js](http://sailsjs.com/)
-```
-sudo npm -g install sails
-```
+build image from dockerfile
+---------------------------
+docker build -t <your username>/node-web-app .
 
-Next, clone the repo
-```
-git clone https://github.com/GHImplementationTeam/FrontEnd.git
-```
+list images
+-----------
+docker images
 
-Jump into the project and install the dependencies:
-```
-cd learn-react && npm install
-```
+start an image
+--------------
+docker run -p 49160:8080 -d <your username>/node-web-app
 
-Launch the site!
-```
-sails lift
-```
+Get container ID
+----------------
+$ docker ps
 
-----------
+Print app output
+----------------
+$ docker logs <container id>
 
-Want to learn more about this build process? Checkout out the *learn-react* repo!
+cmd prompt inside image
+-----------------------
+docker exec -it <container id> /bin/bash
 
-[Learn React](https://github.com/ecoker/learn-react)
+deploy stack
+------------
+docker stack deploy --compose-file docker-stack.yml cemaritan

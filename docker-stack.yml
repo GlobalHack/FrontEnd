@@ -1,0 +1,55 @@
+version: "3"
+services:
+  database:
+    image: postgres:9.4
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+  api:
+    image: ghimplementationteam/api
+    ports:
+      - 1337:1337
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - database
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 60s
+  frontend:
+    image: ghimplementationteam/frontend
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+    depends_on:
+      - api
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 60s
+  server:
+    image: nginx-proxy:latest
+    networks:
+      - frontend
+    depends_on:
+      - frontend
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 60s
+networks:
+  frontend:
+  backend:
