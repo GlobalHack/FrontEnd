@@ -8,9 +8,10 @@ const EmployeeTable = ({employees}) => {
       <Table>
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow>
-            <TableHeaderColumn>Organization</TableHeaderColumn>
-            <TableHeaderColumn>First Name</TableHeaderColumn>
-            <TableHeaderColumn>Last Name</TableHeaderColumn>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Email</TableHeaderColumn>
+            <TableHeaderColumn>Role</TableHeaderColumn>
+            <TableHeaderColumn>Disabled</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody showRowHover={true} stripedRows={true}>

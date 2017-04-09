@@ -17,7 +17,7 @@ class OrganizationPermissionRow extends React.Component {
       <TableRow>
         <TableRowColumn width={20}>{organization.name}</TableRowColumn>
         <TableRowColumn width={20}>{organization.address}</TableRowColumn>
-        <TableRowColumn width={20}>{
+        <TableRowColumn width={20}>
           <SelectField
             value={this.state.value}
             onChange={this.handleChange}
@@ -27,7 +27,7 @@ class OrganizationPermissionRow extends React.Component {
             <MenuItem value={3} primaryText="No DV"/>
             <MenuItem value={4} primaryText="No Youth"/>
           </SelectField>
-        }</TableRowColumn>
+        </TableRowColumn>
         <TableRowColumn width={20}>{organization.createdAt}</TableRowColumn>
         <TableRowColumn width={20}><Checkbox /></TableRowColumn>
       </TableRow>
