@@ -9,9 +9,15 @@ import IntakePage from './components/intake/IntakePage';
 import AuthService from './utils/AuthService';
 import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
 
-const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'login');
-const signupAuth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'signUp');
-const passwordAuth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'forgotPassword');
+// Production client id
+// const auth0clientId = 'lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2'
+
+// Dev client id
+const auth0clientId = 'GagQKRuCWhyN59HiSRa4WrEEK1YiTnBK'
+
+const auth = new AuthService(auth0clientId, 'benvenker.auth0.com', 'login');
+const signupAuth = new AuthService(auth0clientId, 'benvenker.auth0.com', 'signUp');
+const passwordAuth = new AuthService(auth0clientId, 'benvenker.auth0.com', 'forgotPassword');
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
