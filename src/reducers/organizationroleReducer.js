@@ -23,7 +23,7 @@ export default function organizationroleReducer(state = initialState.organizatio
     case types.DELETE_ORGANIZATIONROLE_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfOrganizationRoleToDelete = state.findIndex(organizationrole => {
-        return organizationrole.id == action.organizationrole.id;
+        return organizationrole.id === action.organizationrole.id;
       });
       newState.splice(indexOfOrganizationRoleToDelete, 1);
       browserHistory.push('/organizationroles');

@@ -1,7 +1,7 @@
 import organizationApi from '../api/OrganizationApi';
 import * as types from './actionTypes';
 
-export function loadEOrganizationsSuccess(organizations) {
+export function loadOrganizationsSuccess(organizations) {
   return {type: types.LOAD_ORGANIZATIONS_SUCCESS, organizations};
 }
 
@@ -28,7 +28,7 @@ export function loadOrganizations() {
   };
 }
 
-export function updateEmployee(organization) {
+export function updateOrganization(organization) {
   return function (dispatch) {
     return organizationApi.updateOrganization(organization).then(responseOrganization => {
       dispatch(updateOrganizationSuccess(responseOrganization));
@@ -38,7 +38,7 @@ export function updateEmployee(organization) {
   };
 }
 
-export function createEmployee(organization) {
+export function createOrganization(organization) {
   return function (dispatch) {
     return organizationApi.createOrganization(organization).then(responseOrganization => {
       dispatch(createOrganizationSuccess(responseOrganization));
@@ -49,7 +49,7 @@ export function createEmployee(organization) {
   };
 }
 
-export function deleteEmployee(organization) {
+export function deleteOrganization(organization) {
   return function (dispatch) {
     return organizationApi.deleteOrganization(organization).then(() => {
       console.log(`Deleted ${organization.id}`);

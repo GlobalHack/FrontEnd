@@ -23,7 +23,7 @@ export default function organizationReducer(state = initialState.organizations, 
     case types.DELETE_ORGANIZATION_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfOrganizationToDelete = state.findIndex(organization => {
-        return organization.id == action.organization.id;
+        return organization.id === action.organization.id;
       });
       newState.splice(indexOfOrganizationToDelete, 1);
       browserHistory.push('/organizations');

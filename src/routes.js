@@ -2,13 +2,16 @@ import React from 'react';
 import {IndexRedirect, IndexRoute, Redirect, Route} from 'react-router';
 import App from './components/App';
 import WelcomePage from './components/base/WelcomePage';
+import DashboardPage from './components/base/DashboardPage';
 import LoginPage from './components/base/LoginPage';
 import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
 import AuthService from './utils/AuthService';
-import {employeePath, intakePath, homePath} from './utils/pathsHelper';
+import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
 
-const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com');
+const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'login');
+const signupAuth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'signUp');
+const passwordAuth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'forgotPassword');
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
@@ -24,9 +27,12 @@ export const makeMainRoutes = () => {
   return (
     <Route>
       <Route path="/login" component={LoginPage} auth={auth}/>
+      <Route path="/signup" component={LoginPage} auth={signupAuth}/>
+      <Route path="/password" component={LoginPage} auth={passwordAuth}/>
       <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
         <IndexRedirect to={homePath}/>
         <Route path={homePath} component={WelcomePage}/>
+        <Route path={dashPath} component={DashboardPage}/>
         <Route path={employeePath}>
           <IndexRoute component={EmployeeTablePage}/>
           <Redirect from="*" to={employeePath}/>

@@ -42,7 +42,7 @@ export function createGroupMembership(groupmembership) {
   return function (dispatch) {
     return groupmembershipApi.createGroupMembership(groupmembership).then(responseGroupMembership => {
       dispatch(createGroupMembershipSuccess(responseGroupMembership));
-      return responseEmployee;
+      return responseGroupMembership;
     }).catch(error => {
       throw(error);
     });

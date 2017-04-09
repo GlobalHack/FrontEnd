@@ -1,4 +1,4 @@
-import organizationroleApi from '../api/OrganizationRolesApi';
+import organizationroleApi from '../api/OrganizationRoleApi';
 import * as types from './actionTypes';
 
 export function loadOrganizationRolesSuccess(organizationroles) {

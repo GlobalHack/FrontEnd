@@ -23,7 +23,7 @@ export default function inviteReducer(state = initialState.invites, action) {
     case types.DELETE_INVITE_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfInviteToDelete = state.findIndex(invite => {
-        return invite.id == action.invite.id;
+        return invite.id === action.invite.id;
       });
       newState.splice(indexOfInviteToDelete, 1);
       browserHistory.push('/invites');

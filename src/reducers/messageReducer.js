@@ -23,7 +23,7 @@ export default function messageReducer(state = initialState.messages, action) {
     case types.DELETE_MESSAGE_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfMessageToDelete = state.findIndex(message => {
-        return message.id == action.message.id;
+        return message.id === action.message.id;
       });
       newState.splice(indexOfMessageToDelete, 1);
       browserHistory.push('/messages');

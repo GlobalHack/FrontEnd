@@ -4,7 +4,7 @@ import {browserHistory} from 'react-router';
 import {isTokenExpired} from './jwtHelper';
 
 export default class AuthService extends EventEmitter {
-  constructor(clientId, domain) {
+  constructor(clientId, domain, initialScreen) {
     super();
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
@@ -19,7 +19,7 @@ export default class AuthService extends EventEmitter {
       theme                 : {
         logo: '/images/cemaritan_logo_v.1.0_sm.png'
       },
-      initialScreen         : 'signUp',
+      initialScreen         : initialScreen,
       additionalSignUpFields: [
         {
           name       : "firstName",
@@ -53,6 +53,7 @@ export default class AuthService extends EventEmitter {
       } else {
         this.setProfile(profile);
       }
+      window.location.reload();
     });
   }
 

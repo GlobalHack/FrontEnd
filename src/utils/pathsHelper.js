@@ -1,4 +1,5 @@
 export const homePath = '/home';
+export const dashPath = '/dash';
 export const employeePath = '/employees';
 export const customerPath = '/customers/';
 export const groupmembershipPath = '/groupmemberships/';

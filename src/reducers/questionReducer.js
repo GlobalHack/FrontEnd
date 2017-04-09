@@ -23,7 +23,7 @@ export default function questionReducer(state = initialState.questions, action) 
     case types.DELETE_QUESTION_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfQuestionToDelete = state.findIndex(question => {
-        return question.id == action.question.id;
+        return question.id === action.question.id;
       });
       newState.splice(indexOfQuestionToDelete, 1);
       browserHistory.push('/questions');

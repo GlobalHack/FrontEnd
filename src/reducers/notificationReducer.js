@@ -23,7 +23,7 @@ export default function notificationReducer(state = initialState.notifications, 
     case types.DELETE_NOTIFICATION_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfNotificationToDelete = state.findIndex(notification => {
-        return notification.id == action.notification.id;
+        return notification.id === action.notification.id;
       });
       newState.splice(indexOfNotificationToDelete, 1);
       browserHistory.push('/notifications');

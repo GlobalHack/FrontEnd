@@ -1,20 +1,20 @@
 import intakesApi from '../api/IntakeApi';
 import * as types from './actionTypes';
 
-export function loadIntakesSuccess(employees) {
-  return {type: types.LOAD_INTAKES_SUCCESS, employees};
+export function loadIntakesSuccess(intakes) {
+  return {type: types.LOAD_INTAKES_SUCCESS, intakes};
 }
 
-export function updateIntakeSuccess(employee) {
-  return {type: types.UPDATE_INTAKE_SUCCESS, employee};
+export function updateIntakeSuccess(intake) {
+  return {type: types.UPDATE_INTAKE_SUCCESS, intake};
 }
 
-export function createIntakeSuccess(employee) {
-  return {type: types.CREATE_INTAKE_SUCCESS, employee};
+export function createIntakeSuccess(intake) {
+  return {type: types.CREATE_INTAKE_SUCCESS, intake};
 }
 
-export function deleteIntakeSuccess(employee) {
-  return {type: types.DELETE_INTAKE_SUCCESS, employee};
+export function deleteIntakeSuccess(intake) {
+  return {type: types.DELETE_INTAKE_SUCCESS, intake};
 }
 
 export function loadIntakes() {
@@ -42,7 +42,7 @@ export function createIntake(intake) {
   return function (dispatch) {
     return intakesApi.createIntake(intake).then(responseIntake => {
       dispatch(createIntakeSuccess(responseIntake));
-      return responseEmployee;
+      return responseIntake;
     }).catch(error => {
       throw(error);
     });

@@ -1,19 +1,19 @@
 import notificationApi from '../api/NotificationsApi';
 import * as types from './actionTypes';
 
-export function loadEmployeesSuccess(notifications) {
+export function loadNotificationsSuccess(notifications) {
   return {type: types.LOAD_NOTIFICATIONS_SUCCESS, notifications};
 }
 
-export function updateEmployeeSuccess(notification) {
+export function updateNotificationSuccess(notification) {
   return {type: types.UPDATE_NOTIFICATION_SUCCESS, notification};
 }
 
-export function createEmployeeSuccess(notification) {
+export function createNotificationSuccess(notification) {
   return {type: types.CREATE_NOTIFICATION_SUCCESS, notification};
 }
 
-export function deleteEmployeeSuccess(notification) {
+export function deleteNotificationSuccess(notification) {
   return {type: types.DELETE_NOTIFICATION_SUCCESS, notification};
 }
 

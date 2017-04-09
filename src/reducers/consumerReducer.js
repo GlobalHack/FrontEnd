@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 import {customerPath} from '../api/apiBase';
 import initialState from './initialState';
 
-export default function customerReducer(state = initialState.customers, action) {
+export default function customerReducer(state = initialState.consumers, action) {
   switch (action.type) {
 
     case types.LOAD_CUSTOMERS_SUCCESS:
@@ -25,7 +25,7 @@ export default function customerReducer(state = initialState.customers, action) 
     case types.DELETE_CUSTOMER_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfCustomerToDelete = state.findIndex(customer => {
-        return customer.id == action.customer.id;
+        return customer.id === action.customer.id;
       });
       newState.splice(indexOfCustomerToDelete, 1);
       browserHistory.push(customerPath);

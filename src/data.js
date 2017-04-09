@@ -8,7 +8,8 @@ import React from 'react';
 
 const data = {
   menus: [
-    {text: 'DashBoard', icon: <Assessment/>, link: '/dashboard'},
+    {text: 'Welcome', icon: <Assessment/>, link: '/home'},
+    {text: 'Dashboard', icon: <Assessment/>, link: '/dash'},
     {text: 'Employees', icon: <PermIdentity/>, link: '/employees'},
     {text: 'Intake', icon: <PermIdentity/>, link: '/intakes'}
   ],

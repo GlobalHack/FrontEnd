@@ -23,7 +23,7 @@ export default function taskReducer(state = initialState.tasks, action) {
     case types.DELETE_TASK_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfTaskToDelete = state.findIndex(task => {
-        return task.id == action.task.id;
+        return task.id === action.task.id;
       });
       newState.splice(indexOfTaskToDelete, 1);
       browserHistory.push('/tasks');
