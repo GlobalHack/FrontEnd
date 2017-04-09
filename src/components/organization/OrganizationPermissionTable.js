@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import OrganizationPermissionRow from './OrganizationPermissionRow';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import * as actions from '../../actions/organizationActions';
+import PageBase from '../base/PageBase';
 
 class OrganizationPermissionTable extends React.Component {
   componentWillMount() {
@@ -13,7 +14,7 @@ class OrganizationPermissionTable extends React.Component {
   render() {
     const organizations = this.props.organizations;
     return (
-      <div>
+      <PageBase title="Organization Permissions">
         <Table>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
@@ -30,7 +31,7 @@ class OrganizationPermissionTable extends React.Component {
             )}
           </TableBody>
         </Table>
-      </div>
+      </PageBase>
     );
   }
 }
