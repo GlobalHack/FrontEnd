@@ -9,9 +9,9 @@ import IntakePage from './components/intake/IntakePage';
 import AuthService from './utils/AuthService';
 import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
 
-const auth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'login');
-const signupAuth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'signUp');
-const passwordAuth = new AuthService('lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2', 'benvenker.auth0.com', 'forgotPassword');
+const auth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'login');
+const signupAuth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'signUp');
+const passwordAuth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'forgotPassword');
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
