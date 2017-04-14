@@ -10,7 +10,10 @@ export default class AuthService extends EventEmitter {
     this.lock = new Auth0Lock(clientId, domain, {
       auth                  : {
         redirectUrl : `${window.location.origin}/login`,
-        responseType: 'token'
+        responseType: 'token',
+        params: {
+          scope: 'openid uid org'
+        }
       },
       languageDictionary    : {
         title: "Cemaritan"
