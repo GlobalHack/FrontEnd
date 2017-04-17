@@ -2,6 +2,13 @@ import {browserHistory} from 'react-router';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
+export default function intakeSchemaReducer(state={}, action){
+  switch (action.type){
+    case types.LOAD_INTAKE_SCHEMA_SUCCESS:
+      return action.formschema;
+  }
+}
+
 export default function intakeReducer(state = initialState.intakes, action) {
   switch (action.type) {
 
