@@ -42,10 +42,11 @@ class IntakeStepper extends React.Component {
     }
   }
 
-  handleUpdateStepper = (data) => {
-    console.log(data);
+  handleUpdateConsumer = (field, value) => {
+    let newConsumerState = (this.state.consumerState || {});
+    newConsumerState[field] = value;
     this.setState({
-      consumerState: data
+      consumerState: newConsumerState
     });
   };
 
@@ -66,8 +67,8 @@ class IntakeStepper extends React.Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <ConsumerForm consumerState={this.state.customerState}
-                             onUpdateConsumerForm={this.handleUpdateStepper.bind(this)}/>;
+        return <ConsumerForm consumerState={this.state.consumerState}
+                             onUpdateConsumerForm={this.handleUpdateConsumer}/>;
       case 1:
         return <IntakeForm/>;
       case 2:
