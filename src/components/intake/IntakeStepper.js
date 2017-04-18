@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Step, StepButton, Stepper} from 'material-ui/Stepper';
 import React from 'react';
 import ConsumerForm from '../consumer/ConsumerForm';
-import IntakeForm from './IntakeForm';
+import Questionnaire from '../questionset/Questionnaire';
 import WarningIcon from 'material-ui/svg-icons/alert/warning';
 
 const getStyles = () => {
@@ -50,6 +50,14 @@ class IntakeStepper extends React.Component {
     });
   };
 
+  handleUpdateQuestionnaire = (field, value) => {
+    let newQuestionnaireState = (this.state.newQuestionnaireState || {});
+    newQuestionnaireState[field] = value;
+    this.setState({
+      questionnaireState: newQuestionnaireState
+    });
+  };
+
   handleNext = () => {
     const {stepIndex} = this.state;
     if (stepIndex < 2) {
@@ -70,7 +78,8 @@ class IntakeStepper extends React.Component {
         return <ConsumerForm consumerState={this.state.consumerState}
                              onUpdateConsumerForm={this.handleUpdateConsumer}/>;
       case 1:
-        return <IntakeForm/>;
+        return <Questionnaire questionnaireState={this.state.questionnaireState}
+                              onUpdateQuestionnaireForm={this.handleUpdateQuestionnaire}/>;
       case 2:
         return 'This is the bit I really care about!';
       default:
@@ -80,14 +89,14 @@ class IntakeStepper extends React.Component {
 
   render() {
     const {stepIndex, visited} = this.state;
-    const styles               = getStyles();
+    const styles = getStyles();
 
     return (
       <div style={styles.root}>
         <Stepper linear={false}>
           <Step completed={visited.indexOf(0) !== -1} active={stepIndex === 0}>
             <StepButton onClick={() => this.setState({stepIndex: 0})}>
-              Customer
+              Consumer
             </StepButton>
           </Step>
           <Step completed={visited.indexOf(1) !== -1} active={stepIndex === 1}>

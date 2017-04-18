@@ -17,15 +17,15 @@ export function deleteIntakeSuccess(intake) {
   return {type: types.DELETE_INTAKE_SUCCESS, intake};
 }
 
-export function loadIntakeShemaSuccess(intakes) {
-  return {type: types.LOAD_INTAKE_SCHEMA_SUCCESS, intakes};
+export function loadIntakeShemaSuccess(schema) {
+  return {type: types.LOAD_INTAKE_SCHEMA_SUCCESS, schema};
 }
 
 export function loadIntakeSchema() {
   // make async call to api, handle promise, dispatch action when promise is resolved
   return function (dispatch) {
-    return intakesApi.getAllIntakes().then(intakes => {
-      dispatch(loadIntakesSuccess(intakes));
+    return intakesApi.getIntakeSchema().then(schema => {
+      dispatch(loadIntakeShemaSuccess(schema));
     }).catch(error => {
       throw(error);
     });

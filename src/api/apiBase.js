@@ -22,5 +22,7 @@ export const organizationrolePath = '/organizationroles/';
 export const organizationroleUrl = baseUrl + apiPrefix + organizationrolePath;
 export const questionPath = '/questions/';
 export const questionUrl = baseUrl + apiPrefix + questionPath;
+export const questionSetPath = '/questionsets/';
+export const questionSetUrl = baseUrl + apiPrefix + questionSetPath;
 export const taskPath = '/tasks/';
 export const taskUrl = baseUrl + apiPrefix + taskPath;

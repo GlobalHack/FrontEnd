@@ -1,10 +1,10 @@
-import {intakeUrl, questionSetUrl, requestHeaders} from './apiBase';
+import {questionSetUrl, requestHeaders} from './apiBase';
 
-class IntakeApi {
+class QuestionSetApi {
 
-  static getIntakeSchema() {
+  static getQuestionSetSchema() {
     const headers = requestHeaders;
-    const request = new Request(intakeUrl + 'schema', {
+    const request = new Request(questionSetUrl + 'schemaform?id=1', {
       method : 'GET',
       headers: headers
     });
@@ -16,9 +16,9 @@ class IntakeApi {
     });
   }
 
-  static getAllIntakes() {
+  static getAllQuestionSets() {
     const headers = requestHeaders;
-    const request = new Request(intakeUrl, {
+    const request = new Request(questionSetUrl, {
       method : 'GET',
       headers: headers
     });
@@ -30,12 +30,12 @@ class IntakeApi {
     });
   }
 
-  static updateIntake(intake) {
+  static updateQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(intakeUrl + `${intake.id}`, {
+    const request = new Request(questionSetUrl + `${questionSet.id}`, {
       method : 'PUT',
       headers: headers,
-      body   : JSON.stringify(intake)
+      body   : JSON.stringify(questionSet)
     });
 
     return fetch(request).then(response => {
@@ -45,12 +45,12 @@ class IntakeApi {
     });
   }
 
-  static createIntake(intake) {
+  static createQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(intakeUrl, {
+    const request = new Request(questionSetUrl, {
       method : 'POST',
       headers: headers,
-      body   : JSON.stringify(intake)
+      body   : JSON.stringify(questionSet)
     });
 
     return fetch(request).then(response => {
@@ -60,9 +60,9 @@ class IntakeApi {
     });
   }
 
-  static deleteIntake(intake) {
+  static deleteQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(intakeUrl + `${intake.id}`, {
+    const request = new Request(questionSetUrl + `${questionSet.id}`, {
       method : 'DELETE',
       headers: headers
     });
@@ -75,4 +75,4 @@ class IntakeApi {
   }
 }
 
-export default IntakeApi;
+export default QuestionSetApi;

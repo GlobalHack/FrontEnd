@@ -82,3 +82,9 @@ a:hover {
     -webkit-justify-content : center;
     justify-content : center;
 }
+
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
