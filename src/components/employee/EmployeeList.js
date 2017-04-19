@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Toggle from 'material-ui/Toggle';
 import * as actions from '../../actions/employeeActions';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class EmployeeList extends React.Component {
   componentWillMount() {
@@ -19,7 +19,17 @@ class EmployeeList extends React.Component {
         <List>
           <Subheader>Employees</Subheader>
           {employees.map(employee =>
-            <ListItem key={employee.id} primaryText={employee.firstName+' '+employee.lastName} rightToggle={<Toggle />}/>
+            <ListItem
+              key={employee.id}
+              primaryText={employee.firstName + ' ' + employee.lastName}
+              secondaryText="Awaiting response"
+              rightToggle={
+                <RaisedButton
+                  label="ReSend"
+                  primary={true}
+                />
+              }
+            />
           )}
         </List>
       </Paper>

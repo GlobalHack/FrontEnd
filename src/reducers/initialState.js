@@ -5,6 +5,7 @@ export default {
   messages             : [],
   notifications        : [],
   tasks                : [],
+  intakes              : [],
   questionSetFormSchema: {
     schema : {
       type      : 'object',

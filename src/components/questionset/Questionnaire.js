@@ -5,12 +5,23 @@ import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/questionSetActions';
-import RefusableBoolean from '../base/RefusableBoolean';
-import RefusableNumber from '../base/RefusableNumber';
+import Number from 'react-schema-form/lib/Number';
+import Checkbox from 'material-ui/Checkbox';
+import {score} from '../../utils/AcuityService';
+import {Row, Col} from 'react-flexbox-grid';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Questionnaire extends React.Component {
+
+  state = {
+    answers: {}
+  };
+
   componentWillMount() {
-    this.props.actions.loadQuestionSetSchema();
+    if (!this.props.questionSetFormSchema.form.length) {
+      this.props.actions.loadQuestionSetSchema();
+    }
   }
 
   handleRequestClose(reason) {
@@ -21,27 +32,54 @@ class Questionnaire extends React.Component {
     }
   }
 
+  handleUpdate = (field, value) => {
+    // console.log(field);
+    this.props.onUpdateQuestionnaireForm(field, value);
+    let newAnswers    = this.state.answers;
+    newAnswers[field] = value;
+    this.setState({
+      answers: newAnswers
+    });
+
+  };
+
   render() {
-    const {questionnaireState, onUpdateQuestionnaireForm, questionSetFormSchema} = this.props;
-    var mapper = {
-      "boolean": RefusableBoolean,
-      "number": RefusableNumber
+    const {questionnaireState, questionSetFormSchema, handleMove} = this.props;
+    var mapper                                                    = {
+      "boolean": Checkbox,
+      "number": Number
     };
-    console.log(questionSetFormSchema);
+    // console.log(questionnaireState);
     return (
       <div>
-        <LinearProgress mode="determinate" value={3} max={45}/>
+        <LinearProgress mode="determinate" value={Object.keys(this.state.answers).length}
+                        max={questionSetFormSchema.form.length}/>
         <SchemaForm
           schema={questionSetFormSchema.schema}
           form={questionSetFormSchema.form}
           model={questionnaireState}
-          onModelChange={onUpdateQuestionnaireForm}
+          onModelChange={this.handleUpdate}
           mapper={mapper}
         />
+        <Row>
+          <Col xs={12} sm={6}>
+            <FlatButton
+              label="back to consumer"
+              onTouchTap={() => handleMove(0)}
+            />
+          </Col>
+          <Col xs={12} sm={6}>
+            <RaisedButton
+              label="review and submit"
+              primary={true}
+              onTouchTap={() => handleMove(2)}
+            />
+          </Col>
+        </Row>
         <Snackbar
           open={true}
           message="Acuity Score"
-          action="12"
+          action={score(questionnaireState) + ''}
           onRequestClose={this.handleRequestClose}
         />
       </div>
@@ -50,7 +88,8 @@ class Questionnaire extends React.Component {
 }
 
 Questionnaire.propTypes = {
-  questionSetFormSchema: PropTypes.object.isRequired
+  questionSetFormSchema: PropTypes.object.isRequired,
+  questionnaireState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

@@ -1,10 +1,9 @@
-import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 import {Step, StepButton, Stepper} from 'material-ui/Stepper';
 import React from 'react';
 import ConsumerForm from '../consumer/ConsumerForm';
 import Questionnaire from '../questionset/Questionnaire';
+import IntakeSummary from './IntakeSummary';
 import WarningIcon from 'material-ui/svg-icons/alert/warning';
 
 const getStyles = () => {
@@ -27,7 +26,8 @@ class IntakeStepper extends React.Component {
   state = {
     stepIndex: 0,
     visited: [],
-    consumerState: {}
+    consumerState: {},
+    questionnaireState: {}
   };
 
   componentWillMount() {
@@ -43,7 +43,7 @@ class IntakeStepper extends React.Component {
   }
 
   handleUpdateConsumer = (field, value) => {
-    let newConsumerState = (this.state.consumerState || {});
+    let newConsumerState    = this.state.consumerState;
     newConsumerState[field] = value;
     this.setState({
       consumerState: newConsumerState
@@ -51,7 +51,7 @@ class IntakeStepper extends React.Component {
   };
 
   handleUpdateQuestionnaire = (field, value) => {
-    let newQuestionnaireState = (this.state.newQuestionnaireState || {});
+    let newQuestionnaireState    = this.state.questionnaireState;
     newQuestionnaireState[field] = value;
     this.setState({
       questionnaireState: newQuestionnaireState
@@ -72,16 +72,31 @@ class IntakeStepper extends React.Component {
     }
   };
 
+  handleMove = (i) => {
+    this.setState({stepIndex: i});
+  };
+
   getStepContent(stepIndex) {
+    // console.log(this.state.questionnaireState);
     switch (stepIndex) {
       case 0:
-        return <ConsumerForm consumerState={this.state.consumerState}
-                             onUpdateConsumerForm={this.handleUpdateConsumer}/>;
+        return <ConsumerForm
+          consumerState={this.state.consumerState}
+          onUpdateConsumerForm={this.handleUpdateConsumer}
+          handleMove={this.handleMove}
+        />;
       case 1:
-        return <Questionnaire questionnaireState={this.state.questionnaireState}
-                              onUpdateQuestionnaireForm={this.handleUpdateQuestionnaire}/>;
+        return <Questionnaire
+          questionnaireState={this.state.questionnaireState}
+          onUpdateQuestionnaireForm={this.handleUpdateQuestionnaire}
+          handleMove={this.handleMove}
+        />;
       case 2:
-        return 'This is the bit I really care about!';
+        return <IntakeSummary
+          consumerState={this.state.consumerState}
+          questionnaireState={this.state.questionnaireState}
+          handleMove={this.handleMove}
+        />;
       default:
         return <Paper>'Click a step to get started.'</Paper>;
     }
@@ -89,44 +104,29 @@ class IntakeStepper extends React.Component {
 
   render() {
     const {stepIndex, visited} = this.state;
-    const styles = getStyles();
+    const styles               = getStyles();
 
     return (
       <div style={styles.root}>
         <Stepper linear={false}>
           <Step completed={visited.indexOf(0) !== -1} active={stepIndex === 0}>
-            <StepButton onClick={() => this.setState({stepIndex: 0})}>
+            <StepButton onClick={() => this.handleMove(0)}>
               Consumer
             </StepButton>
           </Step>
           <Step completed={visited.indexOf(1) !== -1} active={stepIndex === 1}>
-            <StepButton onClick={() => this.setState({stepIndex: 1})}>
+            <StepButton onClick={() => this.handleMove(1)}>
               Questionaire
             </StepButton>
           </Step>
           <Step completed={visited.indexOf(2) !== -1} active={stepIndex === 2}>
-            <StepButton onClick={() => this.setState({stepIndex: 2})} icon={<WarningIcon />}>
+            <StepButton onClick={() => this.handleMove(2)} icon={<WarningIcon />}>
               Review
             </StepButton>
           </Step>
         </Stepper>
         <div style={styles.content}>
           <div>{this.getStepContent(stepIndex)}</div>
-          {stepIndex !== null && (
-            <div style={styles.actions}>
-              <FlatButton
-                label="Back"
-                disabled={stepIndex === 0}
-                onTouchTap={this.handlePrev}
-                style={styles.backButton}
-              />
-              <RaisedButton
-                label="Next"
-                primary={true}
-                onTouchTap={this.handleNext}
-              />
-            </div>
-          )}
         </div>
       </div>
     );

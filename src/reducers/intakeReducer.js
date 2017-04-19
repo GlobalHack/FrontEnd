@@ -2,10 +2,12 @@ import {browserHistory} from 'react-router';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function intakeSchemaReducer(state={}, action){
-  switch (action.type){
+export function intakeSchemaReducer(state = {}, action) {
+  switch (action.type) {
     case types.LOAD_INTAKE_SCHEMA_SUCCESS:
       return action.formschema;
+    default:
+      return state;
   }
 }
 
@@ -28,7 +30,7 @@ export default function intakeReducer(state = initialState.intakes, action) {
       ];
 
     case types.DELETE_INTAKE_SUCCESS: {
-      const newState = Object.assign([], state);
+      const newState              = Object.assign([], state);
       const indexOfIntakeToDelete = state.findIndex(intake => {
         return intake.id === action.intake.id;
       });

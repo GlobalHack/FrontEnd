@@ -6,6 +6,7 @@ import DashboardPage from './components/base/DashboardPage';
 import LoginPage from './components/base/LoginPage';
 import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
+import IntakeTablePage from './components/intake/IntakeTablePage';
 import AuthService from './utils/AuthService';
 import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
 
@@ -38,7 +39,8 @@ export const makeMainRoutes = () => {
           <Redirect from="*" to={employeePath}/>
         </Route>
         <Route path={intakePath}>
-          <IndexRoute component={IntakePage}/>
+          <IndexRoute component={IntakeTablePage}/>
+          <Route path="new" component={IntakePage}/>
           <Redirect from="*" to={intakePath}/>
         </Route>
         <Redirect from="*" to={homePath}/>
