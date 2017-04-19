@@ -1,6 +1,10 @@
 import intakesApi from '../api/IntakeApi';
 import * as types from './actionTypes';
 
+export function loadIntakeSuccess(intake) {
+  return {type: types.LOAD_INTAKE_SUCCESS, intake};
+}
+
 export function loadIntakesSuccess(intakes) {
   return {type: types.LOAD_INTAKES_SUCCESS, intakes};
 }
@@ -37,6 +41,16 @@ export function loadIntakes() {
   return function (dispatch) {
     return intakesApi.getAllIntakes().then(intakes => {
       dispatch(loadIntakesSuccess(intakes));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function loadIntake() {
+  return function (dispatch) {
+    return intakesApi.getIntake().then(intake => {
+      dispatch(loadIntakeSuccess(intake));
     }).catch(error => {
       throw(error);
     });

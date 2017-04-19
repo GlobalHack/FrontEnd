@@ -1,66 +1,80 @@
 import React, {PropTypes} from 'react';
+import {Col, Row} from 'react-flexbox-grid';
+import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
-import {Row, Col} from 'react-flexbox-grid';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/consumerActions';
 import ConsumerCardList from '../consumer/ConsumerCardList';
+import _ from 'lodash';
 
 let schemaForm = {
-  "formId": "com.cemaritan.app.consumer.create",
+  "formId" : "com.cemaritan.app.consumer.create",
   "version": 1,
-  "action": [
+  "action" : [
     {
       "category": "consumer",
-      "name": "createconsumer",
+      "name"    : "createconsumer",
       "readOnly": false,
-      "title": "Create"
+      "title"   : "Create"
     }
   ],
-  "schema": {
-    "type": "object",
-    "title": "Find/Create Consumer",
-    "required": [
+  "schema" : {
+    "type"      : "object",
+    "title"     : "Find/Create Consumer",
+    "required"  : [
       "firstName",
       "lastName",
       "ssn",
       "dateOfBirth"
     ],
     "properties": {
-      "firstName": {
+      "firstName"  : {
         "title": "First Name",
-        "type": "string"
+        "type" : "string"
       },
-      "lastName": {
+      "lastName"   : {
         "title": "Last Name",
-        "type": "string"
+        "type" : "string"
       },
-      "ssn": {
+      "ssn"        : {
         "title": "Social Security Number",
-        "type": "string"
+        "type" : "string"
       },
       "dateOfBirth": {
         "title": "Date Of Birth",
-        "type": "date"
+        "type" : "date"
       }
     }
   },
-  "form": [
+  "form"   : [
     "firstName",
     "lastName",
     {
-      key: "ssn",
+      key        : "ssn",
       placeholder: 'XXX-XX-XXXX'
     },
-    {key: "dateOfBirth"},
+    {key: "dateOfBirth"}
   ]
 };
 
 class ConsumerForm extends React.Component {
+  componentWillMount() {
+    this.props.actions.loadConsumers();
+  }
+
+  pickConsumer = (id) => {
+    // console.log(id);
+    let consumer = _.find(this.props.consumers, {id});
+    // console.log(consumer);
+    this.props.onSwitchConsumerForm(consumer);
+  };
 
   render() {
-    const {consumerState, onUpdateConsumerForm} = this.props;
-    // console.log(consumerState);
+    const {consumers, consumerState, onUpdateConsumerForm} = this.props;
+    console.log(consumerState);
     return (
       <Row>
-        <Col xs={12} sm={6}>
+        <Col xs={12} sm={6}>{consumerState.firstName}
           <SchemaForm
             schema={schemaForm.schema}
             form={schemaForm.form}
@@ -69,7 +83,7 @@ class ConsumerForm extends React.Component {
           />
         </Col>
         <Col xs={12} sm={6}>
-          <ConsumerCardList consumers={[{id:1,firstName:'joe',lastName:'shmoe'}]} />
+          <ConsumerCardList consumers={consumers} onPickConsumer={this.pickConsumer} />
         </Col>
       </Row>
     );
@@ -78,8 +92,19 @@ class ConsumerForm extends React.Component {
 ;
 
 ConsumerForm.propTypes = {
-  consumerState: PropTypes.object.isRequired,
-  onUpdateConsumerForm: PropTypes.func.isRequired
+  consumerState       : PropTypes.object.isRequired,
+  onUpdateConsumerForm: PropTypes.func.isRequired,
+  consumers           : PropTypes.array.isRequired
 };
 
-export default ConsumerForm;
+function mapStateToProps(state, ownProps) {
+  return {
+    consumers: state.consumers
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConsumerForm);

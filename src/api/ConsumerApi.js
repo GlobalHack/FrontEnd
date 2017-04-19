@@ -2,6 +2,20 @@ import {consumerUrl, requestHeaders} from './apiBase';
 
 class ConsumerApi {
 
+  static getConsumer(id) {
+    const headers = requestHeaders;
+    const request = new Request(consumerUrl + '?id=' + id, {
+      method : 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      return error;
+    });
+  }
+
   static getAllConsumers() {
     const headers = requestHeaders;
     const request = new Request(consumerUrl, {

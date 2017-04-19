@@ -1,34 +1,43 @@
 import {browserHistory} from 'react-router';
 import * as types from '../actions/actionTypes';
-import {customerPath} from '../api/apiBase';
+import {consumerPath} from '../api/apiBase';
 import initialState from './initialState';
 
-export default function customerReducer(state = initialState.consumers, action) {
+export function consumerReducer(state = {}, action) {
+  switch (action.type) {
+    case types.LOAD_CONSUMER_SUCCESS:
+      return action.consumer;
+    default:
+      return state;
+  }
+}
+
+export default function consumersReducer(state = initialState.consumers, action) {
   switch (action.type) {
 
-    case types.LOAD_CUSTOMERS_SUCCESS:
-      return action.customers;
+    case types.LOAD_CONSUMERS_SUCCESS:
+      return action.consumers;
 
-    case types.CREATE_CUSTOMER_SUCCESS:
-      browserHistory.push(`${customerPath}${action.customer.id}`);
+    case types.CREATE_CONSUMER_SUCCESS:
+      browserHistory.push(`${consumerPath}${action.consumer.id}`);
       return [
-        ...state.filter(customer => customer.id !== action.customer.id),
-        Object.assign({}, action.customer)
+        ...state.filter(consumer => consumer.id !== action.consumer.id),
+        Object.assign({}, action.consumer)
       ];
 
-    case types.UPDATE_CUSTOMER_SUCCESS:
+    case types.UPDATE_CONSUMER_SUCCESS:
       return [
-        ...state.filter(customer => customer.id !== action.customer.id),
-        Object.assign({}, action.customer)
+        ...state.filter(consumer => consumer.id !== action.consumer.id),
+        Object.assign({}, action.consumer)
       ];
 
-    case types.DELETE_CUSTOMER_SUCCESS: {
+    case types.DELETE_CONSUMER_SUCCESS: {
       const newState = Object.assign([], state);
-      const indexOfCustomerToDelete = state.findIndex(customer => {
-        return customer.id === action.customer.id;
+      const indexOfConsumerToDelete = state.findIndex(consumer => {
+        return consumer.id === action.consumer.id;
       });
-      newState.splice(indexOfCustomerToDelete, 1);
-      browserHistory.push(customerPath);
+      newState.splice(indexOfConsumerToDelete, 1);
+      browserHistory.push(consumerPath);
       return newState;
     }
 

@@ -4,15 +4,14 @@ import React from 'react';
 import ConsumerForm from '../consumer/ConsumerForm';
 import Questionnaire from '../questionset/Questionnaire';
 import IntakeSummary from './IntakeSummary';
-import WarningIcon from 'material-ui/svg-icons/alert/warning';
 
 const getStyles = () => {
   return {
-    root: {},
-    content: {
+    root      : {},
+    content   : {
       margin: '0 16px'
     },
-    actions: {
+    actions   : {
       marginTop: 12
     },
     backButton: {
@@ -24,9 +23,9 @@ const getStyles = () => {
 class IntakeStepper extends React.Component {
 
   state = {
-    stepIndex: 0,
-    visited: [],
-    consumerState: {},
+    stepIndex         : 0,
+    visited           : [],
+    consumerState     : {},
     questionnaireState: {}
   };
 
@@ -43,15 +42,22 @@ class IntakeStepper extends React.Component {
   }
 
   handleUpdateConsumer = (field, value) => {
-    let newConsumerState    = this.state.consumerState;
+    let newConsumerState = this.state.consumerState;
     newConsumerState[field] = value;
     this.setState({
       consumerState: newConsumerState
     });
   };
 
+  handleSwitchConsumer = (newConsumerState) => {
+    // console.log(newConsumerState);
+    this.setState({
+      consumerState: newConsumerState
+    });
+  };
+
   handleUpdateQuestionnaire = (field, value) => {
-    let newQuestionnaireState    = this.state.questionnaireState;
+    let newQuestionnaireState = this.state.questionnaireState;
     newQuestionnaireState[field] = value;
     this.setState({
       questionnaireState: newQuestionnaireState
@@ -83,6 +89,7 @@ class IntakeStepper extends React.Component {
         return <ConsumerForm
           consumerState={this.state.consumerState}
           onUpdateConsumerForm={this.handleUpdateConsumer}
+          onSwitchConsumerForm={this.handleSwitchConsumer}
           handleMove={this.handleMove}
         />;
       case 1:
@@ -104,7 +111,7 @@ class IntakeStepper extends React.Component {
 
   render() {
     const {stepIndex, visited} = this.state;
-    const styles               = getStyles();
+    const styles = getStyles();
 
     return (
       <div style={styles.root}>
@@ -120,7 +127,7 @@ class IntakeStepper extends React.Component {
             </StepButton>
           </Step>
           <Step completed={visited.indexOf(2) !== -1} active={stepIndex === 2}>
-            <StepButton onClick={() => this.handleMove(2)} icon={<WarningIcon />}>
+            <StepButton onClick={() => this.handleMove(2)}>
               Review
             </StepButton>
           </Step>

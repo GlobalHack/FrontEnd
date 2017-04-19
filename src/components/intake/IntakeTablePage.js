@@ -1,11 +1,11 @@
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/intakeActions';
 import IntakeTable from './IntakeTable';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router';
 
 class IntakeTablePage extends React.Component {
   componentWillMount() {

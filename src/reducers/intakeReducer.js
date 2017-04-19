@@ -11,7 +11,16 @@ export function intakeSchemaReducer(state = {}, action) {
   }
 }
 
-export default function intakeReducer(state = initialState.intakes, action) {
+export function intakeReducer(state = {}, action) {
+  switch (action.type) {
+    case types.LOAD_INTAKE_SUCCESS:
+      return action.intake;
+    default:
+      return state;
+  }
+}
+
+export default function intakesReducer(state = initialState.intakes, action) {
   switch (action.type) {
 
     case types.LOAD_INTAKES_SUCCESS:
