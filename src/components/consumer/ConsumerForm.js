@@ -89,7 +89,6 @@ class ConsumerForm extends React.Component {
     );
   }
 }
-;
 
 ConsumerForm.propTypes = {
   consumerState       : PropTypes.object.isRequired,

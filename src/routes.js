@@ -11,8 +11,6 @@ import AuthService from './utils/AuthService';
 import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
 
 const auth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'login');
-const signupAuth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'signUp');
-const passwordAuth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'forgotPassword');
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
@@ -27,9 +25,9 @@ const requireAuth = (nextState, replace) => {
 export const makeMainRoutes = () => {
   return (
     <Route>
-      <Route path="/login" component={LoginPage} auth={auth}/>
-      <Route path="/signup" component={LoginPage} auth={signupAuth}/>
-      <Route path="/password" component={LoginPage} auth={passwordAuth}/>
+      <Route path="/login" component={LoginPage} auth={auth} initialScreen="login"/>
+      <Route path="/signup" component={LoginPage} auth={auth} initialScreen="signUp"/>
+      <Route path="/password" component={LoginPage} auth={auth} initialScreen="forgotPassword"/>
       <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
         <IndexRedirect to={homePath}/>
         <Route path={homePath} component={WelcomePage}/>

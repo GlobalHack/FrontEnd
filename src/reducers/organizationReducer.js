@@ -7,6 +7,7 @@ export default function organizationReducer(state = initialState.organizations, 
 
     case types.LOAD_ORGANIZATIONS_SUCCESS:
       return action.organizations;
+
     case types.CREATE_ORGANIZATION_SUCCESS:
       browserHistory.push(`/organizations/${action.organization.id}`);
       return [

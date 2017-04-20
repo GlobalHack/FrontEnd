@@ -16,7 +16,7 @@ export class Login extends React.Component {
   }
 
   componentDidMount() {
-    this.props.route.auth.lock.show();
+    this.props.route.auth.lock.show({initialScreen: this.props.route.initialScreen || 'login'});
   }
 
   render() {
