@@ -1,16 +1,16 @@
+import Checkbox from 'material-ui/Checkbox';
+import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
+import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
+import Number from 'react-schema-form/lib/Number';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/questionSetActions';
-import Number from 'react-schema-form/lib/Number';
-import Checkbox from 'material-ui/Checkbox';
 import {score} from '../../utils/AcuityService';
-import {Row, Col} from 'react-flexbox-grid';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class Questionnaire extends React.Component {
 
@@ -35,7 +35,7 @@ class Questionnaire extends React.Component {
   handleUpdate = (field, value) => {
     // console.log(field);
     this.props.onUpdateQuestionnaireForm(field, value);
-    let newAnswers    = this.state.answers;
+    let newAnswers = this.state.answers;
     newAnswers[field] = value;
     this.setState({
       answers: newAnswers
@@ -45,9 +45,9 @@ class Questionnaire extends React.Component {
 
   render() {
     const {questionnaireState, questionSetFormSchema, handleMove} = this.props;
-    var mapper                                                    = {
+    var mapper = {
       "boolean": Checkbox,
-      "number": Number
+      "number" : Number
     };
     // console.log(questionnaireState);
     return (
@@ -61,21 +61,21 @@ class Questionnaire extends React.Component {
           onModelChange={this.handleUpdate}
           mapper={mapper}
         />
-        <Row>
-          <Col xs={12} sm={6}>
+        <Toolbar style={{marginTop:20}}>
+          <ToolbarGroup>
             <FlatButton
               label="back to consumer"
               onTouchTap={() => handleMove(0)}
             />
-          </Col>
-          <Col xs={12} sm={6}>
+          </ToolbarGroup>
+          <ToolbarGroup>
             <RaisedButton
               label="review and submit"
               primary={true}
               onTouchTap={() => handleMove(2)}
             />
-          </Col>
-        </Row>
+          </ToolbarGroup>
+        </Toolbar>
         <Snackbar
           open={true}
           message="Acuity Score"
@@ -89,7 +89,7 @@ class Questionnaire extends React.Component {
 
 Questionnaire.propTypes = {
   questionSetFormSchema: PropTypes.object.isRequired,
-  questionnaireState: PropTypes.object.isRequired
+  questionnaireState   : PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

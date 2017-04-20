@@ -1,37 +1,56 @@
-import React from 'react';
-import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
+import Subheader from 'material-ui/Subheader';
+import AccountBox from 'material-ui/svg-icons/action/account-box';
+import moment from 'moment';
+import React from 'react';
 
 class ConsumerCard extends React.Component {
 
   render() {
     const {consumerState, handleMove} = this.props;
-    if (consumerState.firstName) {
+    let intakes = [{id:1,createdAt:new Date(),score:3},{id:2,createdAt:new Date(),score:5}]
+    if (consumerState.id) {
       return <Card>
         <CardHeader
           title={consumerState.firstName + ' ' + consumerState.lastName}
-          subtitle={'Born:' + consumerState.dateOfBirth + ''}
-          avatar="https://s.gravatar.com/avatar/d02d9794797b375e5b37ebc641b25dae?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fu.png"
+          subtitle={'Born: ' + moment(consumerState.dateOfBirth).format('MMM Do YY') + ''}
+          avatar={<AccountBox />}
           actAsExpander={true}
           showExpandableButton={true}
         />
-        <CardTitle title="Card title" subtitle="Card subtitle" expandable={true}/>
         <CardText expandable={true}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+          <List>
+            <Subheader>Previous Intakes</Subheader>
+            {intakes.map(intake =>
+              <ListItem
+                key={intake.id}
+                primaryText={"Date: "+moment(intake.createdAt).format('MMM Do YY')}
+                secondaryText={"Score: "+intake.score}
+                rightToggle={
+                  <RaisedButton
+                    label="Edit"
+                    primary={true}
+                  />
+                }
+              />
+            )}
+          </List>
         </CardText>
-      </Card>
+        <CardActions>
+          {this.props.actions}
+        </CardActions>
+      </Card>;
     } else {
       return <div>
         Please complete the consumer section<br />
         <RaisedButton
-          label="Go Back"
+          label="back to consumer"
           primary={true}
           onTouchTap={() => handleMove(0)}
         />
-      </div>
+      </div>;
     }
   }
 }

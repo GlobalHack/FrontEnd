@@ -15,14 +15,14 @@ class QuestionnaireCard extends React.Component {
         actAsExpander={true}
         showExpandableButton={true}
       />
-      <CardTitle title={"Acuity Score: "+score(questionnaireState)} subtitle="Calculated using VI-SPIDAT" expandable={true}/>
+      <CardTitle title={"Acuity Score: "+score(questionnaireState)} expandable={true}/>
       <CardText expandable={true}>
         Currently using base question set
 
       </CardText>
       <CardActions>
         <RaisedButton
-          label="Back To Questions"
+          label="Back To Questionnaire"
           primary={true}
           onTouchTap={() => handleMove(1)}
         />

@@ -1,7 +1,7 @@
 import Paper from 'material-ui/Paper';
 import {Step, StepButton, Stepper} from 'material-ui/Stepper';
 import React from 'react';
-import ConsumerForm from '../consumer/ConsumerForm';
+import ConsumerSelector from '../consumer/ConsumerSelector';
 import Questionnaire from '../questionset/Questionnaire';
 import IntakeSummary from './IntakeSummary';
 
@@ -42,8 +42,12 @@ class IntakeStepper extends React.Component {
   }
 
   handleUpdateConsumer = (field, value) => {
+    // console.log(field);
+    // console.log(typeof(value));
     let newConsumerState = this.state.consumerState;
     newConsumerState[field] = value;
+    // console.log(newConsumerState);
+    // newConsumerState.dateOfBirth = new Date(newConsumerState.dateOfBirth);
     this.setState({
       consumerState: newConsumerState
     });
@@ -51,6 +55,7 @@ class IntakeStepper extends React.Component {
 
   handleSwitchConsumer = (newConsumerState) => {
     // console.log(newConsumerState);
+    // newConsumerState.dateOfBirth = new Date(newConsumerState.dateOfBirth);
     this.setState({
       consumerState: newConsumerState
     });
@@ -86,7 +91,7 @@ class IntakeStepper extends React.Component {
     // console.log(this.state.questionnaireState);
     switch (stepIndex) {
       case 0:
-        return <ConsumerForm
+        return <ConsumerSelector
           consumerState={this.state.consumerState}
           onUpdateConsumerForm={this.handleUpdateConsumer}
           onSwitchConsumerForm={this.handleSwitchConsumer}

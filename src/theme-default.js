@@ -1,9 +1,10 @@
-import {grey900, lightBlue800} from 'material-ui/styles/colors';
+import {grey900, lightBlue800, yellow800} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const themeDefault = getMuiTheme({
   palette     : {
-    primary1Color: lightBlue800
+    primary1Color: lightBlue800,
+    accent1Color: yellow800,
   },
   appBar      : {
     height: 57

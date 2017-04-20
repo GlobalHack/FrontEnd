@@ -1,11 +1,11 @@
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import React, {PropTypes} from 'react';
-import {Col, Row} from 'react-flexbox-grid';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/consumerActions';
-import ConsumerCardList from '../consumer/ConsumerCardList';
-import _ from 'lodash';
+import ConsumerCard from '../consumer/ConsumerCard';
 
 let schemaForm = {
   "formId" : "com.cemaritan.app.consumer.create",
@@ -58,35 +58,55 @@ let schemaForm = {
 };
 
 class ConsumerForm extends React.Component {
-  componentWillMount() {
-    this.props.actions.loadConsumers();
-  }
 
-  pickConsumer = (id) => {
-    // console.log(id);
-    let consumer = _.find(this.props.consumers, {id});
-    // console.log(consumer);
-    this.props.onSwitchConsumerForm(consumer);
+  template = () => {
+    let newConsumerState = Object.assign({},this.props.consumerState);
+    newConsumerState.id = null;
+    this.props.onSwitchConsumerForm(newConsumerState);
+  };
+
+  clear = () => {
+    this.props.onSwitchConsumerForm({});
   };
 
   render() {
-    const {consumers, consumerState, onUpdateConsumerForm} = this.props;
-    console.log(consumerState);
-    return (
-      <Row>
-        <Col xs={12} sm={6}>{consumerState.firstName}
-          <SchemaForm
-            schema={schemaForm.schema}
-            form={schemaForm.form}
-            model={consumerState}
-            onModelChange={onUpdateConsumerForm}
-          />
-        </Col>
-        <Col xs={12} sm={6}>
-          <ConsumerCardList consumers={consumers} onPickConsumer={this.pickConsumer} />
-        </Col>
-      </Row>
-    );
+    const {consumerState, onUpdateConsumerForm} = this.props;
+    // console.log(consumerState);
+    // consumerState.dateOfBirth = "2017-04-18";
+    if (consumerState.id) {
+      return (
+        <ConsumerCard
+          consumerState={consumerState}
+          actions={
+            <Toolbar style={{marginTop: 20}}>
+              <ToolbarGroup>
+                <RaisedButton
+                  label="new from template"
+                  primary={true}
+                  onTouchTap={this.template}
+                />
+              </ToolbarGroup>
+              <ToolbarGroup>
+                <RaisedButton
+                  label="clear"
+                  secondary={true}
+                  onTouchTap={this.clear}
+                />
+              </ToolbarGroup>
+            </Toolbar>
+          }
+        />
+      );
+    } else {
+      return (
+        <SchemaForm
+          schema={schemaForm.schema}
+          form={schemaForm.form}
+          model={consumerState}
+          onModelChange={onUpdateConsumerForm}
+        />
+      );
+    }
   }
 }
 

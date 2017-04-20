@@ -56,7 +56,7 @@ class ConsumerCard extends React.Component {
   render() {
     const {consumers} = this.props;
     return (
-      <Paper>
+      <Paper style={{maxHeight:400, overflow:'auto'}}>
         <SelectableList defaultValue={0} onChange={this.handleSelect}>
           <Subheader>Select Consumer</Subheader>
           {consumers.map(consumer =>
