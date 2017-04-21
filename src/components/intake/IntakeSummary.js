@@ -1,36 +1,55 @@
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Col, Row} from 'react-flexbox-grid';
 import ConsumerCard from '../consumer/ConsumerCard';
 import QuestionnaireCard from '../questionset/QuestionnaireCard';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
 class IntakeSummary extends React.Component {
 
   render() {
     const {handleMove} = this.props;
     return (
-      <Row>
-        <Col xs={12} sm={6}>
-          <ConsumerCard {...this.props} actions={
-            <RaisedButton
-              label="Back To consumer"
-              primary={true}
-              onTouchTap={() => handleMove(0)}
+      <div>
+        <Row>
+          <Col xs={12} sm={6}>
+            <ConsumerCard {...this.props} actions={
+              <RaisedButton
+                label="Back To consumer"
+                primary={true}
+                onTouchTap={() => handleMove(0)}
+              />
+            }/>
+          </Col>
+          <Col xs={12} sm={6}>
+            <QuestionnaireCard {...this.props} />
+          </Col>
+        </Row>
+        <Toolbar style={{marginTop: 20}}>
+          <ToolbarGroup>
+            <FlatButton
+              label="back to questionnaire"
+              onTouchTap={() => handleMove(1)}
             />
-          }/>
-        </Col>
-        <Col xs={12} sm={6}>
-          <QuestionnaireCard {...this.props} />
-        </Col>
-      </Row>
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <RaisedButton
+              label="submit"
+              primary={true}
+              onTouchTap={() => alert('should save')}
+            />
+          </ToolbarGroup>
+        </Toolbar>
+      </div>
     );
   }
 }
 ;
 
 IntakeSummary.propTypes = {
-  consumerState     : PropTypes.object.isRequired,
+  consumerState: PropTypes.object.isRequired,
   questionnaireState: PropTypes.object.isRequired
 };
 

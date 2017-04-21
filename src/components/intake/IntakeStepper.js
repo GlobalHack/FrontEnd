@@ -121,7 +121,7 @@ class IntakeStepper extends React.Component {
     return (
       <div style={styles.root}>
         <Stepper linear={false}>
-          <Step completed={consumerState.id} active={stepIndex === 0}>
+          <Step completed={'id' in consumerState} active={stepIndex === 0}>
             <StepButton onClick={() => this.handleMove(0)}>
               Consumer
             </StepButton>
@@ -131,7 +131,7 @@ class IntakeStepper extends React.Component {
               Questionaire
             </StepButton>
           </Step>
-          <Step completed={consumerState.id} active={stepIndex === 2}>
+          <Step completed={'id' in consumerState} active={stepIndex === 2}>
             <StepButton onClick={() => this.handleMove(2)}>
               Review
             </StepButton>

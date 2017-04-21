@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardHeader, CardTitle, CardText, CardActions} from 'material-ui/Card';
+import {Card, CardHeader, CardText, CardActions} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Assessment from 'material-ui/svg-icons/action/assessment';
 import {score} from '../../utils/AcuityService';
@@ -11,11 +11,11 @@ class QuestionnaireCard extends React.Component {
     return <Card>
       <CardHeader
         title={Object.keys(questionnaireState).length + ' questions complete'}
+        subtitle={"Acuity Score: "+score(questionnaireState)}
         avatar={<Assessment />}
         actAsExpander={true}
         showExpandableButton={true}
       />
-      <CardTitle title={"Acuity Score: "+score(questionnaireState)} expandable={true}/>
       <CardText expandable={true}>
         Currently using base question set
 
