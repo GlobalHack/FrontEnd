@@ -1,4 +1,3 @@
-import Checkbox from 'material-ui/Checkbox';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -8,10 +7,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
-import Number from 'react-schema-form/lib/Number';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/questionSetActions';
 import {score} from '../../utils/AcuityService';
+import RefusableBoolean from '../base/RefusableBoolean';
+import RefusableNumber from '../base/RefusableNumber';
 
 class Questionnaire extends React.Component {
 
@@ -35,8 +35,8 @@ class Questionnaire extends React.Component {
 
   handleUpdate = (field, value) => {
     this.props.onUpdateQuestionnaireForm(field, value);
-    this.setState({answers:this.props.questionnaireState});
-    if (Object.keys(this.props.questionnaireState).length >= (this.props.questionSetFormSchema.form || []).length){
+    this.setState({answers: this.props.questionnaireState});
+    if (Object.keys(this.props.questionnaireState).length >= (this.props.questionSetFormSchema.form || []).length) {
       this.props.onUpdateQuestionnaireForm('complete', true);
     }
   };
@@ -44,8 +44,8 @@ class Questionnaire extends React.Component {
   render() {
     let {questionnaireState, questionSetFormSchema, handleMove} = this.props;
     let mapper = {
-      "boolean": Checkbox,
-      "number": Number
+      "checkbox": RefusableBoolean,
+      "number": RefusableNumber
     };
     // console.log(questionnaireState);
     return (

@@ -2,7 +2,9 @@ import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
 import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
+import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 
+// https://github.com/networknt/react-schema-form/blob/master/src/Checkbox.js
 class RefusableBoolean extends React.Component {
 
   state = {
@@ -10,33 +12,34 @@ class RefusableBoolean extends React.Component {
     toggled: this.props.value || false
   };
 
-  handleChange = (e) => {
-    this.setState({toggled: !this.state.toggled});
-    // console.log(this.state.toggled);
-    this.props.onChangeValidate(this.props.form.key, this.state.toggled);
-  };
-
   refuse = () => {
-    this.handleChange({target: {value: 'refuse'}});
-    this.setState({refused: !this.state.refused});
+    let value = !this.state.refused;
+    this.setState({refused: value});
+    this.props.onChangeValidate({target: {value: value && 'refused'}});
+    console.log(value);
   };
 
   render() {
-    console.log(this.props.value);
+    // console.log(this.props);
     return (
       <Row className="Aligner">
         <Col xs={11}>
           <Toggle
+            name={this.props.form.key.slice(-1)[0]}
+            value={this.props.form.key.slice(-1)[0]}
+            defaultToggled={this.props.value || false}
             label={this.props.form.title}
+            onToggle={(e, checked) => {
+              this.props.onChangeValidate(e);
+            }}
             disabled={this.state.refused}
-            onToggle={this.handleChange}
-            defaultToggled={this.state.toggled}
           />
         </Col>
         <Col xs={1}>
           <Checkbox
             label="Refuse"
             onCheck={this.refuse}
+            defaultChecked={this.props.value === 'refused'}
             // style={{marginTop:'30px'}}
           />
         </Col>
@@ -45,4 +48,4 @@ class RefusableBoolean extends React.Component {
   }
 }
 
-export default RefusableBoolean;
+export default ComposedComponent(RefusableBoolean);
