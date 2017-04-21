@@ -88,3 +88,7 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
+
+.line-through {
+    text-decoration: line-through;
+}

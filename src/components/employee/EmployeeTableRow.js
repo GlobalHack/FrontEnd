@@ -8,14 +8,26 @@ import MenuItem from 'material-ui/MenuItem';
 class EmployeeTableRow extends React.Component {
   state = {
     value: 1,
+    employee: this.props.employee,
+    lineThrough: this.props.employee.disabled
   };
 
   handleChange = (event, index, value) => this.setState({value});
 
+  disable = () => {
+    let newEmployeeState      = this.state.employee;
+    newEmployeeState.disabled = !this.state.employee.disabled;
+    this.setState({
+      employee: newEmployeeState
+    });
+    // console.log(this.props.employee.disabled);
+  };
+
   render() {
-    const employee = this.props.employee;
+    let employee = this.state.employee;
+    // console.log(this.state.employee.disabled);
     return (
-      <TableRow>
+      <TableRow className={(employee.disabled ? "line-through" : "")}>
         <TableRowColumn width={30}>{employee.firstName + ' ' + employee.lastName}</TableRowColumn>
         <TableRowColumn width={30}>{employee.email}</TableRowColumn>
         <TableRowColumn width={20}>
@@ -26,7 +38,7 @@ class EmployeeTableRow extends React.Component {
             <MenuItem value={1} primaryText="Admin"/>
             <MenuItem value={2} primaryText="User"/>
           </SelectField></TableRowColumn>
-        <TableRowColumn width={10}><Checkbox /></TableRowColumn>
+        <TableRowColumn width={10}><Checkbox onCheck={this.disable}/></TableRowColumn>
       </TableRow>
     );
   }

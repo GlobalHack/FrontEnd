@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EmployeeTableRow from './EmployeeTableRow';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+import {Table, TableBody, TableHeader, TableFooter, TableHeaderColumn, TableRow} from 'material-ui/Table';
 
 const EmployeeTable = ({employees}) => {
   return (
@@ -20,6 +20,14 @@ const EmployeeTable = ({employees}) => {
             <EmployeeTableRow key={employee.id} employee={employee}/>
           )}
         </TableBody>
+        <TableFooter adjustForCheckbox={false}>
+          <TableRow>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Email</TableHeaderColumn>
+            <TableHeaderColumn>Role</TableHeaderColumn>
+            <TableHeaderColumn>Disabled</TableHeaderColumn>
+          </TableRow>
+        </TableFooter>
       </Table>
     </div>
   );

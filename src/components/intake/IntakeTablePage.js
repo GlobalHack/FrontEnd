@@ -7,6 +7,7 @@ import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/intakeActions';
 import IntakeTable from './IntakeTable';
+import globalStyles from '../../styles';
 
 class IntakeTablePage extends React.Component {
   componentWillMount() {
@@ -16,7 +17,7 @@ class IntakeTablePage extends React.Component {
   render() {
     const intakes = this.props.intakes;
     return (
-      <Paper>
+      <Paper style={globalStyles.paper}>
         <Link to="/intakes/new">
           <RaisedButton
             label="Create new"
