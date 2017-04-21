@@ -8,6 +8,7 @@ export default {
   tasks: [],
   intakes: [],
   intake: {},
+  intakeQuestionnaire: {},
   questionSetFormSchema: {
     schema: {
       type: 'object',

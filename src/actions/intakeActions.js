@@ -5,6 +5,10 @@ export function loadIntakeSuccess(intake) {
   return {type: types.LOAD_INTAKE_SUCCESS, intake};
 }
 
+export function loadIntakeQuestionnaireSuccess(intakeQuestionnaire) {
+  return {type: types.LOAD_INTAKE_QUESTIONNAIRE_SUCCESS, intakeQuestionnaire};
+}
+
 export function loadIntakesSuccess(intakes) {
   return {type: types.LOAD_INTAKES_SUCCESS, intakes};
 }
@@ -47,10 +51,20 @@ export function loadIntakes() {
   };
 }
 
-export function loadIntake() {
+export function loadIntake(id) {
   return function (dispatch) {
-    return intakesApi.getIntake().then(intake => {
+    return intakesApi.getIntake(id).then(intake => {
       dispatch(loadIntakeSuccess(intake));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function loadIntakeQuestionnaire(id) {
+  return function (dispatch) {
+    return intakesApi.getIntakeQuestionnaire(id).then(intakeQuestionnaire => {
+      dispatch(loadIntakeQuestionnaireSuccess(intakeQuestionnaire));
     }).catch(error => {
       throw(error);
     });

@@ -21,14 +21,24 @@ const getStyles = () => {
 };
 
 class IntakeStepper extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      stepIndex: 0,
+      consumerState:{},
+      questionnaireState: {}
+    };
+  }
 
-  state = {
-    stepIndex: 0,
-    consumerState: {},
-    questionnaireState: {}
-  };
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      consumerState: nextProps.intake.consumer || {},
+      questionnaireState: nextProps.intakeQuestionnaire
+    });
+  }
 
   handleUpdateConsumer = (field, value) => {
+    this.props.updateSave(false);
     let newConsumerState = this.state.consumerState;
     newConsumerState[field] = value;
     this.setState({
@@ -45,6 +55,7 @@ class IntakeStepper extends React.Component {
   };
 
   handleUpdateQuestionnaire = (field, value) => {
+    this.props.updateSave(false);
     let newQuestionnaireState = this.state.questionnaireState;
     if (value == null){
       delete newQuestionnaireState[field];
@@ -57,26 +68,11 @@ class IntakeStepper extends React.Component {
     // console.log(this.state.questionnaireState);
   };
 
-  handleNext = () => {
-    const {stepIndex} = this.state;
-    if (stepIndex < 2) {
-      this.setState({stepIndex: stepIndex + 1});
-    }
-  };
-
-  handlePrev = () => {
-    const {stepIndex} = this.state;
-    if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
-    }
-  };
-
   handleMove = (i) => {
     this.setState({stepIndex: i});
   };
 
   getStepContent(stepIndex) {
-    // console.log(this.state.questionnaireState);
     switch (stepIndex) {
       case 0:
         return <ConsumerSelector
@@ -105,7 +101,6 @@ class IntakeStepper extends React.Component {
   render() {
     const {stepIndex, consumerState, questionnaireState} = this.state;
     const styles = getStyles();
-
     return (
       <div style={styles.root}>
         <Stepper linear={false}>

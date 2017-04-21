@@ -20,6 +20,15 @@ export function intakeReducer(state = {}, action) {
   }
 }
 
+export function intakeQuestionnaireReducer(state = {}, action) {
+  switch (action.type) {
+    case types.LOAD_INTAKE_QUESTIONNAIRE_SUCCESS:
+      return action.intakeQuestionnaire;
+    default:
+      return state;
+  }
+}
+
 export default function intakesReducer(state = initialState.intakes, action) {
   switch (action.type) {
 
