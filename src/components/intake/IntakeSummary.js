@@ -1,11 +1,11 @@
-import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import ConsumerCard from '../consumer/ConsumerCard';
 import QuestionnaireCard from '../questionset/QuestionnaireCard';
-import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
 class IntakeSummary extends React.Component {
 

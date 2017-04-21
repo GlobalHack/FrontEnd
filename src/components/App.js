@@ -3,7 +3,6 @@ import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import React, {PropTypes} from 'react';
 import Data from '../data';
 import ThemeDefault from '../theme-default';
-//import Footer from './base/Footer';
 import Header from './base/Header';
 import LeftDrawer from './base/LeftDrawer';
 
@@ -36,7 +35,7 @@ class App extends React.Component {
       });
     }
 
-    let {navDrawerOpen}         = this.state;
+    let {navDrawerOpen} = this.state;
     const paddingLeftDrawerOpen = 236;
 
     const styles = {

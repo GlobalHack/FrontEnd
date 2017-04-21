@@ -1,7 +1,7 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
 import {bindActionCreators} from 'redux';
@@ -9,49 +9,49 @@ import * as actions from '../../actions/consumerActions';
 import ConsumerCard from '../consumer/ConsumerCard';
 
 let schemaForm = {
-  "formId" : "com.cemaritan.app.consumer.create",
+  "formId": "com.cemaritan.app.consumer.create",
   "version": 1,
-  "action" : [
+  "action": [
     {
       "category": "consumer",
-      "name"    : "createconsumer",
+      "name": "createconsumer",
       "readOnly": false,
-      "title"   : "Create"
+      "title": "Create"
     }
   ],
-  "schema" : {
-    "type"      : "object",
-    "title"     : "Find/Create Consumer",
-    "required"  : [
+  "schema": {
+    "type": "object",
+    "title": "Find/Create Consumer",
+    "required": [
       "firstName",
       "lastName",
       "ssn",
       "dateOfBirth"
     ],
     "properties": {
-      "firstName"  : {
+      "firstName": {
         "title": "First Name",
-        "type" : "string"
+        "type": "string"
       },
-      "lastName"   : {
+      "lastName": {
         "title": "Last Name",
-        "type" : "string"
+        "type": "string"
       },
-      "ssn"        : {
+      "ssn": {
         "title": "Social Security Number",
-        "type" : "string"
+        "type": "string"
       },
       "dateOfBirth": {
         "title": "Date Of Birth",
-        "type" : "date"
+        "type": "date"
       }
     }
   },
-  "form"   : [
+  "form": [
     "firstName",
     "lastName",
     {
-      key        : "ssn",
+      key: "ssn",
       placeholder: 'XXX-XX-XXXX'
     },
     {key: "dateOfBirth"}
@@ -61,7 +61,7 @@ let schemaForm = {
 class ConsumerForm extends React.Component {
 
   template = () => {
-    let newConsumerState = Object.assign({},this.props.consumerState);
+    let newConsumerState = Object.assign({}, this.props.consumerState);
     newConsumerState.id = null;
     this.props.onSwitchConsumerForm(newConsumerState);
   };
@@ -112,9 +112,9 @@ class ConsumerForm extends React.Component {
 }
 
 ConsumerForm.propTypes = {
-  consumerState       : PropTypes.object.isRequired,
+  consumerState: PropTypes.object.isRequired,
   onUpdateConsumerForm: PropTypes.func.isRequired,
-  consumers           : PropTypes.array.isRequired
+  consumers: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

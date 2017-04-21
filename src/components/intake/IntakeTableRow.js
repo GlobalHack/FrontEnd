@@ -1,10 +1,10 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import {TableRow, TableRowColumn} from 'material-ui/Table';
 import moment from 'moment';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Link} from 'react-router';
-import {intakeUrl} from '../../api/apiBase';
+import {intakePath} from '../../api/apiBase';
 
 class IntakeTableRow extends React.Component {
 
@@ -18,7 +18,7 @@ class IntakeTableRow extends React.Component {
         <TableRowColumn width={20}>{intake.score}</TableRowColumn>
         <TableRowColumn width={10}>{intake.complete + ''}</TableRowColumn>
         <TableRowColumn width={10}>
-          <Link to={intakeUrl + '?id=' + intake.id}>
+          <Link to={intakePath + intake.id}>
             <RaisedButton
               label="edit"
               primary={true}

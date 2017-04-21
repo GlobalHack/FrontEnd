@@ -4,8 +4,8 @@ import LinearProgress from 'material-ui/LinearProgress';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
 import Number from 'react-schema-form/lib/Number';
@@ -34,27 +34,27 @@ class Questionnaire extends React.Component {
   }
 
   handleUpdate = (field, value) => {
-    // console.log(field);
     this.props.onUpdateQuestionnaireForm(field, value);
-    let newAnswers = this.state.answers;
-    newAnswers[field] = value;
-    this.setState({
-      answers: newAnswers
-    });
-
+    this.setState({answers:this.props.questionnaireState});
+    if (Object.keys(this.props.questionnaireState).length >= (this.props.questionSetFormSchema.form || []).length){
+      this.props.onUpdateQuestionnaireForm('complete', true);
+    }
   };
 
   render() {
-    const {questionnaireState, questionSetFormSchema, handleMove} = this.props;
-    var mapper = {
+    let {questionnaireState, questionSetFormSchema, handleMove} = this.props;
+    let mapper = {
       "boolean": Checkbox,
-      "number" : Number
+      "number": Number
     };
     // console.log(questionnaireState);
     return (
       <div>
-        <LinearProgress mode="determinate" value={Object.keys(this.state.answers).length}
-                        max={(questionSetFormSchema.form||[]).length}/>
+        <LinearProgress
+          mode="determinate"
+          value={Object.keys(questionnaireState).length}
+          max={(questionSetFormSchema.form || []).length}
+        />
         <SchemaForm
           schema={questionSetFormSchema.schema}
           form={questionSetFormSchema.form}
@@ -62,7 +62,7 @@ class Questionnaire extends React.Component {
           onModelChange={this.handleUpdate}
           mapper={mapper}
         />
-        <Toolbar style={{marginTop:20}}>
+        <Toolbar style={{marginTop: 20}}>
           <ToolbarGroup>
             <FlatButton
               label="back to consumer"
@@ -90,7 +90,7 @@ class Questionnaire extends React.Component {
 
 Questionnaire.propTypes = {
   questionSetFormSchema: PropTypes.object.isRequired,
-  questionnaireState   : PropTypes.object.isRequired
+  questionnaireState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

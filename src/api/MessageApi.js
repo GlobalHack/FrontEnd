@@ -5,7 +5,7 @@ class MessageApi {
   static getAllMessages() {
     const headers = requestHeaders;
     const request = new Request(messageUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -19,9 +19,9 @@ class MessageApi {
   static updateMessage(message) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(messageUrl + `${message.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(message)
+      body: JSON.stringify(message)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +34,9 @@ class MessageApi {
   static createMessage(message) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(messageUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(message)
+      body: JSON.stringify(message)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +49,7 @@ class MessageApi {
   static deleteMessage(message) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(messageUrl + `${message.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

@@ -1,7 +1,7 @@
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Row, Col} from 'react-flexbox-grid';
+import TextField from 'material-ui/TextField';
 import React from 'react';
+import {Col, Row} from 'react-flexbox-grid';
 
 const EmployeeInviteForm = () => {
 

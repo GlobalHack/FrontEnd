@@ -13,11 +13,11 @@ class RefusableBoolean extends React.Component {
   handleChange = (e) => {
     this.setState({toggled: !this.state.toggled});
     // console.log(this.state.toggled);
-    this.props.onChangeValidate(this.props.form.key,this.state.toggled);
+    this.props.onChangeValidate(this.props.form.key, this.state.toggled);
   };
 
   refuse = () => {
-    this.handleChange({target:{value:'refuse'}});
+    this.handleChange({target: {value: 'refuse'}});
     this.setState({refused: !this.state.refused});
   };
 

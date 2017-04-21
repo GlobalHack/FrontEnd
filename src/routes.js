@@ -1,14 +1,14 @@
 import React from 'react';
 import {IndexRedirect, IndexRoute, Redirect, Route} from 'react-router';
 import App from './components/App';
-import WelcomePage from './components/base/WelcomePage';
 import DashboardPage from './components/base/DashboardPage';
 import LoginPage from './components/base/LoginPage';
+import WelcomePage from './components/base/WelcomePage';
 import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
 import IntakeTablePage from './components/intake/IntakeTablePage';
 import AuthService from './utils/AuthService';
-import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
+import {dashPath, employeePath, homePath, intakePath} from './utils/pathsHelper';
 
 const auth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'login');
 
@@ -39,6 +39,7 @@ export const makeMainRoutes = () => {
         <Route path={intakePath}>
           <IndexRoute component={IntakeTablePage}/>
           <Route path="new" component={IntakePage}/>
+          <Route path=":id" component={IntakePage}/>
           <Redirect from="*" to={intakePath}/>
         </Route>
         <Redirect from="*" to={homePath}/>

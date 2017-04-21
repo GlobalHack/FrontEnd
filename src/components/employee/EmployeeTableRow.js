@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
-import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import SelectField from 'material-ui/SelectField';
+import {TableRow, TableRowColumn} from 'material-ui/Table';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class EmployeeTableRow extends React.Component {
   state = {
@@ -15,7 +15,7 @@ class EmployeeTableRow extends React.Component {
   handleChange = (event, index, value) => this.setState({value});
 
   disable = () => {
-    let newEmployeeState      = this.state.employee;
+    let newEmployeeState = this.state.employee;
     newEmployeeState.disabled = !this.state.employee.disabled;
     this.setState({
       employee: newEmployeeState

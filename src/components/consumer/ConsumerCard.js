@@ -10,7 +10,7 @@ class ConsumerCard extends React.Component {
 
   render() {
     const {consumerState, handleMove} = this.props;
-    let intakes = [{id:1,createdAt:new Date(),score:3},{id:2,createdAt:new Date(),score:5}]
+    let intakes = [{id: 1, createdAt: new Date(), score: 3}, {id: 2, createdAt: new Date(), score: 5}];
     if (consumerState.id) {
       return <Card>
         <CardHeader
@@ -26,8 +26,8 @@ class ConsumerCard extends React.Component {
             {intakes.map(intake =>
               <ListItem
                 key={intake.id}
-                primaryText={"Date: "+moment(intake.createdAt).format('MMM Do YY')}
-                secondaryText={"Score: "+intake.score}
+                primaryText={"Date: " + moment(intake.createdAt).format('MMM Do YY')}
+                secondaryText={"Score: " + intake.score}
                 rightToggle={
                   <RaisedButton
                     label="Edit"

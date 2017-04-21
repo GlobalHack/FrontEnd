@@ -39,7 +39,7 @@ export default function intakesReducer(state = initialState.intakes, action) {
       ];
 
     case types.DELETE_INTAKE_SUCCESS: {
-      const newState              = Object.assign([], state);
+      const newState = Object.assign([], state);
       const indexOfIntakeToDelete = state.findIndex(intake => {
         return intake.id === action.intake.id;
       });

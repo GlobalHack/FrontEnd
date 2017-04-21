@@ -7,11 +7,11 @@ import IntakeSummary from './IntakeSummary';
 
 const getStyles = () => {
   return {
-    root      : {},
-    content   : {
+    root: {},
+    content: {
       margin: '0 16px'
     },
-    actions   : {
+    actions: {
       marginTop: 12
     },
     backButton: {
@@ -23,31 +23,14 @@ const getStyles = () => {
 class IntakeStepper extends React.Component {
 
   state = {
-    stepIndex         : 0,
-    visited           : [],
-    consumerState     : {},
+    stepIndex: 0,
+    consumerState: {},
     questionnaireState: {}
   };
 
-  componentWillMount() {
-    const {stepIndex, visited} = this.state;
-    this.setState({visited: visited.concat(stepIndex)});
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    const {stepIndex, visited} = nextState;
-    if (visited.indexOf(stepIndex) === -1) {
-      this.setState({visited: visited.concat(stepIndex)});
-    }
-  }
-
   handleUpdateConsumer = (field, value) => {
-    // console.log(field);
-    // console.log(typeof(value));
     let newConsumerState = this.state.consumerState;
     newConsumerState[field] = value;
-    // console.log(newConsumerState);
-    // newConsumerState.dateOfBirth = new Date(newConsumerState.dateOfBirth);
     this.setState({
       consumerState: newConsumerState
     });
@@ -63,10 +46,15 @@ class IntakeStepper extends React.Component {
 
   handleUpdateQuestionnaire = (field, value) => {
     let newQuestionnaireState = this.state.questionnaireState;
-    newQuestionnaireState[field] = value;
+    if (value == null){
+      delete newQuestionnaireState[field];
+    }else{
+      newQuestionnaireState[field] = value;
+    }
     this.setState({
       questionnaireState: newQuestionnaireState
     });
+    // console.log(this.state.questionnaireState);
   };
 
   handleNext = () => {
@@ -115,7 +103,7 @@ class IntakeStepper extends React.Component {
   }
 
   render() {
-    const {stepIndex, visited, consumerState} = this.state;
+    const {stepIndex, consumerState, questionnaireState} = this.state;
     const styles = getStyles();
 
     return (
@@ -126,12 +114,12 @@ class IntakeStepper extends React.Component {
               Consumer
             </StepButton>
           </Step>
-          <Step completed={visited.indexOf(1) !== -1} active={stepIndex === 1}>
+          <Step completed={'complete' in questionnaireState} active={stepIndex === 1}>
             <StepButton onClick={() => this.handleMove(1)}>
               Questionaire
             </StepButton>
           </Step>
-          <Step completed={'id' in consumerState} active={stepIndex === 2}>
+          <Step completed={'id' in consumerState && 'complete' in questionnaireState} active={stepIndex === 2}>
             <StepButton onClick={() => this.handleMove(2)}>
               Review
             </StepButton>

@@ -1,7 +1,7 @@
-import React from 'react';
+import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
+import React from 'react';
 import EmployeeTableRow from './EmployeeTableRow';
-import {Table, TableBody, TableHeader, TableFooter, TableHeaderColumn, TableRow} from 'material-ui/Table';
 
 const EmployeeTable = ({employees}) => {
   return (

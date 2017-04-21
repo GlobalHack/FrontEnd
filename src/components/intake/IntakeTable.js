@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import IntakeTableRow from './IntakeTableRow';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+import PropTypes from 'prop-types';
+import React from 'react';
+import IntakeTableRow from './IntakeTableRow';
 
 const IntakeTable = ({intakes}) => {
   return (

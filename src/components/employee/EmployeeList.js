@@ -1,12 +1,12 @@
-import React from 'react';
+import {List, ListItem} from 'material-ui/List';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import Subheader from 'material-ui/Subheader';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Paper from 'material-ui/Paper';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
 import * as actions from '../../actions/employeeActions';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class EmployeeList extends React.Component {
   componentWillMount() {

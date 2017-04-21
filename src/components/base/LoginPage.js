@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import AuthService from '../../utils/AuthService';
 
 export class Login extends React.Component {
@@ -9,7 +9,7 @@ export class Login extends React.Component {
 
   static propTypes = {
     location: PropTypes.object,
-    auth    : PropTypes.instanceOf(AuthService)
+    auth: PropTypes.instanceOf(AuthService)
   };
 
   componentWillUnmount() {

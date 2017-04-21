@@ -3,8 +3,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {spacing, typography} from 'material-ui/styles';
 import {blue600, white} from 'material-ui/styles/colors';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Link} from 'react-router';
 import AuthService from '../../utils/AuthService';
 
@@ -25,42 +25,42 @@ class LeftDrawer extends React.Component {
 
   static propTypes = {
     navDrawerOpen: PropTypes.bool,
-    menus        : PropTypes.array,
-    username     : PropTypes.string,
-    auth         : PropTypes.instanceOf(AuthService)
+    menus: PropTypes.array,
+    username: PropTypes.string,
+    auth: PropTypes.instanceOf(AuthService)
   };
 
   styles = {
-    logo    : {
-      cursor         : 'pointer',
-      fontSize       : 22,
-      color          : typography.textFullWhite,
-      lineHeight     : `${spacing.desktopKeylineIncrement}px`,
-      fontWeight     : typography.fontWeightLight,
+    logo: {
+      cursor: 'pointer',
+      fontSize: 22,
+      color: typography.textFullWhite,
+      lineHeight: `${spacing.desktopKeylineIncrement}px`,
+      fontWeight: typography.fontWeightLight,
       backgroundColor: blue600,
-      paddingLeft    : 40,
-      height         : 56
+      paddingLeft: 40,
+      height: 56
     },
     menuItem: {
-      color   : white,
+      color: white,
       fontSize: 14
     },
-    avatar  : {
-      div : {
-        padding        : '15px 0 20px 15px',
+    avatar: {
+      div: {
+        padding: '15px 0 20px 15px',
         backgroundImage: 'url(/images/header-banner-17.png)',
-        height         : 45
+        height: 45
       },
       icon: {
-        float      : 'left',
-        display    : 'block',
+        float: 'left',
+        display: 'block',
         marginRight: 15,
-        boxShadow  : '0px 0px 0px 8px rgba(0,0,0,0.2)'
+        boxShadow: '0px 0px 0px 8px rgba(0,0,0,0.2)'
       },
       span: {
         paddingTop: 12,
-        display   : 'block',
-        color     : 'white',
+        display: 'block',
+        color: 'white',
         fontWeight: 300,
         textShadow: '1px 1px #444'
       }

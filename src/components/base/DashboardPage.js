@@ -1,5 +1,5 @@
-import React from 'react';
 import Paper from 'material-ui/Paper';
+import React from 'react';
 import globalStyles from '../../styles';
 import OrganizationPermissionTable from '../organization/OrganizationPermissionTable';
 

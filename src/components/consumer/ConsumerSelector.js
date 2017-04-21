@@ -1,14 +1,14 @@
 import _ from 'lodash';
-import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import {connect} from 'react-redux';
-import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/consumerActions';
 import ConsumerCardList from '../consumer/ConsumerCardList';
 import ConsumerForm from '../consumer/ConsumerForm';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class ConsumerSelector extends React.Component {
   componentWillMount() {
@@ -43,7 +43,7 @@ class ConsumerSelector extends React.Component {
           <ToolbarGroup/>
           <ToolbarGroup>
             <RaisedButton
-              label="move to questionnaire"
+              label="on to questionnaire"
               primary={true}
               onTouchTap={() => handleMove(1)}
             />

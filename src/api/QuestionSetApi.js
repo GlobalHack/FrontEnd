@@ -5,7 +5,7 @@ class QuestionSetApi {
   static getQuestionSetSchema() {
     const headers = requestHeaders;
     const request = new Request(questionSetUrl + 'schemaform?id=1', {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -19,7 +19,7 @@ class QuestionSetApi {
   static getAllQuestionSets() {
     const headers = requestHeaders;
     const request = new Request(questionSetUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -33,9 +33,9 @@ class QuestionSetApi {
   static updateQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(questionSetUrl + `${questionSet.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(questionSet)
+      body: JSON.stringify(questionSet)
     });
 
     return fetch(request).then(response => {
@@ -48,9 +48,9 @@ class QuestionSetApi {
   static createQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(questionSetUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(questionSet)
+      body: JSON.stringify(questionSet)
     });
 
     return fetch(request).then(response => {
@@ -63,7 +63,7 @@ class QuestionSetApi {
   static deleteQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(questionSetUrl + `${questionSet.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

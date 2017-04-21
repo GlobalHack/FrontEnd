@@ -1,11 +1,11 @@
-import React from 'react';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import OrganizationPermissionRow from './OrganizationPermissionRow';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import * as actions from '../../actions/organizationActions';
 import PageBase from '../base/PageBase';
+import OrganizationPermissionRow from './OrganizationPermissionRow';
 
 class OrganizationPermissionTable extends React.Component {
   componentWillMount() {

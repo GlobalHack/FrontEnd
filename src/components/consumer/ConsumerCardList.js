@@ -3,8 +3,8 @@ import {List, ListItem, makeSelectable} from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import Subheader from 'material-ui/Subheader';
 import moment from 'moment';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/consumerActions';
@@ -14,9 +14,9 @@ let SelectableList = makeSelectable(List);
 function wrapState(ComposedComponent) {
   return class SelectableList extends React.Component {
     static propTypes = {
-      children    : PropTypes.node.isRequired,
+      children: PropTypes.node.isRequired,
       defaultValue: PropTypes.number.isRequired,
-      onChange    : PropTypes.func.isRequired
+      onChange: PropTypes.func.isRequired
     };
 
     componentWillMount() {
@@ -57,7 +57,7 @@ class ConsumerCard extends React.Component {
   render() {
     const {consumers} = this.props;
     return (
-      <Paper style={{maxHeight:400, overflow:'auto'}}>
+      <Paper style={{maxHeight: 400, overflow: 'auto'}}>
         <SelectableList defaultValue={0} onChange={this.handleSelect}>
           <Subheader>Select Consumer</Subheader>
           {consumers.map(consumer =>

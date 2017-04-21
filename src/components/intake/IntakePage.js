@@ -1,8 +1,8 @@
 import Paper from 'material-ui/Paper';
 import React from 'react';
+import {withRouter} from 'react-router';
 import globalStyles from '../../styles';
 import IntakeStepper from './IntakeStepper';
-import { withRouter } from 'react-router'
 
 class IntakePage extends React.Component {
 
@@ -13,8 +13,8 @@ class IntakePage extends React.Component {
   componentDidMount = () => {
     this.props.router.setRouteLeaveHook(this.props.route, () => {
       if (this.state.unsaved)
-        return 'You may have unsaved information, are you sure you want to leave this page?'
-    })
+        return 'You may have unsaved information, are you sure you want to leave this page?';
+    });
   };
 
   saveIntake = () => {
