@@ -3,7 +3,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {spacing, typography} from 'material-ui/styles';
 import {blue600, white} from 'material-ui/styles/colors';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import AuthService from '../../utils/AuthService';
 

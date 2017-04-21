@@ -3,10 +3,10 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import {white} from 'material-ui/styles/colors';
-// import Mailbox from 'material-ui/svg-icons/communication/mail-outline';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AuthService from '../../utils/AuthService';
 
 class Header extends React.Component {

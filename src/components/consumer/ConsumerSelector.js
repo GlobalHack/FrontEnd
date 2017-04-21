@@ -1,11 +1,14 @@
 import _ from 'lodash';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Col, Row} from 'react-flexbox-grid';
 import {connect} from 'react-redux';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/consumerActions';
 import ConsumerCardList from '../consumer/ConsumerCardList';
 import ConsumerForm from '../consumer/ConsumerForm';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ConsumerSelector extends React.Component {
   componentWillMount() {
@@ -20,29 +23,41 @@ class ConsumerSelector extends React.Component {
   };
 
   render() {
-    const {consumers, consumerState, onUpdateConsumerForm, onSwitchConsumerForm} = this.props;
+    const {consumers, consumerState, onUpdateConsumerForm, onSwitchConsumerForm, handleMove} = this.props;
     // console.log(consumerState);
     return (
-      <Row>
-        <Col xs={12} sm={6}>
-          <ConsumerForm
-            consumerState={consumerState}
-            onUpdateConsumerForm={onUpdateConsumerForm}
-            onSwitchConsumerForm={onSwitchConsumerForm}
-          />
-        </Col>
-        <Col xs={12} sm={6}>
-          <ConsumerCardList consumers={consumers} onPickConsumer={this.pickConsumer}/>
-        </Col>
-      </Row>
+      <div>
+        <Row>
+          <Col xs={12} sm={6}>
+            <ConsumerForm
+              consumerState={consumerState}
+              onUpdateConsumerForm={onUpdateConsumerForm}
+              onSwitchConsumerForm={onSwitchConsumerForm}
+            />
+          </Col>
+          <Col xs={12} sm={6}>
+            <ConsumerCardList consumers={consumers} onPickConsumer={this.pickConsumer}/>
+          </Col>
+        </Row>
+        <Toolbar style={{marginTop: 20}}>
+          <ToolbarGroup/>
+          <ToolbarGroup>
+            <RaisedButton
+              label="move to questionnaire"
+              primary={true}
+              onTouchTap={() => handleMove(1)}
+            />
+          </ToolbarGroup>
+        </Toolbar>
+      </div>
     );
   }
 }
 
 ConsumerSelector.propTypes = {
-  consumerState       : PropTypes.object.isRequired,
+  consumerState: PropTypes.object.isRequired,
   onUpdateConsumerForm: PropTypes.func.isRequired,
-  consumers           : PropTypes.array.isRequired
+  consumers: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

@@ -4,7 +4,8 @@ import LinearProgress from 'material-ui/LinearProgress';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
 import Number from 'react-schema-form/lib/Number';
@@ -53,7 +54,7 @@ class Questionnaire extends React.Component {
     return (
       <div>
         <LinearProgress mode="determinate" value={Object.keys(this.state.answers).length}
-                        max={questionSetFormSchema.form.length}/>
+                        max={(questionSetFormSchema.form||[]).length}/>
         <SchemaForm
           schema={questionSetFormSchema.schema}
           form={questionSetFormSchema.form}

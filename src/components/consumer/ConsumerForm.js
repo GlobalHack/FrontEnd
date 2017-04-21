@@ -1,6 +1,7 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {SchemaForm} from 'react-schema-form';
 import {bindActionCreators} from 'redux';

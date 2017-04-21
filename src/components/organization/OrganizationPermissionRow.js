@@ -3,7 +3,8 @@ import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
 import {TableRow, TableRowColumn} from 'material-ui/Table';
 import moment from 'moment';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class OrganizationPermissionRow extends React.Component {
   state = {

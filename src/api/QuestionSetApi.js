@@ -12,7 +12,7 @@ class QuestionSetApi {
     return fetch(request).then(response => {
       return response.json();
     }).catch(error => {
-      return error;
+      throw(error);
     });
   }
 

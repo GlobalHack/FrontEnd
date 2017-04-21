@@ -1,5 +1,6 @@
 import RaisedButton from 'material-ui/RaisedButton';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Col, Row} from 'react-flexbox-grid';
 import ConsumerCard from '../consumer/ConsumerCard';
 import QuestionnaireCard from '../questionset/QuestionnaireCard';

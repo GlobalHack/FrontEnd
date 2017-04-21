@@ -1,4 +1,3 @@
-//import PageBase from '../base/PageBase';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import globalStyles from '../../styles';
