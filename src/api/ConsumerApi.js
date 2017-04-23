@@ -2,10 +2,10 @@ import {consumerUrl, requestHeaders} from './apiBase';
 
 class ConsumerApi {
 
-  static getAllConsumers() {
+  static getConsumer(id) {
     const headers = requestHeaders;
-    const request = new Request(consumerUrl, {
-      method : 'GET',
+    const request = new Request(consumerUrl + '?id=' + id, {
+      method: 'GET',
       headers: headers
     });
 
@@ -16,12 +16,26 @@ class ConsumerApi {
     });
   }
 
+  static getAllConsumers() {
+    const headers = requestHeaders;
+    const request = new Request(consumerUrl, {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      throw(error);
+    });
+  }
+
   static updateConsumer(consumer) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(consumerUrl + `${consumer.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(consumer)
+      body: JSON.stringify(consumer)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +48,9 @@ class ConsumerApi {
   static createConsumer(consumer) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(consumerUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(consumer)
+      body: JSON.stringify(consumer)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +63,7 @@ class ConsumerApi {
   static deleteConsumer(consumer) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(consumerUrl + `${consumer.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

@@ -2,7 +2,34 @@ import {browserHistory} from 'react-router';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function intakeReducer(state = initialState.intakes, action) {
+export function intakeSchemaReducer(state = {}, action) {
+  switch (action.type) {
+    case types.LOAD_INTAKE_SCHEMA_SUCCESS:
+      return action.formschema;
+    default:
+      return state;
+  }
+}
+
+export function intakeReducer(state = {}, action) {
+  switch (action.type) {
+    case types.LOAD_INTAKE_SUCCESS:
+      return action.intake;
+    default:
+      return state;
+  }
+}
+
+export function intakeQuestionnaireReducer(state = {}, action) {
+  switch (action.type) {
+    case types.LOAD_INTAKE_QUESTIONNAIRE_SUCCESS:
+      return action.intakeQuestionnaire;
+    default:
+      return state;
+  }
+}
+
+export default function intakesReducer(state = initialState.intakes, action) {
   switch (action.type) {
 
     case types.LOAD_INTAKES_SUCCESS:

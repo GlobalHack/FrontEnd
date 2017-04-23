@@ -1,11 +1,9 @@
-import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 import {Step, StepButton, Stepper} from 'material-ui/Stepper';
 import React from 'react';
-import ConsumerForm from '../consumer/ConsumerForm';
-import IntakeForm from './IntakeForm';
-import WarningIcon from 'material-ui/svg-icons/alert/warning';
+import ConsumerSelector from '../consumer/ConsumerSelector';
+import Questionnaire from '../questionset/Questionnaire';
+import IntakeSummary from './IntakeSummary';
 
 const getStyles = () => {
   return {
@@ -23,100 +21,107 @@ const getStyles = () => {
 };
 
 class IntakeStepper extends React.Component {
-
-  state = {
-    stepIndex: 0,
-    visited: [],
-    consumerState: {}
-  };
-
-  componentWillMount() {
-    const {stepIndex, visited} = this.state;
-    this.setState({visited: visited.concat(stepIndex)});
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      stepIndex: 0,
+      consumerState:{},
+      questionnaireState: {}
+    };
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    const {stepIndex, visited} = nextState;
-    if (visited.indexOf(stepIndex) === -1) {
-      this.setState({visited: visited.concat(stepIndex)});
-    }
-  }
-
-  handleUpdateStepper = (data) => {
-    console.log(data);
+  componentWillReceiveProps(nextProps){
     this.setState({
-      consumerState: data
+      consumerState: nextProps.intake.consumer || {},
+      questionnaireState: nextProps.intakeQuestionnaire
+    });
+  }
+
+  handleUpdateConsumer = (field, value) => {
+    this.props.updateSave(false);
+    let newConsumerState = this.state.consumerState;
+    newConsumerState[field] = value;
+    this.setState({
+      consumerState: newConsumerState
     });
   };
 
-  handleNext = () => {
-    const {stepIndex} = this.state;
-    if (stepIndex < 2) {
-      this.setState({stepIndex: stepIndex + 1});
-    }
+  handleSwitchConsumer = (newConsumerState) => {
+    // console.log(newConsumerState);
+    // newConsumerState.dateOfBirth = new Date(newConsumerState.dateOfBirth);
+    this.setState({
+      consumerState: newConsumerState
+    });
   };
 
-  handlePrev = () => {
-    const {stepIndex} = this.state;
-    if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
+  handleUpdateQuestionnaire = (field, value) => {
+    this.props.updateSave(false);
+    let newQuestionnaireState = this.state.questionnaireState;
+    if (value == null){
+      delete newQuestionnaireState[field];
+    }else{
+      newQuestionnaireState[field] = value;
     }
+    this.setState({
+      questionnaireState: newQuestionnaireState
+    });
+    // console.log(this.state.questionnaireState);
+  };
+
+  handleMove = (i) => {
+    this.setState({stepIndex: i});
   };
 
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <ConsumerForm consumerState={this.state.customerState}
-                             onUpdateConsumerForm={this.handleUpdateStepper.bind(this)}/>;
+        return <ConsumerSelector
+          consumerState={this.state.consumerState}
+          onUpdateConsumerForm={this.handleUpdateConsumer}
+          onSwitchConsumerForm={this.handleSwitchConsumer}
+          handleMove={this.handleMove}
+        />;
       case 1:
-        return <IntakeForm/>;
+        return <Questionnaire
+          questionnaireState={this.state.questionnaireState}
+          onUpdateQuestionnaireForm={this.handleUpdateQuestionnaire}
+          handleMove={this.handleMove}
+        />;
       case 2:
-        return 'This is the bit I really care about!';
+        return <IntakeSummary
+          consumerState={this.state.consumerState}
+          questionnaireState={this.state.questionnaireState}
+          handleMove={this.handleMove}
+        />;
       default:
         return <Paper>'Click a step to get started.'</Paper>;
     }
   }
 
   render() {
-    const {stepIndex, visited} = this.state;
-    const styles               = getStyles();
-
+    const {stepIndex, consumerState, questionnaireState} = this.state;
+    const styles = getStyles();
     return (
       <div style={styles.root}>
         <Stepper linear={false}>
-          <Step completed={visited.indexOf(0) !== -1} active={stepIndex === 0}>
-            <StepButton onClick={() => this.setState({stepIndex: 0})}>
-              Customer
+          <Step completed={'id' in consumerState} active={stepIndex === 0}>
+            <StepButton onClick={() => this.handleMove(0)}>
+              Consumer
             </StepButton>
           </Step>
-          <Step completed={visited.indexOf(1) !== -1} active={stepIndex === 1}>
-            <StepButton onClick={() => this.setState({stepIndex: 1})}>
+          <Step completed={'complete' in questionnaireState} active={stepIndex === 1}>
+            <StepButton onClick={() => this.handleMove(1)}>
               Questionaire
             </StepButton>
           </Step>
-          <Step completed={visited.indexOf(2) !== -1} active={stepIndex === 2}>
-            <StepButton onClick={() => this.setState({stepIndex: 2})} icon={<WarningIcon />}>
+          <Step completed={'id' in consumerState && 'complete' in questionnaireState} active={stepIndex === 2}>
+            <StepButton onClick={() => this.handleMove(2)}>
               Review
             </StepButton>
           </Step>
         </Stepper>
         <div style={styles.content}>
           <div>{this.getStepContent(stepIndex)}</div>
-          {stepIndex !== null && (
-            <div style={styles.actions}>
-              <FlatButton
-                label="Back"
-                disabled={stepIndex === 0}
-                onTouchTap={this.handlePrev}
-                style={styles.backButton}
-              />
-              <RaisedButton
-                label="Next"
-                primary={true}
-                onTouchTap={this.handleNext}
-              />
-            </div>
-          )}
         </div>
       </div>
     );

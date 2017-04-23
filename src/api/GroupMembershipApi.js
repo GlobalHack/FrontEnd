@@ -5,7 +5,7 @@ class GroupMembershipApi {
   static getAllGroupMemberships() {
     const headers = requestHeaders;
     const request = new Request(groupmembershipUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -19,9 +19,9 @@ class GroupMembershipApi {
   static updateGroupMembership(groupmembership) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(groupmembershipUrl + `${groupmembership.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(groupmembership)
+      body: JSON.stringify(groupmembership)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +34,9 @@ class GroupMembershipApi {
   static createGroupMembership(groupmembership) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(groupmembershipUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(groupmembership)
+      body: JSON.stringify(groupmembership)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +49,7 @@ class GroupMembershipApi {
   static deleteGroupMembership(groupmembership) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(groupmembershipUrl + `${groupmembership.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

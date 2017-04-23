@@ -1,23 +1,17 @@
 import React from 'react';
 import {IndexRedirect, IndexRoute, Redirect, Route} from 'react-router';
 import App from './components/App';
-import WelcomePage from './components/base/WelcomePage';
 import DashboardPage from './components/base/DashboardPage';
 import LoginPage from './components/base/LoginPage';
+import WelcomePage from './components/base/WelcomePage';
 import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
+import IntakeTablePage from './components/intake/IntakeTablePage';
 import AuthService from './utils/AuthService';
-import {employeePath, intakePath, homePath, dashPath} from './utils/pathsHelper';
+import {dashPath, employeePath, homePath, intakePath} from './utils/pathsHelper';
 
-// Production client id
-// const auth0clientId = 'lY6PHPcT6qeOgVMTuQA57EMxdLDhxtb2'
+const auth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'login');
 
-// Dev client id
-const auth0clientId = 'GagQKRuCWhyN59HiSRa4WrEEK1YiTnBK'
-
-const auth = new AuthService(auth0clientId, 'benvenker.auth0.com', 'login');
-const signupAuth = new AuthService(auth0clientId, 'benvenker.auth0.com', 'signUp');
-const passwordAuth = new AuthService(auth0clientId, 'benvenker.auth0.com', 'forgotPassword');
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
@@ -32,9 +26,9 @@ const requireAuth = (nextState, replace) => {
 export const makeMainRoutes = () => {
   return (
     <Route>
-      <Route path="/login" component={LoginPage} auth={auth}/>
-      <Route path="/signup" component={LoginPage} auth={signupAuth}/>
-      <Route path="/password" component={LoginPage} auth={passwordAuth}/>
+      <Route path="/login" component={LoginPage} auth={auth} initialScreen="login"/>
+      <Route path="/signup" component={LoginPage} auth={auth} initialScreen="signUp"/>
+      <Route path="/password" component={LoginPage} auth={auth} initialScreen="forgotPassword"/>
       <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
         <IndexRedirect to={homePath}/>
         <Route path={homePath} component={WelcomePage}/>
@@ -44,7 +38,9 @@ export const makeMainRoutes = () => {
           <Redirect from="*" to={employeePath}/>
         </Route>
         <Route path={intakePath}>
-          <IndexRoute component={IntakePage}/>
+          <IndexRoute component={IntakeTablePage}/>
+          <Route path="new" component={IntakePage}/>
+          <Route path=":id" component={IntakePage}/>
           <Redirect from="*" to={intakePath}/>
         </Route>
         <Redirect from="*" to={homePath}/>

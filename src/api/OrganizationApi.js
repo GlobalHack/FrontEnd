@@ -5,23 +5,23 @@ class OrganizationApi {
   static getAllOrganizations() {
     const headers = requestHeaders;
     const request = new Request(organizationUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
     return fetch(request).then(response => {
       return response.json();
     }).catch(error => {
-      return error;
+      throw(error);
     });
   }
 
   static updateOrganization(organization) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(organizationUrl + `${organization.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(organization)
+      body: JSON.stringify(organization)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +34,9 @@ class OrganizationApi {
   static createOrganization(organization) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(organizationUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(organization)
+      body: JSON.stringify(organization)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +49,7 @@ class OrganizationApi {
   static deleteOrganization(organization) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(organizationUrl + `${organization.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

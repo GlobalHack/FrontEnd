@@ -5,7 +5,7 @@ class InviteApi {
   static getAllIntakes() {
     const headers = requestHeaders;
     const request = new Request(inviteUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -19,9 +19,9 @@ class InviteApi {
   static updateInvite(invite) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(inviteUrl + `${invite.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(invite)
+      body: JSON.stringify(invite)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +34,9 @@ class InviteApi {
   static createInvite(invite) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(inviteUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(invite)
+      body: JSON.stringify(invite)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +49,7 @@ class InviteApi {
   static deleteInvite(invite) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(inviteUrl + `${invite.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

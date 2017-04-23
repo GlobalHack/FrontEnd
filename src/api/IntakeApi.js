@@ -2,26 +2,71 @@ import {intakeUrl, requestHeaders} from './apiBase';
 
 class IntakeApi {
 
-  static getAllIntakes() {
+  static getIntakeSchema() {
     const headers = requestHeaders;
-    const request = new Request(intakeUrl, {
-      method : 'GET',
+    const request = new Request(intakeUrl + 'schema', {
+      method: 'GET',
       headers: headers
     });
 
     return fetch(request).then(response => {
       return response.json();
     }).catch(error => {
-      return error;
+      throw(error);
+    });
+  }
+
+  static getAllIntakes() {
+    const headers = requestHeaders;
+    const request = new Request(intakeUrl + '?populate=consumer', {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      throw(error);
+    });
+  }
+
+  static getIntake(id) {
+    const headers = requestHeaders;
+    const request = new Request(intakeUrl + '?id=' + id + '&populate=consumer', {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      throw(error);
+    });
+  }
+
+  static getIntakeQuestionnaire(id) {
+    const headers = requestHeaders;
+    const request = new Request(intakeUrl + 'get?id=' + id, {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json(function(k, v) {
+        console.log(v);
+        return (typeof v === "object" || isNaN(v)) ? v : parseInt(v, 10);
+      });
+    }).catch(error => {
+      throw(error);
     });
   }
 
   static updateIntake(intake) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(intakeUrl + `${intake.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(intake)
+      body: JSON.stringify(intake)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +79,9 @@ class IntakeApi {
   static createIntake(intake) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(intakeUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(intake)
+      body: JSON.stringify(intake)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +94,7 @@ class IntakeApi {
   static deleteIntake(intake) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(intakeUrl + `${intake.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

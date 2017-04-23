@@ -5,7 +5,7 @@ class EmployeeApi {
   static getAllEmployees() {
     const headers = requestHeaders;
     const request = new Request(employeeUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -19,9 +19,9 @@ class EmployeeApi {
   static updateEmployee(employee) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(employeeUrl + `${employee.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(employee)
+      body: JSON.stringify(employee)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +34,9 @@ class EmployeeApi {
   static createEmployee(employee) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(employeeUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(employee)
+      body: JSON.stringify(employee)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +49,7 @@ class EmployeeApi {
   static deleteEmployee(employee) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(employeeUrl + `${employee.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

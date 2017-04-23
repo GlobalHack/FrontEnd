@@ -5,7 +5,7 @@ class QuestionApi {
   static getAllQuestions() {
     const headers = requestHeaders;
     const request = new Request(questionUrl, {
-      method : 'GET',
+      method: 'GET',
       headers: headers
     });
 
@@ -19,9 +19,9 @@ class QuestionApi {
   static updateQuestion(question) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(questionUrl + `${question.id}`, {
-      method : 'PUT',
+      method: 'PUT',
       headers: headers,
-      body   : JSON.stringify(question)
+      body: JSON.stringify(question)
     });
 
     return fetch(request).then(response => {
@@ -34,9 +34,9 @@ class QuestionApi {
   static createQuestion(question) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(questionUrl, {
-      method : 'POST',
+      method: 'POST',
       headers: headers,
-      body   : JSON.stringify(question)
+      body: JSON.stringify(question)
     });
 
     return fetch(request).then(response => {
@@ -49,7 +49,7 @@ class QuestionApi {
   static deleteQuestion(question) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
     const request = new Request(questionUrl + `${question.id}`, {
-      method : 'DELETE',
+      method: 'DELETE',
       headers: headers
     });
 

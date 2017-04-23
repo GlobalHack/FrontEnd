@@ -1,10 +1,11 @@
-import React, {PropTypes} from 'react';
+import {List, ListItem} from 'material-ui/List';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import Subheader from 'material-ui/Subheader';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Paper from 'material-ui/Paper';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Toggle from 'material-ui/Toggle';
 import * as actions from '../../actions/employeeActions';
 
 class EmployeeList extends React.Component {
@@ -19,7 +20,17 @@ class EmployeeList extends React.Component {
         <List>
           <Subheader>Employees</Subheader>
           {employees.map(employee =>
-            <ListItem key={employee.id} primaryText={employee.firstName+' '+employee.lastName} rightToggle={<Toggle />}/>
+            <ListItem
+              key={employee.id}
+              primaryText={employee.firstName + ' ' + employee.lastName}
+              secondaryText="Awaiting response"
+              rightToggle={
+                <RaisedButton
+                  label="ReSend"
+                  primary={true}
+                />
+              }
+            />
           )}
         </List>
       </Paper>

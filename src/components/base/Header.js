@@ -3,11 +3,12 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import {white} from 'material-ui/styles/colors';
-// import Mailbox from 'material-ui/svg-icons/communication/mail-outline';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import AuthService from '../../utils/AuthService';
+import Mail from 'material-ui/svg-icons/content/mail'
 
 class Header extends React.Component {
   static contextTypes = {
@@ -37,13 +38,13 @@ class Header extends React.Component {
     const {styles, handleChangeRequestNavDrawer} = this.props;
 
     const style = {
-      appBar             : {
-        position : 'fixed',
-        top      : 0,
-        overflow : 'hidden',
+      appBar: {
+        position: 'fixed',
+        top: 0,
+        overflow: 'hidden',
         maxHeight: 57
       },
-      menuButton         : {
+      menuButton: {
         marginLeft: 10
       },
       iconsRightContainer: {
@@ -55,9 +56,7 @@ class Header extends React.Component {
       <div>
         <AppBar
           style={{...styles, ...style.appBar}}
-          title={
-            "Cemaritan"
-          }
+          title="Cemaritan"
           iconElementLeft={
             <IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>
               <Menu color={white}/>
@@ -65,17 +64,16 @@ class Header extends React.Component {
           }
           iconElementRight={
             <div style={style.iconsRightContainer}>
-              {/*<IconMenu color={white}*/}
-                        {/*iconButtonElement={*/}
-                          {/*<IconButton><Mailbox color={white}/></IconButton>*/}
-                        {/*}*/}
-                        {/*targetOrigin={{horizontal: "right", vertical: "top"}}*/}
-                        {/*anchorOrigin={{horizontal: "right", vertical: "bottom"}}*/}
-              {/*>*/}
-                {/*<MenuItem key={1} primaryText="Application 1"/>*/}
-                {/*<MenuItem key={2} primaryText="Application 2"/>*/}
-                {/*<MenuItem key={3} primaryText="Application 3"/>*/}
-              {/*</IconMenu>*/}
+              <IconMenu
+                color={white}
+                iconButtonElement={<IconButton><Mail color={white}/></IconButton>}
+                targetOrigin={{horizontal: "right", vertical: "top"}}
+                anchorOrigin={{horizontal: "right", vertical: "bottom"}}
+              >
+                <MenuItem key={1} primaryText="Application 1"/>
+                <MenuItem key={2} primaryText="Application 2"/>
+                <MenuItem key={3} primaryText="Application 3"/>
+              </IconMenu>
               <IconMenu color={white}
                         iconButtonElement={
                           <IconButton><MoreVertIcon color={white}/></IconButton>
@@ -96,7 +94,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  styles                      : PropTypes.object,
+  styles: PropTypes.object,
   handleChangeRequestNavDrawer: PropTypes.func
 };
 

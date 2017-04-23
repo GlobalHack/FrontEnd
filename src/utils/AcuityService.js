@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
 
   recommendation: function (acuity_score) {
@@ -42,7 +40,7 @@ module.exports = {
       acuity_score++;
     }
     if ((surveyResult["Risks_9"] || surveyResult["Risks_10"]) ||
-      (typeof surveyResult["Risks_11"] !== 'undefined' && surveyResult["Risks_11"] != "Shelter")) {
+      (typeof surveyResult["Risks_11"] !== 'undefined' && surveyResult["Risks_11"] !== "Shelter")) {
       acuity_score++;
     }
     if (surveyResult["Social_1"] ||
@@ -59,7 +57,7 @@ module.exports = {
     if (surveyResult["Social_7"]) {
       acuity_score++;
     }
-    if (surveyResult["Wellness_1"] == "Does not go for care") {
+    if (surveyResult["Wellness_1"] === "Does not go for care") {
       acuity_score++;
     }
     if (surveyResult["Wellness_2"]) {

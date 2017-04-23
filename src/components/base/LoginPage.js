@@ -1,14 +1,15 @@
-import React, {PropTypes as T} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import AuthService from '../../utils/AuthService';
 
 export class Login extends React.Component {
   static contextTypes = {
-    router: T.object
+    router: PropTypes.object
   };
 
   static propTypes = {
-    location: T.object,
-    auth    : T.instanceOf(AuthService)
+    location: PropTypes.object,
+    auth: PropTypes.instanceOf(AuthService)
   };
 
   componentWillUnmount() {
@@ -16,7 +17,7 @@ export class Login extends React.Component {
   }
 
   componentDidMount() {
-    this.props.route.auth.lock.show();
+    this.props.route.auth.lock.show({initialScreen: this.props.route.initialScreen || 'login'});
   }
 
   render() {

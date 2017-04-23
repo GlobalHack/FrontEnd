@@ -1,7 +1,14 @@
-import React, {PropTypes} from 'react';
-var {SchemaForm} = require('react-schema-form');
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
+import PropTypes from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux';
+import {SchemaForm} from 'react-schema-form';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/consumerActions';
+import ConsumerCard from '../consumer/ConsumerCard';
 
-var schemaForm = {
+let schemaForm = {
   "formId": "com.cemaritan.app.consumer.create",
   "version": 1,
   "action": [
@@ -47,26 +54,77 @@ var schemaForm = {
       key: "ssn",
       placeholder: 'XXX-XX-XXXX'
     },
-    {key: "dateOfBirth"},
+    {key: "dateOfBirth"}
   ]
 };
 
 class ConsumerForm extends React.Component {
 
+  template = () => {
+    let newConsumerState = Object.assign({}, this.props.consumerState);
+    newConsumerState.id = null;
+    this.props.onSwitchConsumerForm(newConsumerState);
+  };
+
+  clear = () => {
+    this.props.onSwitchConsumerForm({});
+  };
+
   render() {
     const {consumerState, onUpdateConsumerForm} = this.props;
-
-    return (
-      <SchemaForm schema={schemaForm.schema} form={schemaForm.form} model={consumerState}
-                  onModelChange={onUpdateConsumerForm}/>
-    );
+    // console.log(consumerState);
+    // consumerState.dateOfBirth = "2017-04-18";
+    if (consumerState.id) {
+      return (
+        <ConsumerCard
+          consumerState={consumerState}
+          actions={
+            <Toolbar style={{marginTop: 20}}>
+              <ToolbarGroup>
+                <RaisedButton
+                  label="new from template"
+                  primary={true}
+                  onTouchTap={this.template}
+                />
+              </ToolbarGroup>
+              <ToolbarGroup>
+                <RaisedButton
+                  label="clear"
+                  secondary={true}
+                  onTouchTap={this.clear}
+                />
+              </ToolbarGroup>
+            </Toolbar>
+          }
+        />
+      );
+    } else {
+      return (
+        <SchemaForm
+          schema={schemaForm.schema}
+          form={schemaForm.form}
+          model={consumerState}
+          onModelChange={onUpdateConsumerForm}
+        />
+      );
+    }
   }
 }
-;
 
 ConsumerForm.propTypes = {
-  customerState: PropTypes.object,
-  onUpdateCustomerForm: PropTypes.func
+  consumerState: PropTypes.object.isRequired,
+  onUpdateConsumerForm: PropTypes.func.isRequired,
+  consumers: PropTypes.array.isRequired
 };
 
-export default ConsumerForm;
+function mapStateToProps(state, ownProps) {
+  return {
+    consumers: state.consumers
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConsumerForm);

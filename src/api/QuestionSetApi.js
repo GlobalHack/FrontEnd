@@ -1,10 +1,24 @@
-import {notificationUrl, requestHeaders} from './apiBase';
+import {questionSetUrl, requestHeaders} from './apiBase';
 
-class NotificationApi {
+class QuestionSetApi {
 
-  static getAllNotifications() {
+  static getQuestionSetSchema() {
     const headers = requestHeaders;
-    const request = new Request(notificationUrl, {
+    const request = new Request(questionSetUrl + 'schemaform?id=1', {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      throw(error);
+    });
+  }
+
+  static getAllQuestionSets() {
+    const headers = requestHeaders;
+    const request = new Request(questionSetUrl, {
       method: 'GET',
       headers: headers
     });
@@ -16,12 +30,12 @@ class NotificationApi {
     });
   }
 
-  static updateNotification(notification) {
+  static updateQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(notificationUrl + `${notification.id}`, {
+    const request = new Request(questionSetUrl + `${questionSet.id}`, {
       method: 'PUT',
       headers: headers,
-      body: JSON.stringify(notification)
+      body: JSON.stringify(questionSet)
     });
 
     return fetch(request).then(response => {
@@ -31,12 +45,12 @@ class NotificationApi {
     });
   }
 
-  static createNotification(notification) {
+  static createQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(notificationUrl, {
+    const request = new Request(questionSetUrl, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(notification)
+      body: JSON.stringify(questionSet)
     });
 
     return fetch(request).then(response => {
@@ -46,9 +60,9 @@ class NotificationApi {
     });
   }
 
-  static deleteNotification(notification) {
+  static deleteQuestionSet(questionSet) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(notificationUrl + `${notification.id}`, {
+    const request = new Request(questionSetUrl + `${questionSet.id}`, {
       method: 'DELETE',
       headers: headers
     });
@@ -61,4 +75,4 @@ class NotificationApi {
   }
 }
 
-export default NotificationApi;
+export default QuestionSetApi;

@@ -1,30 +1,29 @@
-# Frontend-Tmp
-Holding vessel for the frontend while it's transitioned
+# Frontend
+Cemaritan makes coordinated entry easy. With Cemaritan, your Homeless Management Information System (HMIS) syncs conveniently with the HMIS of other service providers in your Continuum of Care (CoC) and outside your CoC, allowing for better intakes, easier referrals, and better connections between service providers. Cemaritan and its underlying software are all open-source technology.
 
-build image from dockerfile
----------------------------
-docker build -t <your username>/node-web-app .
+This repository is the implementation powering app.cemaritan.com
 
-list images
------------
-docker images
+Components
+----------
 
-start an image
---------------
-docker run -p 49160:8080 -d <your username>/node-web-app
+* https://github.com/facebookincubator/create-react-app for it's build system
+* https://github.com/callemall/material-ui for most ui components
+*
 
-Get container ID
-----------------
-$ docker ps
-
-Print app output
-----------------
-$ docker logs <container id>
-
-cmd prompt inside image
------------------------
-docker exec -it <container id> /bin/bash
-
-deploy stack
+Installation
 ------------
-docker stack deploy --compose-file docker-stack.yml cemaritan
+```
+npm install
+```
+
+Run for development
+-------------------
+```
+npm start
+```
+
+Build for production
+-------------------
+```
+npm run build
+```

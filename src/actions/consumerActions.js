@@ -1,6 +1,10 @@
 import consumerApi from '../api/ConsumerApi';
 import * as types from './actionTypes';
 
+export function loadConsumerSuccess(consumer) {
+  return {type: types.LOAD_CONSUMER_SUCCESS, consumer};
+}
+
 export function loadConsumersSuccess(consumers) {
   return {type: types.LOAD_CONSUMERS_SUCCESS, consumers};
 }
@@ -15,6 +19,16 @@ export function createConsumerSuccess(consumer) {
 
 export function deleteConsumerSuccess(consumer) {
   return {type: types.DELETE_CONSUMER_SUCCESS, consumer};
+}
+
+export function loadConsumer(id) {
+  return function (dispatch) {
+    return consumerApi.getConsumer(id).then(consumer => {
+      dispatch(loadConsumerSuccess(consumer));
+    }).catch(error => {
+      throw(error);
+    });
+  };
 }
 
 export function loadConsumers() {

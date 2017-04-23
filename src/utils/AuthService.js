@@ -8,28 +8,31 @@ export default class AuthService extends EventEmitter {
     super();
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
-      auth                  : {
-        redirectUrl : `${window.location.origin}/login`,
-        responseType: 'token'
+      auth: {
+        redirectUrl: `${window.location.origin}/login`,
+        responseType: 'token',
+        params: {
+          scope: 'openid uid org'
+        }
       },
-      languageDictionary    : {
+      languageDictionary: {
         title: "Cemaritan"
       },
-      container             : 'hiw-login-container',
-      theme                 : {
+      container: 'hiw-login-container',
+      theme: {
         logo: '/images/cemaritan_logo_v.1.0_sm.png'
       },
-      initialScreen         : initialScreen,
+      initialScreen: initialScreen,
       additionalSignUpFields: [
         {
-          name       : "firstName",
+          name: "firstName",
           placeholder: "Enter your first name",
-          icon       : "/images/badge-icon.ico"
+          icon: "/images/badge-icon.ico"
         },
         {
-          name       : "lastName",
+          name: "lastName",
           placeholder: "Enter your last name",
-          icon       : "/images/badge-icon.ico"
+          icon: "/images/badge-icon.ico"
         }
       ]
     });

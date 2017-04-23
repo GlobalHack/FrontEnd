@@ -1,9 +1,10 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/employeeActions';
-import EmployeeTable from './EmployeeTable';
 import PageBase from '../base/PageBase';
+import EmployeeTable from './EmployeeTable';
 
 class EmployeeTablePage extends React.Component {
   componentWillMount() {
@@ -15,7 +16,7 @@ class EmployeeTablePage extends React.Component {
     return (
       <PageBase title="Employees"
                 navigation="Application / Table Page">
-          <EmployeeTable employees={employees}/>
+        <EmployeeTable employees={employees}/>
       </PageBase>
     );
   }

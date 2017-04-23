@@ -2,8 +2,18 @@ export default {
   employees: [],
   organizations: [],
   consumers: [],
+  consumer: {},
   messages: [],
   notifications: [],
   tasks: [],
-  session  : !!localStorage.jwt
+  intakes: [],
+  intake: {},
+  intakeQuestionnaire: {},
+  questionSetFormSchema: {
+    schema: {
+      type: 'object',
+      properties: []
+    }, form: []
+  },
+  session: !!localStorage.jwt
 };
