@@ -12,6 +12,7 @@ import * as actions from '../../actions/questionSetActions';
 import {score} from '../../utils/AcuityService';
 import RefusableBoolean from '../base/RefusableBoolean';
 import RefusableNumber from '../base/RefusableNumber';
+import RefusableSelect from '../base/RefusableSelect';
 
 class Questionnaire extends React.Component {
 
@@ -45,7 +46,8 @@ class Questionnaire extends React.Component {
     let {questionnaireState, questionSetFormSchema, handleMove} = this.props;
     let mapper = {
       "checkbox": RefusableBoolean,
-      "number": RefusableNumber
+      "number": RefusableNumber,
+      "text": RefusableSelect
     };
     // console.log(questionnaireState);
     return (
