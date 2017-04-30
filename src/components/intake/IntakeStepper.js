@@ -32,8 +32,8 @@ class IntakeStepper extends React.Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({
-      consumerState: nextProps.intake.consumer || {},
-      questionnaireState: nextProps.intakeQuestionnaire
+      consumerState: nextProps.intake.consumer || this.state.consumerState,
+      questionnaireState: nextProps.intakeQuestionnaire || this.state.questionnaireState
     });
   }
 
@@ -100,6 +100,7 @@ class IntakeStepper extends React.Component {
 
   render() {
     const {stepIndex, consumerState, questionnaireState} = this.state;
+    // console.log(questionnaireState);
     const styles = getStyles();
     return (
       <div style={styles.root}>

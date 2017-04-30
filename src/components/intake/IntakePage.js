@@ -38,7 +38,7 @@ class IntakePage extends React.Component {
   render() {
     const {intakeId} = this.state;
     let {intake, intakeQuestionnaire} = this.props;
-    if (!intakeId){intake={}; intakeQuestionnaire={}}
+    if (!intakeId){intake={}}
     return (
       <Paper style={globalStyles.paper}>
         <IntakeStepper

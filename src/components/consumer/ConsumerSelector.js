@@ -36,7 +36,7 @@ class ConsumerSelector extends React.Component {
             />
           </Col>
           <Col xs={12} sm={6}>
-            <ConsumerCardList consumers={consumers} onPickConsumer={this.pickConsumer}/>
+            <ConsumerCardList consumerState={consumerState} consumers={consumers} onPickConsumer={this.pickConsumer}/>
           </Col>
         </Row>
         <Toolbar style={{marginTop: 20}}>

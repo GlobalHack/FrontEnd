@@ -7,6 +7,8 @@ import {SchemaForm} from 'react-schema-form';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/consumerActions';
 import ConsumerCard from '../consumer/ConsumerCard';
+import RefusableText from '../base/RefusableText';
+import RefusableSSN from '../base/RefusableSSN';
 
 let schemaForm = {
   "formId": "com.cemaritan.app.consumer.create",
@@ -52,7 +54,8 @@ let schemaForm = {
     "lastName",
     {
       key: "ssn",
-      placeholder: 'XXX-XX-XXXX'
+      placeholder: 'XXX-XX-XXXX',
+      type: "RefusableSSN"
     },
     {key: "dateOfBirth"}
   ]
@@ -74,6 +77,10 @@ class ConsumerForm extends React.Component {
     const {consumerState, onUpdateConsumerForm} = this.props;
     // console.log(consumerState);
     // consumerState.dateOfBirth = "2017-04-18";
+    let mapper = {
+      "RefusableSSN": RefusableSSN,
+      "text": RefusableText
+    };
     if (consumerState.id) {
       return (
         <ConsumerCard
@@ -81,11 +88,6 @@ class ConsumerForm extends React.Component {
           actions={
             <Toolbar style={{marginTop: 20}}>
               <ToolbarGroup>
-                <RaisedButton
-                  label="new from template"
-                  primary={true}
-                  onTouchTap={this.template}
-                />
               </ToolbarGroup>
               <ToolbarGroup>
                 <RaisedButton
@@ -105,6 +107,7 @@ class ConsumerForm extends React.Component {
           form={schemaForm.form}
           model={consumerState}
           onModelChange={onUpdateConsumerForm}
+          mapper={mapper}
         />
       );
     }

@@ -1,5 +1,4 @@
 import Checkbox from 'material-ui/Checkbox';
-import Toggle from 'material-ui/Toggle';
 import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
@@ -30,6 +29,23 @@ class RefusableSelect extends React.Component {
     this.props.onChangeValidate(event);
   };
 
+  Header = ({help, heading}) => {
+    if (help){
+      return (
+        <Col xs={12}>
+          <span style={{color: "lightcoral"}}>{help}</span>
+        </Col>
+      );
+    } else if (heading){
+      return (
+        <Col xs={12}>
+          <h1>{heading}</h1><hr />
+        </Col>
+      );
+    }
+    return null;
+  };
+
   render() {
     const menuItems = (this.props.form.titleMap||[
       {
@@ -54,7 +70,8 @@ class RefusableSelect extends React.Component {
     ));
     return (
       <Row className="Aligner">
-        <Col xs={11}>
+        <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
+        <Col xs={10} xsoffset={1}>
           <SelectField
             value={this.state.currentValue}
             floatingLabelText={this.props.form.title}

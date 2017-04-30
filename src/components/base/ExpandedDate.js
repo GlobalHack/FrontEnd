@@ -11,7 +11,7 @@ class RefusableNumber extends Component {
     super(props);
     this.preValidationCheck = this.preValidationCheck.bind(this);
     this.state = {
-      refused: this.props.value === 'refused',
+      refused: false,
       lastSuccessfulValue: this.isNumeric(this.props.value) ? this.props.value : null
     };
   }
@@ -20,25 +20,7 @@ class RefusableNumber extends Component {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
-  preValidationCheck(e) {
-    if (this.isNumeric(e.target.value)) {
-      this.setState({
-        lastSuccessfulValue: e.target.value
-      });
-      this.props.onChangeValidate(e);
-    } else {
-      this.refs.numberField.value = this.state.lastSuccessfulValue;
 
-    }
-    this.props.onChangeValidate(e);
-  }
-
-  refuse = () => {
-    let value = !this.state.refused;
-    this.setState({refused: value});
-    this.props.onChangeValidate({target: {value: value && 'refused'}});
-    console.log(value);
-  };
 
   Header = ({help, heading}) => {
     // console.log(header);
@@ -64,7 +46,7 @@ class RefusableNumber extends Component {
     return (
       <Row className="Aligner">
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
-        <Col xs={10} xsoffset={1}>
+        <Col xs={11}>
           <TextField
             type="number"
             floatingLabelText={this.props.form.title}

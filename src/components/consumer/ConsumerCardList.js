@@ -32,6 +32,15 @@ function wrapState(ComposedComponent) {
       });
     };
 
+    clear = () => {
+      this.setState({ selectedIndex: 0 });
+    };
+
+    componentWillUpdate(nextProps) {
+      // console.log(this.props);
+      if (nextProps.clear && this.state.selectedIndex!==0){this.clear()}
+    }
+
     render() {
       return (
         <ComposedComponent
@@ -55,10 +64,11 @@ class ConsumerCard extends React.Component {
   };
 
   render() {
-    const {consumers} = this.props;
+    // console.log(this.props);
+    const {consumers, consumerState} = this.props;
     return (
       <Paper style={{maxHeight: 400, overflow: 'auto'}}>
-        <SelectableList defaultValue={0} onChange={this.handleSelect}>
+        <SelectableList clear={!consumerState.id} defaultValue={0} onChange={this.handleSelect}>
           <Subheader>Select Consumer</Subheader>
           {consumers.map(consumer =>
             <ListItem

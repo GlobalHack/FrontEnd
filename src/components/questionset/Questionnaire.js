@@ -45,9 +45,9 @@ class Questionnaire extends React.Component {
   render() {
     let {questionnaireState, questionSetFormSchema, handleMove} = this.props;
     let mapper = {
-      "checkbox": RefusableBoolean,
-      "number": RefusableNumber,
-      "text": RefusableSelect
+      "RefusableBoolean": RefusableBoolean,
+      "RefusableNumber": RefusableNumber,
+      "RefusableSelect": RefusableSelect
     };
     // console.log(questionnaireState);
     return (
