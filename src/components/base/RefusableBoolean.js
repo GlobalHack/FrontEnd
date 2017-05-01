@@ -22,7 +22,7 @@ class RefusableBoolean extends React.Component {
   Header = ({help, heading}) => {
     if (help){
       return (
-        <Col xs={11} xsoffset={1}>
+        <Col xs={11} xsOffset={1}>
           <span style={{color: "lightcoral"}}>{help}</span>
         </Col>
       );
@@ -41,7 +41,7 @@ class RefusableBoolean extends React.Component {
     return (
       <Row className="Aligner">
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
-        <Col xs={10} xsoffset={1}>
+        <Col xs={10} xsOffset={1}>
           <Toggle
             name={this.props.form.key.slice(-1)[0]}
             value={this.props.form.key.slice(-1)[0]}

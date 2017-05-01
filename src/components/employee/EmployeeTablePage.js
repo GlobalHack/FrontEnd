@@ -28,15 +28,9 @@ EmployeeTablePage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  if (state.employees.length > 0) {
-    return {
-      employees: state.employees
-    };
-  } else {
-    return {
-      employees: [{id: '', nickName: '', firstName: '', lastName: '', email: '', ssn: ''}]
-    };
-  }
+  return {
+    employees: state.employees
+  };
 }
 
 function mapDispatchToProps(dispatch) {

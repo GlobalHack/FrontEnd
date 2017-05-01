@@ -71,7 +71,7 @@ class RefusableSelect extends React.Component {
     return (
       <Row className="Aligner">
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
-        <Col xs={10} xsoffset={1}>
+        <Col xs={10} xsOffset={1}>
           <SelectField
             value={this.state.currentValue}
             floatingLabelText={this.props.form.title}

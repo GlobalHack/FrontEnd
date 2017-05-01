@@ -22,6 +22,19 @@ class ConsumerSelector extends React.Component {
     this.props.onSwitchConsumerForm(consumer);
   };
 
+  save = (consumer) => {
+    this.setState({consumer: consumer});
+    this.props.actions.createConsumer(consumer).then(
+      this.props.actions.loadConsumers().then(
+        this.props.actions.loadConsumers().then(() => {
+            this.pickConsumer(this.props.consumers.length);
+            console.log(this.props.consumers.length);
+          }
+        )
+      )
+    );
+  };
+
   render() {
     const {consumers, consumerState, onUpdateConsumerForm, onSwitchConsumerForm, handleMove} = this.props;
     // console.log(consumerState);
@@ -33,6 +46,7 @@ class ConsumerSelector extends React.Component {
               consumerState={consumerState}
               onUpdateConsumerForm={onUpdateConsumerForm}
               onSwitchConsumerForm={onSwitchConsumerForm}
+              onSubmitConsumerForm={this.save}
             />
           </Col>
           <Col xs={12} sm={6}>

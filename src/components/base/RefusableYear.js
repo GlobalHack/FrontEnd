@@ -9,9 +9,28 @@ class RefusableNumber extends Component {
 
   constructor(props) {
     super(props);
+    this.preValidationCheck = this.preValidationCheck.bind(this);
     this.state = {
-      refused: this.props.value === 'refused'
+      refused: this.props.value === 'refused',
+      lastSuccessfulValue: this.isNumeric(this.props.value) ? this.props.value : null
     };
+  }
+
+  isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  preValidationCheck(e) {
+    if (this.isNumeric(e.target.value)) {
+      this.setState({
+        lastSuccessfulValue: e.target.value
+      });
+      this.props.onChangeValidate(e);
+    } else {
+      this.refs.numberField.value = this.state.lastSuccessfulValue;
+
+    }
+    this.props.onChangeValidate(e);
   }
 
   refuse = () => {
@@ -47,20 +66,21 @@ class RefusableNumber extends Component {
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
         <Col xs={9}>
           <TextField
-            type="text"
-            floatingLabelText={this.props.form.title}
+            type="number"
+            floatingLabelText="Birth Year"
             hintText={this.props.form.placeholder}
             errorText={this.props.error}
-            onChange={this.props.onChangeValidate}
-            defaultValue={this.state.refused?'':this.props.value}
-            disabled={this.state.refused}
-            style={this.props.form.style || {width: '100%'}} />
+            onChange={this.preValidationCheck}
+            defaultValue={this.state.lastSuccessfulValue}
+            ref="numberField"
+            disabled={this.props.form.readonly}
+            style={this.props.form.style || {width: '100%'}}/>
         </Col>
         <Col xs={3}>
           <Checkbox
             label="Refuse"
             onCheck={this.refuse}
-            defaultChecked={this.state.refused}
+            defaultChecked={this.props.value === 'refused'}
             // style={{marginTop:'30px'}}
             // checkedIcon={<Close />}
           />

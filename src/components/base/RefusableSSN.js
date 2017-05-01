@@ -36,7 +36,7 @@ class RefusableNumber extends Component {
   refuse = () => {
     let value = !this.state.refused;
     this.setState({refused: value});
-    this.props.onChangeValidate({target: {value: value && 'refused'}});
+    this.props.onChangeValidate({target: {value: value?'refused':''}});
     console.log(value);
   };
 

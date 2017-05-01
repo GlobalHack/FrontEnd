@@ -24,6 +24,10 @@ class Questionnaire extends React.Component {
     if (!this.props.questionSetFormSchema.form.length) {
       this.props.actions.loadQuestionSetSchema();
     }
+    // if (this.props.consumerState.dateOfBirth){
+    //   console.log(new Date().getFullYear()-new Date(this.props.consumerState.dateOfBirth).getFullYear()+'');
+    //   this.handleUpdate("General_1", new Date().getFullYear()-new Date(this.props.consumerState.dateOfBirth).getFullYear()+'');
+    // }
   }
 
   handleRequestClose(reason) {

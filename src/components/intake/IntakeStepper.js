@@ -44,17 +44,18 @@ class IntakeStepper extends React.Component {
     this.setState({
       consumerState: newConsumerState
     });
+    console.log(this.state.consumerState);
   };
 
   handleSwitchConsumer = (newConsumerState) => {
     // console.log(newConsumerState);
     // newConsumerState.dateOfBirth = new Date(newConsumerState.dateOfBirth);
     this.setState({
-      consumerState: newConsumerState
-    });
+      consumerState: newConsumerState});
   };
 
   handleUpdateQuestionnaire = (field, value) => {
+    // console.log(field);
     this.props.updateSave(false);
     let newQuestionnaireState = this.state.questionnaireState;
     if (value == null){
@@ -83,15 +84,18 @@ class IntakeStepper extends React.Component {
         />;
       case 1:
         return <Questionnaire
+          consumerState={this.state.consumerState}
           questionnaireState={this.state.questionnaireState}
           onUpdateQuestionnaireForm={this.handleUpdateQuestionnaire}
           handleMove={this.handleMove}
         />;
       case 2:
         return <IntakeSummary
+          intake={this.props.intake}
           consumerState={this.state.consumerState}
           questionnaireState={this.state.questionnaireState}
           handleMove={this.handleMove}
+          saveIntake={this.props.saveIntake}
         />;
       default:
         return <Paper>'Click a step to get started.'</Paper>;

@@ -15,6 +15,10 @@ export function intakeReducer(state = {}, action) {
   switch (action.type) {
     case types.LOAD_INTAKE_SUCCESS:
       return action.intake;
+    case types.CREATE_INTAKE_SUCCESS:
+      return action.intake;
+    case types.UPDATE_INTAKE_SUCCESS:
+      return action.intake;
     default:
       return state;
   }
@@ -34,18 +38,6 @@ export default function intakesReducer(state = initialState.intakes, action) {
 
     case types.LOAD_INTAKES_SUCCESS:
       return action.intakes;
-    case types.CREATE_INTAKE_SUCCESS:
-      browserHistory.push(`/intakes/${action.intake.id}`);
-      return [
-        ...state.filter(intake => intake.id !== action.intake.id),
-        Object.assign({}, action.intake)
-      ];
-
-    case types.UPDATE_INTAKE_SUCCESS:
-      return [
-        ...state.filter(intake => intake.id !== action.intake.id),
-        Object.assign({}, action.intake)
-      ];
 
     case types.DELETE_INTAKE_SUCCESS: {
       const newState = Object.assign([], state);

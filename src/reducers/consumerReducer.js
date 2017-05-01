@@ -7,6 +7,8 @@ export function consumerReducer(state = {}, action) {
   switch (action.type) {
     case types.LOAD_CONSUMER_SUCCESS:
       return action.consumer;
+    case types.CREATE_CONSUMER_SUCCESS:
+      return action.consumer;
     default:
       return state;
   }
@@ -17,13 +19,6 @@ export default function consumersReducer(state = initialState.consumers, action)
 
     case types.LOAD_CONSUMERS_SUCCESS:
       return action.consumers;
-
-    case types.CREATE_CONSUMER_SUCCESS:
-      browserHistory.push(`${consumerPath}${action.consumer.id}`);
-      return [
-        ...state.filter(consumer => consumer.id !== action.consumer.id),
-        Object.assign({}, action.consumer)
-      ];
 
     case types.UPDATE_CONSUMER_SUCCESS:
       return [

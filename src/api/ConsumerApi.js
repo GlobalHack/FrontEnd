@@ -18,7 +18,7 @@ class ConsumerApi {
 
   static getAllConsumers() {
     const headers = requestHeaders;
-    const request = new Request(consumerUrl, {
+    const request = new Request(consumerUrl + '?limit=0', {
       method: 'GET',
       headers: headers
     });

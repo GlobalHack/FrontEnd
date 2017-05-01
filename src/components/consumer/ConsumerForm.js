@@ -9,27 +9,14 @@ import * as actions from '../../actions/consumerActions';
 import ConsumerCard from '../consumer/ConsumerCard';
 import RefusableText from '../base/RefusableText';
 import RefusableSSN from '../base/RefusableSSN';
+import RefusableYear from '../base/RefusableYear';
 
 let schemaForm = {
   "formId": "com.cemaritan.app.consumer.create",
   "version": 1,
-  "action": [
-    {
-      "category": "consumer",
-      "name": "createconsumer",
-      "readOnly": false,
-      "title": "Create"
-    }
-  ],
   "schema": {
     "type": "object",
     "title": "Find/Create Consumer",
-    "required": [
-      "firstName",
-      "lastName",
-      "ssn",
-      "dateOfBirth"
-    ],
     "properties": {
       "firstName": {
         "title": "First Name",
@@ -45,7 +32,7 @@ let schemaForm = {
       },
       "dateOfBirth": {
         "title": "Date Of Birth",
-        "type": "date"
+        "type": "string"
       }
     }
   },
@@ -57,7 +44,10 @@ let schemaForm = {
       placeholder: 'XXX-XX-XXXX',
       type: "RefusableSSN"
     },
-    {key: "dateOfBirth"}
+    {
+      key: "dateOfBirth",
+      type:"RefusableYear"
+    }
   ]
 };
 
@@ -65,8 +55,12 @@ class ConsumerForm extends React.Component {
 
   template = () => {
     let newConsumerState = Object.assign({}, this.props.consumerState);
-    newConsumerState.id = null;
+    newConsumerState.id  = null;
     this.props.onSwitchConsumerForm(newConsumerState);
+  };
+
+  submit = () => {
+    this.props.onSubmitConsumerForm(this.props.consumerState);
   };
 
   clear = () => {
@@ -79,7 +73,8 @@ class ConsumerForm extends React.Component {
     // consumerState.dateOfBirth = "2017-04-18";
     let mapper = {
       "RefusableSSN": RefusableSSN,
-      "text": RefusableText
+      "text": RefusableText,
+      "RefusableYear":RefusableYear
     };
     if (consumerState.id) {
       return (
@@ -102,13 +97,20 @@ class ConsumerForm extends React.Component {
       );
     } else {
       return (
-        <SchemaForm
-          schema={schemaForm.schema}
-          form={schemaForm.form}
-          model={consumerState}
-          onModelChange={onUpdateConsumerForm}
-          mapper={mapper}
-        />
+        <div>
+          <SchemaForm
+            schema={schemaForm.schema}
+            form={schemaForm.form}
+            model={consumerState}
+            onModelChange={onUpdateConsumerForm}
+            mapper={mapper}
+          />
+          <RaisedButton
+            label="Save consumer"
+            primary={true}
+            onTouchTap={this.submit}
+          />
+        </div>
       );
     }
   }
