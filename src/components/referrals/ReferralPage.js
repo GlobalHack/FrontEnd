@@ -23,7 +23,7 @@ export class Referral extends React.Component {
   render() {
     return (
       <div className="jumbotron vertical-center">
-          <iframe className="referrals" src="http://referrals.ngrok.io" width="600px" height="600px" />
+          <iframe className="referrals" src="https://cemaritan-referrals.herokuapp.com" width="100%" height="100%" />
       </div>
     );
   }
