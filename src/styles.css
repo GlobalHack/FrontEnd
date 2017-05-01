@@ -44,6 +44,10 @@ a:hover {
     margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
 }
 
+.referrals {
+    border: 0;
+}
+
 .vertical-center {
     min-height: 100%; /* Fallback for vh unit */
     min-height: 100vh;
