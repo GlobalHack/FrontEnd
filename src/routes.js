@@ -27,13 +27,13 @@ export const makeMainRoutes = () => {
   return (
     <Route>
       <Route path="/login" component={LoginPage} auth={auth} initialScreen="login"/>
-      <Route path="/referrals" component={ReferralPage} initialScreen="referral"/>
       <Route path="/signup" component={LoginPage} auth={auth} initialScreen="signUp"/>
       <Route path="/password" component={LoginPage} auth={auth} initialScreen="forgotPassword"/>
       <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
         <IndexRedirect to={homePath}/>
         <Route path={homePath} component={WelcomePage}/>
         <Route path={dashPath} component={DashboardPage}/>
+        <Route path="/referrals" component={ReferralPage}/>
         <Route path={employeePath}>
           <IndexRoute component={EmployeeTablePage}/>
           <Redirect from="*" to={employeePath}/>

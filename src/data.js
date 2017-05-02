@@ -11,6 +11,7 @@ const data = {
     {text: 'Welcome', icon: <Assessment/>, link: '/home'},
     {text: 'Permissions', icon: <Assessment/>, link: '/dash'},
     {text: 'Account Admin', icon: <PermIdentity/>, link: '/employees'},
+    {text: 'Referrals', icon: <PermIdentity/>, link: '/referrals'},
     {text: 'Intakes', icon: <PermIdentity/>, link: '/intakes'}
   ],
   tablePage: {

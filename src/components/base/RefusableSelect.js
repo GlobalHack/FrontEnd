@@ -30,16 +30,17 @@ class RefusableSelect extends React.Component {
   };
 
   Header = ({help, heading}) => {
-    if (help){
+    if (help) {
       return (
         <Col xs={12}>
           <span style={{color: "lightcoral"}}>{help}</span>
         </Col>
       );
-    } else if (heading){
+    } else if (heading) {
       return (
         <Col xs={12}>
-          <h1>{heading}</h1><hr />
+          <h1>{heading}</h1>
+          <hr />
         </Col>
       );
     }
@@ -47,26 +48,14 @@ class RefusableSelect extends React.Component {
   };
 
   render() {
-    const menuItems = (this.props.form.titleMap||[
-      {
-        "value": "A",
-        "label": "Authorized to anyone"
-      },
-      {
-        "value": "N",
-        "label": "Not Accessible"
-      },
-      {
-        "value": "C",
-        "label": "Client Based"
-      },
-      {
-        "value": "R",
-        "label": "Role Based"
-      }]).map((item, idx) => (
+    const menuItems = (this.props.form.enum ||
+    [
+      "option1",
+      "option2"
+    ]).map((item, idx) => (
       <MenuItem key={idx}
-                primaryText={item.label}
-                value={item.value} />
+                primaryText={item}
+                value={item}/>
     ));
     return (
       <Row className="Aligner">
