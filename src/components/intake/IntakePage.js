@@ -44,7 +44,7 @@ class IntakePage extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const {intakeId} = this.state;
     let {intake} = this.props;
     if (!intakeId){intake={}}
