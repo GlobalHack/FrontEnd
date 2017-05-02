@@ -15,10 +15,15 @@ class ConsumerSelector extends React.Component {
     this.props.actions.loadConsumers();
   }
 
-  pickConsumer = (newConsumer) => {
-    if (typeof newConsumer==='string') {
-      newConsumer = _.find(this.props.consumers, {newConsumer});
+  pickConsumer = (id) => {
+    // console.log(id);
+    let newConsumer;
+    if (typeof id==='string'||typeof id==='number') {
+      newConsumer = _.find(this.props.consumers, {id});
+    }else{
+      newConsumer = id;
     }
+    // console.log(newConsumer);
     this.props.onSwitchConsumerForm(newConsumer);
   };
 

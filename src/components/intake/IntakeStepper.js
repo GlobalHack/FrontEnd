@@ -44,7 +44,7 @@ class IntakeStepper extends React.Component {
     this.setState({
       consumerState: newConsumerState
     });
-    console.log(this.state.consumerState);
+    // console.log(this.state.consumerState);
   };
 
   handleSwitchConsumer = (newConsumerState) => {
