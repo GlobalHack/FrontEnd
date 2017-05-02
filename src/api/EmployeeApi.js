@@ -2,6 +2,20 @@ import {employeeUrl, requestHeaders} from './apiBase';
 
 class EmployeeApi {
 
+  static getEmployee(id) {
+    const headers = requestHeaders;
+    const request = new Request(employeeUrl + '?id=' + id, {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      return error;
+    });
+  }
+
   static getAllEmployees() {
     const headers = requestHeaders;
     const request = new Request(employeeUrl, {

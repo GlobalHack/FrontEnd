@@ -1,6 +1,8 @@
 export default {
   employees: [],
+  employee: {},
   organizations: [],
+  organization: {},
   consumers: [],
   consumer: {},
   messages: [],

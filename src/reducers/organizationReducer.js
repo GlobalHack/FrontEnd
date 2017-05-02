@@ -2,7 +2,16 @@ import {browserHistory} from 'react-router';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function organizationReducer(state = initialState.organizations, action) {
+export function organizationReducer(state = initialState.organization, action) {
+  switch (action.type) {
+    case types.LOAD_ORGANIZATION_SUCCESS:
+      return action.organization;
+    default:
+      return state;
+  }
+}
+
+export default function organizationsReducer(state = initialState.organizations, action) {
   switch (action.type) {
 
     case types.LOAD_ORGANIZATIONS_SUCCESS:

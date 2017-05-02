@@ -2,6 +2,20 @@ import {organizationUrl, requestHeaders} from './apiBase';
 
 class OrganizationApi {
 
+  static getOrganization(id) {
+    const headers = requestHeaders;
+    const request = new Request(organizationUrl + '?id=' + id, {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      throw(error);
+    });
+  }
+
   static getAllOrganizations() {
     const headers = requestHeaders;
     const request = new Request(organizationUrl, {
