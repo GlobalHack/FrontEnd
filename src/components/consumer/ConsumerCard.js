@@ -17,8 +17,8 @@ class ConsumerCard extends React.Component {
           title={consumerState.firstName + ' ' + consumerState.lastName}
           subtitle={'Born: ' + moment(consumerState.dateOfBirth).format('MMM Do YY') + ''}
           avatar={<AccountBox />}
-          actAsExpander={true}
-          showExpandableButton={true}
+          /*actAsExpander={true}*/
+          /*showExpandableButton={true}*/
         />
         <CardText expandable={true}>
           <List>

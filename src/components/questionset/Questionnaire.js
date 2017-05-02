@@ -12,6 +12,7 @@ import * as actions from '../../actions/questionSetActions';
 import {score} from '../../utils/AcuityService';
 import RefusableBoolean from '../base/RefusableBoolean';
 import RefusableNumber from '../base/RefusableNumber';
+import RefusableSelect from '../base/RefusableSelect';
 
 class Questionnaire extends React.Component {
 
@@ -23,6 +24,10 @@ class Questionnaire extends React.Component {
     if (!this.props.questionSetFormSchema.form.length) {
       this.props.actions.loadQuestionSetSchema();
     }
+    // if (this.props.consumerState.dateOfBirth){
+    //   console.log(new Date().getFullYear()-new Date(this.props.consumerState.dateOfBirth).getFullYear()+'');
+    //   this.handleUpdate("General_1", new Date().getFullYear()-new Date(this.props.consumerState.dateOfBirth).getFullYear()+'');
+    // }
   }
 
   handleRequestClose(reason) {
@@ -44,8 +49,9 @@ class Questionnaire extends React.Component {
   render() {
     let {questionnaireState, questionSetFormSchema, handleMove} = this.props;
     let mapper = {
-      "checkbox": RefusableBoolean,
-      "number": RefusableNumber
+      "RefusableBoolean": RefusableBoolean,
+      "RefusableNumber": RefusableNumber,
+      "RefusableSelect": RefusableSelect
     };
     // console.log(questionnaireState);
     return (

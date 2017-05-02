@@ -15,11 +15,23 @@ class ConsumerSelector extends React.Component {
     this.props.actions.loadConsumers();
   }
 
-  pickConsumer = (id) => {
-    // console.log(id);
-    let consumer = _.find(this.props.consumers, {id});
-    // console.log(consumer);
-    this.props.onSwitchConsumerForm(consumer);
+  pickConsumer = (newConsumer) => {
+    if (typeof newConsumer==='string') {
+      newConsumer = _.find(this.props.consumers, {newConsumer});
+    }
+    this.props.onSwitchConsumerForm(newConsumer);
+  };
+
+  save = (consumer) => {
+    this.setState({consumer: consumer});
+    this.props.actions.createConsumer(consumer).then((responseConsumer)=> {
+      this.props.actions.loadConsumers().then(
+        this.props.actions.loadConsumers().then(() => {
+            this.pickConsumer(responseConsumer);
+          }
+        )
+      )
+    });
   };
 
   render() {
@@ -33,10 +45,11 @@ class ConsumerSelector extends React.Component {
               consumerState={consumerState}
               onUpdateConsumerForm={onUpdateConsumerForm}
               onSwitchConsumerForm={onSwitchConsumerForm}
+              onSubmitConsumerForm={this.save}
             />
           </Col>
           <Col xs={12} sm={6}>
-            <ConsumerCardList consumers={consumers} onPickConsumer={this.pickConsumer}/>
+            <ConsumerCardList consumerState={consumerState} consumers={consumers} onPickConsumer={this.pickConsumer}/>
           </Col>
         </Row>
         <Toolbar style={{marginTop: 20}}>
@@ -62,7 +75,8 @@ ConsumerSelector.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    consumers: state.consumers
+    consumers: state.consumers,
+    consumer: state.consumer
   };
 }
 

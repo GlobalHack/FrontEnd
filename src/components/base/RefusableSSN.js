@@ -64,7 +64,7 @@ class RefusableNumber extends Component {
     return (
       <Row className="Aligner">
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
-        <Col xs={10} xsOffset={1}>
+        <Col xs={9}>
           <TextField
             type="number"
             floatingLabelText={this.props.form.title}
@@ -73,14 +73,14 @@ class RefusableNumber extends Component {
             onChange={this.preValidationCheck}
             defaultValue={this.state.lastSuccessfulValue}
             ref="numberField"
-            disabled={this.props.form.readonly}
+            disabled={this.state.refused}
             style={this.props.form.style || {width: '100%'}}/>
         </Col>
-        <Col xs={1}>
+        <Col xs={3}>
           <Checkbox
             label="Refuse"
             onCheck={this.refuse}
-            defaultChecked={this.props.value === 'refused'}
+            defaultChecked={this.state.refused}
             // style={{marginTop:'30px'}}
             // checkedIcon={<Close />}
           />

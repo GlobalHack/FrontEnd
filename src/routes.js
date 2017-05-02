@@ -3,6 +3,7 @@ import {IndexRedirect, IndexRoute, Redirect, Route} from 'react-router';
 import App from './components/App';
 import DashboardPage from './components/base/DashboardPage';
 import LoginPage from './components/base/LoginPage';
+import ReferralPage from './components/referrals/ReferralPage';
 import WelcomePage from './components/base/WelcomePage';
 import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
@@ -33,6 +34,7 @@ export const makeMainRoutes = () => {
         <IndexRedirect to={homePath}/>
         <Route path={homePath} component={WelcomePage}/>
         <Route path={dashPath} component={DashboardPage}/>
+        <Route path="/referrals" component={ReferralPage}/>
         <Route path={employeePath}>
           <IndexRoute component={EmployeeTablePage}/>
           <Redirect from="*" to={employeePath}/>

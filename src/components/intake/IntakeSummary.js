@@ -6,10 +6,28 @@ import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import ConsumerCard from '../consumer/ConsumerCard';
 import QuestionnaireCard from '../questionset/QuestionnaireCard';
+import {browserHistory} from 'react-router';
+import {score} from '../../utils/AcuityService';
+import {getProfile} from '../../utils/AuthService'
 
 class IntakeSummary extends React.Component {
 
+  saveIntake = () => {
+    let intake = {
+      consumer: this.props.consumerState,
+      employee: getProfile().uid,
+      complete: Object.keys(this.props.questionnaireState).length >= 52,
+      score: score(this.props.questionnaireState),
+      answers: this.props.questionnaireState,
+      id: this.props.intake.id
+    };
+    this.props.saveIntake(intake).then(
+      browserHistory.push('/intakes/')
+    );
+  };
+
   render() {
+    console.log(Object.keys(this.props.questionnaireState).length);
     const {handleMove} = this.props;
     return (
       <div>
@@ -38,7 +56,7 @@ class IntakeSummary extends React.Component {
             <RaisedButton
               label="submit"
               primary={true}
-              onTouchTap={() => alert('should save')}
+              onTouchTap={this.saveIntake}
             />
           </ToolbarGroup>
         </Toolbar>

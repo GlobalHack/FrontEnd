@@ -18,7 +18,6 @@ class IntakePage extends React.Component {
   componentWillMount() {
     if (this.state.intakeId) {
       this.props.actions.loadIntake(this.state.intakeId);
-      this.props.actions.loadIntakeQuestionnaire(this.state.intakeId);
     }
   }
 
@@ -29,6 +28,15 @@ class IntakePage extends React.Component {
     });
   };
 
+  saveIntake = (intake) => {
+    this.setState({saved: true});
+    if (intake.id){
+      return this.props.actions.updateIntake(intake).then(this.props.actions.loadIntakes());
+    } else {
+      return this.props.actions.createIntake(intake).then(this.props.actions.loadIntakes());
+    }
+  };
+
   updateSaveIntake = (saved) => {
     this.setState({
       saved: saved
@@ -36,15 +44,17 @@ class IntakePage extends React.Component {
   };
 
   render() {
+    // console.log(this.props);
     const {intakeId} = this.state;
-    let {intake, intakeQuestionnaire} = this.props;
-    if (!intakeId){intake={}; intakeQuestionnaire={}}
+    let {intake} = this.props;
+    if (!intakeId){intake={}}
     return (
       <Paper style={globalStyles.paper}>
         <IntakeStepper
           updateSave={this.updateSaveIntake}
           intake={intake}
-          intakeQuestionnaire={intakeQuestionnaire}
+          intakeQuestionnaire={intake.answers}
+          saveIntake={this.saveIntake}
         />
       </Paper>
     )
