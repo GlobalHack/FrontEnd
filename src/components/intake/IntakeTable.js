@@ -15,6 +15,7 @@ const IntakeTable = ({intakes}) => {
             <TableHeaderColumn>Score</TableHeaderColumn>
             <TableHeaderColumn>Complete</TableHeaderColumn>
             <TableHeaderColumn></TableHeaderColumn>
+            <TableHeaderColumn></TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody showRowHover={true} stripedRows={true}>

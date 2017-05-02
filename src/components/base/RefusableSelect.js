@@ -48,7 +48,7 @@ class RefusableSelect extends React.Component {
   };
 
   render() {
-    const menuItems = (this.props.form.schema.options.split('|')).map((item, idx) => (
+    const menuItems = ((this.props.form.schema.options||"").split('|')).map((item, idx) => (
       <MenuItem key={idx}
                 primaryText={item}
                 value={item}/>
