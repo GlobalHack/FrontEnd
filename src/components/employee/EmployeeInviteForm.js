@@ -18,11 +18,6 @@ const EmployeeInviteForm = () => {
               floatingLabelText="Email of person to invite"
               fullWidth={true}
             />
-            <TextField
-              hintText="Come join me on cemaritan"
-              floatingLabelText="Message to add to the invitation"
-              fullWidth={true}
-            />
             <RaisedButton
               label="Send Invite"
               primary={true}

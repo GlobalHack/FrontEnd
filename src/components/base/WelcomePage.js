@@ -3,7 +3,6 @@ import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import globalStyles from '../../styles';
 import EmployeeInviteForm from '../employee/EmployeeInviteForm';
-import EmployeeList from '../employee/EmployeeList';
 import OrganizationForm from '../organization/OrganizationForm';
 
 class WelcomePage extends React.Component {
@@ -15,9 +14,6 @@ class WelcomePage extends React.Component {
         <Row>
           <Col xs={12} sm={6}>
             <EmployeeInviteForm/>
-          </Col>
-          <Col xs={12} sm={6}>
-            <EmployeeList/>
           </Col>
         </Row>
       </Paper>

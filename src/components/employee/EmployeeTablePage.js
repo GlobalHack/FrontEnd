@@ -16,7 +16,7 @@ class EmployeeTablePage extends React.Component {
     return (
       <PageBase title="Employees"
                 navigation="Application / Table Page">
-        <EmployeeTable employees={employees}/>
+        <EmployeeTable employees={employees} saveEmployee={this.props.actions.updateEmployee} deleteEmployee={this.props.actions.deleteEmployee}/>
       </PageBase>
     );
   }

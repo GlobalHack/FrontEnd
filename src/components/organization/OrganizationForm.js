@@ -38,7 +38,7 @@ class OrganizationForm extends React.Component {
                 dataSource={this.props.organizations}
                 dataSourceConfig={this.dataSourceConfig}
                 filter={AutoComplete.fuzzyFilter}
-                maxSearchResults={5}
+                maxSearchResults={9}
                 floatingLabelText="Search for Organization"
                 fullWidth={true}
                 openOnFocus={true}
@@ -51,25 +51,25 @@ class OrganizationForm extends React.Component {
             </form>
           </Col>
           {/*<Col xs={12} sm={1}>*/}
-          {/*<h1>-Or-</h1>*/}
+            {/*<h1>-Or-</h1>*/}
           {/*</Col>*/}
           {/*<Col xs={12} sm={6}>*/}
-          {/*<form>*/}
-          {/*<TextField*/}
-          {/*hintText="Organization"*/}
-          {/*floatingLabelText="Organization Name"*/}
-          {/*fullWidth={true}*/}
-          {/*/>*/}
-          {/*<TextField*/}
-          {/*hintText="Address"*/}
-          {/*floatingLabelText="Address"*/}
-          {/*fullWidth={true}*/}
-          {/*/>*/}
-          {/*<RaisedButton*/}
-          {/*label="Create"*/}
-          {/*primary={true}*/}
-          {/*/>*/}
-          {/*</form>*/}
+            {/*<form>*/}
+              {/*<TextField*/}
+                {/*hintText="Organization"*/}
+                {/*floatingLabelText="Organization Name"*/}
+                {/*fullWidth={true}*/}
+              {/*/>*/}
+              {/*<TextField*/}
+                {/*hintText="Address"*/}
+                {/*floatingLabelText="Address"*/}
+                {/*fullWidth={true}*/}
+              {/*/>*/}
+              {/*<RaisedButton*/}
+                {/*label="Create"*/}
+                {/*primary={true}*/}
+              {/*/>*/}
+            {/*</form>*/}
           {/*</Col>*/}
         </Row>
       </div>
