@@ -8,7 +8,7 @@ import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 class RefusableBoolean extends React.Component {
 
   state = {
-    refused: false,
+    refused: this.props.value === 'refused',
     toggled: this.props.value==='true' || 'false'
   };
 
@@ -58,7 +58,7 @@ class RefusableBoolean extends React.Component {
           <Checkbox
             label="Refuse"
             onCheck={this.refuse}
-            defaultChecked={this.props.value === 'refused'}
+            defaultChecked={this.state.refused}
             // style={{marginTop:'30px'}}
           />
         </Col>

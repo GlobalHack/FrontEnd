@@ -53,7 +53,7 @@ class RefusableSelect extends React.Component {
                 primaryText={item}
                 value={item}/>
     ));
-    console.log(this.props.form);
+    // console.log(this.props.form);
     return (
       <Row className="Aligner">
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>

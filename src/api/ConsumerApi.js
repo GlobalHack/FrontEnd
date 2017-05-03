@@ -18,7 +18,7 @@ class ConsumerApi {
 
   static getAllConsumers() {
     const headers = requestHeaders;
-    const request = new Request(consumerUrl + '?limit=0', {
+    const request = new Request(consumerUrl + '?sort=createdAt%20desc&limit=99', {
       method: 'GET',
       headers: headers
     });

@@ -14,11 +14,19 @@ module.exports = {
 
   score: function (intake) {
     //console.log("Calculating acuity score");
-    let surveyResult = intake;
+    let surveyResult = Object.assign({},intake);
     let acuity_score = 0;
     let medicalCondition = false;
     let substanceUse = false;
     let mentalHealthCondition = false;
+
+    for (var key in surveyResult) {
+      if (surveyResult.hasOwnProperty(key) &&
+        (surveyResult[key]==="refused" || surveyResult[key]==="false")
+      ) {
+        surveyResult[key] = false;
+      }
+    }
 
     if (surveyResult["General_1"] >= 60) {
       acuity_score++;

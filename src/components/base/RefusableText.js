@@ -1,4 +1,4 @@
-import Checkbox from 'material-ui/Checkbox';
+// import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
 import React, {Component} from 'react';
 import {Col, Row} from 'react-flexbox-grid';
@@ -57,13 +57,13 @@ class RefusableNumber extends Component {
             style={this.props.form.style || {width: '100%'}} />
         </Col>
         <Col xs={3}>
-          <Checkbox
-            label="Refuse"
-            onCheck={this.refuse}
-            defaultChecked={this.state.refused}
-            // style={{marginTop:'30px'}}
-            // checkedIcon={<Close />}
-          />
+          {/*<Checkbox*/}
+            {/*label="Refuse"*/}
+            {/*onCheck={this.refuse}*/}
+            {/*defaultChecked={this.state.refused}*/}
+            {/*// style={{marginTop:'30px'}}*/}
+            {/*// checkedIcon={<Close />}*/}
+          {/*/>*/}
         </Col>
       </Row>
     );
