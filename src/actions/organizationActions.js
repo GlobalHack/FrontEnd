@@ -1,6 +1,10 @@
 import organizationApi from '../api/OrganizationApi';
 import * as types from './actionTypes';
 
+export function loadOrganizationSuccess(organization) {
+  return {type: types.LOAD_ORGANIZATION_SUCCESS, organization};
+}
+
 export function loadOrganizationsSuccess(organizations) {
   return {type: types.LOAD_ORGANIZATIONS_SUCCESS, organizations};
 }
@@ -15,6 +19,17 @@ export function createOrganizationSuccess(organization) {
 
 export function deleteOrganizationSuccess(organization) {
   return {type: types.DELETE_ORGANIZATION_SUCCESS, organization};
+}
+
+export function loadOrganization(id) {
+  // make async call to api, handle promise, dispatch action when promise is resolved
+  return function (dispatch) {
+    return organizationApi.getOrganization(id).then(organization => {
+      dispatch(loadOrganizationSuccess(organization));
+    }).catch(error => {
+      throw(error);
+    });
+  };
 }
 
 export function loadOrganizations() {

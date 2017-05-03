@@ -3,7 +3,6 @@ import {TableRow, TableRowColumn} from 'material-ui/Table';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Link} from 'react-router';
 import {intakePath} from '../../api/apiBase';
 
 class IntakeTableRow extends React.Component {
@@ -15,15 +14,21 @@ class IntakeTableRow extends React.Component {
         <TableRowColumn width={20}>{intake.consumer && intake.consumer.firstName}</TableRowColumn>
         <TableRowColumn width={20}>{intake.consumer && intake.consumer.lastName}</TableRowColumn>
         <TableRowColumn width={20}>{moment(intake.createdAt).format('MMM Do YY')}</TableRowColumn>
-        <TableRowColumn width={20}>{intake.score}</TableRowColumn>
+        <TableRowColumn width={10}>{intake.score}</TableRowColumn>
         <TableRowColumn width={10}>{intake.complete + ''}</TableRowColumn>
         <TableRowColumn width={10}>
-          <Link to={intakePath + intake.id}>
-            <RaisedButton
-              label="edit"
-              primary={true}
-            />
-          </Link>
+          <RaisedButton
+            label="delete"
+            secondary={true}
+            onTouchTap={() => this.props.deleteIntake(intake)}
+          />
+        </TableRowColumn>
+        <TableRowColumn width={10}>
+          <RaisedButton
+            label="edit"
+            primary={true}
+            href={intakePath + intake.id}
+          />
         </TableRowColumn>
       </TableRow>
     );

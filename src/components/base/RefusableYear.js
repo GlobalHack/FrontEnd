@@ -11,7 +11,7 @@ class RefusableNumber extends Component {
     super(props);
     this.preValidationCheck = this.preValidationCheck.bind(this);
     this.state = {
-      refused: this.props.value === 'refused',
+      refused: false,
       lastSuccessfulValue: this.isNumeric(this.props.value) ? this.props.value : null
     };
   }
@@ -36,7 +36,7 @@ class RefusableNumber extends Component {
   refuse = () => {
     let value = !this.state.refused;
     this.setState({refused: value});
-    this.props.onChangeValidate({target: {value: value?'refused':''}});
+    // this.props.onChangeValidate({target: {value:null}});
     console.log(value);
   };
 

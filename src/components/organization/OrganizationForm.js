@@ -31,14 +31,14 @@ class OrganizationForm extends React.Component {
           <h1>It looks like you don't belong to an organization yet</h1>
         </Row>
         <Row>
-          <Col xs={12} sm={5}>
+          <Col xs={12} sm={12}>
             <form>
               <AutoComplete
                 hintText="St. Patrick"
                 dataSource={this.props.organizations}
                 dataSourceConfig={this.dataSourceConfig}
                 filter={AutoComplete.fuzzyFilter}
-                maxSearchResults={5}
+                maxSearchResults={9}
                 floatingLabelText="Search for Organization"
                 fullWidth={true}
                 openOnFocus={true}
@@ -51,25 +51,25 @@ class OrganizationForm extends React.Component {
             </form>
           </Col>
           {/*<Col xs={12} sm={1}>*/}
-          {/*<h1>-Or-</h1>*/}
+            {/*<h1>-Or-</h1>*/}
           {/*</Col>*/}
           {/*<Col xs={12} sm={6}>*/}
-          {/*<form>*/}
-          {/*<TextField*/}
-          {/*hintText="Organization"*/}
-          {/*floatingLabelText="Organization Name"*/}
-          {/*fullWidth={true}*/}
-          {/*/>*/}
-          {/*<TextField*/}
-          {/*hintText="Address"*/}
-          {/*floatingLabelText="Address"*/}
-          {/*fullWidth={true}*/}
-          {/*/>*/}
-          {/*<RaisedButton*/}
-          {/*label="Create"*/}
-          {/*primary={true}*/}
-          {/*/>*/}
-          {/*</form>*/}
+            {/*<form>*/}
+              {/*<TextField*/}
+                {/*hintText="Organization"*/}
+                {/*floatingLabelText="Organization Name"*/}
+                {/*fullWidth={true}*/}
+              {/*/>*/}
+              {/*<TextField*/}
+                {/*hintText="Address"*/}
+                {/*floatingLabelText="Address"*/}
+                {/*fullWidth={true}*/}
+              {/*/>*/}
+              {/*<RaisedButton*/}
+                {/*label="Create"*/}
+                {/*primary={true}*/}
+              {/*/>*/}
+            {/*</form>*/}
           {/*</Col>*/}
         </Row>
       </div>

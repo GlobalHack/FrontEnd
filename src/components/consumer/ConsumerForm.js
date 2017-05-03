@@ -10,6 +10,7 @@ import ConsumerCard from '../consumer/ConsumerCard';
 import RefusableText from '../base/RefusableText';
 import RefusableSSN from '../base/RefusableSSN';
 import RefusableYear from '../base/RefusableYear';
+import RefusableDate from '../base/RefusableDate';
 
 let schemaForm = {
   "formId": "com.cemaritan.app.consumer.create",
@@ -32,7 +33,7 @@ let schemaForm = {
       },
       "dateOfBirth": {
         "title": "Date Of Birth",
-        "type": "string"
+        "type": "date"
       }
     }
   },
@@ -46,7 +47,7 @@ let schemaForm = {
     },
     {
       key: "dateOfBirth",
-      type:"RefusableYear"
+      type:"RefusableDate"
     }
   ]
 };
@@ -74,7 +75,8 @@ class ConsumerForm extends React.Component {
     let mapper = {
       "RefusableSSN": RefusableSSN,
       "text": RefusableText,
-      "RefusableYear":RefusableYear
+      "RefusableYear":RefusableYear,
+      "RefusableDate":RefusableDate
     };
     if (consumerState.id) {
       return (

@@ -22,10 +22,10 @@ class IntakePage extends React.Component {
   }
 
   componentDidMount = () => {
-    this.props.router.setRouteLeaveHook(this.props.route, () => {
-      if (!this.state.saved)
-        return 'You may have unsaved information, are you sure you want to leave this page?';
-    });
+    // this.props.router.setRouteLeaveHook(this.props.route, () => {
+    //   if (!this.state.saved)
+    //     return 'You may have unsaved information, are you sure you want to leave this page?';
+    // });
   };
 
   saveIntake = (intake) => {

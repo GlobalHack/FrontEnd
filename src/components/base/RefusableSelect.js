@@ -48,12 +48,12 @@ class RefusableSelect extends React.Component {
   };
 
   render() {
-    const menuItems = (this.props.form.schema.options.split('|')).map((item, idx) => (
+    const menuItems = ((this.props.form.schema.options||"").split('|')).map((item, idx) => (
       <MenuItem key={idx}
                 primaryText={item}
                 value={item}/>
     ));
-    console.log(this.props.form);
+    // console.log(this.props.form);
     return (
       <Row className="Aligner">
         <this.Header help={this.props.form.help} heading={this.props.form.heading}/>

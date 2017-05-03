@@ -5,6 +5,10 @@ export function loadEmployeesSuccess(employees) {
   return {type: types.LOAD_EMPLOYEES_SUCCESS, employees};
 }
 
+export function loadEmployeeSuccess(employee) {
+  return {type: types.LOAD_EMPLOYEE_SUCCESS, employee};
+}
+
 export function updateEmployeeSuccess(employee) {
   return {type: types.UPDATE_EMPLOYEE_SUCCESS, employee};
 }
@@ -15,6 +19,18 @@ export function createEmployeeSuccess(employee) {
 
 export function deleteEmployeeSuccess(employee) {
   return {type: types.DELETE_EMPLOYEE_SUCCESS, employee};
+}
+
+export function loadEmployee(id) {
+  // make async call to api, handle promise, dispatch action when promise is resolved
+  return function (dispatch) {
+    return employeeApi.getEmployee(id).then(employee => {
+      dispatch(loadEmployeeSuccess(employee));
+      return employee;
+    }).catch(error => {
+      throw(error);
+    });
+  };
 }
 
 export function loadEmployees() {

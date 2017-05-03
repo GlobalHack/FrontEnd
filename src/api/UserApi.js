@@ -1,10 +1,10 @@
-import {employeeUrl, requestHeaders} from './apiBase';
+import {userUrl, requestHeaders} from './apiBase';
 
-class EmployeeApi {
+class UserApi {
 
-  static getEmployee(id) {
+  static getUser(id) {
     const headers = requestHeaders;
-    const request = new Request(employeeUrl + '?id=' + id, {
+    const request = new Request(userUrl + '?id=' + id, {
       method: 'GET',
       headers: headers
     });
@@ -16,9 +16,9 @@ class EmployeeApi {
     });
   }
 
-  static getAllEmployees() {
+  static getAllUsers() {
     const headers = requestHeaders;
-    const request = new Request(employeeUrl, {
+    const request = new Request(userUrl, {
       method: 'GET',
       headers: headers
     });
@@ -30,12 +30,12 @@ class EmployeeApi {
     });
   }
 
-  static updateEmployee(employee) {
+  static updateUser(user) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(employeeUrl + `${employee.id}`, {
+    const request = new Request(userUrl + `${user.id}`, {
       method: 'PUT',
       headers: headers,
-      body: JSON.stringify(employee)
+      body: JSON.stringify(user)
     });
 
     return fetch(request).then(response => {
@@ -45,12 +45,12 @@ class EmployeeApi {
     });
   }
 
-  static createEmployee(employee) {
+  static createUser(user) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(employeeUrl, {
+    const request = new Request(userUrl, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(employee)
+      body: JSON.stringify(user)
     });
 
     return fetch(request).then(response => {
@@ -60,9 +60,9 @@ class EmployeeApi {
     });
   }
 
-  static deleteEmployee(employee) {
+  static deleteUser(user) {
     const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(employeeUrl + `${employee.id}`, {
+    const request = new Request(userUrl + `${user.id}`, {
       method: 'DELETE',
       headers: headers
     });
@@ -75,4 +75,4 @@ class EmployeeApi {
   }
 }
 
-export default EmployeeApi;
+export default UserApi;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import IntakeTableRow from './IntakeTableRow';
 
-const IntakeTable = ({intakes}) => {
+const IntakeTable = (props) => {
   return (
     <div>
       <Table>
@@ -15,11 +15,12 @@ const IntakeTable = ({intakes}) => {
             <TableHeaderColumn>Score</TableHeaderColumn>
             <TableHeaderColumn>Complete</TableHeaderColumn>
             <TableHeaderColumn></TableHeaderColumn>
+            <TableHeaderColumn></TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody showRowHover={true} stripedRows={true}>
-          {intakes.map(intake =>
-            <IntakeTableRow key={intake.id} intake={intake}/>
+          {props.intakes.map(intake =>
+            <IntakeTableRow key={intake.id} intake={intake} deleteIntake={props.deleteIntake}/>
           )}
         </TableBody>
       </Table>

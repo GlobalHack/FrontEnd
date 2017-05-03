@@ -1,9 +1,9 @@
-import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React from 'react';
 import EmployeeTableRow from './EmployeeTableRow';
 
-const EmployeeTable = ({employees}) => {
+const EmployeeTable = (props) => {
   return (
     <div>
       <Table>
@@ -13,21 +13,14 @@ const EmployeeTable = ({employees}) => {
             <TableHeaderColumn>Email</TableHeaderColumn>
             <TableHeaderColumn>Role</TableHeaderColumn>
             <TableHeaderColumn>Disabled</TableHeaderColumn>
+            <TableHeaderColumn></TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody showRowHover={true} stripedRows={true}>
-          {employees.map(employee =>
-            <EmployeeTableRow key={employee.id} employee={employee}/>
+          {props.employees.map(employee =>
+            <EmployeeTableRow key={employee.id} employee={employee} saveEmployee={props.saveEmployee} deleteEmployee={props.deleteEmployee}/>
           )}
         </TableBody>
-        <TableFooter adjustForCheckbox={false}>
-          <TableRow>
-            <TableHeaderColumn>Name</TableHeaderColumn>
-            <TableHeaderColumn>Email</TableHeaderColumn>
-            <TableHeaderColumn>Role</TableHeaderColumn>
-            <TableHeaderColumn>Disabled</TableHeaderColumn>
-          </TableRow>
-        </TableFooter>
       </Table>
     </div>
   );

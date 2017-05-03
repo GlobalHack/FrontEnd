@@ -3,10 +3,12 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {spacing, typography} from 'material-ui/styles';
 import {blue600, white} from 'material-ui/styles/colors';
-import PropTypes from 'prop-types';
 import React from 'react';
 import {Link} from 'react-router';
 import AuthService from '../../utils/AuthService';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import PropTypes from 'prop-types';
 
 class LeftDrawer extends React.Component {
   static contextTypes = {
@@ -90,6 +92,15 @@ class LeftDrawer extends React.Component {
               containerElement={<Link to={menu.link}/>}
             />
           )}
+          {this.props.employee.role==="Admin" && this.props.adminmenus.map((menu, index) =>
+            <MenuItem
+              key={index}
+              style={this.styles.menuItem}
+              primaryText={menu.text}
+              leftIcon={menu.icon}
+              containerElement={<Link to={menu.link}/>}
+            />
+          )}
         </div>
         <div style={{position: 'absolute', bottom: 0, width: '100%'}}>
           <a width="150" height="50" href="https://auth0.com/?utm_source=oss&utm_medium=gp&utm_campaign=oss"
@@ -105,4 +116,20 @@ class LeftDrawer extends React.Component {
   };
 }
 
-export default LeftDrawer;
+LeftDrawer.propTypes = {
+  employee: PropTypes.object.isRequired,
+  organization: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    employee: state.employee,
+    organization: state.organization
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators({}, dispatch)};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeftDrawer);

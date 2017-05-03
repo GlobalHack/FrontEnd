@@ -32,17 +32,17 @@ export const makeMainRoutes = () => {
       <Route path="/password" component={LoginPage} auth={auth} initialScreen="forgotPassword"/>
       <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
         <IndexRedirect to={homePath}/>
-        <Route path={homePath} component={WelcomePage}/>
-        <Route path={dashPath} component={DashboardPage}/>
-        <Route path="/referrals" component={ReferralPage}/>
-        <Route path={employeePath}>
+        <Route path={homePath} component={WelcomePage} onEnter={requireAuth}/>
+        <Route path={dashPath} component={DashboardPage} onEnter={requireAuth}/>
+        <Route path="/referrals" component={ReferralPage} onEnter={requireAuth}/>
+        <Route path={employeePath} onEnter={requireAuth}>
           <IndexRoute component={EmployeeTablePage}/>
           <Redirect from="*" to={employeePath}/>
         </Route>
         <Route path={intakePath}>
           <IndexRoute component={IntakeTablePage}/>
-          <Route path="new" component={IntakePage}/>
-          <Route path=":id" component={IntakePage}/>
+          <Route path="new" component={IntakePage} onEnter={requireAuth}/>
+          <Route path=":id" component={IntakePage} onEnter={requireAuth}/>
           <Redirect from="*" to={intakePath}/>
         </Route>
         <Redirect from="*" to={homePath}/>

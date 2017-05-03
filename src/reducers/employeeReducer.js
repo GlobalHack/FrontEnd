@@ -3,7 +3,16 @@ import * as types from '../actions/actionTypes';
 import {employeePath} from '../api/apiBase';
 import initialState from './initialState';
 
-export default function employeeReducer(state = initialState.employees, action) {
+export function employeeReducer(state = initialState.employee, action) {
+  switch (action.type) {
+    case types.LOAD_EMPLOYEE_SUCCESS:
+      return action.employee;
+    default:
+      return state;
+  }
+}
+
+export default function employeesReducer(state = initialState.employees, action) {
   switch (action.type) {
 
     case types.LOAD_EMPLOYEES_SUCCESS:
