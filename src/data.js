@@ -9,10 +9,12 @@ import React from 'react';
 const data = {
   menus: [
     {text: 'Welcome', icon: <Assessment/>, link: '/home'},
-    {text: 'Permissions', icon: <Assessment/>, link: '/dash'},
-    {text: 'Account Admin', icon: <PermIdentity/>, link: '/employees'},
     {text: 'Referrals', icon: <PermIdentity/>, link: '/referrals'},
     {text: 'Intakes', icon: <PermIdentity/>, link: '/intakes'}
+  ],
+  adminmenus: [
+    {text: 'Permissions', icon: <Assessment/>, link: '/dash'},
+    {text: 'Account Admin', icon: <PermIdentity/>, link: '/employees'},
   ],
   tablePage: {
     items: [

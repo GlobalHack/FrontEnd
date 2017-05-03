@@ -25,7 +25,8 @@ export function loadEmployee(id) {
   // make async call to api, handle promise, dispatch action when promise is resolved
   return function (dispatch) {
     return employeeApi.getEmployee(id).then(employee => {
-      dispatch(loadEmployeesSuccess(employee));
+      dispatch(loadEmployeeSuccess(employee));
+      return employee;
     }).catch(error => {
       throw(error);
     });

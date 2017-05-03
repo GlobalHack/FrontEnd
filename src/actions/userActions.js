@@ -26,6 +26,7 @@ export function loadUser(id) {
   return function (dispatch) {
     return userApi.getUser(id).then(user => {
       dispatch(loadUsersSuccess(user));
+      return user;
     }).catch(error => {
       throw(error);
     });

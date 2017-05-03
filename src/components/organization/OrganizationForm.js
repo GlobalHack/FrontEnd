@@ -31,7 +31,7 @@ class OrganizationForm extends React.Component {
           <h1>It looks like you don't belong to an organization yet</h1>
         </Row>
         <Row>
-          <Col xs={12} sm={5}>
+          <Col xs={12} sm={12}>
             <form>
               <AutoComplete
                 hintText="St. Patrick"

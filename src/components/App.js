@@ -7,8 +7,9 @@ import Header from './base/Header';
 import LeftDrawer from './base/LeftDrawer';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../actions/intakeActions';
-import {withRouter} from 'react-router';
+import * as userActions from '../actions/userActions';
+import * as employeeActions from '../actions/employeeActions';
+import * as organizationActions from '../actions/organizationActions';
 
 class App extends React.Component {
 
@@ -19,9 +20,21 @@ class App extends React.Component {
       profile: this.props.route.auth.getProfile()
     };
     this.props.route.auth.on('profile_updated', (newProfile) => {
-      console.log(newProfile);
       this.setState({profile: newProfile});
     });
+    // console.log(this.state.profile);
+    // console.log(this.props.user);
+    if (this.state.profile && !this.props.user.id){
+      this.props.actions.loadUser(this.state.profile.uid).then((user)=>{
+        if (user.employee){
+          this.props.actions.loadEmployee(user.employee).then((employee)=>{
+            if (employee.organization){
+              this.props.actions.loadOrganization(employee.organization);
+            }
+          })
+        }
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -67,6 +80,7 @@ class App extends React.Component {
 
           <LeftDrawer navDrawerOpen={navDrawerOpen}
                       menus={Data.menus}
+                      adminmenus={Data.adminmenus}
                       auth={this.props.route.auth}
           />
 
@@ -82,7 +96,7 @@ class App extends React.Component {
 App.propTypes = {
   children: PropTypes.element,
   width: PropTypes.number,
-  // user: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
@@ -92,7 +106,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return {actions: bindActionCreators(Object.assign({}, userActions, employeeActions, organizationActions), dispatch)};
 }
 
-export default withWidth(withRouter(connect(mapStateToProps, mapDispatchToProps)))(App);
+export default withWidth()(connect(mapStateToProps, mapDispatchToProps)(App));
