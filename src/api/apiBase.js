@@ -26,3 +26,5 @@ export const questionSetPath = '/questionsets/';
 export const questionSetUrl = baseUrl + apiPrefix + questionSetPath;
 export const taskPath = '/tasks/';
 export const taskUrl = baseUrl + apiPrefix + taskPath;
+export const userPath = '/users/';
+export const userUrl = baseUrl + apiPrefix + userPath;
