@@ -20,6 +20,7 @@ class IntakeTableRow extends React.Component {
           <RaisedButton
             label="delete"
             secondary={true}
+            onTouchTap={() => this.props.deleteIntake(intake)}
           />
         </TableRowColumn>
         <TableRowColumn width={10}>

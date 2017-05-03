@@ -8,6 +8,8 @@ export default {
   messages: [],
   notifications: [],
   tasks: [],
+  user: {},
+  users: [],
   intakes: [],
   intake: {},
   intakeQuestionnaire: {},

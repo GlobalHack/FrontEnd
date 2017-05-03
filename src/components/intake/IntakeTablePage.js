@@ -8,10 +8,15 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/intakeActions';
 import globalStyles from '../../styles';
 import IntakeTable from './IntakeTable';
+import {intakeUrl} from '../../api/apiBase';
 
 class IntakeTablePage extends React.Component {
   componentWillMount() {
     this.props.actions.loadIntakes();
+  }
+
+  deleteIntake = (intake) => {
+    this.props.actions.deleteIntake(intake);
   }
 
   render() {
@@ -30,10 +35,11 @@ class IntakeTablePage extends React.Component {
             <RaisedButton
               label="download all intakes"
               primary={true}
+              href={intakeUrl + "csv"}
             />
           </ToolbarGroup>
         </Toolbar>
-        <IntakeTable intakes={intakes}/>
+        <IntakeTable intakes={intakes} deleteIntake={this.deleteIntake}/>
       </Paper>
     );
   }

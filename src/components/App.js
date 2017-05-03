@@ -5,14 +5,23 @@ import Data from '../data';
 import ThemeDefault from '../theme-default';
 import Header from './base/Header';
 import LeftDrawer from './base/LeftDrawer';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/intakeActions';
+import {withRouter} from 'react-router';
 
 class App extends React.Component {
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      navDrawerOpen: true
+      navDrawerOpen: true,
+      profile: this.props.route.auth.getProfile()
     };
+    this.props.route.auth.on('profile_updated', (newProfile) => {
+      console.log(newProfile);
+      this.setState({profile: newProfile});
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,7 +44,7 @@ class App extends React.Component {
       });
     }
 
-    let {navDrawerOpen} = this.state;
+    let {navDrawerOpen}         = this.state;
     const paddingLeftDrawerOpen = 236;
 
     const styles = {
@@ -72,7 +81,18 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.element,
-  width: PropTypes.number
+  width: PropTypes.number,
+  // user: PropTypes.object.isRequired,
 };
 
-export default withWidth()(App);
+function mapStateToProps(state, ownProps) {
+  return {
+    user: state.user,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)};
+}
+
+export default withWidth(withRouter(connect(mapStateToProps, mapDispatchToProps)))(App);
