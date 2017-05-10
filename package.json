@@ -16,6 +16,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-flexbox-grid": "^1.0.2",
+    "react-input-mask": "^0.8.0",
     "react-redux": "^4.4.5",
     "react-router": "3.0.2",
     "react-schema-form": "^0.3.2",

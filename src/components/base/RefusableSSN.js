@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import React, {Component} from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
+import InputElement from 'react-input-mask';
 
 // https://github.com/networknt/react-schema-form/blob/master/src/Number.js
 class RefusableNumber extends Component {
@@ -74,7 +75,12 @@ class RefusableNumber extends Component {
             defaultValue={this.state.lastSuccessfulValue}
             ref="numberField"
             disabled={this.state.refused}
-            style={this.props.form.style || {width: '100%'}}/>
+            style={this.props.form.style || {width: '100%'}}>
+            <InputElement
+              mask="999-99-9999"
+              maskChar={null}
+              />
+          </TextField>
         </Col>
         <Col xs={3}>
           <Checkbox
