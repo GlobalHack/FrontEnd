@@ -11,6 +11,8 @@ import RefusableText from '../base/RefusableText';
 import RefusableSSN from '../base/RefusableSSN';
 import RefusableYear from '../base/RefusableYear';
 import RefusableDate from '../base/RefusableDate';
+import RefusableDateString from '../base/RefusableDateString';
+import RefusableBoolean from '../base/RefusableBoolean';
 
 let schemaForm = {
   "formId": "com.cemaritan.app.consumer.create",
@@ -34,6 +36,14 @@ let schemaForm = {
       "dateOfBirth": {
         "title": "Date Of Birth",
         "type": "date"
+      },
+      "domesticViolence": {
+        "title": "Domestic Violence",
+        "type": "string"
+      },
+      "youth": {
+        "title": "Youth",
+        "type": "string"
       }
     }
   },
@@ -47,7 +57,15 @@ let schemaForm = {
     },
     {
       key: "dateOfBirth",
-      type:"RefusableDate"
+      type:"RefusableDateString"
+    },
+    {
+      key: "domesticViolence",
+      type:"RefusableBoolean"
+    },
+    {
+      key: "youth",
+      type:"RefusableBoolean"
     }
   ]
 };
@@ -76,7 +94,9 @@ class ConsumerForm extends React.Component {
       "RefusableSSN": RefusableSSN,
       "text": RefusableText,
       "RefusableYear":RefusableYear,
-      "RefusableDate":RefusableDate
+      "RefusableDate":RefusableDate,
+      "RefusableBoolean":RefusableBoolean,
+      "RefusableDateString":RefusableDateString
     };
     if (consumerState.id) {
       return (
