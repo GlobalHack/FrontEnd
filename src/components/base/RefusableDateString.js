@@ -7,10 +7,8 @@ class Date extends React.Component {
 
   constructor(props) {
     super(props);
-    this.preValidationCheck = this.preValidationCheck.bind(this);
     this.state = {
-      refused: false,
-      lastSuccessfulValue: this.isNumeric(this.props.value) ? this.props.value : null
+      refused: false
     };
   }
 
