@@ -22,7 +22,7 @@ class IntakeSummary extends React.Component {
       id: this.props.intake.id
     };
     this.props.saveIntake(intake).then(
-      browserHistory.push('/intakes/')
+      browserHistory.push('/intakes/updated/?ts='+Date.now())
     );
   };
 

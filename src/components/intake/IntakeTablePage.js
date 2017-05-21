@@ -9,8 +9,22 @@ import * as actions from '../../actions/intakeActions';
 import globalStyles from '../../styles';
 import IntakeTable from './IntakeTable';
 import {intakeUrl} from '../../api/apiBase';
+import Snackbar from 'material-ui/Snackbar';
 
 class IntakeTablePage extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: this.props.route.path==="updated"
+        &&this.props.location.query.ts
+        &&Date.now()-this.props.location.query.ts<1000,
+      snackbar: "Intake Updated",
+      intakeId: this.props.params.id
+    };
+    console.log(this.props.location.query);
+  }
+
   componentWillMount() {
     this.props.actions.loadIntakes();
   }
@@ -40,6 +54,11 @@ class IntakeTablePage extends React.Component {
           </ToolbarGroup>
         </Toolbar>
         <IntakeTable intakes={intakes} deleteIntake={this.deleteIntake}/>
+        <Snackbar
+          open={this.state.open}
+          message={this.state.snackbar}
+          autoHideDuration={3000}
+        />
       </Paper>
     );
   }

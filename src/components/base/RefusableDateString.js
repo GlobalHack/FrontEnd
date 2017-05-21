@@ -1,46 +1,64 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 import TextField from 'material-ui/TextField';
 import InputElement from 'react-input-mask';
+import Checkbox from 'material-ui/Checkbox';
+import {Col, Row} from 'react-flexbox-grid';
 
 class Date extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      refused: false
-    };
-  }
+  state = {
+    refused: this.props.value === 'refused'
+  };
 
   refuse = () => {
     let value = !this.state.refused;
     this.setState({refused: value});
-    // this.props.onChangeValidate({target: {value:null}});
+    this.props.onChangeValidate({target: {value: value && 'refused'}});
     console.log(value);
   };
-
 
   onDatePicked(empty, date) {
     this.props.onChangeValidate(new Date(date).props);
   }
 
+  tmp = (e) => {
+    var inputNode = ReactDOM.findDOMNode(e.target);
+    console.log(inputNode.value);
+    this.props.onChangeValidate({target: {value: inputNode.value}});
+  };
+
   render() {
     return (
-      <div style={{width: '100%', display: 'block'}}>
-        <TextField
-          type="number"
-          floatingLabelText={this.props.form.title}
-          hintText="02/24/1970"
-          errorText={this.props.error}
-          ref="numberField"
-          disabled={this.state.refused}
-          style={this.props.form.style || {width: '100%'}}>
-          <InputElement
-            mask="99/99/9999"
-            maskChar={null}
+      <Row className="Aligner">
+        <Col xs={9}>
+          <TextField
+            type="number"
+            floatingLabelText={this.props.form.title}
+            hintText="02/24/1970"
+            errorText={this.props.error}
+            ref="numberField"
+            disabled={this.state.refused}
+            style={this.props.form.style || {width: '100%'}}>
+            <InputElement
+              mask="99/99/9999"
+              maskChar={null}
+              onBlur={this.tmp}
+              defaultValue={this.state.refused?'':this.props.value}
+            />
+          </TextField>
+        </Col>
+        <Col xs={3}>
+          <Checkbox
+            label="Refuse"
+            onCheck={this.refuse}
+            defaultChecked={this.state.refused}
+            // style={{marginTop:'30px'}}
+            // checkedIcon={<Close />}
           />
-        </TextField>
-      </div>
+        </Col>
+      </Row>
     );
   }
 }

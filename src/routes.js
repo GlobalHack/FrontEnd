@@ -41,6 +41,7 @@ export const makeMainRoutes = () => {
         <Route path={intakePath}>
           <IndexRoute component={IntakeTablePage}/>
           <Route path="new" component={IntakePage} onEnter={requireAuth}/>
+          <Route path="updated" component={IntakeTablePage} onEnter={requireAuth}/>
           <Route path=":id" component={IntakePage} onEnter={requireAuth}/>
           <Redirect from="*" to={intakePath}/>
         </Route>

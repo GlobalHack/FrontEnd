@@ -4,6 +4,8 @@ import React from 'react';
 import ConsumerSelector from '../consumer/ConsumerSelector';
 import Questionnaire from '../questionset/Questionnaire';
 import IntakeSummary from './IntakeSummary';
+import moment from 'moment';
+import Snackbar from 'material-ui/Snackbar';
 
 const getStyles = () => {
   return {
@@ -25,12 +27,14 @@ class IntakeStepper extends React.Component {
     super(props, context);
     this.state = {
       stepIndex: 0,
-      consumerState:{},
-      questionnaireState: {}
+      consumerState: {},
+      questionnaireState: {},
+      open: false,
+      snackbar: ''
     };
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.setState({
       consumerState: nextProps.intake.consumer || this.state.consumerState,
       questionnaireState: nextProps.intakeQuestionnaire || this.state.questionnaireState
@@ -39,11 +43,18 @@ class IntakeStepper extends React.Component {
 
   handleUpdateConsumer = (field, value) => {
     this.props.updateSave(false);
-    let newConsumerState = this.state.consumerState;
+    let newConsumerState    = this.state.consumerState;
     newConsumerState[field] = value;
     this.setState({
       consumerState: newConsumerState
     });
+    if (field.indexOf("dateOfBirth") > -1) {
+      let age = parseInt(moment(value, "MM/DD/YYYY").fromNow(), 10).toString();
+      this.handleUpdateQuestionnaire("General_1", age)
+      if (age < 18) {
+        this.handleUpdateConsumer("youth", "true")
+      }
+    }
     // console.log(this.state.consumerState);
   };
 
@@ -51,16 +62,19 @@ class IntakeStepper extends React.Component {
     // console.log(newConsumerState);
     // newConsumerState.dateOfBirth = new Date(newConsumerState.dateOfBirth);
     this.setState({
-      consumerState: newConsumerState});
+      consumerState: newConsumerState,
+      snackbar: "Consumer Updated",
+      open: true
+    });
   };
 
   handleUpdateQuestionnaire = (field, value) => {
     // console.log(field);
     this.props.updateSave(false);
     let newQuestionnaireState = this.state.questionnaireState;
-    if (value == null){
+    if (value == null) {
       delete newQuestionnaireState[field];
-    }else{
+    } else {
       newQuestionnaireState[field] = value;
     }
     this.setState({
@@ -105,7 +119,7 @@ class IntakeStepper extends React.Component {
   render() {
     const {stepIndex, consumerState, questionnaireState} = this.state;
     // console.log(questionnaireState);
-    const styles = getStyles();
+    const styles                                         = getStyles();
     return (
       <div style={styles.root}>
         <Stepper linear={false}>
@@ -128,6 +142,11 @@ class IntakeStepper extends React.Component {
         <div style={styles.content}>
           <div>{this.getStepContent(stepIndex)}</div>
         </div>
+        <Snackbar
+          open={this.state.open && stepIndex===0}
+          message={this.state.snackbar}
+          autoHideDuration={3000}
+        />
       </div>
     );
   }
