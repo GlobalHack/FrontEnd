@@ -1,4 +1,4 @@
-import notificationApi from '../api/NotificationsApi';
+import notificationApi from '../api/NotificationApi';
 import * as types from './actionTypes';
 
 export function loadNotificationsSuccess(notifications) {
@@ -17,10 +17,10 @@ export function deleteNotificationSuccess(notification) {
   return {type: types.DELETE_NOTIFICATION_SUCCESS, notification};
 }
 
-export function loadNotifications() {
+export function loadNotifications(user) {
   // make async call to api, handle promise, dispatch action when promise is resolved
   return function (dispatch) {
-    return notificationApi.getAllNotifications().then(notifications => {
+    return notificationApi.getAllNotifications(user).then(notifications => {
       dispatch(loadNotificationsSuccess(notifications));
     }).catch(error => {
       throw(error);
