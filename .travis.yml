@@ -1,3 +1,14 @@
 language: node_js
 node_js:
   - "6"
+env:
+  global:
+    - AUTH0SECRET=AUTH0SECRET
+    - REACT_APP_AUTH0CLIENTID=REACT_APP_AUTH0CLIENTID
+    - REACT_APP_AUTH0DOMAIN=REACT_APP_AUTH0DOMAIN
+    - USER_API_SECRET=USER_API_SECRET
+notifications:
+  slack: ghimplementationteam:P8HpTjSCo8cDGwahXPLgQh47
+cache:
+  directories:
+    - node_modules
