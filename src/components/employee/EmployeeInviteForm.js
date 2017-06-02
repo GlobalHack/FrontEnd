@@ -3,11 +3,13 @@ import TextField from 'material-ui/TextField';
 import React from 'react';
 import {Col, Row} from 'react-flexbox-grid';
 import InviteApi from '../../api/InviteApi';
+import Snackbar from 'material-ui/Snackbar';
 
 class EmployeeInviteForm extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      open: false,
       profile: props.auth.getProfile()
     };
     props.auth.on('profile_updated', (newProfile) => {
@@ -19,6 +21,18 @@ class EmployeeInviteForm extends React.Component {
     console.log("?");
     this.setState({
       invitee: event.target.value,
+    });
+  };
+
+  handleTouchTap = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
     });
   };
 
@@ -41,11 +55,17 @@ class EmployeeInviteForm extends React.Component {
               <RaisedButton
                 label="Send Invite"
                 primary={true}
-                onTouchTap={()=>InviteApi.sendInvite(invitee)}
+                onTouchTap={()=>{InviteApi.sendInvite(invitee);this.handleTouchTap()}}
               />
             </form>
           </Col>
         </Row>
+        <Snackbar
+          open={this.state.open}
+          message="Invite Sent"
+          autoHideDuration={1000}
+          onRequestClose={this.handleRequestClose}
+        />
       </div>
     );
   }
