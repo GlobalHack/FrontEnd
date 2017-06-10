@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import PropTypes from 'prop-types';
 import React from 'react';
 import AuthService from '../../utils/AuthService';
-import Mail from 'material-ui/svg-icons/content/mail'
+import NotificationList from '../notifications/NotificationList';
 
 class Header extends React.Component {
   static contextTypes = {
@@ -35,7 +35,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const {styles, handleChangeRequestNavDrawer} = this.props;
+    const {auth, styles, handleChangeRequestNavDrawer} = this.props;
 
     const style = {
       appBar: {
@@ -64,16 +64,7 @@ class Header extends React.Component {
           }
           iconElementRight={
             <div style={style.iconsRightContainer}>
-              <IconMenu
-                color={white}
-                iconButtonElement={<IconButton><Mail color={white}/></IconButton>}
-                targetOrigin={{horizontal: "right", vertical: "top"}}
-                anchorOrigin={{horizontal: "right", vertical: "bottom"}}
-              >
-                <MenuItem key={1} primaryText="Application 1"/>
-                <MenuItem key={2} primaryText="Application 2"/>
-                <MenuItem key={3} primaryText="Application 3"/>
-              </IconMenu>
+              <NotificationList auth={auth} />
               <IconMenu color={white}
                         iconButtonElement={
                           <IconButton><MoreVertIcon color={white}/></IconButton>

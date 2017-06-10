@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 
-function Welcome({organization}){
+function Welcome({organization, auth}){
   if (!organization.id){
     return(
       <Row>
@@ -24,7 +24,7 @@ function Welcome({organization}){
           <h1 style={{textAlign:"center"}}>Your Organization: {organization.name}</h1>
         </Col>
         <Col xs={12} sm={6}>
-          <EmployeeInviteForm/>
+          <EmployeeInviteForm auth={auth}/>
         </Col>
       </Row>
     )
@@ -34,9 +34,10 @@ function Welcome({organization}){
 class WelcomePage extends React.Component {
 
   render() {
+    const {auth} = this.props;
     return (
       <Paper style={globalStyles.paper}>
-        <Welcome organization={this.props.organization}/>
+        <Welcome organization={this.props.organization} auth={auth}/>
       </Paper>
     );
   }

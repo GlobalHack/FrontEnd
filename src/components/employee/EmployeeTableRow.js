@@ -14,6 +14,8 @@ class EmployeeTableRow extends React.Component {
   };
 
   handleChange = (event, index, value) => {
+    // console.log(this.props.checkAdmin);
+    if (value !== "Admin"&&!this.props.checkAdmin()){return;}
     var newEmployee = Object.assign({}, this.state.employee);
     newEmployee.role = value;
     this.setState({value: value, employee: newEmployee});

@@ -2,9 +2,9 @@ import {notificationUrl, requestHeaders} from './apiBase';
 
 class NotificationApi {
 
-  static getAllNotifications() {
+  static getAllNotifications(user) {
     const headers = requestHeaders;
-    const request = new Request(notificationUrl, {
+    const request = new Request(notificationUrl + '?toUser=' + user, {
       method: 'GET',
       headers: headers
     });
