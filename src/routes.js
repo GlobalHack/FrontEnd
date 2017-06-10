@@ -8,8 +8,9 @@ import WelcomePage from './components/base/WelcomePage';
 import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
 import IntakeTablePage from './components/intake/IntakeTablePage';
+import QuestionSetTablePage from './components/questionset/QuestionSetTablePage';
 import AuthService from './utils/AuthService';
-import {dashPath, employeePath, homePath, intakePath} from './utils/pathsHelper';
+import {dashPath, employeePath, homePath, intakePath, questionPath} from './utils/pathsHelper';
 
 const auth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'login');
 
@@ -44,6 +45,10 @@ export const makeMainRoutes = () => {
           <Route path="updated" component={IntakeTablePage} onEnter={requireAuth}/>
           <Route path=":id" component={IntakePage} onEnter={requireAuth}/>
           <Redirect from="*" to={intakePath}/>
+        </Route>
+        <Route path={questionPath}>
+          <IndexRoute component={QuestionSetTablePage}/>
+          <Redirect from="*" to={questionPath}/>
         </Route>
         <Redirect from="*" to={homePath}/>
       </Route>

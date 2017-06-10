@@ -2,6 +2,20 @@ import {questionUrl, requestHeaders} from './apiBase';
 
 class QuestionApi {
 
+  static getQuestionSchema() {
+      const headers = requestHeaders;
+      const request = new Request(questionUrl + 'schema', {
+        method: 'GET',
+        headers: headers
+      });
+
+      return fetch(request).then(response => {
+        return response.json();
+      }).catch(error => {
+        throw(error);
+      });
+  }
+
   static getAllQuestions() {
     const headers = requestHeaders;
     const request = new Request(questionUrl, {
