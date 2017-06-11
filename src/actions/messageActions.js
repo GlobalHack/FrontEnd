@@ -52,9 +52,9 @@ export function createEmployee(message) {
 export function deleteMessage(message) {
   return function (dispatch) {
     return messageApi.deleteMessage(message).then(() => {
-      console.log(`Deleted ${message.id}`);
+      console.info(`Deleted ${message.id}`);
       dispatch(deleteMessageSuccess(message));
-      return;
+
     }).catch(error => {
       throw(error);
     });

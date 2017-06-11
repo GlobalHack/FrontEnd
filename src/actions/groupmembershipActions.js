@@ -52,9 +52,9 @@ export function createGroupMembership(groupmembership) {
 export function deleteGroupMembership(groupmembership) {
   return function (dispatch) {
     return groupmembershipApi.deleteGroupMembership(groupmembership).then(() => {
-      console.log(`Deleted ${groupmembership.id}`);
+      console.info(`Deleted ${groupmembership.id}`);
       dispatch(deleteGroupMembershipSuccess(groupmembership));
-      return;
+
     }).catch(error => {
       throw(error);
     });

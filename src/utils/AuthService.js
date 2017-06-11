@@ -16,7 +16,7 @@ export default class AuthService extends EventEmitter {
         }
       },
       languageDictionary: {
-        title: "Cemaritan"
+        title: 'Cemaritan'
       },
       container: 'hiw-login-container',
       theme: {
@@ -25,14 +25,14 @@ export default class AuthService extends EventEmitter {
       initialScreen: initialScreen,
       additionalSignUpFields: [
         {
-          name: "firstName",
-          placeholder: "Enter your first name",
-          icon: "/images/badge-icon.ico"
+          name: 'firstName',
+          placeholder: 'Enter your first name',
+          icon: '/images/badge-icon.ico'
         },
         {
-          name: "lastName",
-          placeholder: "Enter your last name",
-          icon: "/images/badge-icon.ico"
+          name: 'lastName',
+          placeholder: 'Enter your last name',
+          icon: '/images/badge-icon.ico'
         }
       ]
     });
@@ -52,7 +52,7 @@ export default class AuthService extends EventEmitter {
     // Async loads the user profile data
     this.lock.getProfile(authResult.idToken, (error, profile) => {
       if (error) {
-        console.log('Error loading the Profile', error);
+        console.error('Error loading the Profile', error);
       } else {
         this.setProfile(profile);
       }
@@ -62,7 +62,7 @@ export default class AuthService extends EventEmitter {
 
   _authorizationError(error) {
     // Unexpected authentication error
-    console.log('Authentication Error', error);
+    console.error('Authentication Error', error);
   }
 
   login() {
@@ -104,7 +104,7 @@ export default class AuthService extends EventEmitter {
     localStorage.removeItem('jwt');
     localStorage.removeItem('profile');
   }
-};
+}
 
 export function getProfile() {
   // Retrieves the profile data from localStorage

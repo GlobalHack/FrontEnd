@@ -22,7 +22,7 @@ export default function groupmembershipReducer(state = initialState.groupmembers
       ];
 
     case types.DELETE_GROUPMEMBERSHIP_SUCCESS: {
-      const newState = Object.assign([], state);
+      const newState                       = Object.assign([], state);
       const indexOfGroupMembershipToDelete = state.findIndex(groupmembership => {
         return groupmembership.id == action.groupmembership.id;
       });

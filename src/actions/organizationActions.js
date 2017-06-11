@@ -67,9 +67,9 @@ export function createOrganization(organization) {
 export function deleteOrganization(organization) {
   return function (dispatch) {
     return organizationApi.deleteOrganization(organization).then(() => {
-      console.log(`Deleted ${organization.id}`);
+      console.info(`Deleted ${organization.id}`);
       dispatch(deleteOrganizationSuccess(organization));
-      return;
+
     }).catch(error => {
       throw(error);
     });

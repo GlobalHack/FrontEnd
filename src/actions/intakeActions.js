@@ -95,9 +95,9 @@ export function createIntake(intake) {
 export function deleteIntake(intake) {
   return function (dispatch) {
     return intakesApi.deleteIntake(intake).then(() => {
-      console.log(`Deleted ${intake.id}`);
+      console.info(`Deleted ${intake.id}`);
       dispatch(deleteIntakeSuccess(intake));
-      return;
+
     }).catch(error => {
       throw(error);
     });

@@ -52,9 +52,9 @@ export function createQuestion(question) {
 export function deleteQuestion(question) {
   return function (dispatch) {
     return questionApi.deleteQuestion(question).then(() => {
-      console.log(`Deleted ${question.id}`);
+      console.info(`Deleted ${question.id}`);
       dispatch(deleteQuestionSuccess(question));
-      return;
+
     }).catch(error => {
       throw(error);
     });

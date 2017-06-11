@@ -52,9 +52,9 @@ export function createNotification(notification) {
 export function deleteEmployee(notification) {
   return function (dispatch) {
     return notificationApi.deleteNotification(notification).then(() => {
-      console.log(`Deleted ${notification.id}`);
+      console.info(`Deleted ${notification.id}`);
       dispatch(deleteNotificationSuccess(notification));
-      return;
+
     }).catch(error => {
       throw(error);
     });

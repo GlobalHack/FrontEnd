@@ -27,7 +27,7 @@ export default function consumersReducer(state = initialState.consumers, action)
       ];
 
     case types.DELETE_CONSUMER_SUCCESS: {
-      const newState = Object.assign([], state);
+      const newState                = Object.assign([], state);
       const indexOfConsumerToDelete = state.findIndex(consumer => {
         return consumer.id === action.consumer.id;
       });

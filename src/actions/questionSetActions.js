@@ -67,9 +67,9 @@ export function createQuestionSet(questionSet) {
 export function deleteQuestionSet(questionSet) {
   return function (dispatch) {
     return questionSetApi.deleteQuestionSet(questionSet).then(() => {
-      console.log(`Deleted ${questionSet.id}`);
+      console.info(`Deleted ${questionSet.id}`);
       dispatch(deleteQuestionSetSuccess(questionSet));
-      return;
+
     }).catch(error => {
       throw(error);
     });

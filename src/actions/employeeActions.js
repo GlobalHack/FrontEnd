@@ -68,9 +68,9 @@ export function createEmployee(employee) {
 export function deleteEmployee(employee) {
   return function (dispatch) {
     return employeeApi.deleteEmployee(employee).then(() => {
-      console.log(`Deleted ${employee.id}`);
+      console.info(`Deleted ${employee.id}`);
       dispatch(deleteEmployeeSuccess(employee));
-      return;
+
     }).catch(error => {
       throw(error);
     });

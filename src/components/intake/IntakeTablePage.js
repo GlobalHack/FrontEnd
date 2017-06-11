@@ -31,7 +31,7 @@ class IntakeTablePage extends React.Component {
 
   deleteIntake = (intake) => {
     this.props.actions.deleteIntake(intake);
-  }
+  };
 
   render() {
     const intakes = this.props.intakes;

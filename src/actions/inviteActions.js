@@ -52,9 +52,9 @@ export function createEmployee(invite) {
 export function deleteInvite(invite) {
   return function (dispatch) {
     return inviteApi.deleteInvite(invite).then(() => {
-      console.log(`Deleted ${invite.id}`);
+      console.info(`Deleted ${invite.id}`);
       dispatch(deleteInviteSuccess(invite));
-      return;
+
     }).catch(error => {
       throw(error);
     });

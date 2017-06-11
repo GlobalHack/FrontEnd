@@ -68,9 +68,9 @@ export function createUser(user) {
 export function deleteUser(user) {
   return function (dispatch) {
     return userApi.deleteUser(user).then(() => {
-      console.log(`Deleted ${user.id}`);
+      console.info(`Deleted ${user.id}`);
       dispatch(deleteUserSuccess(user));
-      return;
+
     }).catch(error => {
       throw(error);
     });

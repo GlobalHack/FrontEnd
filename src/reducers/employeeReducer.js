@@ -31,7 +31,7 @@ export default function employeesReducer(state = initialState.employees, action)
       ];
 
     case types.DELETE_EMPLOYEE_SUCCESS: {
-      const newState = Object.assign([], state);
+      const newState                = Object.assign([], state);
       const indexOfEmployeeToDelete = state.findIndex(employee => {
         return employee.id === action.employee.id;
       });

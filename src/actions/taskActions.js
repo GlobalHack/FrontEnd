@@ -52,9 +52,9 @@ export function createTask(task) {
 export function deleteTask(task) {
   return function (dispatch) {
     return taskApi.deleteTask(task).then(() => {
-      console.log(`Deleted ${task.id}`);
+      console.info(`Deleted ${task.id}`);
       dispatch(deleteTaskSuccess(task));
-      return;
+
     }).catch(error => {
       throw(error);
     });

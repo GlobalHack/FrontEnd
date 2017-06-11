@@ -66,9 +66,9 @@ export function createConsumer(consumer) {
 export function deleteConsumer(consumer) {
   return function (dispatch) {
     return consumerApi.deleteConsumer(consumer).then(() => {
-      console.log(`Deleted ${consumer.id}`);
+      console.info(`Deleted ${consumer.id}`);
       dispatch(deleteConsumerSuccess(consumer));
-      return;
+
     }).catch(error => {
       throw(error);
     });

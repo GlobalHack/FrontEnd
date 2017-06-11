@@ -50,7 +50,7 @@ class IntakeStepper extends React.Component {
     });
     if (field.indexOf("dateOfBirth") > -1) {
       let age = parseInt(moment(value, "MM/DD/YYYY").fromNow(), 10).toString();
-      this.handleUpdateQuestionnaire("General_1", age)
+      this.handleUpdateQuestionnaire("General_1", age);
       if (age < 18) {
         this.handleUpdateConsumer("youth", "true")
       }

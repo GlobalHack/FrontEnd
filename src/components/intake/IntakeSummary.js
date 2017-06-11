@@ -64,8 +64,6 @@ class IntakeSummary extends React.Component {
     );
   }
 }
-;
-
 IntakeSummary.propTypes = {
   consumerState: PropTypes.object.isRequired,
   questionnaireState: PropTypes.object.isRequired

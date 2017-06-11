@@ -34,11 +34,11 @@ class OrganizationForm extends React.Component {
           <Col xs={12} sm={12}>
             <form>
               <AutoComplete
-                hintText="St. Patrick"
+                hintText="Search"
                 dataSource={this.props.organizations}
                 dataSourceConfig={this.dataSourceConfig}
                 filter={AutoComplete.fuzzyFilter}
-                maxSearchResults={9}
+                maxSearchResults={30}
                 floatingLabelText="Search for Organization"
                 fullWidth={true}
                 openOnFocus={true}

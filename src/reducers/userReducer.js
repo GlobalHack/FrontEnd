@@ -31,7 +31,7 @@ export default function usersReducer(state = initialState.users, action) {
       ];
 
     case types.DELETE_USER_SUCCESS: {
-      const newState = Object.assign([], state);
+      const newState            = Object.assign([], state);
       const indexOfUserToDelete = state.findIndex(user => {
         return user.id === action.user.id;
       });

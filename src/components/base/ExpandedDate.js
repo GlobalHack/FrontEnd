@@ -36,9 +36,9 @@ class RefusableNumber extends Component {
       this.refs.numberField.value = this.state.lastSuccessfulValue;
     }
     // let f = Object.assign({},e);
-    let f = {target:{value:new Date(this.state.year, this.state.month, this.state.day)}}
+    let f = {target:{value:new Date(this.state.year, this.state.month, this.state.day)}};
     // f.target.value = new Date(this.state.year, this.state.month, this.state.day);
-    // f.type="date";
+    // f.type='date';
     // console.log(f.target.value)
     this.props.onChangeValidate(f);
   }
@@ -66,7 +66,7 @@ class RefusableNumber extends Component {
     if (help) {
       return (
         <Col xs={12}>
-          <span style={{color: "lightcoral"}}>{help}</span>
+          <span style={{color: 'lightcoral'}}>{help}</span>
         </Col>
       );
     } else if (heading) {
@@ -83,52 +83,52 @@ class RefusableNumber extends Component {
   render() {
     const menuItems          = (this.props.form.titleMap || [
       {
-        "value": 0,
-        "label": "January"
+        'value': 0,
+        'label': 'January'
       },
       {
-        "value": 1,
-        "label": "February"
+        'value': 1,
+        'label': 'February'
       },
       {
-        "value": 2,
-        "label": "March"
+        'value': 2,
+        'label': 'March'
       },
       {
-        "value": 3,
-        "label": "April"
+        'value': 3,
+        'label': 'April'
       },
       {
-        "value": 4,
-        "label": "May"
+        'value': 4,
+        'label': 'May'
       },
       {
-        "value": 5,
-        "label": "June"
+        'value': 5,
+        'label': 'June'
       },
       {
-        "value": 6,
-        "label": "July"
+        'value': 6,
+        'label': 'July'
       },
       {
-        "value": 7,
-        "label": "August"
+        'value': 7,
+        'label': 'August'
       },
       {
-        "value": 8,
-        "label": "September"
+        'value': 8,
+        'label': 'September'
       },
       {
-        "value": 9,
-        "label": "October"
+        'value': 9,
+        'label': 'October'
       },
       {
-        "value": 10,
-        "label": "November"
+        'value': 10,
+        'label': 'November'
       },
       {
-        "value": 11,
-        "label": "December"
+        'value': 11,
+        'label': 'December'
       }]).map((item, idx) => (
       <MenuItem key={idx}
                 primaryText={item.label}
@@ -137,11 +137,11 @@ class RefusableNumber extends Component {
     console.log(this.state);
     this.props.form.readonly = this.state.refused;
     return (
-      <Row className="Aligner">
+      <Row className='Aligner'>
         <Col xs={4}>
           <SelectField
             value={this.state.month}
-            floatingLabelText="month"
+            floatingLabelText='month'
             disabled={this.state.refused}
             onChange={this.onSelected}
             fullWidth={true}
@@ -151,31 +151,31 @@ class RefusableNumber extends Component {
         </Col>
         <Col xs={2}>
           <TextField
-            type="number"
-            floatingLabelText="Day"
-            hintText="1"
+            type='number'
+            floatingLabelText='Day'
+            hintText='1'
             errorText={this.props.error}
             onChange={this.preValidationCheck}
             defaultValue={this.state.day}
-            ref="numberField"
+            ref='numberField'
             disabled={this.props.form.readonly}
             style={this.props.form.style || {width: '100%'}}/>
         </Col>
         <Col xs={3}>
           <TextField
-            type="number"
-            floatingLabelText="Year"
-            hintText="1980"
+            type='number'
+            floatingLabelText='Year'
+            hintText='1980'
             errorText={this.props.error}
             onChange={this.preValidationCheck}
             defaultValue={this.state.year}
-            ref="numberField"
+            ref='numberField'
             disabled={this.props.form.readonly}
             style={this.props.form.style || {width: '100%'}}/>
         </Col>
         <Col xs={3}>
           <Checkbox
-            label="Refuse"
+            label='Refuse'
             onCheck={this.refuse}
             defaultChecked={this.props.value === 'refused'}
             // style={{marginTop:'30px'}}

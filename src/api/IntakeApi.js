@@ -53,8 +53,7 @@ class IntakeApi {
 
     return fetch(request).then(response => {
       return response.json(function(k, v) {
-        console.log(v);
-        return (typeof v === "object" || isNaN(v)) ? v : parseInt(v, 10);
+        return (typeof v === 'object' || isNaN(v)) ? v : parseInt(v, 10);
       });
     }).catch(error => {
       throw(error);

@@ -52,9 +52,9 @@ export function createOrganizationRole(organizationrole) {
 export function deleteOrganizationRole(organizationrole) {
   return function (dispatch) {
     return organizationroleApi.deleteOrganizationRole(organizationrole).then(() => {
-      console.log(`Deleted ${organizationrole.id}`);
+      console.info(`Deleted ${organizationrole.id}`);
       dispatch(deleteOrganizationRoleSuccess(organizationrole));
-      return;
+
     }).catch(error => {
       throw(error);
     });
