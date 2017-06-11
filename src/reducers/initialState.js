@@ -19,5 +19,8 @@ export default {
       properties: []
     }, form: []
   },
+  questions: [],
+  question: {},
+  questionSets: [],
   session: !!localStorage.jwt
 };
