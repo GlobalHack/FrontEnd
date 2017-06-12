@@ -18,7 +18,7 @@ class QuestionSetApi {
 
   static getAllQuestionSets() {
     const headers = requestHeaders;
-    const request = new Request(questionSetUrl, {
+    const request = new Request(questionSetUrl + '?populate=true', {
       method: 'GET',
       headers: headers
     });

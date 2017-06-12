@@ -8,22 +8,16 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/questionSetActions';
 import globalStyles from '../../styles';
 import QuestionSetTable from './QuestionSetTable';
-import {questionSetUrl} from '../../api/apiBase';
-import Snackbar from 'material-ui/Snackbar';
 
 
 class QuestionSetTablePage extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
   componentWillMount() {
     this.props.actions.loadQuestionSets();
   }
 
   deleteQuestionSet = (questionSet) => {
     this.props.actions.deleteQuestionSet(questionSet);
-  }
+  };
 
   render() {
     const questionSets = this.props.questionSets;
@@ -37,13 +31,8 @@ class QuestionSetTablePage extends React.Component {
               href="/questionsets/new"
             />
           </ToolbarGroup>
-          <QuestionSetTable questionSets={questionSets} deleteQuestionSet={this.deleteQuestionSet}/>
-          <Snackbar
-            open={this.state.open}
-            message={this.state.snackbar}
-            autoHideDuration={3000}
-          />
         </Toolbar>
+        <QuestionSetTable questionSets={questionSets} deleteQuestionSet={this.deleteQuestionSet}/>
       </Paper>
     );
   }

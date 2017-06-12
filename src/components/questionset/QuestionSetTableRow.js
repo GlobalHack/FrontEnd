@@ -1,6 +1,5 @@
 import RaisedButton from 'material-ui/RaisedButton'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
-import moment from 'moment'
 import PropTypes from 'prop-types'
 import React from 'react';
 import {questionSetPath} from '../../api/apiBase'
@@ -11,8 +10,8 @@ class QuestionSetTableRow extends React.Component {
     const questionSet = this.props.questionSet;
     return (
       <TableRow>
-        <TableRowColumn width={20}>questionSet.title</TableRowColumn>
-        <TableRowColumn width={20}>questionSet.organization.name || 'Cemartian'</TableRowColumn>
+        <TableRowColumn width={20}>{questionSet.title}</TableRowColumn>
+        <TableRowColumn width={20}>{(questionSet.organization&&questionSet.organization.name) || 'Cemartian'}</TableRowColumn>
         <TableRowColumn width={10}>
           <RaisedButton
             label="delete"

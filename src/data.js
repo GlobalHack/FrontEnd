@@ -10,7 +10,8 @@ const data = {
   menus: [
     {text: 'Welcome', icon: <Assessment/>, link: '/home'},
     {text: 'Referrals', icon: <PermIdentity/>, link: '/referrals'},
-    {text: 'Intakes', icon: <PermIdentity/>, link: '/intakes'}
+    {text: 'Intakes', icon: <PermIdentity/>, link: '/intakes'},
+    {text: 'Question Sets', icon: <PermIdentity/>, link: '/questionsets/'}
   ],
   adminmenus: [
     {text: 'Permissions', icon: <Assessment/>, link: '/dash'},

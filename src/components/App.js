@@ -1,6 +1,6 @@
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Data from '../data';
 import ThemeDefault from '../theme-default';
 import Header from './base/Header';
@@ -10,6 +10,7 @@ import {bindActionCreators} from 'redux';
 import * as userActions from '../actions/userActions';
 import * as employeeActions from '../actions/employeeActions';
 import * as organizationActions from '../actions/organizationActions';
+import PropTypes from 'prop-types'
 
 class App extends React.Component {
 

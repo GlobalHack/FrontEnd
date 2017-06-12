@@ -20,7 +20,6 @@ export default {
     }, form: []
   },
   questions: [],
-  question: {},
   questionSets: [],
   session: !!localStorage.jwt
 };

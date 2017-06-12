@@ -6,8 +6,8 @@ import messages from './messageReducer';
 import notifications from './notificationReducer';
 import organizations, {organizationReducer as organization} from './organizationReducer';
 import {questionSetSchemaReducer as questionSetFormSchema} from './questionSetReducer';
-import {questionSetReducer as questionSet} from './questionSetReducer';
-import {questionReducer as question} from './questionReducer';
+import questionSets from './questionSetReducer';
+import questions from './questionReducer';
 import tasks from './taskReducer';
 import users, {userReducer as user} from './userReducer';
 
@@ -27,8 +27,8 @@ const rootReducer = combineReducers({
   users,
   user,
   questionSetFormSchema,
-  questionSet,
-  question
+  questionSets,
+  questions
 });
 
 export default rootReducer;

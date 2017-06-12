@@ -10,7 +10,7 @@ import IntakePage from './components/intake/IntakePage';
 import IntakeTablePage from './components/intake/IntakeTablePage';
 import QuestionSetTablePage from './components/questionset/QuestionSetTablePage';
 import AuthService from './utils/AuthService';
-import {dashPath, employeePath, homePath, intakePath, questionPath} from './utils/pathsHelper';
+import {dashPath, employeePath, homePath, intakePath, questionSetPath} from './utils/pathsHelper';
 
 const auth = new AuthService(`${process.env.REACT_APP_AUTH0CLIENTID}`, `${process.env.REACT_APP_AUTH0DOMAIN}`, 'login');
 
@@ -46,9 +46,9 @@ export const makeMainRoutes = () => {
           <Route path=":id" component={IntakePage} onEnter={requireAuth}/>
           <Redirect from="*" to={intakePath}/>
         </Route>
-        <Route path={questionPath}>
+        <Route path={questionSetPath}>
           <IndexRoute component={QuestionSetTablePage}/>
-          <Redirect from="*" to={questionPath}/>
+          <Redirect from="*" to={questionSetPath}/>
         </Route>
         <Redirect from="*" to={homePath}/>
       </Route>

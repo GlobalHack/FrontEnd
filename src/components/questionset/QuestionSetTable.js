@@ -26,7 +26,7 @@ const QuestionSetTable = (props) => {
 };
 
 QuestionSetTable.propTypes = {
-  questionSet: PropTypes.array.isRequired
+  questionSets: PropTypes.array.isRequired
 };
 
 export default QuestionSetTable
