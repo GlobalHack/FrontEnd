@@ -2,9 +2,9 @@ import {questionSetUrl, requestHeaders} from './apiBase';
 
 class QuestionSetApi {
 
-  static getQuestionSetSchema() {
+  static getQuestionSetSchema(questionSetId) {
     const headers = requestHeaders;
-    const request = new Request(questionSetUrl + 'schemaform?id=1', {
+    const request = new Request(questionSetUrl + 'schemaform?id=' + `${questionSetId}`, {
       method: 'GET',
       headers: headers
     });
@@ -18,7 +18,7 @@ class QuestionSetApi {
 
   static getAllQuestionSets() {
     const headers = requestHeaders;
-    const request = new Request(questionSetUrl, {
+    const request = new Request(questionSetUrl + '?populate=true', {
       method: 'GET',
       headers: headers
     });
@@ -72,6 +72,18 @@ class QuestionSetApi {
     }).catch(error => {
       return error;
     });
+  }
+
+  static getQuestionSetQuestions(questionSet) {
+    return
+  }
+
+  static addQuestionSetQuestion(questionSet, question) {
+    return
+  }
+
+  static deleteQuestionSetQuestion(questionSet, question) {
+    return 
   }
 }
 

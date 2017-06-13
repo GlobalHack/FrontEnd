@@ -10,4 +10,5 @@ export const notificationPath = '/notifications/';
 export const organizationPath = '/organizations/';
 export const organizationrolePath = '/organizationroles/';
 export const questionPath = '/questions/';
+export const questionSetPath = '/questionsets/';
 export const taskPath = '/tasks/';
