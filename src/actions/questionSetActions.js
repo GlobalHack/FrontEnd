@@ -21,10 +21,10 @@ export function loadQuestionSetSchemaSuccess(questionSetFormSchema) {
   return {type: types.LOAD_QUESTIONSET_SCHEMA_SUCCESS, questionSetFormSchema};
 }
 
-export function loadQuestionSetSchema() {
+export function loadQuestionSetSchema(questionSetId) {
   // make async call to api, handle promise, dispatch action when promise is resolved
   return function (dispatch) {
-    return questionSetApi.getQuestionSetSchema().then(questionSetFormSchema => {
+    return questionSetApi.getQuestionSetSchema(questionSetId).then(questionSetFormSchema => {
       dispatch(loadQuestionSetSchemaSuccess(questionSetFormSchema));
     }).catch(error => {
       throw(error);

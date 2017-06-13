@@ -8,6 +8,8 @@ class QuestionSetTableRow extends React.Component {
 
   render(){
     const questionSet = this.props.questionSet;
+    const isNotSetOwner = (questionSet.organization === null);
+
     return (
       <TableRow>
         <TableRowColumn width={20}>{questionSet.title}</TableRowColumn>
@@ -16,6 +18,9 @@ class QuestionSetTableRow extends React.Component {
           <RaisedButton
             label="delete"
             secondary={true}
+            disabled={isNotSetOwner}
+            disabledBackgroundColor="#dddddd"
+            disabledLabelColor="#000000"
             onTouchTap={() => this.props.deleteQuestionSet(questionSet)}
           />
         </TableRowColumn>
@@ -23,6 +28,9 @@ class QuestionSetTableRow extends React.Component {
           <RaisedButton
             label="edit"
             primary={true}
+            disabled={isNotSetOwner}
+            disabledBackgroundColor="#dddddd"
+            disabledLabelColor="#000000"
             href={questionSetPath + questionSet.id}
           />
         </TableRowColumn>

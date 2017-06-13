@@ -9,6 +9,7 @@ import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
 import IntakeTablePage from './components/intake/IntakeTablePage';
 import QuestionSetTablePage from './components/questionset/QuestionSetTablePage';
+import QuestionSetQuestionsPage from './components/questionset/QuestionSetQuestionsPage';
 import AuthService from './utils/AuthService';
 import {dashPath, employeePath, homePath, intakePath, questionSetPath} from './utils/pathsHelper';
 
@@ -48,6 +49,7 @@ export const makeMainRoutes = () => {
         </Route>
         <Route path={questionSetPath}>
           <IndexRoute component={QuestionSetTablePage}/>
+          <Route path=":id" component={QuestionSetQuestionsPage} onEnter={requireAuth}/>
           <Redirect from="*" to={questionSetPath}/>
         </Route>
         <Redirect from="*" to={homePath}/>
