@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: build
-    destination: /home/ubuntu/FrontEnd/build
+  - source: /
+    destination: /home/ubuntu/FrontEnd/
 hooks:
-  BeforeInstall:
-    - location: BeforeInstall.sh
+  AfterInstall:
+    - location: /home/ubuntu/FrontEnd/AfterInstall.sh
