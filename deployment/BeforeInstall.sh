@@ -1,2 +1,2 @@
 #!/bin/bash
-npm run build
+cd .. && npm run build
