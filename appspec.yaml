@@ -5,4 +5,4 @@ files:
     destination: /home/ubuntu/FrontEnd/build
 hooks:
   BeforeInstall:
-    - location: npm run build
+    - location: deployment/BeforeInstall.sh
