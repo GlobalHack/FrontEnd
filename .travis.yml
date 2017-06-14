@@ -36,6 +36,6 @@ deploy:
 before_deploy:
 - npm run build
 - cp appspec.yml build/appspec.yml
-- zip -q -r ui_latest build
+- zip -q -r ui_latest build/*
 - mkdir -p dpl_cd_upload
 - mv ui_latest.zip dpl_cd_upload/ui_latest.zip
