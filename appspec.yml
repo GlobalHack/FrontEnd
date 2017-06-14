@@ -5,4 +5,4 @@ files:
     destination: /home/ubuntu/FrontEnd/build
 hooks:
   BeforeInstall:
-    - location: deployment/BeforeInstall.sh
+    - location: BeforeInstall.sh
