@@ -2,7 +2,4 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/FrontEnd/
-hooks:
-  AfterInstall:
-    - location: AfterInstall.sh
+    destination: /home/ubuntu/FrontEnd/build
