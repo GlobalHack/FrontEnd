@@ -14,3 +14,26 @@ notifications:
 cache:
   directories:
     - node_modules
+deploy:
+- provider: s3
+  access_key_id: AKIAJOAQQIQOEZEO2SUQ
+  secret_access_key: &1
+    secure: tB3gG6BVdaQU4nvVUGq7wE+LQLbUOh01JBt3l/LTfplJ0U5GIav7cLy2KpuhGjBicYhx/NkGVXXsQV3lPaaTi46wIiMEGmpkS3z/5uaJValMGvB1B+f3mGKBfniqawJ3n3T99b8dR1GnwZJOLbyNAQgSdrE0CRZpKU3xYQyHyzD7gzyw8JyvK0+tL3z7vU7p0eXCWxqpqMnKKCxBZkUUVxro8+t5wQ0Z4vzcXHdrAmmghNE4t2DHHi6nc4HOIGA0q4vkghMxMij6X7ckF9peTTI0UECN7ayydQdyQgtr6URilwZNlpM83sjJNXHcMCLoV8qVwGrGppbz2HZVG7WyGdPx0OzxC3OfdY2ZFwEvy30S02G00l7c3Rt9jLaqWrRFmEw89A79d3N2escEXjx3QpGbAsSPRSc4nEJMAcTPpG1QSrsV4cq4SjTmBNobvVwrF2Y2CoqYbULQeXbroFqNEwW+4Eer0ak8+kcmwwgJUMgXoDLutgRNDox4O8uahKEHcFcGe2kmYbWrCNpzbcOjuWJE6ZqPx8TbTvk5e0Kl3P2tG+4o28hg/4H7s0QwcJIBeFel1gY4rPssRjJQ5J8qmt/8YI4xHY+ImEVY/F10pccjKZ6c8PrNqpvOoIme9M2lj3SdiKivKB78n38NS16jPQ3y6gn6EiRgjrwVbxKiwXQ=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  on: &2
+    repo: GHImplementationTeam/FrontEnd
+  bucket: cemaritan-deployments
+- provider: codedeploy
+  access_key_id: AKIAJOAQQIQOEZEO2SUQ
+  secret_access_key: *1
+  bucket: cemaritan-deployments
+  key: api_latest.zip
+  bundle_type: zip
+  application: API
+  deployment_group: CemaritanAPI
+  on: *2
+before_deploy:
+- zip -q -r ui_latest *
+- mkdir -p dpl_cd_upload
+- mv ui_latest.zip dpl_cd_upload/ui_latest.zip
