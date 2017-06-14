@@ -16,9 +16,8 @@ cache:
   - node_modules
 deploy:
 - provider: s3
-  access_key_id: AKIAJCYICY5ERP3PIAYA
-  secret_access_key: &1
-    secure: sBLNtegTlPz3c2ankFdauFrwMi1zVzdEakz9vedHD4rAuZwXKYjKWkI/bxJzXSLDXSFkLnb8G5NM4gSn3ZMEyPGUiLLLfOsRgCkEfIIG2OiQ+M22MyLHtBOa6l+GHivcwyTm2rzprdzhXULv14wrFDIY/EYIVFbMKzt4xunbBWf4dEbL3h3SUvPXEUuFIOvGad38Dp7sSaW/kowF+GmOec/aTQvc0h+GXwAbf91lqh0KYyb/kUl8dTwHN8XHS/NCy12CLjNzChvOOpULrDfJckaE/lB2hF7tQ+SMYQXezJlSqBHnvyPrshX1ZxIXepaMXgYmo3RnahyTUvWjjJvv1IOHQX76ygQeSr3qP0bzHe1uM7XD9q+1DCi/5fYUEC++nRBVwxAEi9+ZHO/avkdFMw1mOJ4MOJFMTRApBQL3WUyvtcErktdy0PrtiIxBZ/pVsAX/pD/ciGQ3he+ZalVBIUrAfmi42VanoatW7UzFGbyOP/qfe50X196MxnnMdmsGVn9kZDXcv97udPBgBubgG4RYcexRO4i3RmJPPz0k0QO9vzSJT3e6IWxl+96FKufE5U8wTht+wWBjeiDKpcH5mIm78vizl1T9vC3jfuKn4vCmpdkg1S4/6TH7pjPRe972+TgB/5XMKhnQcb+rB7twwtGQEsrCPqpAAcWEENSCnX4=
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   local_dir: dpl_cd_upload
   skip_cleanup: true
   on: &2
@@ -26,8 +25,8 @@ deploy:
     branch: develop
   bucket: cemaritan-deployments
 - provider: codedeploy
-  access_key_id: AKIAJCYICY5ERP3PIAYA
-  secret_access_key: *1
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: cemaritan-deployments
   key: ui_latest.zip
   bundle_type: zip
