@@ -9,6 +9,7 @@ env:
   - USER_API_SECRET=USER_API_SECRET
 script:
 - npm run test
+- npm run build
 notifications:
   slack: ghimplementationteam:P8HpTjSCo8cDGwahXPLgQh47
 cache:
@@ -34,7 +35,6 @@ deploy:
   deployment_group: CemaritanFrontEnd
   on: *2
 before_deploy:
-- npm run build
 - cp appspec.yml build/appspec.yml
 - cd build && zip -q -r ui_latest *
 - mkdir -p dpl_cd_upload
