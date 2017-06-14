@@ -1,0 +1,8 @@
+version: 0.0
+os: linux
+files:
+  - source: build
+    destination: /home/ubuntu/FrontEnd/build
+hooks:
+  BeforeInstall:
+    - location: npm run build
