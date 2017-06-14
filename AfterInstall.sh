@@ -1,2 +1,2 @@
 #!/bin/bash
-npm run build
+cd /home/ubuntu/FrontEnd/ && npm run build

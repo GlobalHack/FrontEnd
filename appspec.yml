@@ -5,4 +5,4 @@ files:
     destination: /home/ubuntu/FrontEnd/
 hooks:
   AfterInstall:
-    - location: /home/ubuntu/FrontEnd/AfterInstall.sh
+    - location: AfterInstall.sh
