@@ -1,24 +1,24 @@
 language: node_js
 node_js:
-  - "6"
+- '6'
 env:
   global:
-    - AUTH0SECRET=AUTH0SECRET
-    - REACT_APP_AUTH0CLIENTID=REACT_APP_AUTH0CLIENTID
-    - REACT_APP_AUTH0DOMAIN=REACT_APP_AUTH0DOMAIN
-    - USER_API_SECRET=USER_API_SECRET
+  - AUTH0SECRET=AUTH0SECRET
+  - REACT_APP_AUTH0CLIENTID=REACT_APP_AUTH0CLIENTID
+  - REACT_APP_AUTH0DOMAIN=REACT_APP_AUTH0DOMAIN
+  - USER_API_SECRET=USER_API_SECRET
 script:
 - npm run test
 notifications:
   slack: ghimplementationteam:P8HpTjSCo8cDGwahXPLgQh47
 cache:
   directories:
-    - node_modules
+  - node_modules
 deploy:
 - provider: s3
-  access_key_id: AKIAJOAQQIQOEZEO2SUQ
+  access_key_id: AKIAJCYICY5ERP3PIAYA
   secret_access_key: &1
-    secure: tB3gG6BVdaQU4nvVUGq7wE+LQLbUOh01JBt3l/LTfplJ0U5GIav7cLy2KpuhGjBicYhx/NkGVXXsQV3lPaaTi46wIiMEGmpkS3z/5uaJValMGvB1B+f3mGKBfniqawJ3n3T99b8dR1GnwZJOLbyNAQgSdrE0CRZpKU3xYQyHyzD7gzyw8JyvK0+tL3z7vU7p0eXCWxqpqMnKKCxBZkUUVxro8+t5wQ0Z4vzcXHdrAmmghNE4t2DHHi6nc4HOIGA0q4vkghMxMij6X7ckF9peTTI0UECN7ayydQdyQgtr6URilwZNlpM83sjJNXHcMCLoV8qVwGrGppbz2HZVG7WyGdPx0OzxC3OfdY2ZFwEvy30S02G00l7c3Rt9jLaqWrRFmEw89A79d3N2escEXjx3QpGbAsSPRSc4nEJMAcTPpG1QSrsV4cq4SjTmBNobvVwrF2Y2CoqYbULQeXbroFqNEwW+4Eer0ak8+kcmwwgJUMgXoDLutgRNDox4O8uahKEHcFcGe2kmYbWrCNpzbcOjuWJE6ZqPx8TbTvk5e0Kl3P2tG+4o28hg/4H7s0QwcJIBeFel1gY4rPssRjJQ5J8qmt/8YI4xHY+ImEVY/F10pccjKZ6c8PrNqpvOoIme9M2lj3SdiKivKB78n38NS16jPQ3y6gn6EiRgjrwVbxKiwXQ=
+    secure: sBLNtegTlPz3c2ankFdauFrwMi1zVzdEakz9vedHD4rAuZwXKYjKWkI/bxJzXSLDXSFkLnb8G5NM4gSn3ZMEyPGUiLLLfOsRgCkEfIIG2OiQ+M22MyLHtBOa6l+GHivcwyTm2rzprdzhXULv14wrFDIY/EYIVFbMKzt4xunbBWf4dEbL3h3SUvPXEUuFIOvGad38Dp7sSaW/kowF+GmOec/aTQvc0h+GXwAbf91lqh0KYyb/kUl8dTwHN8XHS/NCy12CLjNzChvOOpULrDfJckaE/lB2hF7tQ+SMYQXezJlSqBHnvyPrshX1ZxIXepaMXgYmo3RnahyTUvWjjJvv1IOHQX76ygQeSr3qP0bzHe1uM7XD9q+1DCi/5fYUEC++nRBVwxAEi9+ZHO/avkdFMw1mOJ4MOJFMTRApBQL3WUyvtcErktdy0PrtiIxBZ/pVsAX/pD/ciGQ3he+ZalVBIUrAfmi42VanoatW7UzFGbyOP/qfe50X196MxnnMdmsGVn9kZDXcv97udPBgBubgG4RYcexRO4i3RmJPPz0k0QO9vzSJT3e6IWxl+96FKufE5U8wTht+wWBjeiDKpcH5mIm78vizl1T9vC3jfuKn4vCmpdkg1S4/6TH7pjPRe972+TgB/5XMKhnQcb+rB7twwtGQEsrCPqpAAcWEENSCnX4=
   local_dir: dpl_cd_upload
   skip_cleanup: true
   on: &2
@@ -26,10 +26,10 @@ deploy:
     branch: develop
   bucket: cemaritan-deployments
 - provider: codedeploy
-  access_key_id: AKIAJOAQQIQOEZEO2SUQ
+  access_key_id: AKIAJCYICY5ERP3PIAYA
   secret_access_key: *1
   bucket: cemaritan-deployments
-  key: api_latest.zip
+  key: ui_latest.zip
   bundle_type: zip
   application: FrontEnd
   deployment_group: CemaritanFrontEnd
