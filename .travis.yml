@@ -23,6 +23,7 @@ deploy:
   skip_cleanup: true
   on: &2
     repo: GHImplementationTeam/FrontEnd
+    branch: develop
   bucket: cemaritan-deployments
 - provider: codedeploy
   access_key_id: AKIAJOAQQIQOEZEO2SUQ
@@ -30,8 +31,8 @@ deploy:
   bucket: cemaritan-deployments
   key: api_latest.zip
   bundle_type: zip
-  application: API
-  deployment_group: CemaritanAPI
+  application: FrontEnd
+  deployment_group: CemaritanFrontEnd
   on: *2
 before_deploy:
 - zip -q -r ui_latest *
