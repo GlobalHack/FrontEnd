@@ -19,9 +19,9 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   local_dir: dpl_cd_upload
   skip_cleanup: true
-  on: &2
+  on:
     repo: GHImplementationTeam/FrontEnd
-    branch: develop
+    branch: *
   bucket: cemaritan-deployments
 - provider: codedeploy
   access_key_id: $AWS_ACCESS_KEY_ID
@@ -31,4 +31,6 @@ deploy:
   bundle_type: zip
   application: FrontEnd
   deployment_group: CemaritanFrontEnd
-  on: *2
+  on:
+    repo: GHImplementationTeam/FrontEnd
+    branch: develop
