@@ -99,3 +99,7 @@ a:hover {
 .line-through {
     text-decoration: line-through;
 }
+
+.menu-badge {
+    padding: 0px 12px 2px 2px !important;
+}
