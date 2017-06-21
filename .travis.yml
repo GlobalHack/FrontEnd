@@ -21,7 +21,7 @@ deploy:
   skip_cleanup: true
   on:
     repo: GHImplementationTeam/FrontEnd
-    branch: *
+    branch: /.*/
   bucket: cemaritan-deployments
 - provider: codedeploy
   access_key_id: $AWS_ACCESS_KEY_ID
