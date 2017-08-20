@@ -1,13 +1,12 @@
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React from 'react';
 import EmployeeTableRow from './EmployeeTableRow';
 
 class EmployeeTable extends React.Component {
-
-  checkAdmin = () =>{
+  checkAdmin = () => {
     console.log(this.props.employees);
-    return ((this.props.employees.filter(x => x.role === 'Admin')||[]).length>1)
+    return ((this.props.employees.filter(x => x.role === 'Admin') || []).length > 1);
   };
 
   render() {
@@ -21,13 +20,18 @@ class EmployeeTable extends React.Component {
               <TableHeaderColumn>Email</TableHeaderColumn>
               <TableHeaderColumn>Role</TableHeaderColumn>
               <TableHeaderColumn>Disabled</TableHeaderColumn>
-              <TableHeaderColumn></TableHeaderColumn>
+              <TableHeaderColumn />
             </TableRow>
           </TableHeader>
-          <TableBody showRowHover={true} stripedRows={true}>
+          <TableBody showRowHover stripedRows>
             {employees.map(employee =>
-              <EmployeeTableRow key={employee.id} employee={employee} saveEmployee={this.props.saveEmployee}
-                                deleteEmployee={this.props.deleteEmployee} checkAdmin={this.checkAdmin}/>
+              (<EmployeeTableRow
+                key={employee.id}
+                employee={employee}
+                saveEmployee={this.props.saveEmployee}
+                deleteEmployee={this.props.deleteEmployee}
+                checkAdmin={this.checkAdmin}
+              />),
             )}
           </TableBody>
         </Table>
@@ -37,7 +41,7 @@ class EmployeeTable extends React.Component {
 }
 
 EmployeeTable.propTypes = {
-  employees: PropTypes.array.isRequired
+  employees: PropTypes.array.isRequired,
 };
 
 export default EmployeeTable;

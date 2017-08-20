@@ -1,8 +1,8 @@
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/organizationActions';
 import PageBase from '../base/PageBase';
 import OrganizationPermissionRow from './OrganizationPermissionRow';
@@ -26,9 +26,9 @@ class OrganizationPermissionTable extends React.Component {
               <TableHeaderColumn>Delete</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody showRowHover={true} stripedRows={true}>
+          <TableBody showRowHover stripedRows>
             {organizations.map(organization =>
-              <OrganizationPermissionRow key={organization.id} organization={organization}/>
+              <OrganizationPermissionRow key={organization.id} organization={organization} />,
             )}
           </TableBody>
         </Table>
@@ -38,23 +38,22 @@ class OrganizationPermissionTable extends React.Component {
 }
 
 OrganizationPermissionTable.propTypes = {
-  organizations: PropTypes.array.isRequired
+  organizations: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   if (state.organizations.length > 0) {
     return {
-      organizations: state.organizations
-    };
-  } else {
-    return {
-      organizations: [{id: '', name: '', address: '', permissions: '', expiration: '', delete: ''}]
+      organizations: state.organizations,
     };
   }
+  return {
+    organizations: [{ id: '', name: '', address: '', permissions: '', expiration: '', delete: '' }],
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationPermissionTable);

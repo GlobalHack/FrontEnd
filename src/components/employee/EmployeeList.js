@@ -1,11 +1,11 @@
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/employeeActions';
 
 class EmployeeList extends React.Component {
@@ -20,17 +20,17 @@ class EmployeeList extends React.Component {
         <List>
           <Subheader>Employees</Subheader>
           {employees.map(employee =>
-            <ListItem
+            (<ListItem
               key={employee.id}
-              primaryText={employee.firstName + ' ' + employee.lastName}
+              primaryText={`${employee.firstName} ${employee.lastName}`}
               secondaryText="Awaiting response"
               rightToggle={
                 <RaisedButton
                   label="ReSend"
-                  primary={true}
+                  primary
                 />
               }
-            />
+            />),
           )}
         </List>
       </Paper>
@@ -39,23 +39,22 @@ class EmployeeList extends React.Component {
 }
 
 EmployeeList.propTypes = {
-  employees: PropTypes.array.isRequired
+  employees: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   if (state.employees.length > 0) {
     return {
-      employees: state.employees
-    };
-  } else {
-    return {
-      employees: [{id: '', nickName: '', firstName: '', lastName: '', email: '', ssn: ''}]
+      employees: state.employees,
     };
   }
+  return {
+    employees: [{ id: '', nickName: '', firstName: '', lastName: '', email: '', ssn: '' }],
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeList);

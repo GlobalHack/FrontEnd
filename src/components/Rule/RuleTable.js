@@ -1,8 +1,8 @@
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/organizationActions';
 import PageBase from '../base/PageBase';
 import OrganizationPermissionRow from './OrganizationPermissionRow';
@@ -26,9 +26,9 @@ class RuleTable extends React.Component {
               <TableHeaderColumn>Delete</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody showRowHover={true} stripedRows={true}>
+          <TableBody showRowHover stripedRows>
             {organizations.map(organization =>
-              <OrganizationPermissionRow key={organization.id} organization={organization}/>
+              <OrganizationPermissionRow key={organization.id} organization={organization} />,
             )}
           </TableBody>
         </Table>
@@ -39,17 +39,17 @@ class RuleTable extends React.Component {
 
 RuleTable.propTypes = {
   actions: PropTypes.array.isRequired,
-  organizations: PropTypes.array.isRequired
+  organizations: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    rules: state.rules
+    rules: state.rules,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RuleTable);

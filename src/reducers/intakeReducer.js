@@ -1,4 +1,4 @@
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -35,15 +35,12 @@ export function intakeQuestionnaireReducer(state = {}, action) {
 
 export default function intakesReducer(state = initialState.intakes, action) {
   switch (action.type) {
-
     case types.LOAD_INTAKES_SUCCESS:
       return action.intakes;
 
     case types.DELETE_INTAKE_SUCCESS: {
       const newState = Object.assign([], state);
-      const indexOfIntakeToDelete = state.findIndex(intake => {
-        return intake.id === action.intake.id;
-      });
+      const indexOfIntakeToDelete = state.findIndex(intake => intake.id === action.intake.id);
       newState.splice(indexOfIntakeToDelete, 1);
       browserHistory.push('/intakes');
       return newState;
@@ -52,4 +49,4 @@ export default function intakesReducer(state = initialState.intakes, action) {
     default:
       return state;
   }
-};
+}

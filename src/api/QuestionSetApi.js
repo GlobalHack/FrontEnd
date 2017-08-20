@@ -1,18 +1,15 @@
-import {questionSetUrl, requestHeaders} from './apiBase';
+import { questionSetUrl, requestHeaders } from './apiBase';
 
 class QuestionSetApi {
-
   static getQuestionSetSchema() {
     const headers = requestHeaders;
-    const request = new Request(questionSetUrl + 'schemaform?id=1', {
+    const request = new Request(`${questionSetUrl}schemaform?id=1`, {
       method: 'GET',
-      headers: headers
+      headers,
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      throw(error);
+    return fetch(request).then(response => response.json()).catch((error) => {
+      throw (error);
     });
   }
 
@@ -20,58 +17,42 @@ class QuestionSetApi {
     const headers = requestHeaders;
     const request = new Request(questionSetUrl, {
       method: 'GET',
-      headers: headers
+      headers,
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 
   static updateQuestionSet(questionSet) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(questionSetUrl + `${questionSet.id}`, {
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, requestHeaders);
+    const request = new Request(`${questionSetUrl}${questionSet.id}`, {
       method: 'PUT',
-      headers: headers,
-      body: JSON.stringify(questionSet)
+      headers,
+      body: JSON.stringify(questionSet),
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 
   static createQuestionSet(questionSet) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, requestHeaders);
     const request = new Request(questionSetUrl, {
       method: 'POST',
-      headers: headers,
-      body: JSON.stringify(questionSet)
+      headers,
+      body: JSON.stringify(questionSet),
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 
   static deleteQuestionSet(questionSet) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(questionSetUrl + `${questionSet.id}`, {
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, requestHeaders);
+    const request = new Request(`${questionSetUrl}${questionSet.id}`, {
       method: 'DELETE',
-      headers: headers
+      headers,
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 }
 

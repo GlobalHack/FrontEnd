@@ -1,6 +1,9 @@
 export const baseUrl = `${process.env.REACT_APP_API_HOST}`;
 export const apiPrefix = '/api';
-export const requestHeaders = {'AUTHORIZATION': `Bearer ${localStorage.jwt}`};
+export const requestHeaders = {
+  AUTHORIZATION: `Bearer ${localStorage.jwt}`,
+  'Content-Type': 'application/json',
+};
 
 export const employeePath = '/employees/';
 export const employeeUrl = baseUrl + apiPrefix + employeePath;
@@ -28,3 +31,19 @@ export const taskPath = '/tasks/';
 export const taskUrl = baseUrl + apiPrefix + taskPath;
 export const userPath = '/users/';
 export const userUrl = baseUrl + apiPrefix + userPath;
+
+export const apiCall = url => method => (filter) => {
+  const request =
+    typeof filter === 'object'
+      ? new Request(url + filter.id, {
+        method,
+        headers: requestHeaders,
+        body: JSON.stringify(filter),
+      })
+      : new Request(url + filter, {
+        method,
+        headers: requestHeaders,
+      });
+
+  return fetch(request).then(response => response.json()).catch(error => error);
+};

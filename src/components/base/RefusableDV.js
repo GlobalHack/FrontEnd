@@ -1,21 +1,20 @@
 import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
 import React from 'react';
-import {Col, Row} from 'react-flexbox-grid';
+import { Col, Row } from 'react-flexbox-grid';
 import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 
 // https://github.com/networknt/react-schema-form/blob/master/src/Checkbox.js
 class RefusableBoolean extends React.Component {
-
   state = {
     refused: this.props.value === 'refused',
-    toggled: this.props.value==='true' || 'false'
+    toggled: this.props.value === 'true' || 'false',
   };
 
   refuse = () => {
-    let value = !this.state.refused;
-    this.setState({refused: value});
-    this.props.onChangeValidate({target: {value: value && 'refused'}});
+    const value = !this.state.refused;
+    this.setState({ refused: value });
+    this.props.onChangeValidate({ target: { value: value && 'refused' } });
     console.log(value);
   };
 
@@ -27,10 +26,10 @@ class RefusableBoolean extends React.Component {
           <Toggle
             name={this.props.form.key.slice(-1)[0]}
             value={this.props.form.key.slice(-1)[0]}
-            defaultToggled={this.props.value==='true' || false}
+            defaultToggled={this.props.value === 'true' || false}
             label={this.props.form.title}
             onToggle={(e, checked) => {
-              e.target.value = checked?'true':'false';
+              e.target.value = checked ? 'true' : 'false';
               this.props.onChangeValidate(e);
             }}
             disabled={this.state.refused}

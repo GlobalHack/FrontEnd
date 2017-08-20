@@ -1,13 +1,12 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import React from 'react';
-import {Col, Row} from 'react-flexbox-grid';
+import { Col, Row } from 'react-flexbox-grid';
 import InviteApi from '../../api/InviteApi';
 import Snackbar from 'material-ui/Snackbar';
 
-function validateEmail(email)
-{
-  var re = /\S+@\S+\.\S+/;
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
 
@@ -17,10 +16,10 @@ class EmployeeInviteForm extends React.Component {
     this.state = {
       open: false,
       message: 'Invite Sent',
-      profile: props.auth.getProfile()
+      profile: props.auth.getProfile(),
     };
     props.auth.on('profile_updated', (newProfile) => {
-      this.setState({profile: newProfile});
+      this.setState({ profile: newProfile });
     });
   }
 
@@ -28,9 +27,8 @@ class EmployeeInviteForm extends React.Component {
     console.log('?');
     this.setState({
       invitee: event.target.value,
-      message: validateEmail(event.target.value)?'Invite Sent':'Invalid Email'
+      message: validateEmail(event.target.value) ? 'Invite Sent' : 'Invalid Email',
     });
-
   };
 
   handleTouchTap = () => {
@@ -46,7 +44,7 @@ class EmployeeInviteForm extends React.Component {
   };
 
   render() {
-    const {invitee} = this.state;
+    const { invitee } = this.state;
     return (
       <div>
         <Row>
@@ -56,15 +54,15 @@ class EmployeeInviteForm extends React.Component {
           <Col xs={12}>
             <form>
               <TextField
-                hintText='example@cemaritan.com'
-                floatingLabelText='Email of person to invite'
-                fullWidth={true}
+                hintText="example@cemaritan.com"
+                floatingLabelText="Email of person to invite"
+                fullWidth
                 onChange={this.handleChange}
               />
               <RaisedButton
-                label='Send Invite'
-                primary={true}
-                onTouchTap={()=>{InviteApi.sendInvite(invitee);this.handleTouchTap()}}
+                label="Send Invite"
+                primary
+                onTouchTap={() => { InviteApi.sendInvite(invitee); this.handleTouchTap(); }}
               />
             </form>
           </Col>

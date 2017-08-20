@@ -8,8 +8,8 @@ script:
 - cd build && zip -q -r ui_latest *
 - mkdir -p dpl_cd_upload
 - mv ui_latest.zip dpl_cd_upload/ui_latest.zip
-notifications:
-  slack: ghimplementationteam:P8HpTjSCo8cDGwahXPLgQh47
+#notifications:
+#  slack: ghimplementationteam:P8HpTjSCo8cDGwahXPLgQh47
 cache:
   directories:
   - node_modules

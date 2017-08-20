@@ -1,64 +1,13 @@
-import {messageUrl, requestHeaders} from './apiBase';
+import { apiCall, messageUrl } from './apiBase';
 
-class MessageApi {
+const messageApi = apiCall(messageUrl);
 
-  static getAllMessages() {
-    const headers = requestHeaders;
-    const request = new Request(messageUrl, {
-      method: 'GET',
-      headers: headers
-    });
-
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
-  }
-
-  static updateMessage(message) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(messageUrl + `${message.id}`, {
-      method: 'PUT',
-      headers: headers,
-      body: JSON.stringify(message)
-    });
-
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
-  }
-
-  static createMessage(message) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(messageUrl, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify(message)
-    });
-
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
-  }
-
-  static deleteMessage(message) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(messageUrl + `${message.id}`, {
-      method: 'DELETE',
-      headers: headers
-    });
-
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
-  }
-}
+const MessageApi = {
+  getMessage: messageApi('GET'),
+  getAllMessages: messageApi('GET'),
+  updateMessage: messageApi('PUT'),
+  createMessage: messageApi('POST'),
+  deleteMessage: messageApi('DELETE')
+};
 
 export default MessageApi;

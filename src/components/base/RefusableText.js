@@ -1,35 +1,34 @@
 // import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
-import React, {Component} from 'react';
-import {Col, Row} from 'react-flexbox-grid';
+import React, { Component } from 'react';
+import { Col, Row } from 'react-flexbox-grid';
 import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 
 // https://github.com/networknt/react-schema-form/blob/master/src/Number.js
 class RefusableNumber extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      refused: this.props.value === 'refused'
+      refused: this.props.value === 'refused',
     };
   }
 
   refuse = () => {
-    let value = !this.state.refused;
-    this.setState({refused: value});
-    this.props.onChangeValidate({target: {value: value?'refused':''}});
+    const value = !this.state.refused;
+    this.setState({ refused: value });
+    this.props.onChangeValidate({ target: { value: value ? 'refused' : '' } });
     console.log(value);
   };
 
-  Header = ({help, heading}) => {
+  Header = ({ help, heading }) => {
     // console.log(header);
-    if (help){
+    if (help) {
       return (
         <Col xs={12}>
-          <span style={{color: "lightcoral"}}>{help}</span>
+          <span style={{ color: 'lightcoral' }}>{help}</span>
         </Col>
       );
-    } else if (heading){
+    } else if (heading) {
       return (
         <Col xs={12}>
           <h1>{heading}</h1><hr />
@@ -44,7 +43,7 @@ class RefusableNumber extends Component {
     this.props.form.readonly = this.state.refused;
     return (
       <Row className="Aligner">
-        <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
+        <this.Header help={this.props.form.help} heading={this.props.form.heading} />
         <Col xs={9}>
           <TextField
             type="text"
@@ -52,18 +51,19 @@ class RefusableNumber extends Component {
             hintText={this.props.form.placeholder}
             errorText={this.props.error}
             onChange={this.props.onChangeValidate}
-            defaultValue={this.state.refused?'':this.props.value}
+            defaultValue={this.state.refused ? '' : this.props.value}
             disabled={this.state.refused}
-            style={this.props.form.style || {width: '100%'}} />
+            style={this.props.form.style || { width: '100%' }}
+          />
         </Col>
         <Col xs={3}>
-          {/*<Checkbox*/}
-            {/*label="Refuse"*/}
-            {/*onCheck={this.refuse}*/}
-            {/*defaultChecked={this.state.refused}*/}
-            {/*// style={{marginTop:'30px'}}*/}
-            {/*// checkedIcon={<Close />}*/}
-          {/*/>*/}
+          {/* <Checkbox */}
+          {/* label="Refuse" */}
+          {/* onCheck={this.refuse} */}
+          {/* defaultChecked={this.state.refused} */}
+          {/* // style={{marginTop:'30px'}} */}
+          {/* // checkedIcon={<Close />} */}
+          {/* /> */}
         </Col>
       </Row>
     );

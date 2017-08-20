@@ -1,12 +1,11 @@
 import RaisedButton from 'material-ui/RaisedButton';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {intakePath} from '../../api/apiBase';
+import { intakePath } from '../../api/apiBase';
 
 class IntakeTableRow extends React.Component {
-
   render() {
     const intake = this.props.intake;
     return (
@@ -15,18 +14,18 @@ class IntakeTableRow extends React.Component {
         <TableRowColumn width={20}>{intake.consumer && intake.consumer.lastName}</TableRowColumn>
         <TableRowColumn width={20}>{moment(intake.createdAt).format('MMM Do YY')}</TableRowColumn>
         <TableRowColumn width={10}>{intake.score}</TableRowColumn>
-        <TableRowColumn width={10}>{intake.complete + ''}</TableRowColumn>
+        <TableRowColumn width={10}>{`${intake.complete}`}</TableRowColumn>
         <TableRowColumn width={10}>
           <RaisedButton
             label="delete"
-            secondary={true}
+            secondary
             onTouchTap={() => this.props.deleteIntake(intake)}
           />
         </TableRowColumn>
         <TableRowColumn width={10}>
           <RaisedButton
             label="edit"
-            primary={true}
+            primary
             href={intakePath + intake.id}
           />
         </TableRowColumn>
@@ -36,7 +35,7 @@ class IntakeTableRow extends React.Component {
 }
 
 IntakeTableRow.propTypes = {
-  intake: PropTypes.object.isRequired
+  intake: PropTypes.object.isRequired,
 };
 
 export default IntakeTableRow;

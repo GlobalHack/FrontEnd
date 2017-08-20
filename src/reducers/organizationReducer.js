@@ -1,4 +1,4 @@
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -13,7 +13,6 @@ export function organizationReducer(state = initialState.organization, action) {
 
 export default function organizationsReducer(state = initialState.organizations, action) {
   switch (action.type) {
-
     case types.LOAD_ORGANIZATIONS_SUCCESS:
       return action.organizations;
 
@@ -21,20 +20,18 @@ export default function organizationsReducer(state = initialState.organizations,
       browserHistory.push(`/organizations/${action.organization.id}`);
       return [
         ...state.filter(organization => organization.id !== action.organization.id),
-        Object.assign({}, action.organization)
+        Object.assign({}, action.organization),
       ];
 
     case types.UPDATE_ORGANIZATION_SUCCESS:
       return [
         ...state.filter(organization => organization.id !== action.organization.id),
-        Object.assign({}, action.organization)
+        Object.assign({}, action.organization),
       ];
 
     case types.DELETE_ORGANIZATION_SUCCESS: {
       const newState = Object.assign([], state);
-      const indexOfOrganizationToDelete = state.findIndex(organization => {
-        return organization.id === action.organization.id;
-      });
+      const indexOfOrganizationToDelete = state.findIndex(organization => organization.id === action.organization.id);
       newState.splice(indexOfOrganizationToDelete, 1);
       browserHistory.push('/organizations');
       return newState;
@@ -43,4 +40,4 @@ export default function organizationsReducer(state = initialState.organizations,
     default:
       return state;
   }
-};
+}

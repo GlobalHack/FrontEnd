@@ -1,18 +1,17 @@
 import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/intakeActions';
 import globalStyles from '../../styles';
 import IntakeStepper from './IntakeStepper';
 
 class IntakePage extends React.Component {
-
   state = {
     saved: true,
-    intakeId: this.props.params.id
+    intakeId: this.props.params.id,
   };
 
   componentWillMount() {
@@ -29,25 +28,24 @@ class IntakePage extends React.Component {
   };
 
   saveIntake = (intake) => {
-    this.setState({saved: true});
-    if (intake.id){
+    this.setState({ saved: true });
+    if (intake.id) {
       return this.props.actions.updateIntake(intake).then(this.props.actions.loadIntakes());
-    } else {
-      return this.props.actions.createIntake(intake).then(this.props.actions.loadIntakes());
     }
+    return this.props.actions.createIntake(intake).then(this.props.actions.loadIntakes());
   };
 
   updateSaveIntake = (saved) => {
     this.setState({
-      saved: saved
+      saved,
     });
   };
 
   render() {
     // console.log(this.props);
-    const {intakeId} = this.state;
-    let {intake} = this.props;
-    if (!intakeId){intake={}}
+    const { intakeId } = this.state;
+    let { intake } = this.props;
+    if (!intakeId) { intake = {}; }
     return (
       <Paper style={globalStyles.paper}>
         <IntakeStepper
@@ -58,24 +56,24 @@ class IntakePage extends React.Component {
         />
       </Paper>
     )
-      ;
+    ;
   }
 }
 
 IntakePage.propTypes = {
   intake: PropTypes.object.isRequired,
-  intakeQuestionnaire: PropTypes.object.isRequired
+  intakeQuestionnaire: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     intake: state.intake,
-    intakeQuestionnaire: state.intakeQuestionnaire
+    intakeQuestionnaire: state.intakeQuestionnaire,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(IntakePage));

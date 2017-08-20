@@ -1,18 +1,15 @@
-import {organizationUrl, requestHeaders} from './apiBase';
+import { organizationUrl, requestHeaders } from './apiBase';
 
 class OrganizationApi {
-
   static getOrganization(id) {
     const headers = requestHeaders;
-    const request = new Request(organizationUrl + '?id=' + id, {
+    const request = new Request(`${organizationUrl}?id=${id}`, {
       method: 'GET',
-      headers: headers
+      headers,
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      throw(error);
+    return fetch(request).then(response => response.json()).catch((error) => {
+      throw (error);
     });
   }
 
@@ -20,58 +17,44 @@ class OrganizationApi {
     const headers = requestHeaders;
     const request = new Request(organizationUrl, {
       method: 'GET',
-      headers: headers
+      headers,
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      throw(error);
+    return fetch(request).then(response => response.json()).catch((error) => {
+      throw (error);
     });
   }
 
   static updateOrganization(organization) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(organizationUrl + `${organization.id}`, {
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, requestHeaders);
+    const request = new Request(`${organizationUrl}${organization.id}`, {
       method: 'PUT',
-      headers: headers,
-      body: JSON.stringify(organization)
+      headers,
+      body: JSON.stringify(organization),
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 
   static createOrganization(organization) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, requestHeaders);
     const request = new Request(organizationUrl, {
       method: 'POST',
-      headers: headers,
-      body: JSON.stringify(organization)
+      headers,
+      body: JSON.stringify(organization),
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 
   static deleteOrganization(organization) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders);
-    const request = new Request(organizationUrl + `${organization.id}`, {
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, requestHeaders);
+    const request = new Request(`${organizationUrl}${organization.id}`, {
       method: 'DELETE',
-      headers: headers
+      headers,
     });
 
-    return fetch(request).then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return fetch(request).then(response => response.json()).catch(error => error);
   }
 }
 

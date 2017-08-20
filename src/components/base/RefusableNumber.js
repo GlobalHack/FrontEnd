@@ -1,18 +1,17 @@
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
-import React, {Component} from 'react';
-import {Col, Row} from 'react-flexbox-grid';
+import React, { Component } from 'react';
+import { Col, Row } from 'react-flexbox-grid';
 import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 
 // https://github.com/networknt/react-schema-form/blob/master/src/Number.js
 class RefusableNumber extends Component {
-
   constructor(props) {
     super(props);
     this.preValidationCheck = this.preValidationCheck.bind(this);
     this.state = {
       refused: this.props.value === 'refused',
-      lastSuccessfulValue: this.isNumeric(this.props.value) ? this.props.value : null
+      lastSuccessfulValue: this.isNumeric(this.props.value) ? this.props.value : null,
     };
   }
 
@@ -23,32 +22,31 @@ class RefusableNumber extends Component {
   preValidationCheck(e) {
     if (this.isNumeric(e.target.value)) {
       this.setState({
-        lastSuccessfulValue: e.target.value
+        lastSuccessfulValue: e.target.value,
       });
       this.props.onChangeValidate(e);
     } else {
       this.refs.numberField.value = this.state.lastSuccessfulValue;
-
     }
     this.props.onChangeValidate(e);
   }
 
   refuse = () => {
-    let value = !this.state.refused;
-    this.setState({refused: value});
-    this.props.onChangeValidate({target: {value: value?'refused':''}});
+    const value = !this.state.refused;
+    this.setState({ refused: value });
+    this.props.onChangeValidate({ target: { value: value ? 'refused' : '' } });
     console.log(value);
   };
 
-  Header = ({help, heading}) => {
+  Header = ({ help, heading }) => {
     // console.log(header);
-    if (help){
+    if (help) {
       return (
         <Col xs={12}>
-          <span style={{color: "lightcoral"}}>{help}</span>
+          <span style={{ color: 'lightcoral' }}>{help}</span>
         </Col>
       );
-    } else if (heading){
+    } else if (heading) {
       return (
         <Col xs={12}>
           <h1>{heading}</h1><hr />
@@ -63,7 +61,7 @@ class RefusableNumber extends Component {
     this.props.form.readonly = this.state.refused;
     return (
       <Row className="Aligner">
-        <this.Header help={this.props.form.help} heading={this.props.form.heading}/>
+        <this.Header help={this.props.form.help} heading={this.props.form.heading} />
         <Col xs={10} xsOffset={1}>
           <TextField
             type="number"
@@ -74,7 +72,8 @@ class RefusableNumber extends Component {
             defaultValue={this.state.lastSuccessfulValue}
             ref="numberField"
             disabled={this.props.form.readonly}
-            style={this.props.form.style || {width: '100%'}}/>
+            style={this.props.form.style || { width: '100%' }}
+          />
         </Col>
         <Col xs={1}>
           <Checkbox

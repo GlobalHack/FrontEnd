@@ -1,7 +1,7 @@
 import Checkbox from 'material-ui/Checkbox';
 import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React from 'react';
 import DatePicker from 'material-ui/DatePicker/DatePicker';
@@ -9,10 +9,10 @@ import DatePicker from 'material-ui/DatePicker/DatePicker';
 class OrganizationPermissionRow extends React.Component {
   state = {
     value: 1,
-    date: new Date(2018,3,6)
+    date: new Date(2018, 3, 6),
   };
 
-  handleChange = (event, index, value) => this.setState({value});
+  handleChange = (event, index, value) => this.setState({ value });
 
   render() {
     const organization = this.props.organization;
@@ -25,16 +25,18 @@ class OrganizationPermissionRow extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
           >
-            <MenuItem value={1} primaryText="Full Access"/>
-            <MenuItem value={2} primaryText="No Access"/>
-            <MenuItem value={3} primaryText="No DV"/>
-            <MenuItem value={4} primaryText="No Youth"/>
+            <MenuItem value={1} primaryText="Full Access" />
+            <MenuItem value={2} primaryText="No Access" />
+            <MenuItem value={3} primaryText="No DV" />
+            <MenuItem value={4} primaryText="No Youth" />
           </SelectField>
         </TableRowColumn>
         <TableRowColumn width={20}>
-          <DatePicker autoOk={true}
-                      id="1"
-                      defaultDate={this.state.date}/>
+          <DatePicker
+            autoOk
+            id="1"
+            defaultDate={this.state.date}
+          />
         </TableRowColumn>
         <TableRowColumn width={20}><Checkbox /></TableRowColumn>
       </TableRow>
@@ -43,7 +45,7 @@ class OrganizationPermissionRow extends React.Component {
 }
 
 OrganizationPermissionRow.propTypes = {
-  organization: PropTypes.object.isRequired
+  organization: PropTypes.object.isRequired,
 };
 
 export default OrganizationPermissionRow;

@@ -2,13 +2,12 @@ import AutoComplete from 'material-ui/AutoComplete';
 import RaisedButton from 'material-ui/RaisedButton';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Col, Row} from 'react-flexbox-grid';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { Col, Row } from 'react-flexbox-grid';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/organizationActions';
 
 class OrganizationForm extends React.Component {
-
   componentWillMount() {
     this.props.actions.loadOrganizations();
   }
@@ -21,7 +20,7 @@ class OrganizationForm extends React.Component {
 
   dataSourceConfig = {
     text: 'name',
-    value: 'id'
+    value: 'id',
   };
 
   render() {
@@ -40,55 +39,55 @@ class OrganizationForm extends React.Component {
                 filter={AutoComplete.fuzzyFilter}
                 maxSearchResults={30}
                 floatingLabelText="Search for Organization"
-                fullWidth={true}
-                openOnFocus={true}
+                fullWidth
+                openOnFocus
                 onUpdateInput={this.handleUpdateInput}
               />
               <RaisedButton
                 label="Request Access"
-                primary={true}
+                primary
               />
             </form>
           </Col>
-          {/*<Col xs={12} sm={1}>*/}
-            {/*<h1>-Or-</h1>*/}
-          {/*</Col>*/}
-          {/*<Col xs={12} sm={6}>*/}
-            {/*<form>*/}
-              {/*<TextField*/}
-                {/*hintText="Organization"*/}
-                {/*floatingLabelText="Organization Name"*/}
-                {/*fullWidth={true}*/}
-              {/*/>*/}
-              {/*<TextField*/}
-                {/*hintText="Address"*/}
-                {/*floatingLabelText="Address"*/}
-                {/*fullWidth={true}*/}
-              {/*/>*/}
-              {/*<RaisedButton*/}
-                {/*label="Create"*/}
-                {/*primary={true}*/}
-              {/*/>*/}
-            {/*</form>*/}
-          {/*</Col>*/}
+          {/* <Col xs={12} sm={1}> */}
+          {/* <h1>-Or-</h1> */}
+          {/* </Col> */}
+          {/* <Col xs={12} sm={6}> */}
+          {/* <form> */}
+          {/* <TextField */}
+          {/* hintText="Organization" */}
+          {/* floatingLabelText="Organization Name" */}
+          {/* fullWidth={true} */}
+          {/* /> */}
+          {/* <TextField */}
+          {/* hintText="Address" */}
+          {/* floatingLabelText="Address" */}
+          {/* fullWidth={true} */}
+          {/* /> */}
+          {/* <RaisedButton */}
+          {/* label="Create" */}
+          {/* primary={true} */}
+          {/* /> */}
+          {/* </form> */}
+          {/* </Col> */}
         </Row>
       </div>
     );
-  };
+  }
 }
 
 OrganizationForm.propTypes = {
-  organizations: PropTypes.array.isRequired
+  organizations: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    organizations: state.organizations
+    organizations: state.organizations,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationForm);

@@ -3,7 +3,6 @@ import ComposedComponent from 'react-schema-form/lib/ComposedComponent';
 import DatePicker from 'material-ui/DatePicker/DatePicker';
 
 class Date extends React.Component {
-
   constructor(props) {
     super(props);
     this.onDatePicked = this.onDatePicked.bind(this);
@@ -16,16 +15,17 @@ class Date extends React.Component {
 
   render() {
     return (
-      <div style={{width: '100%', display: 'block'}}>
+      <div style={{ width: '100%', display: 'block' }}>
         <DatePicker
           mode={'landscape'}
-          autoOk={true}
+          autoOk
           hintText={this.props.form.title}
           onChange={this.onDatePicked}
           onShow={null}
           onDismiss={null}
           disabled={this.props.form.readonly}
-          style={this.props.form.style || {width: '100%'}}/>
+          style={this.props.form.style || { width: '100%' }}
+        />
 
       </div>
     );
