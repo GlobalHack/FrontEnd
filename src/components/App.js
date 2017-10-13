@@ -3,7 +3,7 @@ import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Data from '../data';
+import { MENUS, ADMINMENUS } from '../data';
 import ThemeDefault from '../theme-default';
 import Header from './base/Header';
 import LeftDrawer from './base/LeftDrawer';
@@ -23,15 +23,13 @@ class App extends React.Component {
     // console.log(this.state.profile);
     // console.log(this.props.user);
     if (this.state.profile && !this.props.user.id) {
-      this.props.actions['USER']['LOAD'](this.state.profile.uid).then(user => {
+      this.props.actions.LOAD(this.state.profile.uid).then(user => {
         if (user.employee) {
-          this.props.actions['EMPLOYEE']
-            ['LOAD'](user.employee)
-            .then(employee => {
-              if (employee.organization) {
-                this.props.actions.loadOrganization(employee.organization);
-              }
-            });
+          this.props.actions.EMPLOYEE.LOAD(user.employee).then(employee => {
+            if (employee.organization) {
+              this.props.actions.ORGANIZATION.LOAD(employee.organization);
+            }
+          });
         }
       });
     }
@@ -86,8 +84,8 @@ class App extends React.Component {
 
           <LeftDrawer
             navDrawerOpen={navDrawerOpen}
-            menus={Data.menus}
-            adminmenus={Data.adminmenus}
+            menus={MENUS}
+            adminmenus={ADMINMENUS}
             auth={this.props.route.auth}
           />
 
@@ -110,13 +108,13 @@ App.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    user: state.user
+    user: {}
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ACTIONS, dispatch)
+    actions: bindActionCreators(ACTIONS.USER, dispatch)
   };
 }
 

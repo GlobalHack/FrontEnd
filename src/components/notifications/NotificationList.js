@@ -25,7 +25,7 @@ class NotificationList extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadNotifications(this.state.profile.uid);
+    this.props.actions.LOAD(this.state.profile.uid);
   }
 
   render() {
@@ -71,12 +71,12 @@ NotificationList.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    notifications: state.notifications
+    notifications: state.notifications || []
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(ACTIONS, dispatch) };
+  return { actions: bindActionCreators(ACTIONS.NOTIFICATION, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationList);

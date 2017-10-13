@@ -26,7 +26,7 @@ const METHOD_MAP = {
   DELETE: 'DELETE'
 };
 
-const additionalActions = [
+export const additionalActions = [
   'LOAD_INTAKE_QUESTIONNAIRE',
   'LOG_IN_SUCCESS',
   'LOG_OUT'
@@ -38,6 +38,13 @@ const requestHeaders = {
   AUTHORIZATION: `Bearer ${localStorage.jwt}`,
   'Content-Type': 'application/json'
 };
+
+export const ACTIONS_TYPES = {};
+export const PATHS = {};
+export const URLS = {};
+export const ACTIONS = {};
+export const REDUCERS = {};
+export const INITIAL_STATES = {};
 
 const METHOD_REDUCERS = {
   LOAD: action => action.payload,
@@ -53,7 +60,6 @@ const METHOD_REDUCERS = {
 
 const reducer = model => (state = INITIAL_STATES[model], action) => {
   const types = ACTIONS_TYPES[model];
-  console.log(model);
   switch (action.type) {
     case types.LOAD:
       return METHOD_REDUCERS.LOAD(action);
@@ -87,13 +93,6 @@ const actionCall = (action, api) => args => dispatch =>
       throw error;
     });
 
-export const ACTIONS_TYPES = {};
-export const PATHS = {};
-export const URLS = {};
-export const ACTIONS = {};
-export const REDUCERS = {};
-export const INITIAL_STATES = {};
-
 MODELS.forEach(model => {
   PATHS[model] = `/${model}/`;
   const url = `${baseUrl}${apiPrefix}/${model}/`;
@@ -112,7 +111,6 @@ MODELS.forEach(model => {
   }, {});
   REDUCERS[model] = reducer(model);
 });
-console.log(JSON.stringify(ACTIONS_TYPES, null, 2));
 
 const rootReducer = combineReducers(REDUCERS);
 
