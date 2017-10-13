@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/notificationActions';
+import { ACTIONS } from '../../Setup';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { white } from 'material-ui/styles/colors';
@@ -17,9 +17,9 @@ class NotificationList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      profile: props.auth.getProfile(),
+      profile: props.auth.getProfile()
     };
-    props.auth.on('profile_updated', (newProfile) => {
+    props.auth.on('profile_updated', newProfile => {
       this.setState({ profile: newProfile });
     });
   }
@@ -36,7 +36,12 @@ class NotificationList extends React.Component {
         color={white}
         iconButtonElement={
           <IconButton>
-            <Badge badgeContent={notifications.length} secondary className="menu-badge" badgeStyle={{ height: 16, width: 16 }}>
+            <Badge
+              badgeContent={notifications.length}
+              secondary
+              className="menu-badge"
+              badgeStyle={{ height: 16, width: 16 }}
+            >
               <Mail color={white} />
             </Badge>
           </IconButton>
@@ -45,15 +50,15 @@ class NotificationList extends React.Component {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {notifications.map(notification =>
-          (<MenuItem
+          <MenuItem
             key={1}
             primaryText={notification.text}
             rightIcon={<ArrowDropRight />}
             menuItems={[
               <MenuItem primaryText="View" leftIcon={<RemoveRedEye />} />,
-              <MenuItem primaryText="Remove" leftIcon={<Delete />} />,
+              <MenuItem primaryText="Remove" leftIcon={<Delete />} />
             ]}
-          />),
+          />
         )}
       </IconMenu>
     );
@@ -61,17 +66,17 @@ class NotificationList extends React.Component {
 }
 
 NotificationList.propTypes = {
-  notifications: PropTypes.array.isRequired,
+  notifications: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    notifications: state.notifications,
+    notifications: state.notifications
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationList);

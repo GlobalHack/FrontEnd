@@ -6,7 +6,7 @@ import React from 'react';
 import { Col, Row } from 'react-flexbox-grid';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/consumerActions';
+import { ACTIONS } from '../../Setup';
 import ConsumerCardList from '../consumer/ConsumerCardList';
 import ConsumerForm from '../consumer/ConsumerForm';
 
@@ -15,7 +15,7 @@ class ConsumerSelector extends React.Component {
     this.props.actions.loadConsumers();
   }
 
-  pickConsumer = (id) => {
+  pickConsumer = id => {
     // console.log(id);
     let newConsumer;
     if (typeof id === 'string' || typeof id === 'number') {
@@ -27,20 +27,25 @@ class ConsumerSelector extends React.Component {
     this.props.onSwitchConsumerForm(newConsumer);
   };
 
-  save = (consumer) => {
+  save = consumer => {
     this.setState({ consumer });
-    this.props.actions.createConsumer(consumer).then((responseConsumer) => {
-      this.props.actions.loadConsumers().then(
-        this.props.actions.loadConsumers().then(() => {
+    this.props.actions.CONSUMER.CREATE(consumer).then(responseConsumer => {
+      this.props.actions.CONSUMER.LOAD().then(
+        this.props.actions.CONSUMER.LOAD().then(() => {
           this.pickConsumer(responseConsumer);
-        },
-        ),
+        })
       );
     });
   };
 
   render() {
-    const { consumers, consumerState, onUpdateConsumerForm, onSwitchConsumerForm, handleMove } = this.props;
+    const {
+      consumers,
+      consumerState,
+      onUpdateConsumerForm,
+      onSwitchConsumerForm,
+      handleMove
+    } = this.props;
     // console.log(consumerState);
     return (
       <div>
@@ -54,7 +59,11 @@ class ConsumerSelector extends React.Component {
             />
           </Col>
           <Col xs={12} sm={6}>
-            <ConsumerCardList consumerState={consumerState} consumers={consumers} onPickConsumer={this.pickConsumer} />
+            <ConsumerCardList
+              consumerState={consumerState}
+              consumers={consumers}
+              onPickConsumer={this.pickConsumer}
+            />
           </Col>
         </Row>
         <Toolbar style={{ marginTop: 20 }}>
@@ -75,18 +84,18 @@ class ConsumerSelector extends React.Component {
 ConsumerSelector.propTypes = {
   consumerState: PropTypes.object.isRequired,
   onUpdateConsumerForm: PropTypes.func.isRequired,
-  consumers: PropTypes.array.isRequired,
+  consumers: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     consumers: state.consumers,
-    consumer: state.consumer,
+    consumer: state.consumer
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConsumerSelector);

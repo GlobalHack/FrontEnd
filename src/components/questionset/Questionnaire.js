@@ -8,7 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SchemaForm } from 'react-schema-form';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/questionSetActions';
+import { ACTIONS } from '../../Setup';
 import { score } from '../../utils/AcuityService';
 import RefusableBoolean from '../base/RefusableBoolean';
 import RefusableNumber from '../base/RefusableNumber';
@@ -16,7 +16,7 @@ import RefusableSelect from '../base/RefusableSelect';
 
 class Questionnaire extends React.Component {
   state = {
-    answers: {},
+    answers: {}
   };
 
   componentWillMount() {
@@ -32,7 +32,7 @@ class Questionnaire extends React.Component {
   handleRequestClose(reason) {
     if (reason !== 'clickaway') {
       this.setState({
-        open: false,
+        open: false
       });
     }
   }
@@ -40,17 +40,24 @@ class Questionnaire extends React.Component {
   handleUpdate = (field, value) => {
     this.props.onUpdateQuestionnaireForm(field, value);
     this.setState({ answers: this.props.questionnaireState });
-    if (Object.keys(this.props.questionnaireState).length >= (this.props.questionSetFormSchema.form || []).length) {
+    if (
+      Object.keys(this.props.questionnaireState).length >=
+      (this.props.questionSetFormSchema.form || []).length
+    ) {
       this.props.onUpdateQuestionnaireForm('complete', true);
     }
   };
 
   render() {
-    const { questionnaireState, questionSetFormSchema, handleMove } = this.props;
+    const {
+      questionnaireState,
+      questionSetFormSchema,
+      handleMove
+    } = this.props;
     const mapper = {
       RefusableBoolean,
       RefusableNumber,
-      RefusableSelect,
+      RefusableSelect
     };
     // console.log(questionnaireState);
     return (
@@ -95,17 +102,17 @@ class Questionnaire extends React.Component {
 
 Questionnaire.propTypes = {
   questionSetFormSchema: PropTypes.object.isRequired,
-  questionnaireState: PropTypes.object.isRequired,
+  questionnaireState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    questionSetFormSchema: state.questionSetFormSchema,
+    questionSetFormSchema: state.questionSetFormSchema
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Questionnaire);

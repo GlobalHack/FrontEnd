@@ -2,8 +2,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import React from 'react';
 import { Col, Row } from 'react-flexbox-grid';
-import InviteApi from '../../api/InviteApi';
+import { ACTIONS } from '../../Setup';
 import Snackbar from 'material-ui/Snackbar';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
@@ -16,30 +18,32 @@ class EmployeeInviteForm extends React.Component {
     this.state = {
       open: false,
       message: 'Invite Sent',
-      profile: props.auth.getProfile(),
+      profile: props.auth.getProfile()
     };
-    props.auth.on('profile_updated', (newProfile) => {
+    props.auth.on('profile_updated', newProfile => {
       this.setState({ profile: newProfile });
     });
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     console.log('?');
     this.setState({
       invitee: event.target.value,
-      message: validateEmail(event.target.value) ? 'Invite Sent' : 'Invalid Email',
+      message: validateEmail(event.target.value)
+        ? 'Invite Sent'
+        : 'Invalid Email'
     });
   };
 
   handleTouchTap = () => {
     this.setState({
-      open: true,
+      open: true
     });
   };
 
   handleRequestClose = () => {
     this.setState({
-      open: false,
+      open: false
     });
   };
 
@@ -62,7 +66,10 @@ class EmployeeInviteForm extends React.Component {
               <RaisedButton
                 label="Send Invite"
                 primary
-                onTouchTap={() => { InviteApi.sendInvite(invitee); this.handleTouchTap(); }}
+                onTouchTap={() => {
+                  this.props.actions.INVITE.CREATE(invitee);
+                  this.handleTouchTap();
+                }}
               />
             </form>
           </Col>
@@ -78,4 +85,12 @@ class EmployeeInviteForm extends React.Component {
   }
 }
 
-export default EmployeeInviteForm;
+function mapStateToProps(state, ownProps) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeInviteForm);

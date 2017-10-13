@@ -8,9 +8,7 @@ import ThemeDefault from '../theme-default';
 import Header from './base/Header';
 import LeftDrawer from './base/LeftDrawer';
 import { bindActionCreators } from 'redux';
-import * as userActions from '../actions/userActions';
-import * as employeeActions from '../actions/employeeActions';
-import * as organizationActions from '../actions/organizationActions';
+import { ACTIONS } from '../Setup';
 
 class App extends React.Component {
   constructor(props, context) {
@@ -25,13 +23,15 @@ class App extends React.Component {
     // console.log(this.state.profile);
     // console.log(this.props.user);
     if (this.state.profile && !this.props.user.id) {
-      this.props.actions.loadUser(this.state.profile.uid).then(user => {
+      this.props.actions['USER']['LOAD'](this.state.profile.uid).then(user => {
         if (user.employee) {
-          this.props.actions.loadEmployee(user.employee).then(employee => {
-            if (employee.organization) {
-              this.props.actions.loadOrganization(employee.organization);
-            }
-          });
+          this.props.actions['EMPLOYEE']
+            ['LOAD'](user.employee)
+            .then(employee => {
+              if (employee.organization) {
+                this.props.actions.loadOrganization(employee.organization);
+              }
+            });
         }
       });
     }
@@ -116,10 +116,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(
-      Object.assign({}, userActions, employeeActions, organizationActions),
-      dispatch
-    )
+    actions: bindActionCreators(ACTIONS, dispatch)
   };
 }
 

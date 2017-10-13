@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SchemaForm } from 'react-schema-form';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/consumerActions';
+import { ACTIONS } from '../../Setup';
 import ConsumerCard from '../consumer/ConsumerCard';
 import RefusableText from '../base/RefusableText';
 import RefusableSSN from '../base/RefusableSSN';
@@ -24,29 +24,29 @@ const schemaForm = {
     properties: {
       firstName: {
         title: 'First Name',
-        type: 'string',
+        type: 'string'
       },
       lastName: {
         title: 'Last Name',
-        type: 'string',
+        type: 'string'
       },
       ssn: {
         title: 'Social Security Number',
-        type: 'string',
+        type: 'string'
       },
       dateOfBirth: {
         title: 'Date Of Birth',
-        type: 'string',
+        type: 'string'
       },
       domesticViolence: {
         title: 'Domestic Violence',
-        type: 'string',
+        type: 'string'
       },
       youth: {
         title: 'Youth',
-        type: 'string',
-      },
-    },
+        type: 'string'
+      }
+    }
   },
   form: [
     'firstName',
@@ -54,21 +54,21 @@ const schemaForm = {
     {
       key: 'ssn',
       placeholder: 'XXX-XX-XXXX',
-      type: 'RefusableSSN',
+      type: 'RefusableSSN'
     },
     {
       key: 'dateOfBirth',
-      type: 'RefusableDateString',
+      type: 'RefusableDateString'
     },
     {
       key: 'domesticViolence',
-      type: 'RefusableDV',
+      type: 'RefusableDV'
     },
     {
       key: 'youth',
-      type: 'RefusableYouth',
-    },
-  ],
+      type: 'RefusableYouth'
+    }
+  ]
 };
 
 class ConsumerForm extends React.Component {
@@ -97,7 +97,7 @@ class ConsumerForm extends React.Component {
       RefusableDate,
       RefusableDV,
       RefusableYouth,
-      RefusableDateString,
+      RefusableDateString
     };
     if (consumerState.id) {
       return (
@@ -107,11 +107,7 @@ class ConsumerForm extends React.Component {
             <Toolbar style={{ marginTop: 20 }}>
               <ToolbarGroup />
               <ToolbarGroup>
-                <RaisedButton
-                  label="clear"
-                  secondary
-                  onTouchTap={this.clear}
-                />
+                <RaisedButton label="clear" secondary onTouchTap={this.clear} />
               </ToolbarGroup>
             </Toolbar>
           }
@@ -127,11 +123,7 @@ class ConsumerForm extends React.Component {
           onModelChange={onUpdateConsumerForm}
           mapper={mapper}
         />
-        <RaisedButton
-          label="Save consumer"
-          primary
-          onTouchTap={this.submit}
-        />
+        <RaisedButton label="Save consumer" primary onTouchTap={this.submit} />
       </div>
     );
   }
@@ -140,17 +132,17 @@ class ConsumerForm extends React.Component {
 ConsumerForm.propTypes = {
   consumerState: PropTypes.object.isRequired,
   onUpdateConsumerForm: PropTypes.func.isRequired,
-  consumers: PropTypes.array.isRequired,
+  consumers: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    consumers: state.consumers,
+    consumers: state.consumers
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConsumerForm);

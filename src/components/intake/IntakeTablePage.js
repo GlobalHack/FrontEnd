@@ -5,31 +5,31 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/intakeActions';
+import { ACTIONS, URLS } from '../../Setup';
 import globalStyles from '../../styles';
 import IntakeTable from './IntakeTable';
-import { intakeUrl } from '../../api/apiBase';
 import Snackbar from 'material-ui/Snackbar';
 
 class IntakeTablePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: this.props.route.path === 'updated'
-        && this.props.location.query.ts
-        && Date.now() - this.props.location.query.ts < 1000,
+      open:
+        this.props.route.path === 'updated' &&
+        this.props.location.query.ts &&
+        Date.now() - this.props.location.query.ts < 1000,
       snackbar: 'Intake Updated',
-      intakeId: this.props.params.id,
+      intakeId: this.props.params.id
     };
     console.log(this.props.location.query);
   }
 
   componentWillMount() {
-    this.props.actions.loadIntakes();
+    this.props.actions['INTAKES']['LOAD']();
   }
 
-  deleteIntake = (intake) => {
-    this.props.actions.deleteIntake(intake);
+  deleteIntake = intake => {
+    this.props.actions['INTAKES']['DELETE'](intake);
   };
 
   render() {
@@ -38,17 +38,13 @@ class IntakeTablePage extends React.Component {
       <Paper style={globalStyles.paper}>
         <Toolbar>
           <ToolbarGroup>
-            <RaisedButton
-              label="Create new"
-              primary
-              href="/intakes/new"
-            />
+            <RaisedButton label="Create new" primary href="/intakes/new" />
           </ToolbarGroup>
           <ToolbarGroup>
             <RaisedButton
               label="download all intakes"
               primary
-              href={`${intakeUrl}csv`}
+              href={`${URLS.INTAKE}csv`}
             />
           </ToolbarGroup>
         </Toolbar>
@@ -64,17 +60,17 @@ class IntakeTablePage extends React.Component {
 }
 
 IntakeTablePage.propTypes = {
-  intakes: PropTypes.array.isRequired,
+  intakes: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    intakes: state.intakes,
+    intakes: state.intakes
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IntakeTablePage);

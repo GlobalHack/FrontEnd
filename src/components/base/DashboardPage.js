@@ -3,10 +3,9 @@ import React from 'react';
 import globalStyles from '../../styles';
 import OrganizationPermissionTable from '../organization/OrganizationPermissionTable';
 
-const DashboardPage = () => (
+const DashboardPage = () =>
   <Paper style={globalStyles.paper}>
     <OrganizationPermissionTable />
-  </Paper>
-);
+  </Paper>;
 
 export default DashboardPage;

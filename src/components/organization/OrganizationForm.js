@@ -5,7 +5,7 @@ import React from 'react';
 import { Col, Row } from 'react-flexbox-grid';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/organizationActions';
+import { ACTIONS } from '../../Setup';
 
 class OrganizationForm extends React.Component {
   componentWillMount() {
@@ -20,14 +20,16 @@ class OrganizationForm extends React.Component {
 
   dataSourceConfig = {
     text: 'name',
-    value: 'id',
+    value: 'id'
   };
 
   render() {
     return (
       <div>
         <Row>
-          <h1>It looks like you don't belong to an organization yet</h1>
+          <h1>
+            {'It looks like you don\'t belong to an organization yet'}
+          </h1>
         </Row>
         <Row>
           <Col xs={12} sm={12}>
@@ -43,10 +45,7 @@ class OrganizationForm extends React.Component {
                 openOnFocus
                 onUpdateInput={this.handleUpdateInput}
               />
-              <RaisedButton
-                label="Request Access"
-                primary
-              />
+              <RaisedButton label="Request Access" primary />
             </form>
           </Col>
           {/* <Col xs={12} sm={1}> */}
@@ -77,17 +76,17 @@ class OrganizationForm extends React.Component {
 }
 
 OrganizationForm.propTypes = {
-  organizations: PropTypes.array.isRequired,
+  organizations: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    organizations: state.organizations,
+    organizations: state.organizations
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationForm);

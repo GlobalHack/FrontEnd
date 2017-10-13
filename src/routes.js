@@ -9,12 +9,7 @@ import EmployeeTablePage from './components/employee/EmployeeTablePage';
 import IntakePage from './components/intake/IntakePage';
 import IntakeTablePage from './components/intake/IntakeTablePage';
 import AuthService from './utils/AuthService';
-import {
-  dashPath,
-  employeePath,
-  homePath,
-  intakePath
-} from './utils/pathsHelper';
+import { PATHS } from './data';
 
 const auth = new AuthService(
   `${process.env.REACT_APP_AUTH0CLIENTID}`,
@@ -36,41 +31,45 @@ export const makeMainRoutes = () => {
   return (
     <Route>
       <Route
-        path="/login"
+        path={PATHS['login']}
         component={LoginPage}
         auth={auth}
         initialScreen="login"
       />
       <Route
-        path="/signup"
+        path={PATHS['signup']}
         component={LoginPage}
         auth={auth}
         initialScreen="signUp"
       />
       <Route
-        path="/password"
+        path={PATHS['password']}
         component={LoginPage}
         auth={auth}
         initialScreen="forgotPassword"
       />
       <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
-        <IndexRedirect to={homePath} />
-        <Route path={homePath} component={WelcomePage} onEnter={requireAuth} />
+        <IndexRedirect to={PATHS['home']} />
         <Route
-          path={dashPath}
+          path={PATHS['home']}
+          component={WelcomePage}
+          onEnter={requireAuth}
+        />
+        <Route
+          path={PATHS['dash']}
           component={DashboardPage}
           onEnter={requireAuth}
         />
         <Route
-          path="/referrals"
+          path={PATHS['referrals']}
           component={ReferralPage}
           onEnter={requireAuth}
         />
-        <Route path={employeePath} onEnter={requireAuth}>
+        <Route path={PATHS['employees']} onEnter={requireAuth}>
           <IndexRoute component={EmployeeTablePage} />
-          <Redirect from="*" to={employeePath} />
+          <Redirect from="*" to={PATHS['employees']} />
         </Route>
-        <Route path={intakePath}>
+        <Route path={PATHS['intakes']}>
           <IndexRoute component={IntakeTablePage} />
           <Route path="new" component={IntakePage} onEnter={requireAuth} />
           <Route
@@ -79,9 +78,9 @@ export const makeMainRoutes = () => {
             onEnter={requireAuth}
           />
           <Route path=":id" component={IntakePage} onEnter={requireAuth} />
-          <Redirect from="*" to={intakePath} />
+          <Redirect from="*" to={PATHS['intakes']} />
         </Route>
-        <Redirect from="*" to={homePath} />
+        <Redirect from="*" to={PATHS['home']} />
       </Route>
     </Route>
   );

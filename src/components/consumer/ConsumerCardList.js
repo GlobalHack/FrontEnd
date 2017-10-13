@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/consumerActions';
+import { ACTIONS } from '../../Setup';
 
 let SelectableList = makeSelectable(List);
 
@@ -16,19 +16,19 @@ function wrapState(ComposedComponent) {
     static propTypes = {
       children: PropTypes.node.isRequired,
       defaultValue: PropTypes.number.isRequired,
-      onChange: PropTypes.func.isRequired,
+      onChange: PropTypes.func.isRequired
     };
 
     componentWillMount() {
       this.setState({
-        selectedIndex: this.props.defaultValue,
+        selectedIndex: this.props.defaultValue
       });
     }
 
     handleRequestChange = (event, index) => {
       this.props.onChange(index);
       this.setState({
-        selectedIndex: index,
+        selectedIndex: index
       });
     };
 
@@ -38,7 +38,9 @@ function wrapState(ComposedComponent) {
 
     componentWillUpdate(nextProps) {
       // console.log(this.props);
-      if (nextProps.clear && this.state.selectedIndex !== 0) { this.clear(); }
+      if (nextProps.clear && this.state.selectedIndex !== 0) {
+        this.clear();
+      }
     }
 
     render() {
@@ -57,7 +59,7 @@ function wrapState(ComposedComponent) {
 SelectableList = wrapState(SelectableList);
 
 class ConsumerCard extends React.Component {
-  handleSelect = (id) => {
+  handleSelect = id => {
     // this.props.actions.loadConsumer(id);
     this.props.onPickConsumer(id);
   };
@@ -67,21 +69,25 @@ class ConsumerCard extends React.Component {
     const { consumers, consumerState } = this.props;
     return (
       <Paper style={{ maxHeight: 400, overflow: 'auto' }}>
-        <SelectableList clear={!consumerState.id} defaultValue={0} onChange={this.handleSelect}>
+        <SelectableList
+          clear={!consumerState.id}
+          defaultValue={0}
+          onChange={this.handleSelect}
+        >
           <Subheader>Select Consumer</Subheader>
           {consumers.map(consumer =>
-            (<ListItem
+            <ListItem
               key={consumer.id}
               value={consumer.id}
               leftAvatar={
-                <Avatar
-                  src="https://s.gravatar.com/avatar/d02d9794797b375e5b37ebc641b25dae?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fj.png"
-                />
+                <Avatar src="https://s.gravatar.com/avatar/d02d9794797b375e5b37ebc641b25dae?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fj.png" />
               }
               primaryText={`${consumer.firstName} ${consumer.lastName}`}
-              secondaryText={`Date of Birth: ${moment(consumer.dateOfBirth).format('MMM Do YY')}`}
+              secondaryText={`Date of Birth: ${moment(
+                consumer.dateOfBirth
+              ).format('MMM Do YY')}`}
               secondaryTextLines={2}
-            />),
+            />
           )}
         </SelectableList>
       </Paper>
@@ -90,17 +96,17 @@ class ConsumerCard extends React.Component {
 }
 
 ConsumerCard.propTypes = {
-  consumer: PropTypes.object.isRequired,
+  consumer: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    consumer: state.consumer,
+    consumer: state.consumer
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(ACTIONS, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConsumerCard);
