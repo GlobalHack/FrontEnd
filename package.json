@@ -4,7 +4,9 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^2.9.1",
-    "react-scripts": "0.9.5"
+    "react-dom": "^15.6.2",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^16.2.0"
   },
   "dependencies": {
     "auth0-lock": "^10.13.0",
@@ -17,7 +19,6 @@
     "moment": "^2.18.1",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
     "react-flexbox-grid": "^1.0.2",
     "react-input-mask": "^0.8.0",
     "react-redux": "^4.4.5",
