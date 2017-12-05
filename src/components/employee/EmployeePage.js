@@ -5,19 +5,19 @@ import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { ACTIONS } from '../../Setup';
 import PageBase from '../base/PageBase';
-import ReferralTable from './ReferralTable';
+import EmployeeTable from './EmployeeTable';
 
-class ReferralPage extends React.Component {
+class EmployeePage extends React.Component {
   componentDidMount() {
-    //loadreferral ({id: this.props.params.id}) // have this reducer call the apis for orgs and employees to put in state.referral
+    //loademployee ({id: this.props.params.id})
   }
 
   render() {
-    const { referral, consumers, intakes, organization } = this.props;
+    const { employee, consumers, intakes, organization } = this.props;
     return (
       <PageBase
-        title={`Referral ${referral.name || 'Loading...'}`}
-        navigation="Application / Referral Page"
+        title={`Employee ${employee.name || 'Loading...'}`}
+        navigation="Application / Employee Page"
       >
         <ConsumerList consumers={consumers} />
         <IntakeList intakes={intakes} />
@@ -27,20 +27,19 @@ class ReferralPage extends React.Component {
   }
 }
 
-ReferralTablePage.propTypes = {
-  referral: PropTypes.object.isRequired,
+EmployeeTablePage.propTypes = {
+  employee: PropTypes.object.isRequired,
   consumers: PropTypes.array,
   intakes: PropTypes.array,
-  organizationTo: PropTypes.object,
-  organizationFrom: PropTypes.object
+  organization: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    referral: state.referral.information,
-    consumers: state.referral.consumers,
-    intakes: state.referral.intakes,
-    organization: state.referral.organization
+    employee: state.employee.information,
+    consumers: state.employee.consumers,
+    intakes: state.employee.intakes,
+    organization: state.employee.organization
   };
 }
 
@@ -49,5 +48,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ReferralTablePage)
+  connect(mapStateToProps, mapDispatchToProps)(EmployeeTablePage)
 );

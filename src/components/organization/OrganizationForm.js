@@ -8,10 +8,6 @@ import { bindActionCreators } from 'redux';
 import { ACTIONS } from '../../Setup';
 
 class OrganizationForm extends React.Component {
-  componentWillMount() {
-    this.props.actions.loadOrganizations();
-  }
-
   handleUpdateInput = (searchText, e, type) => {
     console.log(searchText.id);
     console.log(e);
@@ -81,7 +77,7 @@ OrganizationForm.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    organizations: state.organizations
+    organizations: state.organizations || []
   };
 }
 

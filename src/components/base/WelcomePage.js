@@ -1,7 +1,7 @@
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import { Col, Row } from 'react-flexbox-grid';
-import globalStyles from '../../styles';
+import { styles } from '../../styles';
 import EmployeeInviteForm from '../employee/EmployeeInviteForm';
 import OrganizationForm from '../organization/OrganizationForm';
 import { connect } from 'react-redux';
@@ -21,7 +21,9 @@ function Welcome({ organization, auth }) {
   return (
     <Row>
       <Col xs={12} sm={12}>
-        <h1 style={{ textAlign: 'center' }}>Your Organization: {organization.name}</h1>
+        <h1 style={{ textAlign: 'center' }}>
+          Your Organization: {organization.name}
+        </h1>
       </Col>
       <Col xs={12} sm={6}>
         <EmployeeInviteForm auth={auth} />
@@ -34,7 +36,7 @@ class WelcomePage extends React.Component {
   render() {
     const { auth } = this.props;
     return (
-      <Paper style={globalStyles.paper}>
+      <Paper style={styles.paper}>
         <Welcome organization={this.props.organization} auth={auth} />
       </Paper>
     );
@@ -43,13 +45,13 @@ class WelcomePage extends React.Component {
 
 WelcomePage.propTypes = {
   employee: PropTypes.object.isRequired,
-  organization: PropTypes.object.isRequired,
+  organization: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    employee: state.employee,
-    organization: state.organization,
+    employee: state.employee || {},
+    organization: state.organization || {}
   };
 }
 

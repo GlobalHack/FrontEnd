@@ -4,10 +4,6 @@ node_js:
 script:
 - npm run test
 - npm run build
-- cp appspec.yml build/appspec.yml
-- cd build && zip -q -r ui_latest *
-- mkdir -p dpl_cd_upload
-- mv ui_latest.zip dpl_cd_upload/ui_latest.zip
 #notifications:
 #  slack: ghimplementationteam:P8HpTjSCo8cDGwahXPLgQh47
 cache:
@@ -17,20 +13,9 @@ deploy:
 - provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
-  local_dir: dpl_cd_upload
+  local_dir: build
   skip_cleanup: true
   on:
     repo: GHImplementationTeam/FrontEnd
     branch: /.*/
   bucket: cemaritan-deployments
-- provider: codedeploy
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  bucket: cemaritan-deployments
-  key: ui_latest.zip
-  bundle_type: zip
-  application: FrontEnd
-  deployment_group: CemaritanFrontEnd
-  on:
-    repo: GHImplementationTeam/FrontEnd
-    branch: develop
