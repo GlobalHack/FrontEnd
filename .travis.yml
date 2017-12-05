@@ -17,5 +17,5 @@ deploy:
   skip_cleanup: true
   on:
     repo: GHImplementationTeam/FrontEnd
-    branch: /.*/
+    all_branches: true
   bucket: cemaritan-deployments
