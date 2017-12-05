@@ -23,8 +23,8 @@ class App extends React.Component {
     // console.log(this.state.profile);
     // console.log(this.props.user);
     if (this.state.profile && !this.props.user.id) {
-      this.props.actions.LOAD(this.state.profile.uid).then(user => {
-        if (user.employee) {
+      this.props.actions.LOAD(this.state.profile).then(user => {
+        if (this.props.user.employee) {
           this.props.actions.EMPLOYEE.LOAD(user.employee).then(employee => {
             if (employee.organization) {
               this.props.actions.ORGANIZATION.LOAD(employee.organization);
